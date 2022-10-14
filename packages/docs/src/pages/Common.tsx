@@ -135,9 +135,7 @@ function ThemeExample() {
 
 function ThemeProviderComponent() {
   const themeExamples = [
-    { theme: Theme.DARK, accent: Accent.PINK },
-    { theme: Theme.DARK, accent: Accent.BLUE },
-    { theme: Theme.LIGHT, accent: Accent.BLUE },
+    { theme: Theme.DARK, accent: Accent.PURPLE },
     { theme: Theme.LIGHT, accent: Accent.PURPLE },
   ];
   return (

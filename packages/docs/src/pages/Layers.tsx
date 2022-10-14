@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Accent,
   Button,
   Card,
   ConfirmModal,
@@ -15,7 +14,6 @@ import {
 } from "@spyrothon/sparx";
 import ImageQuestion from "@spyrothon/sparx/dist/icons/ImageQuestion";
 
-import usePageAccent from "../usePageAccent";
 import PageHeader from "./PageHeader";
 
 function Introduction() {
@@ -189,8 +187,6 @@ function TooltipComponent() {
 }
 
 export default function Layers() {
-  usePageAccent(Accent.BLUE);
-
   return (
     <Stack spacing="space-lg" align="stretch">
       <PageHeader name="Layers" tagline="Various components for modalized and layered content" />

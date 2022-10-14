@@ -608,8 +608,6 @@ function DisabledStates() {
 }
 
 export default function Forms() {
-  usePageAccent(Accent.PINK);
-
   return (
     <Stack spacing="space-lg" align="stretch">
       <PageHeader name="Forms" tagline="Get input from and provide options for users" />

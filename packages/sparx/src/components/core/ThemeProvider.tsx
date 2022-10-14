@@ -6,9 +6,7 @@ export enum Theme {
 }
 
 export enum Accent {
-  BLUE = "blue",
   PURPLE = "purple",
-  PINK = "pink",
 }
 
 interface ThemeContextValue {
@@ -20,12 +18,12 @@ interface ThemeContextValue {
 
 export const ThemeContext = React.createContext<ThemeContextValue>({
   theme: Theme.DARK,
-  accent: Accent.BLUE,
+  accent: Accent.PURPLE,
   setTheme: () => null,
   setAccent: () => null,
 });
 
-export function getThemeClass(theme: Theme, accent: Accent = Accent.BLUE): string {
+export function getThemeClass(theme: Theme, accent: Accent = Accent.PURPLE): string {
   return `theme-${theme} accent-${accent}`;
 }
 
@@ -45,7 +43,7 @@ export function ThemeProvider(props: ThemeProviderProps) {
   const { theme: controlledTheme, accent: controlledAccent, children } = props;
 
   const [theme, setTheme] = React.useState(controlledTheme ?? Theme.DARK);
-  const [accent, setAccent] = React.useState(controlledAccent ?? Accent.BLUE);
+  const [accent, setAccent] = React.useState(controlledAccent ?? Accent.PURPLE);
 
   React.useEffect(() => {
     if (controlledTheme != null) {

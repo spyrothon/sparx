@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Accent,
   BrandLogo,
@@ -14,7 +15,6 @@ import {
   ThemeContext,
 } from "@spyrothon/sparx";
 import { IconProps } from "@spyrothon/sparx/dist/icons/IconProps";
-import { useLocation, useNavigate } from "react-router-dom";
 
 import Pages from "./Pages";
 
@@ -23,11 +23,7 @@ const THEME_OPTIONS = [
   { name: "Light", value: Theme.LIGHT },
 ];
 
-const ACCENT_OPTIONS = [
-  { name: "Blue", value: Accent.BLUE },
-  { name: "Purple", value: Accent.PURPLE },
-  { name: "Pink", value: Accent.PINK },
-];
+const ACCENT_OPTIONS = [{ name: "Purple", value: Accent.PURPLE }];
 
 type SidebarTab =
   | {

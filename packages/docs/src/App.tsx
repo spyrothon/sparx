@@ -1,6 +1,6 @@
 import * as React from "react";
-import { AppContainer } from "@spyrothon/sparx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AppContainer } from "@spyrothon/sparx";
 
 import Common from "./pages/Common";
 import Forms from "./pages/Forms";

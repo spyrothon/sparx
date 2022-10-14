@@ -4,7 +4,9 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "declaration": true,
-    "outDir": "./dist/icons",
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "inlineSourceMap": true
   },
-  "include": ["src/icons", "@types"],
+  "include": ["src", "@types"]
 }

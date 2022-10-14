@@ -6,5 +6,7 @@ export default function usePageAccent(accent: Accent) {
 
   React.useEffect(() => {
     theme.setAccent(accent);
-  }, [theme, accent]);
+    // Intentionally avoiding `theme` otherwise this won't be overridable.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [accent]);
 }

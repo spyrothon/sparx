@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Accent, Anchor, Card, Header, Markdown, Section, Stack, Text } from "@spyrothon/sparx";
+import { Anchor, Card, Header, Markdown, Section, Stack, Text } from "@spyrothon/sparx";
 
-import usePageAccent from "../usePageAccent";
 import PageHeader from "./PageHeader";
 
 function Introduction() {
@@ -211,8 +210,6 @@ function AnchorComponent() {
 }
 
 export default function Typography() {
-  usePageAccent(Accent.BLUE);
-
   return (
     <Stack spacing="space-lg" align="stretch">
       <PageHeader
