@@ -1,0 +1,131 @@
+.color-normal {
+  color: var(--text-normal);
+}
+.color-secondary {
+  color: var(--text-secondary);
+}
+.color-accent {
+  color: var(--text-accent);
+}
+.color-success {
+  color: var(--text-success);
+}
+.color-info {
+  color: var(--text-info);
+}
+.color-warning {
+  color: var(--text-warning);
+}
+.color-danger {
+  color: var(--text-danger);
+}
+.color-inherit {
+  color: inherit;
+}
+
+.text {
+  font-family: var(--font-normal);
+  font-weight: var(--font-weight-medium);
+}
+
+.text-xs {
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+}
+
+.text-sm {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 18px;
+}
+
+.text-md {
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  line-height: 28px;
+}
+
+.text-lg {
+  font-size: 24px;
+  font-weight: var(--font-weight-medium);
+  line-height: 30px;
+}
+
+.header {
+  font-family: var(--font-accent);
+  font-weight: var(--font-weight-bold);
+}
+
+.header-xs {
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  line-height: 18px;
+
+  &.withMargin {
+    margin-bottom: var(--space-sm);
+  }
+}
+
+.header-sm {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  line-height: 24px;
+
+  &.withMargin {
+    margin-bottom: var(--space-md);
+  }
+}
+
+.header-md {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  line-height: 30px;
+
+  &.withMargin {
+    margin-bottom: var(--space-md);
+  }
+}
+
+.header-lg {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  line-height: 36px;
+
+  &.withMargin {
+    margin-bottom: var(--space-md);
+  }
+}
+
+.header-xl {
+  font-size: 40px;
+  font-weight: var(--font-weight-bold);
+  line-height: 44px;
+
+  &.withMargin {
+    margin-bottom: var(--space-lg);
+  }
+}
+
+.header-xxl {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  line-height: 50px;
+
+  &.withMargin {
+    margin-bottom: var(--space-lg);
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+code {
+  display: inline-block;
+  background-color: var(--background-highlight);
+  font-size: 0.85em;
+  line-height: 0.85;
+  padding: 4px 6px;
+  margin: 0 2px;
+}

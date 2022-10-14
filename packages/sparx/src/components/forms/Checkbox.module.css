@@ -1,0 +1,21 @@
+.checkbox {
+  display: block;
+  display: flex;
+  align-items: start;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+}
+
+.icon {
+  color: var(--accent-primary);
+  flex: 0 0 auto;
+}
+
+.label {
+  flex: 1 1 auto;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+}

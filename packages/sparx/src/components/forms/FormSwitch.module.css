@@ -1,0 +1,72 @@
+.container {
+  margin: var(--space-sm) 0;
+}
+
+.mainRow {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.switch {
+  background-color: var(--background-accent);
+  border: 2px solid var(--accent-primary);
+  border-radius: 100000px;
+  width: 44px;
+}
+
+.iconContainer {
+  position: relative;
+  margin: 1px;
+  height: 18px;
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: unset;
+  border-radius: 100000px;
+  height: 18px;
+  color: var(--accent-primary);
+  transition: left right 0.1s ease-in;
+}
+
+.iconUnchecked {
+  opacity: 1;
+}
+
+.iconChecked {
+  opacity: 0;
+}
+
+.checked {
+  & .switch {
+    background-color: var(--accent-primary);
+  }
+
+  & .icon {
+    left: unset;
+    right: 0;
+    background-color: var(--background-accent);
+  }
+
+  & .iconUnchecked {
+    opacity: 0;
+  }
+
+  & .iconChecked {
+    opacity: 1;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+
+  & .mainRow {
+    cursor: not-allowed;
+  }
+}

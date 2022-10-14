@@ -1,0 +1,172 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "simple-import-sort"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended"],
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "camelcase": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": ["camelCase"]
+      },
+      // This and the next one allow properties like 'Content-Type'
+      {
+        "selector": "property",
+        "format": ["camelCase"],
+        "filter": {
+          "regex": "[- ]",
+          "match": false
+        }
+      },
+      {
+        "selector": "property",
+        "format": null,
+        "filter": {
+          "regex": "[- ]",
+          "match": true
+        },
+        "modifiers": ["requiresQuotes"]
+      },
+      // Allow functions to be imperativeLike or ComponentLike.
+      // Non-exported functions can have underscores, but public ones must not.
+      {
+        "selector": "function",
+        "modifiers": ["exported"],
+        "format": ["camelCase", "PascalCase"],
+        "leadingUnderscore": "forbid"
+      },
+      {
+        "selector": "function",
+        "format": ["camelCase", "PascalCase"],
+        "leadingUnderscore": "allow"
+      },
+      // Variables can be normalLike, CONSTANT_LIKE, or TypeLike.
+      {
+        "selector": "variable",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"]
+      },
+      // Some object literals like CSS variables and internal fields are prefixed with -- and __.
+      {
+        "selector": "objectLiteralProperty",
+        "format": null,
+        "filter": {
+          "regex": "^--|__",
+          "match": true
+        }
+      },
+      // Object literals can basically be anything depending on usage.
+      {
+        "selector": "objectLiteralProperty",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"]
+      },
+      {
+        "selector": "objectLiteralProperty",
+        "modifiers": ["requiresQuotes"],
+        "format": null
+      },
+      {
+        "selector": "objectLiteralMethod",
+        "format": ["camelCase", "UPPER_CASE", "PascalCase"]
+      },
+      // Enums are always like Constants
+      {
+        "selector": "enumMember",
+        "format": ["PascalCase", "UPPER_CASE"]
+      },
+      // Unused variables should have a leading underscore, but destructured properties are fine to leave without.
+      {
+        "selector": "variable",
+        "format": ["camelCase"],
+        "modifiers": ["unused", "destructured"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase"],
+        "modifiers": ["unused"],
+        "leadingUnderscore": "require"
+      },
+      {
+        "selector": "parameter",
+        "format": ["camelCase"],
+        "leadingUnderscore": "allow"
+      },
+      // Private members _can_ have an underscore, but don't need it.
+      {
+        "selector": "memberLike",
+        "modifiers": ["private"],
+        "format": ["camelCase"],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      }
+    ],
+    "no-labels": ["error", { "allowLoop": true }],
+    // Don't care about this one here
+    "react/no-unescaped-entities": "off",
+    // TypeScript-replaced rules
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true, "allowTernary": true, "allowTaggedTemplates": true }
+    ],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": [
+      "warn",
+      { "variables": true, "classes": true, "functions": false, "typedefs": false }
+    ],
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-useless-constructor": "error",
+
+    // TypeScript handles these errors
+    "no-dupe-class-members": "off",
+    "no-undef": "off",
+    "no-redeclare": "off",
+    "react/prop-types": "off",
+
+    // Enforce import orders
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // React and classnames first, then any 3rd party packages, then our 1st party packages
+          ["^react$", "^classnames$", "^[a-z]", "^@spyrothon/"],
+          // Aliased imports (like `@app`, `@admin`, etc.)
+          ["^@"],
+          // Relative imports, starting from the furthest up the tree (`../../`),
+          // to direct siblings (`./`).
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$", "^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // CSS
+          ["^.+(\\.module)?\\.css$"],
+          // Assets
+          ["^.+\\.(png|gif|jpe?g|webm|mov|svg)$"],
+          // Side effects
+          ["^\\u0000"]
+        ]
+      }
+    ]
+  }
+}

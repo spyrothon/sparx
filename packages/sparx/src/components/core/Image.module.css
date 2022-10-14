@@ -1,0 +1,31 @@
+.imageContainer {
+  display: block;
+}
+
+.image {
+  display: block;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px;
+  overflow: hidden;
+  background-color: var(--background-mod-subtle);
+
+  & .image {
+    display: none;
+  }
+
+  & .fallbackIcon {
+    flex: 0 1 72px;
+    color: var(--text-secondary);
+  }
+
+  & .fallbackAlt {
+    margin-top: var(--space-md);
+    color: var(--text-secondary);
+  }
+}

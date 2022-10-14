@@ -1,0 +1,9 @@
+.anchor {
+  text-decoration: underline;
+  color: var(--text-link);
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    color: var(--text-normal);
+  }
+}

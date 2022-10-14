@@ -1,0 +1,53 @@
+.callout {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  border: 2px solid var(--_callout-background-color);
+}
+
+.iconSidebar {
+  flex: 0 0 32px;
+  padding: var(--space-md);
+  background-color: var(--_callout-background-color);
+}
+
+.icon {
+  display: block;
+  color: var(--_callout-icon-color);
+}
+
+.dismissBar {
+  flex: 0 0 32px;
+  padding: var(--space-md);
+  cursor: pointer;
+}
+
+.dismissIcon {
+  color: var(--_callout-content-color);
+}
+
+.content {
+  padding: var(--space-md);
+  color: var(--_callout-content-color);
+}
+
+.typeSuccess {
+  --_callout-background-color: var(--status-success-background);
+  --_callout-icon-color: var(--status-success-foreground);
+  --_callout-content-color: var(--text-normal);
+}
+.typeInfo {
+  --_callout-background-color: var(--status-info-background);
+  --_callout-icon-color: var(--status-info-foreground);
+  --_callout-content-color: var(--text-normal);
+}
+.typeWarning {
+  --_callout-background-color: var(--status-warning-background);
+  --_callout-icon-color: var(--status-warning-foreground);
+  --_callout-content-color: var(--text-normal);
+}
+.typeDanger {
+  --_callout-background-color: var(--status-danger-background);
+  --_callout-icon-color: var(--status-danger-foreground);
+  --_callout-content-color: var(--text-normal);
+}

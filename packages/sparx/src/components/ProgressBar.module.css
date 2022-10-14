@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 100%;
+  background-color: var(--background-accent);
+}
+
+.bar {
+  flex: 0 0 auto;
+}
+
+.color-accent {
+  background-color: var(--status-accent-background);
+}
+.color-success {
+  background-color: var(--status-success-background);
+}
+.color-info {
+  background-color: var(--status-info-background);
+}
+.color-warning {
+  background-color: var(--status-warning-background);
+}
+.color-danger {
+  background-color: var(--status-danger-background);
+}
+.color-default {
+  background-color: var(--status-default-background);
+}
+.color-inherit {
+  background-color: inherit;
+}
+
+.size-normal {
+  height: 8px;
+}
+
+.size-large {
+  height: 16px;
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@sparx": ["./src/index"],
+      "@sparx/*": ["./src/*"]
+    },
+    "types": []
+  },
+  "include": ["./src", "./@types"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

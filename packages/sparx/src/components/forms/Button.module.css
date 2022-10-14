@@ -1,0 +1,97 @@
+.button {
+  border: none;
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-accent);
+  font-size: 16px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 60%;
+  }
+}
+
+.filled {
+  background-color: var(--_button-background);
+  color: var(--_button-text);
+
+  &:hover:not(:disabled) {
+    background-color: var(--_button-background-hover);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--_button-background-active);
+  }
+}
+.outline {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px solid var(--_button-background);
+  color: var(--text-normal);
+
+  &:hover:not(:disabled) {
+    border-color: var(--_button-background-hover);
+    background-color: var(--_button-background-translucent);
+  }
+
+  &:active:not(:disabled) {
+    border-color: var(--_button-background-active);
+    background-color: var(--_button-background-translucent);
+  }
+}
+
+.primary {
+  --_button-background: var(--status-accent-background);
+  --_button-text: var(--status-accent-foreground);
+  --_button-background-hover: var(--status-accent-hover);
+  --_button-background-active: var(--status-accent-active);
+  --_button-background-translucent: var(--status-accent-translucent);
+}
+.default {
+  --_button-background: var(--status-default-background);
+  --_button-text: var(--status-default-foreground);
+  --_button-background-hover: var(--status-default-hover);
+  --_button-background-active: var(--status-default-active);
+  --_button-background-translucent: var(--status-default-translucent);
+}
+.success {
+  --_button-background: var(--status-success-background);
+  --_button-text: var(--status-success-foreground);
+  --_button-background-hover: var(--status-success-hover);
+  --_button-background-active: var(--status-success-active);
+  --_button-background-translucent: var(--status-success-translucent);
+}
+.warning {
+  --_button-background: var(--status-warning-background);
+  --_button-text: var(--status-warning-foreground);
+  --_button-background-hover: var(--status-warning-hover);
+  --_button-background-active: var(--status-warning-active);
+  --_button-background-translucent: var(--status-warning-translucent);
+}
+.danger {
+  --_button-background: var(--status-danger-background);
+  --_button-text: var(--status-danger-foreground);
+  --_button-background-hover: var(--status-danger-hover);
+  --_button-background-active: var(--status-danger-active);
+  --_button-background-translucent: var(--status-danger-translucent);
+}
+.info {
+  --_button-background: var(--status-info-background);
+  --_button-text: var(--status-info-foreground);
+  --_button-background-hover: var(--status-info-hover);
+  --_button-background-active: var(--status-info-active);
+  --_button-background-translucent: var(--status-info-translucent);
+}
+.link {
+  --_button-background: transparent;
+  --_button-text: var(--text-normal);
+  --_button-background-hover: transparent;
+  --_button-background-active: transparent;
+  --_button-background-translucent: transparent;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

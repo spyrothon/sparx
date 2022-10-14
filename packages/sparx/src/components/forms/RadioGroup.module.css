@@ -1,0 +1,24 @@
+.radioItem {
+  display: block;
+  display: flex;
+  align-items: start;
+  gap: var(--space-lg);
+  padding: calc(var(--space-md) * 0.75) var(--space-lg);
+  background: var(--background-accent);
+}
+
+.icon {
+  display: block;
+  color: var(--accent-primary);
+  flex: 0 0 auto;
+  margin-top: 1.5px;
+}
+
+.label {
+  flex: 1 1 auto;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+}

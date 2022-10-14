@@ -1,0 +1,29 @@
+.label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.note {
+  margin-top: var(--space-sm);
+}
+
+.inputRow {
+  display: flex;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.attachment.attachment {
+  flex: 0 1 auto;
+  align-self: stretch;
+  padding: 4.5px var(--space-md);
+  background-color: var(--accent-primary);
+  color: var(--accent-foreground);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+}

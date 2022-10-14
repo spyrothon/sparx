@@ -1,0 +1,10 @@
+.dividerHorizontal {
+  border: 1px solid var(--background-accent);
+  width: 100%;
+  align-self: stretch;
+}
+
+.dividerVertical {
+  border: 1px solid var(--background-accent);
+  align-self: stretch;
+}

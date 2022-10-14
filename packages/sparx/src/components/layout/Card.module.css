@@ -1,0 +1,13 @@
+.card {
+  padding: var(--space-lg);
+}
+
+.level1 {
+  background-color: var(--background-secondary);
+}
+.level2 {
+  background-color: var(--background-tertiary);
+}
+.level3 {
+  background-color: var(--background-primary);
+}

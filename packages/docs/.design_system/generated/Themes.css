@@ -1,0 +1,162 @@
+/** Generated Theme Tokens. Do not edit manually **/
+
+.theme-dark.accent-blue {
+  --accent-primary: var(--blue-460);
+  --accent-background: var(--blue-460);
+  --accent-foreground: var(--blue-760);
+  --accent-hover: var(--blue-500);
+  --accent-active: var(--blue-530);
+  --accent-text: var(--blue-460);
+  --accent-translucent: rgba(81, 147, 255, 15%);
+}
+
+.theme-light.accent-blue {
+  --accent-primary: var(--blue-560);
+  --accent-background: var(--blue-560);
+  --accent-foreground: var(--blue-100);
+  --accent-hover: var(--blue-530);
+  --accent-active: var(--blue-500);
+  --accent-text: var(--blue-560);
+  --accent-translucent: rgba(39, 105, 195, 15%);
+}
+
+.theme-dark.accent-pink {
+  --accent-primary: var(--pink-460);
+  --accent-background: var(--pink-460);
+  --accent-foreground: var(--pink-760);
+  --accent-hover: var(--pink-500);
+  --accent-active: var(--pink-530);
+  --accent-text: var(--pink-460);
+  --accent-translucent: rgba(248, 81, 170, 15%);
+}
+
+.theme-light.accent-pink {
+  --accent-primary: var(--pink-560);
+  --accent-background: var(--pink-560);
+  --accent-foreground: var(--pink-100);
+  --accent-hover: var(--pink-530);
+  --accent-active: var(--pink-500);
+  --accent-text: var(--pink-560);
+  --accent-translucent: rgba(187, 43, 124, 15%);
+}
+
+.theme-dark.accent-purple {
+  --accent-primary: var(--purple-460);
+  --accent-background: var(--purple-460);
+  --accent-foreground: var(--purple-760);
+  --accent-hover: var(--purple-500);
+  --accent-active: var(--purple-530);
+  --accent-text: var(--purple-460);
+  --accent-translucent: rgba(196, 88, 222, 15%);
+}
+
+.theme-light.accent-purple {
+  --accent-primary: var(--purple-560);
+  --accent-background: var(--purple-560);
+  --accent-foreground: var(--purple-100);
+  --accent-hover: var(--purple-530);
+  --accent-active: var(--purple-500);
+  --accent-text: var(--purple-560);
+  --accent-translucent: rgba(148, 47, 173, 15%);
+}
+
+.theme-dark {
+  --background-primary: var(--grey-760);
+  --background-secondary: var(--grey-700);
+  --background-tertiary: var(--grey-600);
+  --background-accent: var(--grey-800);
+  --background-mod-subtle: rgba(0, 0, 0, 10%);
+  --background-mod-backdrop: rgba(0, 0, 0, 70%);
+  --background-highlight: rgba(250, 250, 250, 10%);
+  --text-normal: var(--grey-100);
+  --text-secondary: var(--grey-500);
+  --text-success: var(--green-600);
+  --text-info: var(--teal-500);
+  --text-warning: var(--yellow-500);
+  --text-danger: var(--red-530);
+  --text-default: var(--grey-100);
+  --text-accent: var(--accent-text);
+  --text-link: var(--accent-text);
+  --status-accent-background: var(--accent-primary);
+  --status-accent-foreground: var(--accent-foreground);
+  --status-accent-hover: var(--accent-hover);
+  --status-accent-active: var(--accent-active);
+  --status-accent-translucent: var(--accent-translucent);
+  --status-success-background: var(--green-600);
+  --status-success-foreground: var(--green-100);
+  --status-success-hover: var(--green-630);
+  --status-success-active: var(--green-660);
+  --status-success-translucent: rgba(76, 167, 58, 15%);
+  --status-warning-background: var(--yellow-500);
+  --status-warning-foreground: var(--yellow-800);
+  --status-warning-hover: var(--yellow-560);
+  --status-warning-active: var(--yellow-600);
+  --status-warning-translucent: rgba(255, 215, 74, 15%);
+  --status-danger-background: var(--red-560);
+  --status-danger-foreground: var(--red-100);
+  --status-danger-hover: var(--red-600);
+  --status-danger-active: var(--red-630);
+  --status-danger-translucent: rgba(241, 75, 54, 15%);
+  --status-info-background: var(--teal-500);
+  --status-info-foreground: var(--teal-760);
+  --status-info-hover: var(--teal-530);
+  --status-info-active: var(--teal-560);
+  --status-info-translucent: rgba(0, 205, 205, 15%);
+  --status-default-background: var(--grey-530);
+  --status-default-foreground: var(--grey-100);
+  --status-default-hover: var(--grey-560);
+  --status-default-active: var(--grey-600);
+  --status-default-translucent: rgba(125, 128, 128, 20%);
+  color-scheme: dark;
+}
+
+.theme-light {
+  --background-primary: var(--white);
+  --background-secondary: var(--grey-160);
+  --background-tertiary: var(--grey-260);
+  --background-accent: var(--grey-200);
+  --background-mod-subtle: rgba(9, 9, 9, 10%);
+  --background-mod-backdrop: rgba(9, 9, 9, 70%);
+  --background-highlight: rgba(9, 9, 9, 10%);
+  --text-normal: var(--grey-900);
+  --text-secondary: var(--grey-560);
+  --text-success: var(--green-630);
+  --text-info: var(--teal-600);
+  --text-warning: var(--yellow-630);
+  --text-danger: var(--red-600);
+  --text-default: var(--grey-900);
+  --text-accent: var(--accent-text);
+  --text-link: var(--accent-text);
+  --status-accent-background: var(--accent-primary);
+  --status-accent-foreground: var(--accent-foreground);
+  --status-accent-hover: var(--accent-hover);
+  --status-accent-active: var(--accent-active);
+  --status-accent-translucent: var(--accent-translucent);
+  --status-success-background: var(--green-600);
+  --status-success-foreground: var(--green-100);
+  --status-success-hover: var(--green-560);
+  --status-success-active: var(--green-530);
+  --status-success-translucent: rgba(76, 167, 58, 15%);
+  --status-warning-background: var(--yellow-600);
+  --status-warning-foreground: var(--yellow-100);
+  --status-warning-hover: var(--yellow-560);
+  --status-warning-active: var(--yellow-530);
+  --status-warning-translucent: rgba(225, 158, 39, 15%);
+  --status-danger-background: var(--red-600);
+  --status-danger-foreground: var(--red-100);
+  --status-danger-hover: var(--red-560);
+  --status-danger-active: var(--red-530);
+  --status-danger-translucent: rgba(214, 64, 45, 15%);
+  --status-info-background: var(--teal-600);
+  --status-info-foreground: var(--teal-100);
+  --status-info-hover: var(--teal-560);
+  --status-info-active: var(--teal-530);
+  --status-info-translucent: rgba(30, 134, 134, 15%);
+  --status-default-background: var(--grey-360);
+  --status-default-foreground: var(--grey-900);
+  --status-default-hover: var(--grey-460);
+  --status-default-active: var(--grey-500);
+  --status-default-translucent: rgba(176, 178, 178, 30%);
+  color-scheme: light;
+}
+

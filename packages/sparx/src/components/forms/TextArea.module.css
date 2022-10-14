@@ -1,0 +1,66 @@
+.container {
+  position: relative;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+
+  & .input {
+    cursor: not-allowed;
+  }
+}
+
+.input {
+  display: block;
+  background-color: var(--background-accent);
+  color: var(--text-normal);
+  border: 2px solid var(--accent-primary);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-normal);
+  font-size: 18px;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
+}
+
+.lengthLimit {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  background-color: transparent;
+  pointer-events: none;
+  color: var(--text-secondary);
+  padding: 0 var(--space-md);
+
+  & .length {
+    margin-right: 1px;
+  }
+
+  & .limit {
+    margin-left: 3px;
+  }
+
+  &.nearLimit {
+    color: var(--text-warning);
+  }
+
+  &.overLimit {
+    color: var(--text-danger);
+  }
+}
+
+.resizeHorizontal {
+  resize: horizontal;
+}
+.resizeVertical {
+  resize: vertical;
+}
+.resizeBoth {
+  resize: both;
+}
+.resizeNone {
+  resize: none;
+}

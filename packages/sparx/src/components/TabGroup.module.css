@@ -1,0 +1,98 @@
+.tab {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-xs) 0;
+  font-size: 18px;
+  background-color: var(--_tab-background);
+  color: var(--_tab-color);
+
+  &:hover {
+    background-color: var(--_tab-background-hover);
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: var(--_tab-background-hover);
+    cursor: pointer;
+  }
+
+  &.selected {
+    background-color: var(--_tab-background-selected);
+    color: var(--_tab-color-selected);
+    cursor: initial;
+  }
+
+  & .icon {
+    flex: 0 0 18px;
+    margin-top: 4.5px;
+    width: 18px;
+    height: 18px;
+  }
+
+  & .badge {
+    flex: 1 0 18px;
+    margin-top: 4.5px;
+    height: 18px;
+  }
+}
+
+.header {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+  color: var(--_tab-color);
+  font-family: var(--font-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.color-default {
+  --_tab-background: transparent;
+  --_tab-background-hover: var(--status-default-translucent);
+  --_tab-background-active: var(--status-default-active);
+  --_tab-background-selected: var(--status-default-background);
+  --_tab-color-selected: var(--status-default-foreground);
+  --_tab-color: var(--text-normal);
+}
+.color-accent {
+  --_tab-background: transparent;
+  --_tab-background-hover: var(--status-accent-translucent);
+  --_tab-background-active: var(--status-accent-active);
+  --_tab-background-selected: var(--status-accent-background);
+  --_tab-color-selected: var(--status-accent-foreground);
+  --_tab-color: var(--text-accent);
+}
+.color-success {
+  --_tab-background: transparent;
+  --_tab-background-hover: var(--status-success-translucent);
+  --_tab-background-active: var(--status-success-active);
+  --_tab-background-selected: var(--status-success-background);
+  --_tab-color-selected: var(--status-success-foreground);
+  --_tab-color: var(--text-success);
+}
+.color-info {
+  --_tab-background: transparent;
+  --_tab-background-hover: var(--status-info-translucent);
+  --_tab-background-active: var(--status-info-active);
+  --_tab-background-selected: var(--status-info-background);
+  --_tab-color-selected: var(--status-info-foreground);
+  --_tab-color: var(--text-info);
+}
+.color-warning {
+  --_tab-background: transparent;
+  --_tab-background-hover: var(--status-warning-translucent);
+  --_tab-background-active: var(--status-warning-active);
+  --_tab-background-selected: var(--status-warning-background);
+  --_tab-color-selected: var(--status-warning-foreground);
+  --_tab-color: var(--text-warning);
+}
+.color-danger {
+  --_tab-background: transparent;
+  --_tab-background-hover: var(--status-danger-translucent);
+  --_tab-background-active: var(--status-danger-active);
+  --_tab-background-selected: var(--status-danger-background);
+  --_tab-color-selected: var(--status-danger-foreground);
+  --_tab-color: var(--text-danger);
+}

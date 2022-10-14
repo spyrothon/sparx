@@ -1,0 +1,87 @@
+{
+  "themes": ["dark", "light"],
+  "accents": {
+    "blue": {
+      "primary": ["blue-460", "blue-560"],
+      "background": ["blue-460", "blue-560"],
+      "foreground": ["blue-760", "blue-100"],
+      "hover": ["blue-500", "blue-530"],
+      "active": ["blue-530", "blue-500"],
+      "text": ["blue-460", "blue-560"],
+      "translucent": ["opacity(blue-460, 15%)", "opacity(blue-560, 15%)"]
+    },
+    "pink": {
+      "primary": ["pink-460", "pink-560"],
+      "background": ["pink-460", "pink-560"],
+      "foreground": ["pink-760", "pink-100"],
+      "hover": ["pink-500", "pink-530"],
+      "active": ["pink-530", "pink-500"],
+      "text": ["pink-460", "pink-560"],
+      "translucent": ["opacity(pink-460, 15%)", "opacity(pink-560, 15%)"]
+    },
+    "purple": {
+      "primary": ["purple-460", "purple-560"],
+      "background": ["purple-460", "purple-560"],
+      "foreground": ["purple-760", "purple-100"],
+      "hover": ["purple-500", "purple-530"],
+      "active": ["purple-530", "purple-500"],
+      "text": ["purple-460", "purple-560"],
+      "translucent": ["opacity(purple-460, 15%)", "opacity(purple-560, 15%)"]
+    }
+  },
+  "tokens": {
+    "background-primary": ["grey-760", "white"],
+    "background-secondary": ["grey-700", "grey-160"],
+    "background-tertiary": ["grey-600", "grey-260"],
+    "background-accent": ["grey-800", "grey-200"],
+    "background-mod-subtle": ["opacity(black, 10%)", "opacity(grey-900, 10%)"],
+    "background-mod-backdrop": ["opacity(black, 70%)", "opacity(grey-900, 70%)"],
+    "background-highlight": ["opacity(grey-100, 10%)", "opacity(grey-900, 10%)"],
+
+    "text-normal": ["grey-100", "grey-900"],
+    "text-secondary": ["grey-500", "grey-560"],
+    "text-success": ["green-600", "green-630"],
+    "text-info": ["teal-500", "teal-600"],
+    "text-warning": ["yellow-500", "yellow-630"],
+    "text-danger": ["red-530", "red-600"],
+    "text-default": ["grey-100", "grey-900"],
+    "text-accent": ["accent-text", "accent-text"],
+    "text-link": ["accent-text", "accent-text"],
+
+    "status-accent-background": ["accent-primary", "accent-primary"],
+    "status-accent-foreground": ["accent-foreground", "accent-foreground"],
+    "status-accent-hover": ["accent-hover", "accent-hover"],
+    "status-accent-active": ["accent-active", "accent-active"],
+    "status-accent-translucent": ["accent-translucent", "accent-translucent"],
+
+    "status-success-background": ["green-600", "green-600"],
+    "status-success-foreground": ["green-100", "green-100"],
+    "status-success-hover": ["green-630", "green-560"],
+    "status-success-active": ["green-660", "green-530"],
+    "status-success-translucent": ["opacity(green-600, 15%)", "opacity(green-600, 15%)"],
+
+    "status-warning-background": ["yellow-500", "yellow-600"],
+    "status-warning-foreground": ["yellow-800", "yellow-100"],
+    "status-warning-hover": ["yellow-560", "yellow-560"],
+    "status-warning-active": ["yellow-600", "yellow-530"],
+    "status-warning-translucent": ["opacity(yellow-500, 15%)", "opacity(yellow-600, 15%)"],
+
+    "status-danger-background": ["red-560", "red-600"],
+    "status-danger-foreground": ["red-100", "red-100"],
+    "status-danger-hover": ["red-600", "red-560"],
+    "status-danger-active": ["red-630", "red-530"],
+    "status-danger-translucent": ["opacity(red-560, 15%)", "opacity(red-600, 15%)"],
+
+    "status-info-background": ["teal-500", "teal-600"],
+    "status-info-foreground": ["teal-760", "teal-100"],
+    "status-info-hover": ["teal-530", "teal-560"],
+    "status-info-active": ["teal-560", "teal-530"],
+    "status-info-translucent": ["opacity(teal-500, 15%)", "opacity(teal-600, 15%)"],
+
+    "status-default-background": ["grey-530", "grey-360"],
+    "status-default-foreground": ["grey-100", "grey-900"],
+    "status-default-hover": ["grey-560", "grey-460"],
+    "status-default-active": ["grey-600", "grey-500"],
+    "status-default-translucent": ["opacity(grey-530, 20%)", "opacity(grey-400, 30%)"]
+  }
+}
