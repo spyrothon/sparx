@@ -7,6 +7,7 @@ export enum Theme {
 
 export enum Accent {
   PURPLE = "purple",
+  PINK = "pink",
 }
 
 interface ThemeContextValue {

@@ -7,21 +7,30 @@
       "foreground": ["purple-800", "purple-50"],
       "hover": ["purple-400", "purple-600"],
       "active": ["purple-500", "purple-700"],
-      "text": ["purple-300", "purple-700"],
+      "text": ["purple-300", "purple-500"],
       "translucent": ["opacity(purple-500, 15%)", "opacity(purple-600, 15%)"]
+    },
+    "pink": {
+      "primary": ["pink-400", "pink-500"],
+      "background": ["pink-300", "pink-500"],
+      "foreground": ["pink-800", "pink-50"],
+      "hover": ["pink-400", "pink-600"],
+      "active": ["pink-500", "pink-700"],
+      "text": ["pink-300", "pink-500"],
+      "translucent": ["opacity(pink-500, 15%)", "opacity(pink-600, 15%)"]
     }
   },
   "tokens": {
-    "background-primary": ["grey-800", "white"],
-    "background-secondary": ["grey-700", "grey-100"],
-    "background-tertiary": ["grey-600", "grey-200"],
+    "background-primary": ["grey-900", "white"],
+    "background-secondary": ["grey-800", "grey-100"],
+    "background-tertiary": ["grey-700", "grey-200"],
     "background-accent": ["grey-700", "grey-50"],
     "background-mod-subtle": ["opacity(black, 10%)", "opacity(grey-900, 10%)"],
     "background-mod-backdrop": ["opacity(black, 70%)", "opacity(grey-900, 70%)"],
     "background-highlight": ["opacity(grey-100, 10%)", "opacity(grey-900, 10%)"],
 
     "text-normal": ["grey-100", "grey-900"],
-    "text-secondary": ["grey-400", "grey-600"],
+    "text-secondary": ["grey-400", "grey-400"],
     "text-success": ["green-400", "green-500"],
     "text-info": ["teal-300", "teal-500"],
     "text-warning": ["yellow-400", "yellow-500"],

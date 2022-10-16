@@ -23,7 +23,10 @@ const THEME_OPTIONS = [
   { name: "Light", value: Theme.LIGHT },
 ];
 
-const ACCENT_OPTIONS = [{ name: "Purple", value: Accent.PURPLE }];
+const ACCENT_OPTIONS = [
+  { name: "Purple", value: Accent.PURPLE },
+  { name: "Pink", value: Accent.PINK },
+];
 
 type SidebarTab =
   | {

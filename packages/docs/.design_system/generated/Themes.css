@@ -16,14 +16,34 @@
   --accent-foreground: var(--purple-50);
   --accent-hover: var(--purple-600);
   --accent-active: var(--purple-700);
-  --accent-text: var(--purple-700);
+  --accent-text: var(--purple-500);
   --accent-translucent: rgba(123, 57, 150, 15%);
 }
 
+.theme-dark.accent-pink {
+  --accent-primary: var(--pink-400);
+  --accent-background: var(--pink-300);
+  --accent-foreground: var(--pink-800);
+  --accent-hover: var(--pink-400);
+  --accent-active: var(--pink-500);
+  --accent-text: var(--pink-300);
+  --accent-translucent: rgba(188, 73, 114, 15%);
+}
+
+.theme-light.accent-pink {
+  --accent-primary: var(--pink-500);
+  --accent-background: var(--pink-500);
+  --accent-foreground: var(--pink-50);
+  --accent-hover: var(--pink-600);
+  --accent-active: var(--pink-700);
+  --accent-text: var(--pink-500);
+  --accent-translucent: rgba(163, 59, 98, 15%);
+}
+
 .theme-dark {
-  --background-primary: var(--grey-800);
-  --background-secondary: var(--grey-700);
-  --background-tertiary: var(--grey-600);
+  --background-primary: var(--grey-900);
+  --background-secondary: var(--grey-800);
+  --background-tertiary: var(--grey-700);
   --background-accent: var(--grey-700);
   --background-mod-subtle: rgba(27, 31, 36, 10%);
   --background-mod-backdrop: rgba(27, 31, 36, 70%);
@@ -79,7 +99,7 @@
   --background-mod-backdrop: rgba(36, 41, 47, 70%);
   --background-highlight: rgba(36, 41, 47, 10%);
   --text-normal: var(--grey-900);
-  --text-secondary: var(--grey-600);
+  --text-secondary: var(--grey-400);
   --text-success: var(--green-500);
   --text-info: var(--teal-500);
   --text-warning: var(--yellow-500);
