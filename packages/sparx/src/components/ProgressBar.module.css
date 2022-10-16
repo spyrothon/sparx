@@ -2,10 +2,13 @@
   display: flex;
   width: 100%;
   background-color: var(--background-accent);
+  border-radius: var(--radius-normal);
 }
 
 .bar {
   flex: 0 0 auto;
+  border-top-right-radius: var(--radius-normal);
+  border-bottom-right-radius: var(--radius-normal);
 }
 
 .color-accent {

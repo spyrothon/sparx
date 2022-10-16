@@ -1,3 +1,4 @@
 .popout {
   box-shadow: 0 2px 5px var(--background-mod-backdrop);
+  border-radius: var(--radius-normal);
 }

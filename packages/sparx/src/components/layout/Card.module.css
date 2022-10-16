@@ -1,5 +1,6 @@
 .card {
   padding: var(--space-lg);
+  border-radius: var(--radius-normal);
 }
 
 .level1 {
@@ -10,4 +11,8 @@
 }
 .level3 {
   background-color: var(--background-primary);
+}
+
+.level1:has(.level2, .level3) {
+  border-radius: var(--radius-large);
 }

@@ -1,5 +1,6 @@
 .imageContainer {
   display: block;
+  border-radius: var(--radius-normal);
 }
 
 .image {

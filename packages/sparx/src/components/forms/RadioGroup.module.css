@@ -5,6 +5,7 @@
   gap: var(--space-lg);
   padding: calc(var(--space-md) * 0.75) var(--space-lg);
   background: var(--background-accent);
+  border-radius: var(--radius-normal);
 }
 
 .icon {

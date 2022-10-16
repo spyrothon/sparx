@@ -1,5 +1,6 @@
 .container {
   padding: var(--space-lg);
+  border-radius: var(--radius-normal);
 }
 
 .primary {

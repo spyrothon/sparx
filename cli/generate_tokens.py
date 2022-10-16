@@ -70,12 +70,16 @@ def write_font_tokens(
         file.write("}\n")
 
 
-def write_spacing_tokens(file_path: Path, spacings: t.Dict[str, float]):
+def write_spacing_tokens(
+    file_path: Path, spacings: t.Dict[str, float], radii: t.Dict[str, str]
+):
     with open(file_path, "w") as file:
         file.write(
-            """/** Generated Font Tokens. Do not edit manually **/\n\n:root {\n"""
+            """/** Generated Spacing Tokens. Do not edit manually **/\n\n:root {\n"""
         )
 
+        for (name, value) in radii.items():
+            file.write(f"  --radius-{name}: {value};\n")
         for (name, value) in spacings.items():
             file.write(f"  --space-{name}: {value}px;\n")
 
@@ -135,7 +139,9 @@ write_font_tokens(
     GENERATED_CSS_FONTS_PATH, config.base_tokens.fonts, config.base_tokens.fontWeights
 )
 print(f"Writing spacing tokens to {GENERATED_CSS_SPACINGS_PATH}")
-write_spacing_tokens(GENERATED_CSS_SPACINGS_PATH, config.base_tokens.spacings)
+write_spacing_tokens(
+    GENERATED_CSS_SPACINGS_PATH, config.base_tokens.spacings, config.base_tokens.radii
+)
 print(f"Writing themes to {GENERATED_CSS_COLORS_PATH}")
 write_theme_tokens(GENERATED_CSS_THEMES_PATH, config.themes)
 

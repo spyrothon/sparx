@@ -3,6 +3,7 @@
   align-items: stretch;
   flex-wrap: nowrap;
   border: 2px solid var(--_callout-background-color);
+  border-radius: var(--radius-normal);
 }
 
 .iconSidebar {

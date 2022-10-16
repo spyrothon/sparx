@@ -22,6 +22,7 @@ class BaseTokens:
     fonts: t.Dict[str, str]
     fontWeights: t.Dict[str, int]
     spacings: t.Dict[str, float]
+    radii: t.Dict[str, str]
 
 
 @dataclass
@@ -87,6 +88,7 @@ class Config:
                 fonts=raw["fonts"],
                 fontWeights=raw["fontWeights"],
                 spacings=raw["spacings"],
+                radii=raw["radii"],
             )
 
     def resolve_token(self, value):

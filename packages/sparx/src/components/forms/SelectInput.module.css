@@ -6,6 +6,7 @@
 .input {
   position: relative;
   background-color: var(--background-accent);
+  border-radius: var(--radius-normal);
   color: var(--text-normal);
   border: 2px solid var(--accent-primary);
   padding: 5.5px var(--space-md);
@@ -34,6 +35,8 @@
   padding: 0;
   border: 2px solid var(--accent-primary);
   border-top: none;
+  border-bottom-left-radius: var(--radius-normal);
+  border-bottom-right-radius: var(--radius-normal);
   list-style-type: none;
   display: none;
 
