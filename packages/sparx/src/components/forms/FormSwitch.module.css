@@ -50,7 +50,7 @@
   & .icon {
     left: unset;
     right: 0;
-    background-color: var(--background-accent);
+    background-color: var(--background-primary);
   }
 
   & .iconUnchecked {
