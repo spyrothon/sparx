@@ -3,10 +3,4 @@ dist/
 
 __pycache__/
 
-dist/
-public/
-typegen/
-
-yarn-error.log
-
 .DS_Store
