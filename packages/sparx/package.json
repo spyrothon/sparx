@@ -1,5 +1,6 @@
 {
   "name": "@spyrothon/sparx",
+  "description": "A React-based design system for Spyrothon",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -12,7 +13,8 @@
     "dev": "vite",
     "build": "vite build && pnpm gen:icons && pnpm gen:types",
     "gen:icons": "tsc --project tsconfig.icons.json",
-    "gen:types": "tsc --project tsconfig.generate.json"
+    "gen:types": "tsc --project tsconfig.generate.json",
+    "prepare": "pnpm build"
   },
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
