@@ -7,8 +7,11 @@
 
 .bar {
   flex: 0 0 auto;
-  border-top-right-radius: var(--radius-normal);
-  border-bottom-right-radius: var(--radius-normal);
+
+  &:last-child {
+    border-top-right-radius: var(--radius-normal);
+    border-bottom-right-radius: var(--radius-normal);
+  }
 }
 
 .color-accent {

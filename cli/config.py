@@ -19,6 +19,7 @@ class BaseTokens:
     name: str
     description: str
     colors: t.Dict[str, BaseColorToken]
+    fontImport: t.Optional[str]
     fonts: t.Dict[str, str]
     fontWeights: t.Dict[str, int]
     spacings: t.Dict[str, float]
@@ -85,6 +86,7 @@ class Config:
                 name=raw["name"],
                 description=raw["description"],
                 colors=color_tokens,
+                fontImport=raw["fontImport"],
                 fonts=raw["fonts"],
                 fontWeights=raw["fontWeights"],
                 spacings=raw["spacings"],

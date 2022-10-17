@@ -117,14 +117,17 @@
     "black": "#1b1f24",
     "twitch": "#9146FF"
   },
+  "fontImport": "@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;600&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');",
   "fonts": {
-    "normal": "\"Source Sans Pro\", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif",
-    "accent": "Barlow, -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif"
+    "normal": "\"Encode Sans\", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif",
+    "accent": "Overlock, -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif",
+    "monospace": "monospace, -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif"
   },
   "fontWeights": {
     "medium": 400,
     "semibold": 600,
-    "bold": 700
+    "bold": 700,
+    "black": 900
   },
   "spacings": {
     "xxxs": 0.5,

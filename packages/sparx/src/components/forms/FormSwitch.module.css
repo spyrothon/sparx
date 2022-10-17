@@ -11,7 +11,7 @@
 }
 
 .switch {
-  background-color: var(--background-accent);
+  background-color: var(--background-primary);
   border: 2px solid var(--accent-primary);
   border-radius: 100000px;
   width: 44px;

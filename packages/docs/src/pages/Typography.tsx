@@ -13,9 +13,9 @@ function Introduction() {
         sizing, coloring, spacing, and more.
       </Text>
       <Text>
-        Spyrothon uses two primary font faces for text: Barlow and Source Sans Pro. Barlow is a
-        display font, used primarily for headers and accent text (like button labels), while Source
-        Sans Pro is suited for normal text like body copy, form labels and notes, and any other
+        Spyrothon uses two primary font faces for text: Encode Sans and Overlock. Overlock is a
+        display font, used primarily for large headers and accent text (like button labels), while
+        Encode Sans is suited for normal text like body copy, form labels and notes, and any other
         longer-form content.
       </Text>
       <Text>
@@ -34,7 +34,7 @@ function TextComponent() {
         <Header tag="h2">Text</Header>
         <Text>
           <code>Text</code> is the primary long-form typography component. By default,{" "}
-          <code>Text</code> renders at 18px with Source Sans Pro, in a high-contrast color for the
+          <code>Text</code> renders at 18px with Encode Sans, in a high-contrast color for the
           theme's primary background.
         </Text>
         <Card>
@@ -111,8 +111,8 @@ function HeaderComponent() {
           requires the use of a <code>tag</code> prop that indicates which heading tag to use in the
           DOM (<code>h1</code> through <code>h6</code> are supported). Headers <em>must</em> be used
           instead of <code>Text</code> for defining sections of a page so that they retain their
-          semantic structure. Secondly, <code>Header</code> uses a bold font weight in Barlow rather
-          than Source Sans Pro to distinguish it from normal text regardless of styling.
+          semantic structure. Secondly, <code>Header</code> uses a bold font weight in Overlock
+          rather than Encode Sans to distinguish it from normal text regardless of styling.
         </Text>
         <Text>
           Like <code>Text</code>, <code>Header</code> also provides a <code>variant</code> prop to

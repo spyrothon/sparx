@@ -54,12 +54,18 @@ def write_color_tokens(file_path: Path, tokens: BaseTokens):
 
 
 def write_font_tokens(
-    file_path: Path, fonts: t.Dict[str, str], font_weights: t.Dict[str, int]
+    file_path: Path,
+    fonts: t.Dict[str, str],
+    font_weights: t.Dict[str, int],
+    font_import: t.Optional[str],
 ):
     with open(file_path, "w") as file:
-        file.write(
-            """/** Generated Font Tokens. Do not edit manually **/\n\n:root {\n"""
-        )
+        file.write("""/** Generated Font Tokens. Do not edit manually **/\n\n""")
+
+        if font_import is not None:
+            file.write(f"{font_import}\n\n")
+
+        file.write(""":root {\n""")
 
         for (name, stack) in fonts.items():
             file.write(f"  --font-{name}: {stack};\n")
@@ -136,7 +142,10 @@ print(f"Writing color tokens to {GENERATED_CSS_COLORS_PATH}")
 write_color_tokens(GENERATED_CSS_COLORS_PATH, config.base_tokens)
 print(f"Writing font tokens to {GENERATED_CSS_FONTS_PATH}")
 write_font_tokens(
-    GENERATED_CSS_FONTS_PATH, config.base_tokens.fonts, config.base_tokens.fontWeights
+    GENERATED_CSS_FONTS_PATH,
+    config.base_tokens.fonts,
+    config.base_tokens.fontWeights,
+    config.base_tokens.fontImport,
 )
 print(f"Writing spacing tokens to {GENERATED_CSS_SPACINGS_PATH}")
 write_spacing_tokens(

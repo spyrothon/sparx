@@ -12,7 +12,7 @@ export default function PageHeader(props: PageHeaderProps) {
   return (
     <Hero type="primary">
       <Stack spacing="space-md">
-        <Header tag="h1" variant="header-xxl/inherit" uppercase>
+        <Header tag="h1" variant="header-xxl/inherit">
           {name}
         </Header>
         {tagline != null ? <Text variant="text-lg/inherit">{tagline}</Text> : null}

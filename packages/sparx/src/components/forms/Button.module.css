@@ -4,7 +4,6 @@
   font-family: var(--font-accent);
   font-size: 16px;
   font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
   cursor: pointer;
 
   --_button-radius: var(--radius-normal);
