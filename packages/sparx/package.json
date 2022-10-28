@@ -1,19 +1,37 @@
 {
   "name": "@spyrothon/sparx",
   "description": "A React-based design system for Spyrothon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    },
+    "./default.css": {
+      "import": "./dist/default.css",
+      "require": "./dist/default.css"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build && pnpm gen:icons && pnpm gen:types",
     "gen:icons": "tsc --project tsconfig.icons.json",
     "gen:types": "tsc --project tsconfig.generate.json",
-    "prepare": "pnpm build"
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@iconscout/react-unicons": "^1.1.6",
@@ -21,10 +39,7 @@
     "autonumeric": "^4.6.0",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-remark": "^2.1.0",
-    "react-router-dom": "^6.4.2",
     "uuid": "^8.3.2",
     "zustand": "^3.7.2"
   },

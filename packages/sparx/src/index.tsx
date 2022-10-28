@@ -1,6 +1,6 @@
 export { AppContainer } from "./components/core/AppContainer";
-export { Anchor } from "./components/core/Anchor";
-export type { AnchorProps } from "./components/core/Anchor";
+export { Anchor, setAnchorRenderer } from "./components/core/Anchor";
+export type { AnchorProps, AnchorRenderer, AnchorRendererProps } from "./components/core/Anchor";
 export { BrandLogo } from "./components/core/BrandLogo";
 export type { BrandLogoProps } from "./components/core/BrandLogo";
 export { Clickable } from "./components/core/Clickable";

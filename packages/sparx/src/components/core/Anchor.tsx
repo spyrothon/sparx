@@ -1,10 +1,24 @@
 import * as React from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
 
 import styles from "./Anchor.module.css";
 
 const ABSOLUTE_URL_REGEX = /^(https?:)?\/\//;
+
+export interface AnchorRendererProps {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => unknown;
+}
+
+export type AnchorRenderer = (props: AnchorRendererProps) => JSX.Element;
+
+let renderer: AnchorRenderer | undefined = undefined;
+
+export function setAnchorRenderer(newRenderer: AnchorRenderer) {
+  renderer = newRenderer;
+}
 
 export interface AnchorProps {
   href: string;
@@ -18,17 +32,16 @@ export function Anchor(props: AnchorProps) {
 
   const isAbsolute = ABSOLUTE_URL_REGEX.test(href);
 
-  if (isAbsolute) {
-    return (
-      <a href={href} className={classNames(styles.anchor, className)} onClick={onClick}>
-        {children}
-      </a>
-    );
+  const anchorProps = {
+    href,
+    children,
+    onClick,
+    className: classNames(styles.anchor, className),
+  };
+
+  if (isAbsolute || renderer == null) {
+    return <a {...anchorProps}>{children}</a>;
   }
 
-  return (
-    <Link to={href} className={classNames(styles.anchor, className)} onClick={onClick}>
-      {children}
-    </Link>
-  );
+  return renderer(anchorProps);
 }
