@@ -4,8 +4,16 @@
   gap: var(--_stack-spacing);
 }
 
+.nowrap {
+  flex-wrap: nowrap;
+}
+
 .spacer {
   margin: var(--_stack-spacing);
+}
+
+.spacer-expand {
+  flex: 1 1 auto;
 }
 
 .space-none {
@@ -57,7 +65,7 @@
 }
 .justify-stretch {
   & > * {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     max-width: 100%;
   }
 }

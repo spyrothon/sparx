@@ -121,6 +121,12 @@
   text-transform: uppercase;
 }
 
+.lineClamp {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 code {
   display: inline-block;
   background-color: var(--background-highlight);

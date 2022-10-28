@@ -1,6 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { ButtonVariant, getButtonClassNames } from "../forms/Button";
+
 import styles from "./Anchor.module.css";
 
 const ABSOLUTE_URL_REGEX = /^(https?:)?\/\//;
@@ -24,11 +26,15 @@ export interface AnchorProps {
   href: string;
   children: React.ReactNode;
   className?: string;
+  /**
+   * Use a button style for the Anchor tag. This makes the link look like any other button.
+   */
+  buttonVariant?: ButtonVariant;
   onClick?: (event: React.MouseEvent<HTMLElement>) => unknown;
 }
 
 export function Anchor(props: AnchorProps) {
-  const { href, children, className, onClick } = props;
+  const { href, children, className, buttonVariant, onClick } = props;
 
   const isAbsolute = ABSOLUTE_URL_REGEX.test(href);
 
@@ -36,7 +42,10 @@ export function Anchor(props: AnchorProps) {
     href,
     children,
     onClick,
-    className: classNames(styles.anchor, className),
+    className:
+      buttonVariant != null
+        ? getButtonClassNames(buttonVariant, { className })
+        : classNames(styles.anchor, className),
   };
 
   if (isAbsolute || renderer == null) {

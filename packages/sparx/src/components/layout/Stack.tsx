@@ -45,6 +45,7 @@ export interface StackProps {
   direction?: StackDirection;
   justify?: Justification;
   align?: Alignment;
+  wrap?: boolean;
   children: React.ReactNode;
   className?: string;
 }
@@ -55,6 +56,7 @@ export function Stack(props: StackProps) {
     direction = "vertical",
     justify,
     align,
+    wrap = true,
     children,
     className,
   } = props;
@@ -66,6 +68,7 @@ export function Stack(props: StackProps) {
         STACK_SPACES[spacing],
         justify != null ? STACK_JUSTIFICATION[justify] : undefined,
         align != null ? STACK_ALIGNMENT[align] : undefined,
+        wrap === false ? styles.nowrap : undefined,
         DIRECTION_CLASSES[direction],
         className,
       )}>
@@ -76,10 +79,17 @@ export function Stack(props: StackProps) {
 
 export interface SpacerProps {
   size?: Spacing;
+  expand?: boolean;
 }
 
 export function Spacer(props: SpacerProps) {
-  const { size = "space-none" } = props;
+  const { size = "space-none", expand = false } = props;
 
-  return <div className={classNames(styles.spacer, STACK_SPACES[size])} />;
+  return (
+    <div
+      className={classNames(styles.spacer, STACK_SPACES[size], {
+        [styles["spacer-expand"]]: expand,
+      })}
+    />
+  );
 }

@@ -31,23 +31,32 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: ButtonVariant;
 }
 
+/**
+ * Return the class name(s) used to style a button like the given variant. If
+ * `variant` is undefined, no button styles will be applied, but `className` will
+ * still be returned.
+ */
+export function getButtonClassNames(
+  variant: ButtonVariant | undefined,
+  { className }: { className?: string } = {},
+) {
+  if (variant == null) return className;
+
+  const [color, look = "filled"] = getVariantPieces(variant);
+  return classNames(styles.button, LOOK_VARIANTS[look], COLOR_VARIANTS[color], className);
+}
+
 export const Button = React.forwardRef(function Button(
   props: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   const { variant = "default", ...nativeProps } = props;
-  const [color, look = "filled"] = getVariantPieces(variant);
 
   return (
     <button
       {...nativeProps}
       ref={ref}
-      className={classNames(
-        styles.button,
-        LOOK_VARIANTS[look],
-        COLOR_VARIANTS[color],
-        props.className,
-      )}
+      className={getButtonClassNames(variant, { className: props.className })}
     />
   );
 });
