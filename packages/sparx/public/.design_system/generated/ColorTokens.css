@@ -2,16 +2,16 @@
 
 :root {
   /** grey **/
-  --grey-100: #eaeef2;
-  --grey-200: #d2d9e0;
-  --grey-300: #afb8c1;
-  --grey-400: #8c959f;
-  --grey-50: #f6f8fa;
-  --grey-500: #6e7781;
-  --grey-600: #57606a;
-  --grey-700: #424a53;
-  --grey-800: #32383f;
-  --grey-900: #24292f;
+  --grey-100: #f1eced;
+  --grey-200: #ded6d8;
+  --grey-300: #bfb6b7;
+  --grey-400: #979393;
+  --grey-50: #faf7f8;
+  --grey-500: #787576;
+  --grey-600: #615e5f;
+  --grey-700: #4e4848;
+  --grey-800: #3d3536;
+  --grey-900: #372e2f;
 
   /** blue **/
   --blue-100: #bae3f6;
