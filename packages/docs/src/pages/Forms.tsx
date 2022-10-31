@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Accent,
   Button,
   Callout,
   Card,
@@ -24,7 +23,6 @@ import ExclamationOctagon from "@spyrothon/sparx/dist/icons/ExclamationOctagon";
 import ExclamationTriangle from "@spyrothon/sparx/dist/icons/ExclamationTriangle";
 import InfoCircle from "@spyrothon/sparx/dist/icons/InfoCircle";
 
-import usePageAccent from "../usePageAccent";
 import PageHeader from "./PageHeader";
 
 function Introduction() {
@@ -82,7 +80,7 @@ function Example() {
               note="Selecting this will give something to the monitor"
             />
             <Stack direction="horizontal">
-              <Button variant="primary">Login</Button>
+              <Button variant="primary"></Button>
               <Button variant="default">Sign up</Button>
             </Stack>
           </Stack>

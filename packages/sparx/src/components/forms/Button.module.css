@@ -15,6 +15,17 @@
     cursor: not-allowed;
     opacity: 60%;
   }
+
+  &:has(.icon) {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  /* If the icon is the only thing in the Button, don't give it additional margin */
+  &:not(.iconOnly) .icon {
+    margin-left: var(--space-md);
+  }
 }
 
 .filled {

@@ -8,18 +8,20 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
-    },
-    "./style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
-    },
-    "./default.css": {
-      "import": "./dist/default.css",
-      "require": "./dist/default.css"
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.umd.cjs"
+      },
+      "./style.css": {
+        "import": "./dist/style.css",
+        "require": "./dist/style.css"
+      },
+      "./default.css": {
+        "import": "./dist/default.css",
+        "require": "./dist/default.css"
+      }
     }
   },
   "scripts": {

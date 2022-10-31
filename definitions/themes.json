@@ -69,10 +69,10 @@
     "status-info-active": ["teal-600", "teal-500"],
     "status-info-translucent": ["opacity(teal-500, 15%)", "opacity(teal-600, 15%)"],
 
-    "status-default-background": ["grey-500", "grey-300"],
-    "status-default-foreground": ["grey-50", "grey-900"],
-    "status-default-hover": ["grey-600", "grey-400"],
+    "status-default-background": ["grey-500", "grey-500"],
+    "status-default-foreground": ["grey-50", "grey-50"],
+    "status-default-hover": ["grey-600", "grey-600"],
     "status-default-active": ["grey-700", "grey-500"],
-    "status-default-translucent": ["opacity(grey-500, 20%)", "opacity(grey-400, 30%)"]
+    "status-default-translucent": ["opacity(grey-500, 20%)", "opacity(grey-600, 30%)"]
   }
 }

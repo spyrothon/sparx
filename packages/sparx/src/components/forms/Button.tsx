@@ -27,8 +27,14 @@ function getVariantPieces(variant: ButtonVariant): [ButtonVariantColor, ButtonVa
   return [size as ButtonVariantColor, color as ButtonVariantLook];
 }
 
+export interface ButtonIconProps {
+  className: string;
+  size: string;
+}
+
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
+  icon?: (props: ButtonIconProps) => JSX.Element;
 }
 
 /**
@@ -50,13 +56,19 @@ export const Button = React.forwardRef(function Button(
   props: ButtonProps,
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
-  const { variant = "default", ...nativeProps } = props;
+  const { variant = "default", icon: Icon, children, ...nativeProps } = props;
 
   return (
     <button
       {...nativeProps}
       ref={ref}
-      className={getButtonClassNames(variant, { className: props.className })}
-    />
+      className={getButtonClassNames(variant, {
+        className: classNames(props.className, {
+          [styles.iconOnly]: Icon != null && React.Children.count(children) === 0,
+        }),
+      })}>
+      {children}
+      {Icon != null ? <Icon className={styles.icon} size="1em" /> : null}
+    </button>
   );
 });

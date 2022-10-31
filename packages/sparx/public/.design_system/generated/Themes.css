@@ -86,7 +86,7 @@
   --status-default-foreground: var(--grey-50);
   --status-default-hover: var(--grey-600);
   --status-default-active: var(--grey-700);
-  --status-default-translucent: rgba(120, 117, 118, 20%);
+  --status-default-translucent: rgba(112, 110, 111, 20%);
   color-scheme: dark;
 }
 
@@ -95,9 +95,9 @@
   --background-secondary: var(--grey-100);
   --background-tertiary: var(--grey-200);
   --background-accent: var(--grey-50);
-  --background-mod-subtle: rgba(55, 46, 47, 10%);
-  --background-mod-backdrop: rgba(55, 46, 47, 70%);
-  --background-highlight: rgba(55, 46, 47, 10%);
+  --background-mod-subtle: rgba(36, 29, 30, 10%);
+  --background-mod-backdrop: rgba(36, 29, 30, 70%);
+  --background-highlight: rgba(36, 29, 30, 10%);
   --text-normal: var(--grey-900);
   --text-secondary: var(--grey-400);
   --text-success: var(--green-500);
@@ -132,11 +132,11 @@
   --status-info-hover: var(--teal-600);
   --status-info-active: var(--teal-500);
   --status-info-translucent: rgba(44, 92, 89, 15%);
-  --status-default-background: var(--grey-300);
-  --status-default-foreground: var(--grey-900);
-  --status-default-hover: var(--grey-400);
+  --status-default-background: var(--grey-500);
+  --status-default-foreground: var(--grey-50);
+  --status-default-hover: var(--grey-600);
   --status-default-active: var(--grey-500);
-  --status-default-translucent: rgba(151, 147, 147, 30%);
+  --status-default-translucent: rgba(85, 82, 82, 30%);
   color-scheme: light;
 }
 
