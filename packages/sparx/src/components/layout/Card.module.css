@@ -13,6 +13,10 @@
   background-color: var(--background-primary);
 }
 
+.floating {
+  background-color: var(--background-floating);
+}
+
 .level1:has(.level2, .level3) {
   border-radius: var(--radius-large);
 }

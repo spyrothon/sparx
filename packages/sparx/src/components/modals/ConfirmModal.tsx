@@ -40,7 +40,7 @@ export function ConfirmModal(props: ConfirmModalProps) {
   }
 
   return (
-    <Card level={1} className={styles.container}>
+    <Card floating className={styles.container}>
       <Stack spacing="space-lg">
         <Header tag="h2">{title}</Header>
         {body != null ? <Text>{body}</Text> : null}

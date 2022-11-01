@@ -43,13 +43,13 @@
 .text-md {
   font-size: 18px;
   font-weight: var(--font-weight-medium);
-  line-height: 28px;
+  line-height: 24px;
 }
 
 .text-lg {
   font-size: 24px;
   font-weight: var(--font-weight-medium);
-  line-height: 30px;
+  line-height: 28px;
 }
 
 .header {
@@ -80,7 +80,7 @@
 .header-md {
   font-size: 24px;
   font-weight: var(--font-weight-bold);
-  line-height: 30px;
+  line-height: 28px;
 
   &.withMargin {
     margin-bottom: var(--space-md);

@@ -15,19 +15,23 @@ export const CardLevelContext = React.createContext<CardLevel>(1 as CardLevel);
 
 export interface CardProps {
   level?: CardLevel;
+  floating?: boolean;
   children?: React.ReactNode;
   className?: string;
 }
 
 export function Card(props: CardProps) {
-  const { level, children, className } = props;
+  const { level, floating, children, className } = props;
 
   const contextLevel = React.useContext(CardLevelContext);
 
   const resolvedLevel = level != null ? level : contextLevel;
 
   return (
-    <div className={classNames(styles.card, LEVEL_STYLES[resolvedLevel], className)}>
+    <div
+      className={classNames(styles.card, LEVEL_STYLES[resolvedLevel], className, {
+        [styles.floating]: floating,
+      })}>
       <CardLevelContext.Provider value={((contextLevel + 1) % NUM_LEVELS) as CardLevel}>
         {children}
       </CardLevelContext.Provider>

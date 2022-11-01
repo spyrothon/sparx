@@ -8,8 +8,7 @@ import { TextVariantSize } from "../text/Text";
 import styles from "./FormControl.module.css";
 
 const LABEL_SIZES: Record<string, TextVariantSize> = {
-  normal: "header-sm",
-  small: "header-xs",
+  normal: "header-xs",
 };
 
 export type FormControlSize = keyof typeof LABEL_SIZES;
@@ -49,9 +48,9 @@ export function FormControl(props: FormControlProps) {
         </Text>
       ) : null}
       <div className={styles.inputRow}>
-        {prefix != null ? <PrefixNode className={styles.attachment}>{prefix}</PrefixNode> : null}
+        {prefix != null ? <PrefixNode className={styles.prefix}>{prefix}</PrefixNode> : null}
         {children}
-        {suffix != null ? <SuffixNode className={styles.attachment}>{suffix}</SuffixNode> : null}
+        {suffix != null ? <SuffixNode className={styles.suffix}>{suffix}</SuffixNode> : null}
       </div>
       {note != null ? (
         <Text className={styles.note} variant={`text-sm/${color}`}>

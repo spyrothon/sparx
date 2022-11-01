@@ -80,7 +80,7 @@ function Example() {
               note="Selecting this will give something to the monitor"
             />
             <Stack direction="horizontal">
-              <Button variant="primary"></Button>
+              <Button variant="primary">Login</Button>
               <Button variant="default">Sign up</Button>
             </Stack>
           </Stack>

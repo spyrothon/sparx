@@ -25,6 +25,7 @@
     "background-secondary": ["grey-800", "grey-100"],
     "background-tertiary": ["grey-700", "grey-200"],
     "background-accent": ["grey-700", "grey-50"],
+    "background-floating": ["grey-900", "white"],
     "background-mod-subtle": ["opacity(black, 10%)", "opacity(grey-900, 10%)"],
     "background-mod-backdrop": ["opacity(black, 70%)", "opacity(grey-900, 70%)"],
     "background-highlight": ["opacity(grey-100, 10%)", "opacity(grey-900, 10%)"],

@@ -80,7 +80,7 @@ function PopoutComponent() {
   const openerRef = React.useRef<HTMLButtonElement>(null);
   const [open, isOpen] = usePopout(
     ({ onClose }) => (
-      <Card level={1}>
+      <Card floating>
         <div style={{ width: 300 }}>
           <Stack spacing="space-lg">
             <Header tag="h2">Popout</Header>

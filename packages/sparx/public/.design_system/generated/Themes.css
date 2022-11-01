@@ -44,7 +44,8 @@
   --background-primary: var(--grey-900);
   --background-secondary: var(--grey-800);
   --background-tertiary: var(--grey-700);
-  --background-accent: var(--grey-700);
+  --background-accent: var(--grey-900);
+  --background-floating: var(--grey-900);
   --background-mod-subtle: rgba(27, 31, 36, 10%);
   --background-mod-backdrop: rgba(27, 31, 36, 70%);
   --background-highlight: rgba(241, 236, 237, 10%);
@@ -95,6 +96,7 @@
   --background-secondary: var(--grey-100);
   --background-tertiary: var(--grey-200);
   --background-accent: var(--grey-50);
+  --background-floating: var(--white);
   --background-mod-subtle: rgba(36, 29, 30, 10%);
   --background-mod-backdrop: rgba(36, 29, 30, 70%);
   --background-highlight: rgba(36, 29, 30, 10%);

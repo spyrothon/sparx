@@ -17,9 +17,10 @@
   color: var(--text-normal);
   border: 2px solid var(--accent-primary);
   border-radius: var(--radius-normal);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-md);
   font-family: var(--font-normal);
   font-size: 18px;
+  line-height: 24px;
   width: 100%;
 
   &::placeholder {
