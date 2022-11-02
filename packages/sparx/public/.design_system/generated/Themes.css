@@ -97,9 +97,9 @@
   --background-tertiary: var(--grey-200);
   --background-accent: var(--grey-50);
   --background-floating: var(--white);
-  --background-mod-subtle: rgba(36, 29, 30, 10%);
-  --background-mod-backdrop: rgba(36, 29, 30, 70%);
-  --background-highlight: rgba(36, 29, 30, 10%);
+  --background-mod-subtle: rgba(26, 23, 24, 10%);
+  --background-mod-backdrop: rgba(26, 23, 24, 70%);
+  --background-highlight: rgba(26, 23, 24, 10%);
   --text-normal: var(--grey-900);
   --text-secondary: var(--grey-400);
   --text-success: var(--green-500);
@@ -138,7 +138,7 @@
   --status-default-foreground: var(--grey-50);
   --status-default-hover: var(--grey-600);
   --status-default-active: var(--grey-500);
-  --status-default-translucent: rgba(85, 82, 82, 30%);
+  --status-default-translucent: rgba(80, 78, 78, 30%);
   color-scheme: light;
 }
 
