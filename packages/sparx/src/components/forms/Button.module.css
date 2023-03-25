@@ -8,7 +8,6 @@
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
 
-  --_button-radius: var(--radius-normal);
   border-radius: var(--_button-radius);
 
   &:disabled {
@@ -56,6 +55,16 @@
     border-color: var(--_button-background-active);
     background-color: var(--_button-background-translucent);
   }
+}
+
+.soft {
+  --_button-radius: var(--radius-normal);
+}
+.sharp {
+  --_button-radius: var(--radius-flat);
+}
+.rounded {
+  --_button-radius: var(--radius-full);
 }
 
 .primary {
