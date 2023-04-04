@@ -10,6 +10,7 @@ import {
   ProgressBar,
   Section,
   Stack,
+  Tag,
   Text,
   Theme,
   ThemeProvider,
@@ -239,6 +240,55 @@ function ProgressBarComponent() {
   );
 }
 
+function TagComponent() {
+  return (
+    <Section>
+      <Stack spacing="space-lg">
+        <Header tag="h2">Tag</Header>
+        <Text>
+          <code>Tag</code> provides badge-like indicators meant to appear inline next to other
+          content. Tags support all of the default colors, and can contain any content within them.
+        </Text>
+        <Card>
+          <Stack direction="horizontal">
+            <Tag color="normal">Normal</Tag>
+            <Tag color="accent">Accent</Tag>
+            <Tag color="success">Success</Tag>
+            <Tag color="info">Info</Tag>
+            <Tag color="warning">Warning</Tag>
+            <Tag color="danger">Danger</Tag>
+          </Stack>
+        </Card>
+        <Text>
+          Tags can also use the <code>solid</code> prop to get a more prominent appearance.
+        </Text>
+        <Card>
+          <Stack direction="horizontal">
+            <Tag solid color="normal">
+              Normal
+            </Tag>
+            <Tag solid color="accent">
+              Accent
+            </Tag>
+            <Tag solid color="success">
+              Success
+            </Tag>
+            <Tag solid color="info">
+              Info
+            </Tag>
+            <Tag solid color="warning">
+              Warning
+            </Tag>
+            <Tag solid color="danger">
+              Danger
+            </Tag>
+          </Stack>
+        </Card>
+      </Stack>
+    </Section>
+  );
+}
+
 export default function Common() {
   usePageAccent(Accent.PURPLE);
 
@@ -254,6 +304,7 @@ export default function Common() {
       <ThemeProviderComponent />
       <AppContainerComponent />
       <ProgressBarComponent />
+      <TagComponent />
     </Stack>
   );
 }

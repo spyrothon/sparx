@@ -23,6 +23,7 @@ export type {
   ButtonVariant,
   ButtonVariantColor,
   ButtonVariantLook,
+  ButtonVariantShape,
 } from "./components/forms/Button";
 export { Checkbox } from "./components/forms/Checkbox";
 export type { CheckboxProps } from "./components/forms/Checkbox";
@@ -106,3 +107,5 @@ export { Callout } from "./components/Callout";
 export type { CalloutProps, CalloutType } from "./components/Callout";
 export { Tabs } from "./components/TabGroup";
 export type { TabGroupProps, TabColor, TabProps, TabHeaderProps } from "./components/TabGroup";
+export { Tag } from "./components/Tag";
+export type { TagProps, TagColor } from "./components/Tag";

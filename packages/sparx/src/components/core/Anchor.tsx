@@ -24,17 +24,21 @@ export function setAnchorRenderer(newRenderer: AnchorRenderer) {
 
 export interface AnchorProps {
   href: string;
-  children: React.ReactNode;
-  className?: string;
+  /**
+   * Force the anchor to open in a new tab, even if it is a relative link.
+   */
+  newTab?: boolean;
   /**
    * Use a button style for the Anchor tag. This makes the link look like any other button.
    */
   buttonVariant?: ButtonVariant;
+  children: React.ReactNode;
+  className?: string;
   onClick?: (event: React.MouseEvent<HTMLElement>) => unknown;
 }
 
 export function Anchor(props: AnchorProps) {
-  const { href, children, className, buttonVariant, onClick } = props;
+  const { href, buttonVariant, newTab, children, className, onClick } = props;
 
   const isAbsolute = ABSOLUTE_URL_REGEX.test(href);
 
@@ -42,6 +46,7 @@ export function Anchor(props: AnchorProps) {
     href,
     children,
     onClick,
+    target: newTab ? "_blank" : "",
     className:
       buttonVariant != null
         ? getButtonClassNames(buttonVariant, { className })

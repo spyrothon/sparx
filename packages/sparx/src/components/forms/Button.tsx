@@ -18,13 +18,25 @@ const LOOK_VARIANTS = {
   outline: styles.outline,
 };
 
+const SHAPE_VARIANTS = {
+  soft: styles.soft,
+  sharp: styles.sharp,
+  rounded: styles.rounded,
+};
+
 export type ButtonVariantColor = keyof typeof COLOR_VARIANTS;
 export type ButtonVariantLook = keyof typeof LOOK_VARIANTS;
-export type ButtonVariant = ButtonVariantColor | `${ButtonVariantColor}/${ButtonVariantLook}`;
+export type ButtonVariantShape = keyof typeof SHAPE_VARIANTS;
+export type ButtonVariant =
+  | ButtonVariantColor
+  | `${ButtonVariantColor}/${ButtonVariantLook}`
+  | `${ButtonVariantColor}/${ButtonVariantLook}/${ButtonVariantShape}`;
 
-function getVariantPieces(variant: ButtonVariant): [ButtonVariantColor, ButtonVariantLook] {
-  const [size, color] = variant.split("/");
-  return [size as ButtonVariantColor, color as ButtonVariantLook];
+function getVariantPieces(
+  variant: ButtonVariant,
+): [ButtonVariantColor, ButtonVariantLook, ButtonVariantShape] {
+  const [color, look, shape] = variant.split("/");
+  return [color as ButtonVariantColor, look as ButtonVariantLook, shape as ButtonVariantShape];
 }
 
 export interface ButtonIconProps {
@@ -48,8 +60,14 @@ export function getButtonClassNames(
 ) {
   if (variant == null) return className;
 
-  const [color, look = "filled"] = getVariantPieces(variant);
-  return classNames(styles.button, LOOK_VARIANTS[look], COLOR_VARIANTS[color], className);
+  const [color, look = "filled", shape = "soft"] = getVariantPieces(variant);
+  return classNames(
+    styles.button,
+    LOOK_VARIANTS[look],
+    COLOR_VARIANTS[color],
+    SHAPE_VARIANTS[shape],
+    className,
+  );
 }
 
 export const Button = React.forwardRef(function Button(

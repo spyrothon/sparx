@@ -1,0 +1,49 @@
+.tag {
+  display: inline-block;
+  background-color: var(--_tag-background);
+  color: var(--_tag-color);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-normal);
+}
+
+.solid {
+  background-color: var(--_tag-background-solid);
+  color: var(--_tag-color-solid);
+}
+
+.color-normal {
+  --_tag-background: var(--status-default-translucent);
+  --_tag-color: var(--text-normal);
+  --_tag-background-solid: var(--status-default-background);
+  --_tag-color-solid: var(--text-normal);
+}
+.color-accent {
+  --_tag-background: var(--status-accent-translucent);
+  --_tag-color: var(--text-accent);
+  --_tag-background-solid: var(--status-accent-background);
+  --_tag-color-solid: var(--status-accent-foreground);
+}
+.color-success {
+  --_tag-background: var(--status-success-translucent);
+  --_tag-color: var(--text-success);
+  --_tag-background-solid: var(--status-success-background);
+  --_tag-color-solid: var(--status-success-foreground);
+}
+.color-info {
+  --_tag-background: var(--status-info-translucent);
+  --_tag-color: var(--text-info);
+  --_tag-background-solid: var(--status-info-background);
+  --_tag-color-solid: var(--status-info-foreground);
+}
+.color-warning {
+  --_tag-background: var(--status-warning-translucent);
+  --_tag-color: var(--text-warning);
+  --_tag-background-solid: var(--status-warning-background);
+  --_tag-color-solid: var(--status-warning-foreground);
+}
+.color-danger {
+  --_tag-background: var(--status-danger-translucent);
+  --_tag-color: var(--text-danger);
+  --_tag-background-solid: var(--status-danger-background);
+  --_tag-color-solid: var(--status-danger-foreground);
+}

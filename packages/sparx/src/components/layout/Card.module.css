@@ -15,6 +15,7 @@
 
 .floating {
   background-color: var(--background-floating);
+  border: 1px solid var(--background-highlight);
 }
 
 .level1:has(.level2, .level3) {

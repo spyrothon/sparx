@@ -27,15 +27,14 @@
 
   & .icon {
     flex: 0 0 18px;
-    margin-top: 4.5px;
     width: 18px;
     height: 18px;
   }
 
   & .badge {
-    flex: 1 0 18px;
-    margin-top: 4.5px;
+    flex: 0 0 min-content;
     height: 18px;
+    margin-left: auto;
   }
 }
 
