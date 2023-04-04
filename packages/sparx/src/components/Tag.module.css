@@ -1,4 +1,5 @@
 .tag {
+  display: inline-block;
   background-color: var(--_tag-background);
   color: var(--_tag-color);
   padding: var(--space-xs) var(--space-md);
@@ -10,7 +11,7 @@
   color: var(--_tag-color-solid);
 }
 
-.color-default {
+.color-normal {
   --_tag-background: var(--status-default-translucent);
   --_tag-color: var(--text-normal);
   --_tag-background-solid: var(--status-default-background);

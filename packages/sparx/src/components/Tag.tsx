@@ -31,7 +31,7 @@ export function Tag(props: TagProps) {
       className={classNames(styles.tag, TAG_COLORS[color], {
         [styles.solid]: solid,
       })}>
-      <Text variant={`text-sm/${color}`}>{children}</Text>
+      <Text variant={`text-sm/inherit`}>{children}</Text>
     </div>
   );
 }
