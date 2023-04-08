@@ -1,7 +1,7 @@
 .checkbox {
   display: block;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-sm) 0;
 }

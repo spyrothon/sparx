@@ -1,7 +1,7 @@
 .radioItem {
   display: block;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: var(--space-lg);
   padding: calc(var(--space-md) * 0.75) var(--space-lg);
   background: var(--background-accent);
