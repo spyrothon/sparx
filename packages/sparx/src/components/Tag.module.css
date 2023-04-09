@@ -11,7 +11,7 @@
   color: var(--_tag-color-solid);
 }
 
-.color-normal {
+.color-default {
   --_tag-background: var(--status-default-translucent);
   --_tag-color: var(--text-normal);
   --_tag-background-solid: var(--status-default-background);

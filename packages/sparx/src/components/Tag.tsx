@@ -6,7 +6,7 @@ import { Text } from "@sparx/index";
 import styles from "./Tag.module.css";
 
 const TAG_COLORS = {
-  normal: styles["color-normal"],
+  default: styles["color-default"],
   secondary: styles["color-secondary"],
   accent: styles["color-accent"],
   success: styles["color-success"],
@@ -24,7 +24,7 @@ export interface TagProps {
 }
 
 export function Tag(props: TagProps) {
-  const { color = "normal", solid = false, children } = props;
+  const { color = "default", solid = false, children } = props;
 
   return (
     <div
