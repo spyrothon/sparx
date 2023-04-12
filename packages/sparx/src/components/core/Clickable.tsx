@@ -4,7 +4,7 @@ import type {
   PolymorphicPropsWithRef,
 } from "react-polymorphic-types";
 
-import { PolymorphicRef } from "@sparx/utils/TypeUtils";
+import type { PolymorphicRef } from "@sparx/utils/TypeUtils";
 
 type InteractiveARIARole =
   | "button"
@@ -24,7 +24,6 @@ interface ClickableOwnProps {
   role?: InteractiveARIARole;
   disabled?: boolean;
   tabIndex?: -1 | 0;
-  children: React.ReactNode;
 }
 
 export type ClickableProps<Tag extends React.ElementType = "div"> = PolymorphicPropsWithRef<

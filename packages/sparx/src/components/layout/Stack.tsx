@@ -1,5 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
+import type { PolymorphicPropsWithRef } from "react-polymorphic-types";
+
+import type { PolymorphicRef } from "@sparx/utils/TypeUtils";
 
 import styles from "./Stack.module.css";
 
@@ -40,18 +43,25 @@ export type Alignment = keyof typeof STACK_ALIGNMENT;
 export type Justification = keyof typeof STACK_JUSTIFICATION;
 export type StackDirection = keyof typeof DIRECTION_CLASSES;
 
-export interface StackProps {
+interface StackOwnProps {
   spacing?: Spacing;
   direction?: StackDirection;
   justify?: Justification;
   align?: Alignment;
   wrap?: boolean;
-  children: React.ReactNode;
-  className?: string;
 }
 
-export function Stack(props: StackProps) {
+export type StackProps<Tag extends React.ElementType = "div"> = PolymorphicPropsWithRef<
+  StackOwnProps,
+  Tag
+>;
+
+export const Stack = React.forwardRef(function Stack<Tag extends React.ElementType>(
+  props: StackProps<Tag>,
+  ref?: PolymorphicRef<Tag>,
+) {
   const {
+    as: Component = "div",
     spacing = "space-md",
     direction = "vertical",
     justify,
@@ -59,10 +69,12 @@ export function Stack(props: StackProps) {
     wrap = true,
     children,
     className,
+    ...extraProps
   } = props;
 
   return (
-    <div
+    <Component
+      ref={ref}
       className={classNames(
         styles.stack,
         STACK_SPACES[spacing],
@@ -71,11 +83,12 @@ export function Stack(props: StackProps) {
         wrap === false ? styles.nowrap : undefined,
         DIRECTION_CLASSES[direction],
         className,
-      )}>
+      )}
+      {...extraProps}>
       {children}
-    </div>
+    </Component>
   );
-}
+});
 
 export interface SpacerProps {
   size?: Spacing;
