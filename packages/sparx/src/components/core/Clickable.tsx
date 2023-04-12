@@ -14,23 +14,27 @@ type InteractiveARIARole =
   | "tab"
   | "treeitem";
 
-export interface ClickableProps {
-  tag?: "div" | "span" | "label" | "a";
+type ClickableTag = React.ElementType;
+
+export interface ClickableOwnProps<Tag extends ClickableTag> {
+  as?: Tag;
   role?: InteractiveARIARole;
   disabled?: boolean;
   tabIndex?: -1 | 0;
   children: React.ReactNode;
-  className?: string;
-  onClick?: (event: React.MouseEvent<HTMLElement>) => unknown;
-  htmlFor?: string;
 }
 
-export const Clickable = React.forwardRef(function Clickable(
-  props: ClickableProps,
+type NativeProps<Tag extends ClickableTag> = React.ComponentPropsWithoutRef<Tag>;
+
+export type ClickableProps<Tag extends ClickableTag> = ClickableOwnProps<Tag> &
+  Omit<NativeProps<Tag>, keyof ClickableOwnProps<Tag>>;
+
+export const Clickable = React.forwardRef(function Clickable<Tag extends ClickableTag = "div">(
+  props: ClickableProps<Tag> & NativeProps<Tag>,
   ref: React.ForwardedRef<HTMLElement>,
 ) {
   const {
-    tag: Tag = "div",
+    as: Component = "div",
     role = "button",
     disabled = false,
     tabIndex = 0,
@@ -42,7 +46,7 @@ export const Clickable = React.forwardRef(function Clickable(
 
   const innerRef = React.useRef<HTMLElement | null>(null);
 
-  function setRef(element: HTMLElement) {
+  function setRef(element: HTMLElement | null) {
     innerRef.current = element;
     if (ref == null) return;
     if (typeof ref === "function") {
@@ -63,18 +67,15 @@ export const Clickable = React.forwardRef(function Clickable(
   }
 
   return (
-    <Tag
-      // The dynamic Tag here makes TypeScript think this should be a string when it's all the same
-      // as the normal MutableRefObject from `useRef`.
-      // @ts-expect-error
+    <Component
+      {...extraProps}
       ref={setRef}
       role={role}
       tabIndex={disabled ? -1 : tabIndex}
       className={className}
       onClick={!disabled ? onClick : undefined}
-      onKeyDown={!disabled ? handleKeyDown : undefined}
-      {...extraProps}>
+      onKeyDown={!disabled ? handleKeyDown : undefined}>
       {children}
-    </Tag>
+    </Component>
   );
 });

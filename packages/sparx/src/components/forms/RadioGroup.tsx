@@ -40,7 +40,7 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
   return (
     <Clickable
-      tag="label"
+      as="label"
       disabled={disabled}
       aria-selected={selected}
       className={classNames(styles.radioItem, { [styles.disabled]: disabled })}

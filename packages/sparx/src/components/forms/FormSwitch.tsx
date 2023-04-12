@@ -38,7 +38,7 @@ export function FormSwitch(props: FormSwitchProps) {
         [styles.disabled]: disabled,
       })}>
       <Clickable
-        tag="label"
+        as="label"
         disabled={disabled}
         tabIndex={0}
         aria-checked={checked}

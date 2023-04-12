@@ -29,7 +29,7 @@ export function Checkbox(props: CheckboxProps) {
 
   return (
     <Clickable
-      tag="label"
+      as="label"
       tabIndex={0}
       disabled={disabled}
       aria-checked={checked}
