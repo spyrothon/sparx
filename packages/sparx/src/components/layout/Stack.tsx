@@ -1,6 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
-import type { PolymorphicPropsWithRef } from "react-polymorphic-types";
+import type {
+  PolymorphicForwardRefExoticComponent,
+  PolymorphicPropsWithRef,
+} from "react-polymorphic-types";
 
 import type { PolymorphicRef } from "@sparx/utils/TypeUtils";
 
@@ -56,39 +59,38 @@ export type StackProps<Tag extends React.ElementType = "div"> = PolymorphicProps
   Tag
 >;
 
-export const Stack = React.forwardRef(function Stack<Tag extends React.ElementType>(
-  props: StackProps<Tag>,
-  ref?: PolymorphicRef<Tag>,
-) {
-  const {
-    as: Component = "div",
-    spacing = "space-md",
-    direction = "vertical",
-    justify,
-    align,
-    wrap = true,
-    children,
-    className,
-    ...extraProps
-  } = props;
+export const Stack: PolymorphicForwardRefExoticComponent<StackOwnProps, "div"> = React.forwardRef(
+  function Stack<Tag extends React.ElementType>(props: StackProps<Tag>, ref?: PolymorphicRef<Tag>) {
+    const {
+      as: Component = "div",
+      spacing = "space-md",
+      direction = "vertical",
+      justify,
+      align,
+      wrap = true,
+      children,
+      className,
+      ...extraProps
+    } = props;
 
-  return (
-    <Component
-      ref={ref}
-      className={classNames(
-        styles.stack,
-        STACK_SPACES[spacing],
-        justify != null ? STACK_JUSTIFICATION[justify] : undefined,
-        align != null ? STACK_ALIGNMENT[align] : undefined,
-        wrap === false ? styles.nowrap : undefined,
-        DIRECTION_CLASSES[direction],
-        className,
-      )}
-      {...extraProps}>
-      {children}
-    </Component>
-  );
-});
+    return (
+      <Component
+        ref={ref}
+        className={classNames(
+          styles.stack,
+          STACK_SPACES[spacing],
+          justify != null ? STACK_JUSTIFICATION[justify] : undefined,
+          align != null ? STACK_ALIGNMENT[align] : undefined,
+          wrap === false ? styles.nowrap : undefined,
+          DIRECTION_CLASSES[direction],
+          className,
+        )}
+        {...extraProps}>
+        {children}
+      </Component>
+    );
+  },
+);
 
 export interface SpacerProps {
   size?: Spacing;
