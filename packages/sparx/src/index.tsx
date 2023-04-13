@@ -109,3 +109,5 @@ export { Tabs } from "./components/TabGroup";
 export type { TabGroupProps, TabColor, TabProps, TabHeaderProps } from "./components/TabGroup";
 export { Tag } from "./components/Tag";
 export type { TagProps, TagColor } from "./components/Tag";
+
+export { useHoverFocus } from "./hooks/useHoverFocus";

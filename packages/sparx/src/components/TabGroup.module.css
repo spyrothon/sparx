@@ -1,6 +1,6 @@
 .tab {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-md);
   padding: var(--space-md) var(--space-lg);
   margin: var(--space-xs) 0;
@@ -32,8 +32,8 @@
   }
 
   & .badge {
-    flex: 0 0 min-content;
-    height: 18px;
+    flex: 0 0 auto;
+    min-height: 18px;
     margin-left: auto;
   }
 }
