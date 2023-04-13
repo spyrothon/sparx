@@ -1,8 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import type { IconProps } from "@sparx/icons/IconProps";
-import { Clickable } from "@sparx/index";
+import type { IconProps } from "../icons/IconProps";
+import type { ClickableProps } from "./core/Clickable";
+import { Clickable } from "./core/Clickable";
 
 import styles from "./TabGroup.module.css";
 
@@ -17,22 +18,21 @@ const TAB_COLORS = {
 
 export type TabColor = keyof typeof TAB_COLORS;
 
-export interface TabProps {
+export interface TabProps extends ClickableProps<"div"> {
   label: React.ReactNode;
   color?: TabColor;
   icon?: React.ComponentType<IconProps>;
   badge?: React.ReactNode;
   selected?: boolean;
-  onClick?: (event: React.MouseEvent) => unknown;
 }
 
 export function Tab(props: TabProps) {
-  const { label, color = "default", icon: Icon, badge, selected = false, onClick } = props;
+  const { label, color = "default", icon: Icon, badge, selected = false, ...extraProps } = props;
 
   return (
     <Clickable
       className={classNames(styles.tab, TAB_COLORS[color], { [styles.selected]: selected })}
-      onClick={onClick}>
+      {...extraProps}>
       {Icon != null ? <Icon className={styles.icon} /> : null}
       <div className={styles.label}>{label}</div>
       {badge != null ? <div className={styles.badge}>{badge}</div> : null}
