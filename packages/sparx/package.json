@@ -1,23 +1,28 @@
 {
   "name": "@spyrothon/sparx",
   "description": "A React-based design system for Spyrothon",
-  "version": "0.5.0-rc3",
+  "version": "0.5.0-rc5",
   "main": "dist/sparx.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "public"
   ],
   "sideEffects": false,
   "publishConfig": {
     "exports": {
       ".": {
+        "webpack": "./src/index.tsx",
         "import": "./dist/index.js"
       },
       "./style.css": {
+        "webpack": "./src/style.css",
         "import": "./dist/style.css",
         "require": "./dist/style.css"
       },
       "./default.css": {
+        "webpack": "./public/default.css",
         "import": "./dist/default.css",
         "require": "./dist/default.css"
       }
