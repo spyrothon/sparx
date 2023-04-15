@@ -1,7 +1,7 @@
 {
   "name": "@spyrothon/sparx",
   "description": "A React-based design system for Spyrothon",
-  "version": "0.5.0-rc2",
+  "version": "0.5.0-rc3",
   "main": "dist/sparx.js",
   "types": "dist/index.d.ts",
   "files": [
