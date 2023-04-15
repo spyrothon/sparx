@@ -1,7 +1,7 @@
 {
   "name": "@spyrothon/sparx",
   "description": "A React-based design system for Spyrothon",
-  "version": "0.4.1",
+  "version": "0.5.0-rc1",
   "type": "module",
   "main": "dist/sparx.js",
   "types": "dist/index.d.ts",
@@ -12,8 +12,7 @@
   "publishConfig": {
     "exports": {
       ".": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.umd.cjs"
+        "import": "./dist/index.js"
       },
       "./style.css": {
         "import": "./dist/style.css",
