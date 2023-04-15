@@ -1,25 +1,25 @@
-import { resolve } from "path";
+import path from "path";
 import { defineConfig } from "vite";
 
-import react from "@vitejs/plugin-react";
+import react from "@vitejs/plugin-react-swc";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   css: {
-    postcss: resolve(__dirname, "../../"),
+    postcss: path.resolve(__dirname, "../../"),
   },
   resolve: {
     alias: {
-      "@sparx": resolve(__dirname, "src"),
+      "@sparx": path.resolve(__dirname, "src"),
     },
   },
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.tsx"),
+      entry: path.resolve(__dirname, "src/index.tsx"),
       name: "Sparx Design System",
-      // the proper extensions will be added
-      fileName: "index",
+      // this is a modern package, meant to be bundled.
+      formats: ["es"],
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
@@ -31,6 +31,21 @@ export default defineConfig({
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+        },
+        preserveModules: true,
+        entryFileNames: (entry) => {
+          const { name, facadeModuleId } = entry;
+          const fileName = `${name}.js`;
+          if (!facadeModuleId) {
+            return fileName;
+          }
+          const localName = `${path.basename(name)}.js`;
+          const here = path.resolve(__dirname, "src");
+          if (!facadeModuleId.startsWith(here)) {
+            return fileName;
+          }
+          const relativeDir = path.relative(here, path.dirname(facadeModuleId));
+          return path.join(relativeDir, localName);
         },
       },
     },

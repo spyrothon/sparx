@@ -3,11 +3,12 @@
   "description": "A React-based design system for Spyrothon",
   "version": "0.4.1",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/sparx.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "publishConfig": {
     "exports": {
       ".": {
@@ -51,8 +52,8 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/uuid": "^8.3.4",
-    "@vitejs/plugin-react": "^2.1.0",
+    "@vitejs/plugin-react-swc": "^3.3.0",
     "typescript": "^4.6.4",
-    "vite": "^3.1.0"
+    "vite": "^4.2.1"
   }
 }
