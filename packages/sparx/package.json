@@ -1,7 +1,7 @@
 {
   "name": "@spyrothon/sparx",
   "description": "A React-based design system for Spyrothon",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "dist/sparx.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -44,7 +44,7 @@
     "autonumeric": "^4.6.0",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7",
-    "react-polymorphic-types": "^2.0.0",
+    "react-polymorphic-types": "github:GamesDoneQuick/react-polymorphic-types#bd1e8388c1d02d919dd038a5d5690ff7bb62da88",
     "react-remark": "^2.1.0",
     "uuid": "^8.3.2",
     "zustand": "^3.7.2"
