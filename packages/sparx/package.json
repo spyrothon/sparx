@@ -24,6 +24,9 @@
       "./default.css": {
         "import": "./dist/default.css",
         "require": "./dist/default.css"
+      },
+      "./icons/": {
+        "import": "./dist/icons/"
       }
     }
   },
