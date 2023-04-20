@@ -228,7 +228,7 @@ function TagComponent() {
         content. Tags support all of the default colors, and can contain any content within them.
       </Text>
       <Stack as={Card} direction="horizontal">
-        <Tag color="normal">Normal</Tag>
+        <Tag color="default">Normal</Tag>
         <Tag color="accent">Accent</Tag>
         <Tag color="success">Success</Tag>
         <Tag color="info">Info</Tag>
@@ -239,7 +239,7 @@ function TagComponent() {
         Tags can also use the <code>solid</code> prop to get a more prominent appearance.
       </Text>
       <Stack as={Card} direction="horizontal">
-        <Tag solid color="normal">
+        <Tag solid color="default">
           Normal
         </Tag>
         <Tag solid color="accent">
