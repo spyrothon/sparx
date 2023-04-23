@@ -135,7 +135,7 @@ function TextInputComponent() {
 
 function TextInputVariations() {
   const [duration, setDuration] = React.useState(0);
-  const [currency, setCurrency] = React.useState<number | undefined>(15);
+  const [currency, setCurrency] = React.useState<number>(1505);
 
   return (
     <Stack as={Section} spacing="space-lg">
@@ -167,9 +167,16 @@ function TextInputVariations() {
         CurrencyInput
       </Header>
       <Text>
-        <code>CurrencyInput</code> handles currency values, specifically in the US Dollar format
-        (for now), automatically formatting the value with thousands separators for readability, and
-        providing a <code>number</code> representation of the value in return.
+        <code>CurrencyInput</code> handles currency values and works with any base-10 currency, as
+        configured through the <code>locale</code> (default <code>en-US</code>) and{" "}
+        <code>currency</code> (default <code>USD</code>) props. <code>value</code> is interpreted as
+        a number of cents (hundredths of a unit), and is automatically formatted with separators
+        according to the given locale.
+      </Text>
+      <Text>
+        Users type the number as they would on an ATM, where inputting more numbers adds them to the
+        right hand side of the value. Typing in a value of $5 would be done as <code>5</code>,{" "}
+        <code>0</code>, <code>0</code>.
       </Text>
       <Stack as={Card} spacing="space-md">
         <CurrencyInput value={currency} onChange={setCurrency} />
