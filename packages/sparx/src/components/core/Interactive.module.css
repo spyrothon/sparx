@@ -1,0 +1,13 @@
+.interactive {
+  color: var(--interactive-normal);
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    color: var(--interactive-hover);
+  }
+
+  &:active {
+    color: var(--interactive-active);
+  }
+}

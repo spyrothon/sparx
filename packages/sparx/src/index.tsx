@@ -7,6 +7,8 @@ export { Clickable } from "./components/core/Clickable";
 export type { ClickableProps } from "./components/core/Clickable";
 export { Image } from "./components/core/Image";
 export type { ImageProps, ImageLoadState } from "./components/core/Image";
+export { Interactive } from "./components/core/Interactive";
+export type { InteractiveProps } from "./components/core/Interactive";
 export { ProgressBar } from "./components/ProgressBar";
 export type { ProgressBarProps, ProgressBarColor, ProgressValue } from "./components/ProgressBar";
 export {

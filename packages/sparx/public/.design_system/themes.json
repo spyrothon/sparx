@@ -30,6 +30,10 @@
     "background-mod-backdrop": ["opacity(black, 70%)", "opacity(grey-900, 70%)"],
     "background-highlight": ["opacity(grey-100, 10%)", "opacity(grey-900, 10%)"],
 
+    "interaction-normal": ["white", "grey-900"],
+    "interaction-hover": ["grey-200", "grey-800"],
+    "interaction-active": ["grey-300", "grey-700"],
+
     "text-normal": ["grey-100", "grey-900"],
     "text-secondary": ["grey-400", "grey-400"],
     "text-success": ["green-400", "green-500"],
