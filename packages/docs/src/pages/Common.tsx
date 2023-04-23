@@ -7,6 +7,7 @@ import {
   Clickable,
   Header,
   Image,
+  Interactive,
   ProgressBar,
   Section,
   Stack,
@@ -98,8 +99,9 @@ function ClickableComponent() {
         </Clickable>
       </Card>
       <Text>
-        In most cases, consumers should be sure to add <code>cursor: pointer</code> to the clickable
-        element so that users more clearly know it is meant to be interactive.
+        When the user interacts with a <code>Clickable</code>, the cursor will automatically be
+        changed to <code>pointer</code>, but this can be prevented by using the{" "}
+        <code>noCursor</code> prop.
       </Text>
       <Callout type="danger">
         <Text>
@@ -107,6 +109,36 @@ function ClickableComponent() {
           the web, whether internal or external. For links, use <code>Anchor</code> instead.
         </Text>
       </Callout>
+      <Header tag="h3">Interactive</Header>
+      <Text>
+        While <code>Clickable</code> provides the semantics for creating interactive elements,{" "}
+        <code>Interactive</code> can provide some default visual styling to convey hover, focus, and
+        active states when appropriate.
+      </Text>
+      <Card>
+        <Interactive>
+          <Text variant="text-md/inherit">
+            This text is wrapped with an <code>Interactive</code> and will have it's background
+            color changed when interacted with.
+          </Text>
+        </Interactive>
+      </Card>
+      <Text>
+        When used with <code>Text</code> components, be sure to use the <code>/inherit</code>{" "}
+        variants so that the interactive colors can change.
+      </Text>
+      <Text>
+        In cases where preserving text color is important, the <code>background</code> prop can be
+        used to instead change the background color on interactions.
+      </Text>
+      <Card>
+        <Interactive background>
+          <Text>
+            This text is wrapped with an <code>Interactive</code> and will have it's background
+            color changed when interacted with.
+          </Text>
+        </Interactive>
+      </Card>
     </Stack>
   );
 }

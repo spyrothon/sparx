@@ -112,8 +112,8 @@
 .link {
   --_button-background: transparent;
   --_button-text: var(--text-normal);
-  --_button-background-hover: transparent;
-  --_button-background-active: transparent;
+  --_button-background-hover: var(--interactive-background-hover);
+  --_button-background-active: var(--interactive-background-active);
   --_button-background-translucent: transparent;
 
   &:hover {

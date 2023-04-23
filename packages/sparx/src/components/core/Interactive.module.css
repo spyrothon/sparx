@@ -1,5 +1,6 @@
 .interactive {
   color: var(--interactive-normal);
+  cursor: pointer;
 
   &:hover,
   &:focus,
@@ -9,5 +10,20 @@
 
   &:active {
     color: var(--interactive-active);
+  }
+}
+
+.interactiveBackground {
+  background-color: inherit;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    background-color: var(--interactive-background-hover);
+  }
+
+  &:active {
+    background-color: var(--interactive-background-active);
   }
 }
