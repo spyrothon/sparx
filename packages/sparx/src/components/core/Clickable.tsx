@@ -1,10 +1,13 @@
 import * as React from "react";
+import classNames from "classnames";
 import type {
   PolymorphicForwardRefExoticComponent,
   PolymorphicPropsWithRef,
 } from "react-polymorphic-types";
 
 import type { PolymorphicRef } from "@sparx/utils/TypeUtils";
+
+import styles from "./Clickable.module.css";
 
 type InteractiveARIARole =
   | "button"
@@ -24,6 +27,7 @@ interface ClickableOwnProps {
   role?: InteractiveARIARole;
   disabled?: boolean;
   tabIndex?: -1 | 0;
+  noCursor?: boolean;
 }
 
 export type ClickableProps<Tag extends React.ElementType = "div"> = PolymorphicPropsWithRef<
@@ -41,6 +45,7 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
       role = "button",
       disabled = false,
       tabIndex = 0,
+      noCursor = false,
       children,
       className,
       onClick,
@@ -75,7 +80,7 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
         ref={setRef}
         role={role}
         tabIndex={disabled ? -1 : tabIndex}
-        className={className}
+        className={noCursor ? className : classNames(styles.clickableCursor, className)}
         onClick={!disabled ? onClick : undefined}
         onKeyDown={!disabled ? handleKeyDown : undefined}>
         {children}
