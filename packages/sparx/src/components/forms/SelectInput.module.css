@@ -14,9 +14,9 @@
   border-radius: var(--radius-normal);
   color: var(--text-normal);
   border: var(--_input-border);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--_input-padding);
   font-family: var(--font-normal);
-  font-size: 18px;
+  font-size: var(--_input-font-size);
 }
 
 .placeholder {
@@ -25,10 +25,10 @@
 
 .chevron {
   position: absolute;
+  top: 0;
   right: 4px;
-  top: 1px;
-  height: 32px;
-  width: 32px;
+  height: calc(var(--_input-font-size) * 2);
+  width: calc(var(--_input-font-size) * 2);
 }
 
 .dropdown {
@@ -56,7 +56,7 @@
 
 .itemContainer {
   margin: 0;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--_input-padding);
 }
 
 .itemHighlighted {

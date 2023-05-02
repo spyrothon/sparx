@@ -131,6 +131,13 @@ function TextInputComponent() {
         <TextInput color="info" placeholder="Info state" />
         <TextInput color="default" placeholder="Default state" />
       </Stack>
+      <Text>Sizes can also be adjusted to fit different contexts.</Text>
+      <Stack as={Card} spacing="space-md">
+        <TextInput size="small" placeholder="Small input" />
+        <TextInput size="medium" placeholder="Medium input" />
+        <TextInput size="large" placeholder="Large input" />
+        <TextInput size="xlarge" placeholder="Xlarge input" />
+      </Stack>
       <Text>
         For specific use cases, there's also a <code>blank</code> variant, which removes all of the
         color accenting from the input and just shows the light highlight on the input area
@@ -284,14 +291,28 @@ function SelectInputComponent() {
         <code>SelectInput</code> is a choice-selection input that lets users choose options out of a
         list.
       </Text>
-      <Card>
+      <Stack as={Card}>
+        <SelectInput
+          size="small"
+          items={SELECT_INPUT_OPTIONS}
+          selectedItem={selectedItem}
+          // @ts-expect-error Item should know that it can have extra properties
+          onSelect={(item) => item != null && setSelectedItem(item)}
+        />
         <SelectInput
           items={SELECT_INPUT_OPTIONS}
           selectedItem={selectedItem}
           // @ts-expect-error Item should know that it can have extra properties
           onSelect={(item) => item != null && setSelectedItem(item)}
         />
-      </Card>
+        <SelectInput
+          size="large"
+          items={SELECT_INPUT_OPTIONS}
+          selectedItem={selectedItem}
+          // @ts-expect-error Item should know that it can have extra properties
+          onSelect={(item) => item != null && setSelectedItem(item)}
+        />
+      </Stack>
       <Text>
         <code>SelectInput</code> is good for medium to large lists of options. In certain cases with
         a very limited number of options, a <code>RadioGroup</code> may provide a better experience

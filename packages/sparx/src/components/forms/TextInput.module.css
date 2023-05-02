@@ -1,12 +1,12 @@
 .input {
   background-color: var(--background-accent);
-  color: var(--text-normal);
+  color: var(--interactive-normal);
   border: var(--_input-border);
   border-radius: var(--radius-normal);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--_input-padding);
   font-family: var(--font-normal);
-  font-size: 18px;
-  line-height: 24px;
+  font-size: var(--_input-font-size);
+  line-height: var(--_input-line-height);
   width: 100%;
 
   &::placeholder {

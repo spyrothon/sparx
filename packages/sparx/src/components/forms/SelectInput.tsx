@@ -4,9 +4,9 @@ import { useSelect } from "downshift";
 
 import ChevronDown from "@sparx/icons/ChevronDown";
 import ChevronUp from "@sparx/icons/ChevronUp";
-import { Clickable, Text } from "@sparx/index";
+import { Clickable, Text, TextVariantSize } from "@sparx/index";
 
-import { getInputClassNames, InputColor } from "./Input";
+import { getInputClassNames, InputColor, InputSize } from "./Input";
 
 import styles from "./SelectInput.module.css";
 
@@ -15,16 +15,35 @@ interface SelectItem<T> {
   value: T;
 }
 
-function defaultRenderPlaceholder() {
+function getTextSizeVariant(size: InputSize): TextVariantSize {
+  switch (size) {
+    case "small":
+      return "text-sm";
+    case "medium":
+      return "text-md";
+    case "large":
+      return "text-lg";
+    case "xlarge":
+      return "text-lg";
+  }
+}
+
+function defaultRenderPlaceholder(size: InputSize) {
+  const variantSize = getTextSizeVariant(size);
   return (
-    <Text variant="text-md/secondary" className={styles.placeholder}>
+    <Text variant={`${variantSize}/secondary`} className={styles.placeholder}>
       Select an Option
     </Text>
   );
 }
 
-function defaultRenderItem<T>(item: SelectItem<T>) {
-  return <Text className={styles.defaultItem}>{item.name}</Text>;
+function defaultRenderItem<T>(item: SelectItem<T>, size: InputSize) {
+  const variantSize = getTextSizeVariant(size);
+  return (
+    <Text variant={`${variantSize}/normal`} className={styles.defaultItem}>
+      {item.name}
+    </Text>
+  );
 }
 
 export interface SelectInputProps<T> {
@@ -32,9 +51,10 @@ export interface SelectInputProps<T> {
   selectedItem?: SelectItem<T>;
   disabled?: boolean;
   color?: InputColor;
+  size?: InputSize;
   className?: string;
-  renderItem?: (item: SelectItem<T>) => React.ReactNode;
-  renderPlaceholder?: () => React.ReactNode;
+  renderItem?: (item: SelectItem<T>, size: InputSize) => React.ReactNode;
+  renderPlaceholder?: (size: InputSize) => React.ReactNode;
   onSelect: (item?: SelectItem<T>) => unknown;
 }
 
@@ -44,6 +64,7 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
     selectedItem,
     disabled = false,
     color = "accent",
+    size = "medium",
     className,
     renderItem = defaultRenderItem,
     renderPlaceholder = defaultRenderPlaceholder,
@@ -64,15 +85,15 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
         [styles.disabled]: disabled,
       })}>
       <Clickable
-        className={classNames(styles.input, ...getInputClassNames(color))}
+        className={classNames(styles.input, ...getInputClassNames(color, size))}
         disabled={disabled}
         {...getToggleButtonProps()}>
-        {selectedItem != null ? renderItem(selectedItem) : renderPlaceholder()}
+        {selectedItem != null ? renderItem(selectedItem, size) : renderPlaceholder(size)}
         <ChevronIcon size={24} className={styles.chevron} />
       </Clickable>
       <ul
         {...getMenuProps()}
-        className={classNames(styles.dropdown, ...getInputClassNames(color), {
+        className={classNames(styles.dropdown, ...getInputClassNames(color, size), {
           [styles.dropdownOpen]: isOpen,
         })}>
         {items.map((item, index) => (
@@ -82,7 +103,7 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
             className={classNames(styles.itemContainer, {
               [styles.itemHighlighted]: highlightedIndex === index,
             })}>
-            {renderItem(item)}
+            {renderItem(item, size)}
           </li>
         ))}
       </ul>

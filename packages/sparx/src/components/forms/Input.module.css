@@ -37,3 +37,24 @@
  * their values from the parent */
 .inherit {
 }
+
+.small {
+  --_input-font-size: 14px;
+  --_input-line-height: 18px;
+  --_input-padding: var(--space-sm) var(--space-sm);
+}
+.medium {
+  --_input-font-size: 18px;
+  --_input-line-height: 24px;
+  --_input-padding: var(--space-sm) var(--space-md);
+}
+.large {
+  --_input-font-size: 24px;
+  --_input-line-height: 30px;
+  --_input-padding: var(--space-md) var(--space-md);
+}
+.xlarge {
+  --_input-font-size: 32px;
+  --_input-line-height: 40px;
+  --_input-padding: var(--space-lg) var(--space-lg);
+}

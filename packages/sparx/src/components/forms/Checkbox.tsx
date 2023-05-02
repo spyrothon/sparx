@@ -48,7 +48,7 @@ export function Checkbox(props: CheckboxProps) {
         disabled={disabled}
         onChange={onChange}
       />
-      <Icon className={styles.icon} size={24} />
+      <Icon className={styles.icon} size="1.5em" />
       {labelNode}
     </Clickable>
   );
