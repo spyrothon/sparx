@@ -1,6 +1,11 @@
 .container {
   position: relative;
   width: 100%;
+
+  &.open .input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }
 
 .input {
@@ -8,7 +13,7 @@
   background-color: var(--background-accent);
   border-radius: var(--radius-normal);
   color: var(--text-normal);
-  border: 2px solid var(--accent-primary);
+  border: var(--_input-border);
   padding: var(--space-sm) var(--space-md);
   font-family: var(--font-normal);
   font-size: 18px;
@@ -33,7 +38,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  border: 2px solid var(--accent-primary);
+  border: var(--_input-border);
   border-top: none;
   border-bottom-left-radius: var(--radius-normal);
   border-bottom-right-radius: var(--radius-normal);

@@ -15,7 +15,7 @@
   display: block;
   background-color: var(--background-accent);
   color: var(--text-normal);
-  border: 2px solid var(--accent-primary);
+  border: var(--_input-border);
   border-radius: var(--radius-normal);
   padding: var(--space-md) var(--space-md);
   font-family: var(--font-normal);

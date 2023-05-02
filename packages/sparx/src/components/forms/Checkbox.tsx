@@ -6,17 +6,20 @@ import CheckboxChecked from "@sparx/icons/CheckboxChecked";
 import CheckboxUnchecked from "@sparx/icons/CheckboxUnchecked";
 import { Clickable, Text } from "@sparx/index";
 
+import { getInputClassNames, InputColor } from "./Input";
+
 import styles from "./Checkbox.module.css";
 
 export interface CheckboxProps {
   checked: boolean;
   label?: string | React.ReactNode;
+  color?: InputColor;
   disabled?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
 export function Checkbox(props: CheckboxProps) {
-  const { checked, label, disabled = false, onChange } = props;
+  const { checked, label, color = "accent", disabled = false, onChange } = props;
   const [inputId] = React.useState(() => uuid.v4());
 
   const Icon = checked ? CheckboxChecked : CheckboxUnchecked;
@@ -33,7 +36,9 @@ export function Checkbox(props: CheckboxProps) {
       tabIndex={0}
       disabled={disabled}
       aria-checked={checked}
-      className={classNames(styles.checkbox, { [styles.disabled]: disabled })}
+      className={classNames(styles.checkbox, ...getInputClassNames(color), {
+        [styles.disabled]: disabled,
+      })}
       htmlFor={inputId}>
       <input
         type="checkbox"

@@ -277,6 +277,7 @@ function SelectInputComponent() {
       </Text>
       <Card>
         <SelectInput
+          color="success"
           items={SELECT_INPUT_OPTIONS}
           selectedItem={renderedItem}
           renderItem={(item) => (
@@ -304,6 +305,7 @@ function SelectInputComponent() {
 
 function CheckboxComponent() {
   const [checked, setChecked] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
 
   return (
     <Stack as={Section} spacing="space-lg">
@@ -318,6 +320,17 @@ function CheckboxComponent() {
           checked={checked}
           label="Remember Me"
           onChange={(event) => setChecked(event.target.checked)}
+        />
+        <Checkbox
+          checked={checked2}
+          color="success"
+          label={
+            <>
+              <Text variant="header-sm/normal">Longer labels</Text>
+              <Text variant="text-xs/normal">Checkboxes can use any React Node as the label.</Text>
+            </>
+          }
+          onChange={(event) => setChecked2(event.target.checked)}
         />
       </Card>
       <Text>
@@ -487,7 +500,7 @@ function FormControlComponent() {
       </Text>
       <Card>
         <FormControl label="Twitch URL" prefix="twitch.tv/">
-          <TextInput />{" "}
+          <TextInput color="inherit" />{" "}
         </FormControl>
       </Card>
     </Stack>

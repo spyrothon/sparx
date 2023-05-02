@@ -6,6 +6,8 @@ import ChevronDown from "@sparx/icons/ChevronDown";
 import ChevronUp from "@sparx/icons/ChevronUp";
 import { Clickable, Text } from "@sparx/index";
 
+import { getInputClassNames, InputColor } from "./Input";
+
 import styles from "./SelectInput.module.css";
 
 interface SelectItem<T> {
@@ -29,6 +31,7 @@ export interface SelectInputProps<T> {
   items: SelectItem<T>[];
   selectedItem?: SelectItem<T>;
   disabled?: boolean;
+  color?: InputColor;
   className?: string;
   renderItem?: (item: SelectItem<T>) => React.ReactNode;
   renderPlaceholder?: () => React.ReactNode;
@@ -40,6 +43,7 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
     items,
     selectedItem,
     disabled = false,
+    color = "accent",
     className,
     renderItem = defaultRenderItem,
     renderPlaceholder = defaultRenderPlaceholder,
@@ -59,13 +63,18 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
         [styles.open]: isOpen,
         [styles.disabled]: disabled,
       })}>
-      <Clickable className={styles.input} disabled={disabled} {...getToggleButtonProps()}>
+      <Clickable
+        className={classNames(styles.input, ...getInputClassNames(color))}
+        disabled={disabled}
+        {...getToggleButtonProps()}>
         {selectedItem != null ? renderItem(selectedItem) : renderPlaceholder()}
         <ChevronIcon size={24} className={styles.chevron} />
       </Clickable>
       <ul
         {...getMenuProps()}
-        className={classNames(styles.dropdown, { [styles.dropdownOpen]: isOpen })}>
+        className={classNames(styles.dropdown, ...getInputClassNames(color), {
+          [styles.dropdownOpen]: isOpen,
+        })}>
         {items.map((item, index) => (
           <li
             key={`${item}${index}`}

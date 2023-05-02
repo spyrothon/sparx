@@ -12,7 +12,7 @@
 
 .switch {
   background-color: var(--background-primary);
-  border: 2px solid var(--accent-primary);
+  border: var(--_input-border);
   border-radius: 100000px;
   width: 44px;
 }
@@ -30,8 +30,7 @@
   right: unset;
   border-radius: 100000px;
   height: 18px;
-  color: var(--accent-primary);
-  transition: left right 0.1s ease-in;
+  color: var(--_input-color);
 }
 
 .iconUnchecked {
@@ -44,7 +43,7 @@
 
 .checked {
   & .switch {
-    background-color: var(--accent-primary);
+    background-color: var(--_input-color);
   }
 
   & .icon {

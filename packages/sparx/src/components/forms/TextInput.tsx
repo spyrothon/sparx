@@ -1,22 +1,13 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { getInputClassNames, InputColor } from "./Input";
+
 import styles from "./TextInput.module.css";
-
-const COLOR_VARIANTS = {
-  accent: styles.accent,
-  default: styles.default,
-  success: styles.success,
-  warning: styles.warning,
-  danger: styles.danger,
-  info: styles.info,
-};
-
-export type TextInputColor = keyof typeof COLOR_VARIANTS;
 
 export interface TextInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: "text" | "number" | "password" | "email" | "date" | "time" | "datetime-local";
-  color?: TextInputColor;
+  color?: InputColor;
 }
 
 export const TextInput = React.forwardRef(function TextInput(
@@ -32,7 +23,7 @@ export const TextInput = React.forwardRef(function TextInput(
       type={type}
       value={value}
       onChange={onChange}
-      className={classNames(styles.input, COLOR_VARIANTS[color], className)}
+      className={classNames(styles.input, ...getInputClassNames(color), className)}
     />
   );
 });

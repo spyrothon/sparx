@@ -32,8 +32,8 @@
     display: flex;
     align-items: center;
     padding: var(--space-sm) var(--space-md);
-    background-color: var(--accent-primary);
-    color: var(--accent-foreground);
+    background-color: var(--_input-color);
+    color: var(--_input-foreground);
   }
 }
 

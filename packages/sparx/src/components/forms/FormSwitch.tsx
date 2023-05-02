@@ -6,11 +6,14 @@ import RadioSelected from "@sparx/icons/RadioSelected";
 import RadioUnselected from "@sparx/icons/RadioUnselected";
 import { Clickable, Text } from "@sparx/index";
 
+import { getInputClassNames, InputColor } from "./Input";
+
 import styles from "./FormSwitch.module.css";
 
 export interface FormSwitchProps {
   checked: boolean;
   disabled?: boolean;
+  color?: InputColor;
   label?: React.ReactNode;
   note?: React.ReactNode;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
@@ -28,12 +31,12 @@ function renderSwitch() {
 }
 
 export function FormSwitch(props: FormSwitchProps) {
-  const { checked, disabled = false, label, note, onChange } = props;
+  const { checked, disabled = false, color = "accent", label, note, onChange } = props;
   const [inputId] = React.useState(() => uuid.v4());
 
   return (
     <div
-      className={classNames(styles.container, {
+      className={classNames(styles.container, ...getInputClassNames(color), {
         [styles.checked]: checked,
         [styles.disabled]: disabled,
       })}>

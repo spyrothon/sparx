@@ -1,0 +1,39 @@
+.accent {
+  --_input-color: var(--accent-primary);
+  --_input-border: 2px solid var(--_input-color);
+}
+.default {
+  --_input-color: var(--status-default-background);
+  --_input-foreground: var(--status-default-foreground);
+  --_input-border: 2px solid var(--_input-color);
+}
+.success {
+  --_input-color: var(--status-success-background);
+  --_input-foreground: var(--status-success-foreground);
+  --_input-border: 2px solid var(--_input-color);
+}
+.warning {
+  --_input-color: var(--status-warning-background);
+  --_input-foreground: var(--status-warning-foreground);
+  --_input-border: 2px solid var(--_input-color);
+}
+.danger {
+  --_input-color: var(--status-danger-background);
+  --_input-foreground: var(--status-danger-foreground);
+  --_input-border: 2px solid var(--_input-color);
+}
+.info {
+  --_input-color: var(--status-info-background);
+  --_input-foreground: var(--status-info-foreground);
+  --_input-border: 2px solid var(--_input-color);
+}
+.blank {
+  --_input-color: inherit;
+  --_input-foreground: var(--interactive-normal);
+  --_input-border: 2px solid var(--_input-color);
+}
+/* Inheriting specifically does _not_ set variables, as that
+ * overrides them instead of allowing the element to inherit
+ * their values from the parent */
+.inherit {
+}

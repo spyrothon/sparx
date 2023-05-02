@@ -7,7 +7,7 @@
 }
 
 .icon {
-  color: var(--accent-primary);
+  color: var(--_input-color);
   flex: 0 0 auto;
 }
 

@@ -1,6 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { getInputClassNames, InputColor } from "./Input";
+
 import styles from "./TextArea.module.css";
 
 function renderMaxLengthIndicator(length?: number, maxLength?: number) {
@@ -35,6 +37,7 @@ type TextAreaResizeType = keyof typeof RESIZE_CLASSES;
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   resize?: TextAreaResizeType;
   disabled?: boolean;
+  color?: InputColor;
 }
 
 export const TextArea = React.forwardRef(function TextArea(
@@ -47,6 +50,7 @@ export const TextArea = React.forwardRef(function TextArea(
     rows = 3,
     resize = "vertical",
     disabled = false,
+    color = "accent",
     className,
     onChange,
     ...nativeProps
@@ -54,7 +58,10 @@ export const TextArea = React.forwardRef(function TextArea(
   const length = value?.toString().length;
 
   return (
-    <div className={classNames(styles.container, { [styles.disabled]: disabled })}>
+    <div
+      className={classNames(styles.container, ...getInputClassNames(color), {
+        [styles.disabled]: disabled,
+      })}>
       <textarea
         ref={ref}
         disabled={disabled}
