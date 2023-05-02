@@ -2,13 +2,13 @@
   display: block;
   border: none;
   text-decoration: none;
-  padding: var(--space-md) var(--space-lg);
+  padding: var(--_button-padding);
   font-family: var(--font-accent);
-  font-size: 16px;
+  font-size: var(--_button-font-size);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
 
-  border-radius: var(--_button-radius);
+  border-radius: var(--radius-normal);
 
   &:disabled {
     cursor: not-allowed;
@@ -57,14 +57,17 @@
   }
 }
 
-.soft {
-  --_button-radius: var(--radius-normal);
+.small {
+  --_button-padding: var(--space-sm) var(--space-md);
+  --_button-font-size: 12px;
 }
-.sharp {
-  --_button-radius: var(--radius-flat);
+.medium {
+  --_button-padding: var(--space-md) var(--space-lg);
+  --_button-font-size: 16px;
 }
-.rounded {
-  --_button-radius: var(--radius-full);
+.large {
+  --_button-padding: var(--space-lg) var(--space-lg);
+  --_button-font-size: 20px;
 }
 
 .primary {

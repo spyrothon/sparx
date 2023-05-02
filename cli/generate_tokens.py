@@ -1,5 +1,4 @@
 from io import TextIOWrapper
-from os import path
 import os
 from pathlib import Path
 import shutil

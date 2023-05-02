@@ -376,6 +376,26 @@ function ButtonComponent() {
         <Button variant="primary">Filled</Button>
         <Button variant="info/outline">Outline</Button>
       </Stack>
+      <Header tag="h3" variant="header-md/normal">
+        Sizes
+      </Header>
+      <Text>
+        <code>Button</code> provides multiple sizes as well to work in various contexts where color
+        and look are not enough to differentiate, and to better match surrounding elements, like
+        headers with large text or forms with many buttons within them. In most cases, the{" "}
+        <code>md</code> variant should be preferred.
+      </Text>
+      <Stack as={Card} spacing="space-md" direction="horizontal" align="end">
+        <Button variant="primary/filled/sm" icon={ExclamationOctagon}>
+          Small (sm)
+        </Button>
+        <Button variant="primary/filled/md" icon={ExclamationTriangle}>
+          Medium (md, default)
+        </Button>
+        <Button variant="primary/filled/lg" icon={InfoCircle}>
+          Large (lg)
+        </Button>
+      </Stack>
     </Stack>
   );
 }

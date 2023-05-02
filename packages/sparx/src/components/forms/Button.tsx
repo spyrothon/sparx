@@ -18,25 +18,29 @@ const LOOK_VARIANTS = {
   outline: styles.outline,
 };
 
-const SHAPE_VARIANTS = {
-  soft: styles.soft,
-  sharp: styles.sharp,
-  rounded: styles.rounded,
+const SIZE_VARIANTS = {
+  sm: styles.small,
+  md: styles.medium,
+  lg: styles.large,
 };
 
 export type ButtonVariantColor = keyof typeof COLOR_VARIANTS;
 export type ButtonVariantLook = keyof typeof LOOK_VARIANTS;
-export type ButtonVariantShape = keyof typeof SHAPE_VARIANTS;
+export type ButtonVariantSize = keyof typeof SIZE_VARIANTS;
 export type ButtonVariant =
   | ButtonVariantColor
   | `${ButtonVariantColor}/${ButtonVariantLook}`
-  | `${ButtonVariantColor}/${ButtonVariantLook}/${ButtonVariantShape}`;
+  | `${ButtonVariantColor}/${ButtonVariantLook}/${ButtonVariantSize}`;
 
 function getVariantPieces(
   variant: ButtonVariant,
-): [ButtonVariantColor, ButtonVariantLook, ButtonVariantShape] {
-  const [color, look, shape] = variant.split("/");
-  return [color as ButtonVariantColor, look as ButtonVariantLook, shape as ButtonVariantShape];
+): [ButtonVariantColor, ButtonVariantLook | undefined, ButtonVariantSize | undefined] {
+  const [color, look, size] = variant.split("/");
+  return [
+    color as ButtonVariantColor,
+    look as ButtonVariantLook | undefined,
+    size as ButtonVariantSize | undefined,
+  ];
 }
 
 export interface ButtonIconProps {
@@ -60,12 +64,12 @@ export function getButtonClassNames(
 ) {
   if (variant == null) return className;
 
-  const [color, look = "filled", shape = "soft"] = getVariantPieces(variant);
+  const [color, look = "filled", size = "md"] = getVariantPieces(variant);
   return classNames(
     styles.button,
     LOOK_VARIANTS[look],
     COLOR_VARIANTS[color],
-    SHAPE_VARIANTS[shape],
+    SIZE_VARIANTS[size],
     className,
   );
 }

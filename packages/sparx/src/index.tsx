@@ -25,7 +25,7 @@ export type {
   ButtonVariant,
   ButtonVariantColor,
   ButtonVariantLook,
-  ButtonVariantShape,
+  ButtonVariantSize,
 } from "./components/forms/Button";
 export { Checkbox } from "./components/forms/Checkbox";
 export type { CheckboxProps } from "./components/forms/Checkbox";
