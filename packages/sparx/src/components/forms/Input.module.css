@@ -28,7 +28,7 @@
   --_input-border: 2px solid var(--_input-color);
 }
 .blank {
-  --_input-color: inherit;
+  --_input-color: transparent;
   --_input-foreground: var(--interactive-normal);
   --_input-border: 2px solid var(--_input-color);
 }

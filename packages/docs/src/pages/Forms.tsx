@@ -87,6 +87,8 @@ function Example() {
 }
 
 function TextInputComponent() {
+  const [currency, setCurrency] = React.useState(5000);
+
   return (
     <Stack as={Section} spacing="space-lg">
       <Header tag="h2">TextInput</Header>
@@ -128,6 +130,31 @@ function TextInputComponent() {
         <TextInput color="danger" placeholder="Danger state" />
         <TextInput color="info" placeholder="Info state" />
         <TextInput color="default" placeholder="Default state" />
+      </Stack>
+      <Text>
+        For specific use cases, there's also a <code>blank</code> variant, which removes all of the
+        color accenting from the input and just shows the light highlight on the input area
+        background. Especially for larger inputs, this can be useful for avoiding too much color or
+        appearing overly-segmented.
+      </Text>
+      <Stack as={Card} spacing="space-md">
+        <TextInput color="blank" defaultValue="This has no borders" />
+      </Stack>
+      <Text>
+        Blank variants should almost always be used inside of a <code>FormControl</code>, or using
+        an input type that has existing formatting (like <code>CurrencyInput</code>) to help the
+        user understand that the field is still editable, despite not having any other indicators.
+      </Text>
+      <Stack as={Card} spacing="space-md">
+        <FormControl
+          color="blank"
+          label="Blank Input Example"
+          note="Providing a label and note make it more clear that the input is editable.">
+          <CurrencyInput color="inherit" value={currency} onChange={setCurrency} />
+        </FormControl>
+        <FormControl color="success" label="Or a Prefix" prefix="twitch.tv/">
+          <TextInput color="blank" />
+        </FormControl>
       </Stack>
     </Stack>
   );
