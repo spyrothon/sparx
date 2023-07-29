@@ -5,7 +5,6 @@ import {
   Callout,
   Card,
   Clickable,
-  createColumnHelper,
   Header,
   Image,
   Interactive,
@@ -19,6 +18,13 @@ import {
   ThemeProvider,
   useThemeClass,
 } from "@spyrothon/sparx";
+
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 
 import usePageAccent from "../usePageAccent";
 import PageHeader from "./PageHeader";
@@ -323,6 +329,11 @@ const SAMPLE_TABLE_COLUMNS = [
 ];
 
 function TableComponent() {
+  const table = useReactTable({
+    data: SAMPLE_TABLE_DATA,
+    columns: SAMPLE_TABLE_COLUMNS,
+    getCoreRowModel: getCoreRowModel(),
+  });
   return (
     <Stack as={Section} spacing="space-lg">
       <Header tag="h2">Table</Header>
@@ -335,7 +346,32 @@ function TableComponent() {
         props from the <code>useReactTable</code> function defined there.
       </Text>
       <Stack as={Card} direction="horizontal">
-        <Table columns={SAMPLE_TABLE_COLUMNS} data={SAMPLE_TABLE_DATA} />
+        <Table>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <Table.HeaderRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <Table.Heading key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
+                  </Table.Heading>
+                ))}
+              </Table.HeaderRow>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <Table.Row key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <Table.Cell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </Table.Cell>
+                ))}
+              </Table.Row>
+            ))}
+          </tbody>
+        </Table>
       </Stack>
     </Stack>
   );

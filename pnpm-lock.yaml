@@ -29,6 +29,7 @@ importers:
   packages/docs:
     specifiers:
       '@spyrothon/sparx': workspace:*
+      '@tanstack/react-table': ^8.9.3
       '@types/node': ^18.8.5
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
@@ -41,6 +42,7 @@ importers:
       vite: ^3.1.0
     dependencies:
       '@spyrothon/sparx': link:../sparx
+      '@tanstack/react-table': 8.9.3_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router-dom: 6.4.2_biqbaboplfbrettd7655fr4n2y
@@ -845,6 +847,18 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /@tanstack/react-table/8.9.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Ng9rdm3JPoSCi6cVZvANsYnF+UoGVRxflMb270tVj0+LjeT/ZtZ9ckxF6oLPLcKesza6VKBqtdF9mQ+vaz24Aw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.9.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@tanstack/react-table/8.9.3_yicqvriqha7ppr6zyvk5y4bjya:
