@@ -1,0 +1,11 @@
+.table {
+  width: 100%;
+  border-radius: var(--radius-normal);
+  background-color: var(--background-floating);
+  color: var(--text-normal);
+
+  & th,
+  & td {
+    padding: var(--space-sm) var(--space-md);
+  }
+}

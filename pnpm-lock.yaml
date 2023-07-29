@@ -58,6 +58,7 @@ importers:
       '@iconscout/react-unicons': ^1.1.6
       '@iconscout/react-unicons-solid': ^0.0.3
       '@internationalized/number': ^3.2.0
+      '@tanstack/react-table': ^8.9.3
       '@types/node': ^18.8.5
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
@@ -77,10 +78,11 @@ importers:
       '@iconscout/react-unicons': 1.1.6_react@16.14.0
       '@iconscout/react-unicons-solid': 0.0.3_react@16.14.0
       '@internationalized/number': 3.2.0
+      '@tanstack/react-table': 8.9.3_yicqvriqha7ppr6zyvk5y4bjya
       classnames: 2.3.2
       downshift: 6.1.12_react@16.14.0
       react: 16.14.0
-      react-dom: 18.2.0_react@18.2.0
+      react-dom: 18.2.0_react@16.14.0
       react-polymorphic-types: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.0.21
       react-remark: 2.1.0_react@16.14.0
       uuid: 8.3.2
@@ -843,6 +845,23 @@ packages:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
       tslib: 2.4.0
+    dev: false
+
+  /@tanstack/react-table/8.9.3_yicqvriqha7ppr6zyvk5y4bjya:
+    resolution: {integrity: sha512-Ng9rdm3JPoSCi6cVZvANsYnF+UoGVRxflMb270tVj0+LjeT/ZtZ9ckxF6oLPLcKesza6VKBqtdF9mQ+vaz24Aw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.9.3
+      react: 16.14.0
+      react-dom: 18.2.0_react@16.14.0
+    dev: false
+
+  /@tanstack/table-core/8.9.3:
+    resolution: {integrity: sha512-NpHZBoHTfqyJk0m/s/+CSuAiwtebhYK90mDuf5eylTvgViNOujiaOaxNDxJkQQAsVvHWZftUGAx1EfO1rkKtLg==}
+    engines: {node: '>=12'}
     dev: false
 
   /@types/history/4.7.11:
@@ -2591,6 +2610,16 @@ packages:
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
+
+  /react-dom/18.2.0_react@16.14.0:
+    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 16.14.0
+      scheduler: 0.23.0
+    dev: false
 
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}

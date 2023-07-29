@@ -94,6 +94,9 @@ export type {
   Spacing,
 } from "./components/layout/Stack";
 
+export { Table, createColumnHelper } from "./components/table/Table";
+export type { TableProps } from "./components/table/Table";
+
 export { Markdown } from "./components/text/Markdown";
 export type { MarkdownProps } from "./components/text/Markdown";
 export { Header, Text } from "./components/text/Text";

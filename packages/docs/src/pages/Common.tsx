@@ -5,12 +5,14 @@ import {
   Callout,
   Card,
   Clickable,
+  createColumnHelper,
   Header,
   Image,
   Interactive,
   ProgressBar,
   Section,
   Stack,
+  Table,
   Tag,
   Text,
   Theme,
@@ -294,6 +296,51 @@ function TagComponent() {
   );
 }
 
+interface TableEntry {
+  name: string;
+  species: string;
+  color: string;
+}
+
+const SAMPLE_TABLE_DATA = [
+  { name: "Spyro", species: "Dragon", color: "Purple" },
+  { name: "Sparx", species: "Dragonfly", color: "Gold" },
+  { name: "Elora", species: "Fawn", color: "Tan" },
+];
+
+const tableColumnHelper = createColumnHelper<TableEntry>();
+
+const SAMPLE_TABLE_COLUMNS = [
+  tableColumnHelper.accessor("name", {
+    cell: (info) => info.getValue(),
+  }),
+  tableColumnHelper.accessor("species", {
+    cell: (info) => info.getValue(),
+  }),
+  tableColumnHelper.accessor("color", {
+    cell: (info) => info.getValue(),
+  }),
+];
+
+function TableComponent() {
+  return (
+    <Stack as={Section} spacing="space-lg">
+      <Header tag="h2">Table</Header>
+      <Text>
+        <code>Table</code> provides a comfortable layout for tabular data, able to display any kind
+        of content in any number of structures.
+      </Text>
+      <Text>
+        <code>Table</code> is powered by <code>@tanstack/react-table</code> and inherits all of its
+        props from the <code>useReactTable</code> function defined there.
+      </Text>
+      <Stack as={Card} direction="horizontal">
+        <Table columns={SAMPLE_TABLE_COLUMNS} data={SAMPLE_TABLE_DATA} />
+      </Stack>
+    </Stack>
+  );
+}
+
 export default function Common() {
   usePageAccent(Accent.PURPLE);
 
@@ -310,6 +357,7 @@ export default function Common() {
       <AppContainerComponent />
       <ProgressBarComponent />
       <TagComponent />
+      <TableComponent />
     </Stack>
   );
 }
