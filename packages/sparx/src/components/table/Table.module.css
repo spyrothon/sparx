@@ -1,0 +1,23 @@
+.table {
+  width: 100%;
+  border-radius: var(--radius-normal);
+  color: var(--text-normal);
+  border-collapse: collapse;
+}
+
+.headerRow .heading {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cozy {
+  & .heading,
+  & .cell {
+    padding: var(--space-md) var(--space-lg);
+  }
+}
+.compact {
+  & .heading,
+  & .cell {
+    padding: var(--space-sm) var(--space-md);
+  }
+}

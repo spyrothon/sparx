@@ -18,7 +18,10 @@ export interface CheckboxProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
-export function Checkbox(props: CheckboxProps) {
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
+  props,
+  ref,
+) {
   const { checked, label, color = "accent", disabled = false, onChange } = props;
   const [inputId] = React.useState(() => uuid.v4());
 
@@ -41,6 +44,7 @@ export function Checkbox(props: CheckboxProps) {
       })}
       htmlFor={inputId}>
       <input
+        ref={ref}
         type="checkbox"
         style={{ display: "none" }}
         id={inputId}
@@ -52,4 +56,4 @@ export function Checkbox(props: CheckboxProps) {
       {labelNode}
     </Clickable>
   );
-}
+});

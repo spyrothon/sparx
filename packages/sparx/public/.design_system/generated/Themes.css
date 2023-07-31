@@ -49,6 +49,8 @@
   --background-mod-subtle: rgba(27, 31, 36, 10%);
   --background-mod-backdrop: rgba(27, 31, 36, 70%);
   --background-highlight: rgba(241, 236, 237, 10%);
+  --border-primary: var(--grey-400);
+  --border-subtle: rgba(255, 255, 255, 10%);
   --interactive-normal: var(--white);
   --interactive-hover: var(--grey-200);
   --interactive-active: var(--grey-300);
@@ -105,6 +107,8 @@
   --background-mod-subtle: rgba(26, 23, 24, 10%);
   --background-mod-backdrop: rgba(26, 23, 24, 70%);
   --background-highlight: rgba(26, 23, 24, 10%);
+  --border-primary: var(--grey-400);
+  --border-subtle: rgba(26, 23, 24, 10%);
   --interactive-normal: var(--grey-900);
   --interactive-hover: var(--grey-600);
   --interactive-active: var(--grey-500);

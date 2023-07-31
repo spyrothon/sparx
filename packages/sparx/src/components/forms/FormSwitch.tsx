@@ -30,7 +30,10 @@ function renderSwitch() {
   );
 }
 
-export function FormSwitch(props: FormSwitchProps) {
+export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(function FormSwitch(
+  props,
+  ref,
+) {
   const { checked, disabled = false, color = "accent", label, note, onChange } = props;
   const [inputId] = React.useState(() => uuid.v4());
 
@@ -52,6 +55,7 @@ export function FormSwitch(props: FormSwitchProps) {
         </Text>
         {renderSwitch()}
         <input
+          ref={ref}
           type="checkbox"
           disabled={disabled}
           onChange={onChange}
@@ -65,4 +69,4 @@ export function FormSwitch(props: FormSwitchProps) {
       </Text>
     </div>
   );
-}
+});

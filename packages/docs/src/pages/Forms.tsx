@@ -157,7 +157,7 @@ function TextInputComponent() {
           color="blank"
           label="Blank Input Example"
           note="Providing a label and note make it more clear that the input is editable.">
-          <CurrencyInput color="inherit" value={currency} onChange={setCurrency} />
+          <CurrencyInput color="inherit" value={currency} onValueChange={setCurrency} />
         </FormControl>
         <FormControl color="success" label="Or a Prefix" prefix="twitch.tv/">
           <TextInput color="blank" />
@@ -194,7 +194,7 @@ function TextInputVariations() {
         number of seconds.
       </Text>
       <Stack as={Card} spacing="space-md">
-        <DurationInput value={duration} onChange={setDuration} />
+        <DurationInput value={duration} onValueChange={setDuration} />
         <Text>Duration value is {duration} seconds</Text>
       </Stack>
       <Header tag="h3" variant="header-md/normal">
@@ -213,7 +213,7 @@ function TextInputVariations() {
         <code>0</code>, <code>0</code>.
       </Text>
       <Stack as={Card} spacing="space-md">
-        <CurrencyInput value={currency} onChange={setCurrency} />
+        <CurrencyInput value={currency} onValueChange={setCurrency} />
         <Text>Currency value is {currency}</Text>
       </Stack>
     </Stack>

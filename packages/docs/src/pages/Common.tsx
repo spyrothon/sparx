@@ -11,12 +11,20 @@ import {
   ProgressBar,
   Section,
   Stack,
+  Table,
   Tag,
   Text,
   Theme,
   ThemeProvider,
   useThemeClass,
 } from "@spyrothon/sparx";
+
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 
 import usePageAccent from "../usePageAccent";
 import PageHeader from "./PageHeader";
@@ -294,6 +302,81 @@ function TagComponent() {
   );
 }
 
+interface TableEntry {
+  name: string;
+  species: string;
+  color: string;
+}
+
+const SAMPLE_TABLE_DATA = [
+  { name: "Spyro", species: "Dragon", color: "Purple" },
+  { name: "Sparx", species: "Dragonfly", color: "Gold" },
+  { name: "Elora", species: "Fawn", color: "Tan" },
+];
+
+const tableColumnHelper = createColumnHelper<TableEntry>();
+
+const SAMPLE_TABLE_COLUMNS = [
+  tableColumnHelper.accessor("name", {
+    cell: (info) => info.getValue(),
+  }),
+  tableColumnHelper.accessor("species", {
+    cell: (info) => info.getValue(),
+  }),
+  tableColumnHelper.accessor("color", {
+    cell: (info) => info.getValue(),
+  }),
+];
+
+function TableComponent() {
+  const table = useReactTable({
+    data: SAMPLE_TABLE_DATA,
+    columns: SAMPLE_TABLE_COLUMNS,
+    getCoreRowModel: getCoreRowModel(),
+  });
+  return (
+    <Stack as={Section} spacing="space-lg">
+      <Header tag="h2">Table</Header>
+      <Text>
+        <code>Table</code> provides a comfortable layout for tabular data, able to display any kind
+        of content in any number of structures.
+      </Text>
+      <Text>
+        <code>Table</code> is powered by <code>@tanstack/react-table</code> and inherits all of its
+        props from the <code>useReactTable</code> function defined there.
+      </Text>
+      <Stack as={Card} direction="horizontal">
+        <Table>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <Table.HeaderRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <Table.Heading key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(header.column.columnDef.header, header.getContext())}
+                  </Table.Heading>
+                ))}
+              </Table.HeaderRow>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <Table.Row key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <Table.Cell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </Table.Cell>
+                ))}
+              </Table.Row>
+            ))}
+          </tbody>
+        </Table>
+      </Stack>
+    </Stack>
+  );
+}
+
 export default function Common() {
   usePageAccent(Accent.PURPLE);
 
@@ -310,6 +393,7 @@ export default function Common() {
       <AppContainerComponent />
       <ProgressBarComponent />
       <TagComponent />
+      <TableComponent />
     </Stack>
   );
 }
