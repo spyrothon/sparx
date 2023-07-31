@@ -4,6 +4,7 @@ import {
   Accent,
   BrandLogo,
   Card,
+  defaultSelectItemToString,
   Divider,
   FormControl,
   SelectInput,
@@ -70,6 +71,7 @@ export default function DocsSidebar(props: { className: string }) {
         <FormControl label="Theme" size="small">
           <SelectInput
             items={THEME_OPTIONS}
+            itemToString={defaultSelectItemToString}
             selectedItem={THEME_OPTIONS.find(({ value }) => value === theme)}
             onSelect={(item) => (item != null ? setTheme(item.value) : null)}
           />
@@ -77,6 +79,7 @@ export default function DocsSidebar(props: { className: string }) {
         <FormControl label="Accent Color" size="small">
           <SelectInput
             items={ACCENT_OPTIONS}
+            itemToString={defaultSelectItemToString}
             selectedItem={ACCENT_OPTIONS.find(({ value }) => value === accent)}
             onSelect={(item) => (item != null ? setAccent(item.value) : null)}
           />

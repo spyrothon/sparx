@@ -51,6 +51,8 @@
 
   &.dropdownOpen {
     display: block;
+    overflow-y: scroll;
+    max-height: var(--_select-max-height);
   }
 }
 

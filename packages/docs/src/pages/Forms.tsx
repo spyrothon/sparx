@@ -1,14 +1,17 @@
 import * as React from "react";
+import { useController, useForm } from "react-hook-form";
 import {
   Button,
   Callout,
   Card,
   Checkbox,
   CurrencyInput,
+  defaultSelectItemToString,
   DurationInput,
   FormControl,
   FormSwitch,
   Header,
+  parseDuration,
   RadioGroup,
   Section,
   SelectInput,
@@ -168,8 +171,9 @@ function TextInputComponent() {
 }
 
 function TextInputVariations() {
-  const [duration, setDuration] = React.useState(0);
-  const [currency, setCurrency] = React.useState<number>(1505);
+  const { control } = useForm({ defaultValues: { duration: 0, currency: 1505 } });
+  const { field: duration } = useController({ name: "duration", control });
+  const { field: currency } = useController({ name: "currency", control });
 
   return (
     <Stack as={Section} spacing="space-lg">
@@ -194,8 +198,8 @@ function TextInputVariations() {
         number of seconds.
       </Text>
       <Stack as={Card} spacing="space-md">
-        <DurationInput value={duration} onValueChange={setDuration} />
-        <Text>Duration value is {duration} seconds</Text>
+        <DurationInput value={duration.value} onValueChange={duration.onChange} />
+        <Text>Duration value is {duration.value} seconds</Text>
       </Stack>
       <Header tag="h3" variant="header-md/normal">
         CurrencyInput
@@ -213,8 +217,8 @@ function TextInputVariations() {
         <code>0</code>, <code>0</code>.
       </Text>
       <Stack as={Card} spacing="space-md">
-        <CurrencyInput value={currency} onValueChange={setCurrency} />
-        <Text>Currency value is {currency}</Text>
+        <CurrencyInput value={currency.value} onValueChange={currency.onChange} />
+        <Text>Currency value is {currency.value}</Text>
       </Stack>
     </Stack>
   );
@@ -274,9 +278,29 @@ const SELECT_INPUT_OPTIONS = [
   },
 ];
 
+type ExpandedSelectItem = typeof SELECT_INPUT_OPTIONS[number];
+
 function SelectInputComponent() {
-  const [selectedItem, setSelectedItem] = React.useState(SELECT_INPUT_OPTIONS[0]);
-  const [renderedItem, setRenderedItem] = React.useState(SELECT_INPUT_OPTIONS[0]);
+  const { control } = useForm({
+    defaultValues: {
+      selectedItem: SELECT_INPUT_OPTIONS[0],
+      renderedItem: SELECT_INPUT_OPTIONS[0],
+    },
+  });
+  const { field: selectControl } = useController({ name: "selectedItem", control });
+  const { field: renderedControl } = useController({ name: "renderedItem", control });
+
+  function customRenderItem(item: ExpandedSelectItem) {
+    return (
+      <Stack direction="horizontal" spacing="space-md">
+        <item.icon color="var(--text-normal)" size={20} style={{ marginTop: 2, marginLeft: 2 }} />
+        <div>
+          <Text>{item.name}</Text>
+          <Text variant="text-xs/normal">{item.subtext}</Text>
+        </div>
+      </Stack>
+    );
+  }
 
   return (
     <Stack as={Section} spacing="space-lg">
@@ -295,22 +319,22 @@ function SelectInputComponent() {
         <SelectInput
           size="small"
           items={SELECT_INPUT_OPTIONS}
-          selectedItem={selectedItem}
-          // @ts-expect-error Item should know that it can have extra properties
-          onSelect={(item) => item != null && setSelectedItem(item)}
+          itemToString={defaultSelectItemToString}
+          selectedItem={selectControl.value}
+          onSelect={selectControl.onChange}
         />
         <SelectInput
           items={SELECT_INPUT_OPTIONS}
-          selectedItem={selectedItem}
-          // @ts-expect-error Item should know that it can have extra properties
-          onSelect={(item) => item != null && setSelectedItem(item)}
+          itemToString={defaultSelectItemToString}
+          selectedItem={selectControl.value}
+          onSelect={selectControl.onChange}
         />
         <SelectInput
           size="large"
           items={SELECT_INPUT_OPTIONS}
-          selectedItem={selectedItem}
-          // @ts-expect-error Item should know that it can have extra properties
-          onSelect={(item) => item != null && setSelectedItem(item)}
+          itemToString={defaultSelectItemToString}
+          selectedItem={selectControl.value}
+          onSelect={selectControl.onChange}
         />
       </Stack>
       <Text>
@@ -320,32 +344,29 @@ function SelectInputComponent() {
       </Text>
       <Text>
         Items can choose how they get rendered in the dropdown list using the{" "}
-        <code>renderItem</code> prop. This will change both how the item appears in the dropdown
-        list, as well as in the input row itself.
+        <code>renderItem</code> prop. By default, this will change both how the item appears in the
+        dropdown list, as well as in the input row itself. To change how the item renders in the
+        input row separately from the dropdown, use <code>renderSelectedItem</code>.
       </Text>
       <Card>
-        <SelectInput
-          color="success"
-          items={SELECT_INPUT_OPTIONS}
-          selectedItem={renderedItem}
-          renderItem={(item) => (
-            <Stack direction="horizontal" spacing="space-md">
-              {/* @ts-expect-error Item should know that it can have extra properties */}
-              <item.icon
-                color="var(--text-normal)"
-                size={20}
-                style={{ marginTop: 2, marginLeft: 2 }}
-              />
-              <div>
-                <Text>{item.name}</Text>
-                {/* @ts-expect-error Item should know that it can have extra properties */}
-                <Text variant="text-xs/normal">{item.subtext}</Text>
-              </div>
-            </Stack>
-          )}
-          // @ts-expect-error Item should know that it can have extra properties
-          onSelect={(item) => item != null && setRenderedItem(item)}
-        />
+        <Stack>
+          <SelectInput
+            color="success"
+            items={SELECT_INPUT_OPTIONS}
+            itemToString={defaultSelectItemToString}
+            renderItem={customRenderItem}
+            selectedItem={renderedControl.value}
+            onSelect={renderedControl.onChange}
+          />
+          <SelectInput
+            color="success"
+            items={SELECT_INPUT_OPTIONS}
+            itemToString={defaultSelectItemToString}
+            renderItem={customRenderItem}
+            selectedItem={renderedControl.value}
+            onSelect={renderedControl.onChange}
+          />
+        </Stack>
       </Card>
     </Stack>
   );
@@ -602,8 +623,8 @@ function DisabledStates() {
         <SelectInput
           disabled
           items={SELECT_INPUT_OPTIONS}
+          itemToString={defaultSelectItemToString}
           selectedItem={selectedItem}
-          // @ts-expect-error Item should know that it can have extra properties
           onSelect={(item) => item != null && setSelectedItem(item)}
         />
         <Checkbox

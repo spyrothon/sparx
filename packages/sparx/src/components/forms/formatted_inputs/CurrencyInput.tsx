@@ -58,6 +58,7 @@ export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputPro
         type="text"
         value={formattedValue}
         onKeyDown={handleKeyDown}
+        onChange={() => null}
       />
     );
   },
