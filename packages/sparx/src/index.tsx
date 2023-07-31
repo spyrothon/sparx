@@ -35,7 +35,7 @@ export { FormSwitch } from "./components/forms/FormSwitch";
 export type { FormSwitchProps } from "./components/forms/FormSwitch";
 export { RadioGroup } from "./components/forms/RadioGroup";
 export type { RadioGroupProps } from "./components/forms/RadioGroup";
-export { SelectInput } from "./components/forms/SelectInput";
+export { SelectInput, defaultSelectItemToString } from "./components/forms/SelectInput";
 export type { SelectInputProps } from "./components/forms/SelectInput";
 export { TextArea } from "./components/forms/TextArea";
 export type { TextAreaProps } from "./components/forms/TextArea";
@@ -116,3 +116,5 @@ export { Tag } from "./components/Tag";
 export type { TagProps, TagColor } from "./components/Tag";
 
 export { useHoverFocus } from "./hooks/useHoverFocus";
+
+export { formatDuration, parseDuration } from "./utils/DurationUtils";

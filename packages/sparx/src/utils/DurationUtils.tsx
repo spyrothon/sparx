@@ -1,10 +1,13 @@
 // Converts from seconds to 00:00:00
-export function toString(rawSeconds: string | number | undefined, stringifyNull: true): string;
-export function toString(
+export function formatDuration(
+  rawSeconds: string | number | undefined,
+  stringifyNull: true,
+): string;
+export function formatDuration(
   rawSeconds: string | number | undefined,
   stringifyNull?: false,
 ): string | undefined;
-export function toString(rawSeconds: string | number | undefined, stringifyNull = false) {
+export function formatDuration(rawSeconds: string | number | undefined, stringifyNull = false) {
   if (rawSeconds == null) return stringifyNull ? "00:00:00" : undefined;
   if (typeof rawSeconds !== "number") {
     rawSeconds = parseInt(rawSeconds);
@@ -28,7 +31,7 @@ export function toString(rawSeconds: string | number | undefined, stringifyNull 
 }
 
 // Converts from 00:00:00 to seconds
-export function fromString(value: string) {
+export function parseDuration(value: string) {
   const parts = value.split(":");
 
   switch (parts.length) {
@@ -58,8 +61,3 @@ export function fromString(value: string) {
       return 0;
   }
 }
-
-export default {
-  toString,
-  fromString,
-};
