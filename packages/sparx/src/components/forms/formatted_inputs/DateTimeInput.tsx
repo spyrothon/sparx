@@ -5,16 +5,18 @@ import { formatDateTimeLocalToString } from "@sparx/utils/DateTimeUtils";
 
 export interface DateTimeInputProps extends Omit<TextInputProps, "type" | "value" | "onChange"> {
   value?: Date;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>, value: Date) => unknown;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: Date) => unknown;
+  onValueChange?: (value: Date) => unknown;
 }
 
 export const DateTimeInput = React.forwardRef<HTMLInputElement, DateTimeInputProps>(
   function DateTimeInput(props, ref) {
-    const { value, onChange, ...otherProps } = props;
+    const { value, onChange, onValueChange, ...otherProps } = props;
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
       const value = new Date(event.target.value);
-      onChange(event, value);
+      onChange?.(event, value);
+      onValueChange?.(value);
     }
 
     return (

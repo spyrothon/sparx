@@ -5,12 +5,13 @@ import DurationUtils from "@sparx/utils/DurationUtils";
 
 export interface DurationInputProps extends Omit<TextInputProps, "type" | "value" | "onChange"> {
   value?: number;
-  onChange: (event: React.SyntheticEvent<HTMLInputElement>, value: number) => unknown;
+  onChange?: (event: React.SyntheticEvent<HTMLInputElement>, value: number) => unknown;
+  onValueChange?: (value: number) => unknown;
 }
 
 export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputProps>(
   function DurationInput(props, ref) {
-    const { value, onChange, placeholder = "hh:mm:ss", ...otherProps } = props;
+    const { value, onChange, onValueChange, placeholder = "hh:mm:ss", ...otherProps } = props;
     const [renderedValue, setRenderedValue] = React.useState(() => DurationUtils.toString(value));
 
     React.useEffect(() => {
@@ -22,7 +23,8 @@ export const DurationInput = React.forwardRef<HTMLInputElement, DurationInputPro
     // value on every change will cause unusable formatting.
     function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
       const duration = DurationUtils.fromString(event.target.value);
-      onChange(event, duration);
+      onChange?.(event, duration);
+      onValueChange?.(duration);
     }
 
     return (

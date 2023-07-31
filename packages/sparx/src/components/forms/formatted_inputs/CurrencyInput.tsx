@@ -8,14 +8,22 @@ export interface CurrencyInputProps extends Omit<TextInputProps, "type" | "value
    * An integer value representing hundredths (cents) for the currency amount.
    */
   value: number;
-  onChange: (event: React.SyntheticEvent<HTMLInputElement>, value: number) => unknown;
+  onChange?: (event: React.SyntheticEvent<HTMLInputElement>, value: number) => unknown;
+  onValueChange?: (value: number) => unknown;
   locale?: string;
   currency?: string;
 }
 
 export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputProps>(
   function CurrencyInput(props, ref) {
-    const { value = 0, onChange, locale = "en-US", currency = "USD", ...otherProps } = props;
+    const {
+      value = 0,
+      onChange,
+      onValueChange,
+      locale = "en-US",
+      currency = "USD",
+      ...otherProps
+    } = props;
     const [formatter] = React.useMemo(
       () => [
         new NumberFormatter(locale, {
@@ -39,7 +47,8 @@ export const CurrencyInput = React.forwardRef<HTMLInputElement, CurrencyInputPro
       }
 
       setFormattedValue(formatter.format(newValue / 100));
-      onChange(event, newValue);
+      onChange?.(event, newValue);
+      onValueChange?.(newValue);
     }
 
     return (
