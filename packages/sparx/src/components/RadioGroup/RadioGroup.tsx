@@ -6,7 +6,7 @@ import RadioSelected from "@sparx/icons/RadioSelected";
 import RadioUnselected from "@sparx/icons/RadioUnselected";
 import { Stack, Text } from "@sparx/index";
 
-import { Clickable } from "../core/Clickable";
+import { Clickable } from "../Clickable/Clickable";
 
 import styles from "./RadioGroup.module.css";
 

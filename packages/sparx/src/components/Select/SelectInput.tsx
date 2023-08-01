@@ -6,7 +6,7 @@ import ChevronDown from "@sparx/icons/ChevronDown";
 import ChevronUp from "@sparx/icons/ChevronUp";
 import { Clickable, Text, TextVariantSize } from "@sparx/index";
 
-import { getInputClassNames, InputColor, InputSize } from "./Input";
+import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 
 import styles from "./SelectInput.module.css";
 

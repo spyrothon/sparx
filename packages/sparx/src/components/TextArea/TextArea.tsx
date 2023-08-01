@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { getInputClassNames, InputColor } from "./Input";
+import { getInputClassNames, InputColor } from "../Input/Input";
 
 import styles from "./TextArea.module.css";
 

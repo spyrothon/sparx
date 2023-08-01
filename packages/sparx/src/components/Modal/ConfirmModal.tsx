@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Button, Card, Header, Stack, Text } from "@sparx/index";
 
-import { ButtonVariantColor } from "../forms/Button";
+import { ButtonVariantColor } from "../Button/Button";
 import { ModalRenderProps } from "./Modal";
 
 import styles from "./ConfirmModal.module.css";

@@ -3,8 +3,8 @@ import classNames from "classnames";
 
 import { Text, TextVariantColor } from "@sparx/index";
 
-import { TextVariantSize } from "../text/Text";
-import { getInputClassNames, InputColor } from "./Input";
+import { getInputClassNames, InputColor } from "../Input/Input";
+import { TextVariantSize } from "../Text/Text";
 
 import styles from "./FormControl.module.css";
 

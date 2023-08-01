@@ -6,7 +6,7 @@ import RadioSelected from "@sparx/icons/RadioSelected";
 import RadioUnselected from "@sparx/icons/RadioUnselected";
 import { Clickable, Text } from "@sparx/index";
 
-import { getInputClassNames, InputColor } from "./Input";
+import { getInputClassNames, InputColor } from "../Input/Input";
 
 import styles from "./FormSwitch.module.css";
 

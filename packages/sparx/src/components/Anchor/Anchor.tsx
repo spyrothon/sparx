@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { ButtonVariant, getButtonClassNames } from "../forms/Button";
+import { ButtonVariant, getButtonClassNames } from "../Button/Button";
 
 import styles from "./Anchor.module.css";
 

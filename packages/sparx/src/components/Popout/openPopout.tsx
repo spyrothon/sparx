@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as uuid from "uuid";
 
-import { createLayer, removeLayer, useLayerSubscription } from "../layers/LayersStore";
+import { createLayer, removeLayer, useLayerSubscription } from "../Layer/LayersStore";
 import { Popout, PopoutProps, PopoutRenderProps } from "./Popout";
 
 export function openPopout(

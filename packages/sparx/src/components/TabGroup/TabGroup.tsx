@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import type { IconProps } from "../icons/IconProps";
-import type { ClickableProps } from "./core/Clickable";
-import { Clickable } from "./core/Clickable";
+import type { IconProps } from "../../icons/IconProps";
+import type { ClickableProps } from "../Clickable/Clickable";
+import { Clickable } from "../Clickable/Clickable";
 
 import styles from "./TabGroup.module.css";
 

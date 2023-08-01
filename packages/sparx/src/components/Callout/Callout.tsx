@@ -7,7 +7,7 @@ import ExclamationOctagon from "@sparx/icons/ExclamationOctagon";
 import ExclamationTriangle from "@sparx/icons/ExclamationTriangle";
 import InfoCircle from "@sparx/icons/InfoCircle";
 
-import { Clickable } from "./core/Clickable";
+import { Clickable } from "../Clickable/Clickable";
 
 import styles from "./Callout.module.css";
 

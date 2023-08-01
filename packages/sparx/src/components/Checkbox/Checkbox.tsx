@@ -6,7 +6,7 @@ import CheckboxChecked from "@sparx/icons/CheckboxChecked";
 import CheckboxUnchecked from "@sparx/icons/CheckboxUnchecked";
 import { Clickable, Text } from "@sparx/index";
 
-import { getInputClassNames, InputColor } from "./Input";
+import { getInputClassNames, InputColor } from "../Input/Input";
 
 import styles from "./Checkbox.module.css";
 

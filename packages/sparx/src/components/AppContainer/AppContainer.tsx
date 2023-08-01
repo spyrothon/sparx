@@ -1,8 +1,14 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { Layers } from "../layers/Layers";
-import { Accent, getThemeClass, Theme, ThemeContext, ThemeProvider } from "./ThemeProvider";
+import { Layers } from "../Layer/Layers";
+import {
+  Accent,
+  getThemeClass,
+  Theme,
+  ThemeContext,
+  ThemeProvider,
+} from "../ThemeProvider/ThemeProvider";
 
 import "@sparx/styles.css";
 import styles from "./AppContainer.module.css";

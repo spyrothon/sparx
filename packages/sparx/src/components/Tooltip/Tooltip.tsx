@@ -4,8 +4,8 @@ import * as uuid from "uuid";
 
 import { Text } from "@sparx/index";
 
-import { createLayer, removeLayer, useLayerSubscription } from "../layers/LayersStore";
-import { Align, Attach, PositionedLayer } from "../layers/PositionedLayer";
+import { createLayer, removeLayer, useLayerSubscription } from "../Layer/LayersStore";
+import { Align, Attach, PositionedLayer } from "../Layer/PositionedLayer";
 
 import styles from "./Tooltip.module.css";
 

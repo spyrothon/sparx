@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Align, Attach, PositionedLayer } from "../layers/PositionedLayer";
+import { Align, Attach, PositionedLayer } from "../Layer/PositionedLayer";
 
 import styles from "./Popout.module.css";
 
