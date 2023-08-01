@@ -26,6 +26,16 @@
 .text {
   font-family: var(--font-normal);
   font-weight: var(--font-weight-medium);
+
+  & code {
+    display: inline-block;
+    background-color: var(--background-highlight);
+    border-radius: var(--radius-normal);
+    font-size: 0.85em;
+    line-height: 0.85;
+    padding: 4px 6px;
+    margin: 0 2px;
+  }
 }
 
 .text-xs {
@@ -125,14 +135,4 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-code {
-  display: inline-block;
-  background-color: var(--background-highlight);
-  border-radius: var(--radius-normal);
-  font-size: 0.85em;
-  line-height: 0.85;
-  padding: 4px 6px;
-  margin: 0 2px;
 }

@@ -1,5 +1,5 @@
 .showcase {
-  background-color: var(--background-tertiary);
+  background-color: var(--background-floating);
   border-radius: 8px;
   margin: var(--space-md) 0;
   border: 1px solid var(--border-subtle);
@@ -16,8 +16,5 @@
   padding: 16px;
   overflow: scroll;
   max-height: 200px;
-
-  & > pre {
-    margin: 0;
-  }
+  margin: 0;
 }
