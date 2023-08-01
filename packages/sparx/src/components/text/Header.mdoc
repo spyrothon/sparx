@@ -1,0 +1,51 @@
+# Header
+
+`Header` is distinct from `Text` in two ways. Most importantly, it requires the use of a `tag` prop
+that indicates which heading tag to use in the DOM (`h1` through `h6` are supported). Headers
+_must_ be used instead of `Text` for defining sections of a page so that they retain their
+semantic structure. Secondly, `Header` uses a bold font weight in Overlock rather than Encode Sans
+to distinguish it from normal text regardless of styling.
+
+Like `Text`, `Header` also provides a `variant` prop to control the visual styling, and allows using
+styles that would normally apply to regular{" "} `Text` components. This should only be used to
+maintain a visual style as well as the semantic information of a header tag. Otherwise, prefer using
+`Text` instead.
+
+{% showcase %}
+```
+<Header tag="h1" variant="header-xxl/normal">
+  This is an XXL Header
+</Header>
+<Header tag="h2" variant="header-xl/normal">
+  This is an Extra Large Header
+</Header>
+<Header tag="h3" variant="header-lg/normal">
+  This is a Large Header
+</Header>
+<Header tag="h4" variant="header-md/normal">
+  This is a Medium Header
+</Header>
+<Header tag="h5" variant="header-sm/normal">
+  This is a Small Header
+</Header>
+<Header tag="h6" variant="header-xs/normal">
+  This is an Extra Small Header
+</Header>
+```
+{% /showcase %}
+
+`Header` also provides a separate prop, `uppercase`, to automatically transform the given text to
+ALL CAPS. This should be used sparingly, and only for short-length text, as longer text quickly
+becomes hard to read. Most often,{" "} `uppercase` works best as a primary page header (as shown at
+the tops of these Docs pages).
+
+{% showcase %}
+```
+  <Header tag="h4" variant="header-lg/normal" uppercase>
+    All Uppercase
+  </Header>
+  <Header tag="h4" variant="header-sm/secondary" uppercase>
+    Also Uppercase
+  </Header>
+```
+{% /showcase %}

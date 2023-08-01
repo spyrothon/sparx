@@ -1,0 +1,32 @@
+# Image
+
+`Image` is a basic wrapper around an HTML `img` tag that will automatically handle loading states
+and, when given an explicit width and height, will ensure that the space is reserved in the layout
+while loading so that content does not shift around it.
+
+{% showcase %}
+
+```
+<Image src="https://i.ytimg.com/vi/D8Pk4WrL7S0/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDNM-SaXvTlz-C7k87_3IQEjwYyBg" />
+```
+
+{% /showcase %}
+
+`Image` also provides a fallback in case the requested `src` image cannot be loaded. The fallback
+will try to be appropriate for the reason the image could not be loaded, showing either a question
+if the image couldn't be found, or an error if the image was rejected for some reason. In this case,
+`Image` will still show the alt text if any was given, so that the intent of the image can be kept
+even if it doesn't load.
+
+{% showcase %}
+
+```
+<Image
+  src="//badimageurl"
+  width={320}
+  height={240}
+  alt="This image intentionally didn't load. Alt text still shows."
+/>
+```
+
+{% /showcase %}

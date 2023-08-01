@@ -1,0 +1,38 @@
+# Clickable
+
+{% callout type="danger" %}
+`Clickable` is not appropriate for actions that link users to other
+pages on the web, whether internal or external. For links, use `Anchor` instead.
+{% /callout %}
+
+`Clickable` is a generic mechanism for making arbitrary content on a page interactive. While
+`Button` and other form elements all have an implicit style associated with them, `Clickable`
+implements the bare functionality, leaving the styling up to the consumer.
+
+`Clickable` also handles keyboard support for handling spacebar and the enter key as methods for
+emulating a click action without a mouse. Because of this, consumers should always prefer using
+`Clickable` instead of `onClick` handlers attached directly to DOM elements.
+
+{% showcase %}
+
+```
+<Clickable onClick={() => clicked = !clicked}>
+  <Card>
+    <Text>
+      This card is clickable. Click anywhere within it with a mouse or a keyboard to toggle
+      the clicked state.
+    </Text>
+    {clicked ? (
+      <Text variant="text-md/success">The card has been clicked.</Text>
+    ) : (
+      <Text variant="text-md/secondary">The card is not clicked.</Text>
+    )}
+  </Card>
+</Clickable>
+```
+
+{% /showcase %}
+
+When the user interacts with a `Clickable`, the cursor will automatically be changed to `pointer`,
+but this can be prevented by using the `noCursor` prop.
+

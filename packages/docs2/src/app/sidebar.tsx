@@ -43,15 +43,16 @@ export function Sidebar(props: { className: string }) {
       case "page":
         return (
           <Tabs.Tab
+            key={item.title}
             label={item.title}
             selected={isSelected}
             onClick={() => router.push(`/components/${item.urlParts.join("/")}`)}
           />
         );
       case "category":
-        return <Tabs.Header label={item.title} />;
+        return <Tabs.Header key={item.title} label={item.title} />;
       default:
-        return <></>;
+        return null;
     }
   }
 

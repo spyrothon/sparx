@@ -1,8 +1,11 @@
+import { Document } from "@/components/Document";
+
 import { Config as MarkdocConfig, Tag, nodes } from "@markdoc/markdoc";
 import { headingNode, Heading } from "./schema/Heading.markdoc";
 import { paragraphNode, Paragraph } from "./schema/Paragraph.markdoc";
+
+import { CalloutTag } from "./tags/CalloutTag";
 import { ShowcaseTag } from "./tags/ShowcaseTag";
-import { Document } from "@/components/Document";
 
 export const config: MarkdocConfig = {
   nodes: {
@@ -24,7 +27,14 @@ export const config: MarkdocConfig = {
         return new Tag(this.render, { ...attributes, content });
       },
     },
+    callout: {
+      render: "CalloutTag",
+      children: ["paragraph", "tag", "list"],
+      attributes: {
+        type: { type: String, required: true },
+      },
+    },
   },
 };
 
-export const components = { Heading, Paragraph, ShowcaseTag, Document };
+export const components = { Heading, Paragraph, ShowcaseTag, CalloutTag, Document };

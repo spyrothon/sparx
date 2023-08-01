@@ -1,0 +1,40 @@
+# ThemeProvider
+
+`ThemeProvider` is the Context provider that powers a majority of the design system with colors,
+fonts, spacing, and more. The state of the `ThemeContext` that this component provides is defined by
+two properties: `theme` and `accent`. `theme` is the base coloration of the system, either `light`
+or `dark`, while `accent` defines the highlight color used across many components to bring a
+consistent color to otherwise plain and bland elements of the page.
+
+`ThemeProvider` can be used multiple times within an application to create mini sections of the page
+using different themes. All content within that provider will end up using that `theme` and `accent`
+instead of the parent values, unless another provider is rendered even closer to the content in
+question.
+
+{% showcase %}
+
+```
+<Stack>
+  <ThemeProvider theme="dark" accent="pink">
+    <Stack as={Card} spacing="space-lg" direction="horizontal" align="center">
+      <Button variant="primary">Submit</Button>
+      <Text>Here's some text as well</Text>
+      <Text variant="text-md/accent">And with the accent color.</Text>
+    </Stack>
+  </ThemeProvider>
+  <ThemeProvider theme="light" accent="pink">
+    <Stack as={Card} spacing="space-lg" direction="horizontal" align="center">
+      <Button variant="primary">Submit</Button>
+      <Text>Here's some text as well</Text>
+      <Text variant="text-md/accent">And with the accent color.</Text>
+    </Stack>
+  </ThemeProvider>
+</Stack>
+```
+
+{% /showcase %}
+
+However, `ThemeProvider` itself only provides the Context for the theme, and does not set up the DOM
+to actually use the new theme values within it. For that, use `AppContainer` to automatically apply
+appropriate classes to a containing `div`, or use `useThemeClass` to access and apply those classes
+manually.

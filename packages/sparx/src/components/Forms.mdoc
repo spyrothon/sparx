@@ -1,0 +1,20 @@
+Forms are the primary way that users interact on a page. Text inputs, switches, buttons, radio
+groups, and more all provide ways for a user to perform an action, change settings, or fill in
+information.
+
+Sparx's form system is built in two layers: Inputs and Controls. Inputs are low-level primitives
+that manage the user interaction, like `TextInput` and `Checkbox`. While these are styled to match
+the current theme, they are normally not meant to be used directly as they don't provide labels or
+other presentational features that most forms should have. Instead, Controls wrap around Inputs, and
+handle all of the presentational attributes, including labels, notes, prefixes and suffixes, errors,
+and more.
+
+The form system currently only provides the presentation layer for content and does not handle any
+state management. However, using standard props for values and action handlers make it easy to
+integrate any kind of state management (hooks, context or global state), just like using native
+elements.
+
+{% callout type="info" %}
+Future versions of this system will likely provide a hook-based interface
+for more quickly defining forms and their associated state in a single step.
+{% /callout %}

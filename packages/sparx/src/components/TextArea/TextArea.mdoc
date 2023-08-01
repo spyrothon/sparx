@@ -1,0 +1,26 @@
+# TextArea
+
+For textual input that is longer than just a few words, `TextArea` provides a larger, multi-line,
+resizable input area for users to write out content of any length.
+
+{% showcase %}
+
+```
+<TextArea placeholder="Enter a paragraph" />
+```
+
+{% /showcase %}
+
+By default, `TextArea` will render 5 rows of text before scrolling, and the user can resize the
+input vertically. Both of these can be overridden with the `rows` and `resize` props.
+
+`TextArea` also accepts a `maxLength` prop to show a progressive visual indication for a maximum
+input length as the user's types.
+
+{% showcase %}
+
+```
+<TextArea maxLength={100} />
+```
+
+{% /showcase %}

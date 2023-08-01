@@ -1,0 +1,36 @@
+# Interactive
+
+While `Clickable` provides the semantics for creating interactive elements,{" "} `Interactive` can
+provide some default visual styling to convey hover, focus, and active states when appropriate.
+
+{% showcase %}
+
+```
+<Interactive>
+  <Text variant="text-md/inherit">
+    This text is wrapped with an `Interactive` and will have its text color changed
+    when interacted with.
+  </Text>
+</Interactive>
+```
+
+{% /showcase %}
+
+When used with `Text` components, be sure to use the `/inherit` variants so that the interactive
+colors can change.
+
+In cases where preserving text color is important, the `background` prop can be used to instead
+change the background color on interactions.
+
+{% showcase %}
+
+```
+<Interactive background>
+  <Text>
+    This text is wrapped with an `Interactive` and will have its background
+    color changed when interacted with.
+  </Text>
+</Interactive>
+```
+
+{% /showcase %}

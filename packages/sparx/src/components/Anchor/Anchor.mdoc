@@ -1,0 +1,19 @@
+# Anchor
+
+`Anchor` is an inline component that renders links in a consistent style and handles both external
+links and page transitions within a single app. `Anchor` should generally not be used on it's own,
+and rather would exist within another component like `Text` or `Header`.
+
+{% showcase %}
+
+```
+<Text>
+  <Anchor href="#">This is a link</Anchor>
+</Text>
+```
+
+{% /showcase %}
+
+`Anchor` is only intended for actions that link the user to another navigable page, either internal
+or external to the current application. Other actions like revealing more content, or triggering a
+change in state should probably use `Clickable` or `Button` instead.

@@ -1,0 +1,12 @@
+# AppContainer
+
+`AppContainer` is a root-level component meant to wrap the entirety of an application using the
+design system. It sets up a `ThemeProvider` with a default theme and accent, as well as some
+defaults on a wrapper `div`, setting the background color and font for the page to ensure they match
+the requested theme.
+
+While `AppContainer` can be nested multiple times within a page, it makes the assumption that it
+will be at the root of an application and also sets some properties for filling the entire viewport
+of the page. As such, it should generally only be used once around the entire application, and any
+nested themes on the page can use{" "} `ThemeProvider` directly along with a call to `useThemeClass`
+to set up their own container element.

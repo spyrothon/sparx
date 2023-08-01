@@ -58,12 +58,17 @@ export const sidebarItems: NavigationItem[] = [
       {
         type: "page",
         title: "CurrencyInput",
-        sourcePath: "components/CurrencyInput/CurrencyInput.mdoc",
+        sourcePath: "components/TextInput/formatted_inputs/CurrencyInput.mdoc",
+      },
+      {
+        type: "page",
+        title: "DateTimeInput",
+        sourcePath: "components/TextInput/formatted_inputs/DateTimeInput.mdoc",
       },
       {
         type: "page",
         title: "DurationInput",
-        sourcePath: "components/DurationInput/DurationInput.mdoc",
+        sourcePath: "components/TextInput/formatted_inputs/DurationInput.mdoc",
       },
       { type: "page", title: "TextArea", sourcePath: "components/TextArea/TextArea.mdoc" },
       { type: "page", title: "SelectInput", sourcePath: "components/SelectInput/SelectInput.mdoc" },
@@ -78,7 +83,7 @@ export const sidebarItems: NavigationItem[] = [
       { type: "page", title: "Button", sourcePath: "components/Button/Button.mdoc" },
       { type: "page", title: "Clickable", sourcePath: "components/Clickable/Clickable.mdoc" },
       { type: "page", title: "Interactive", sourcePath: "components/Interactive/Interactive.mdoc" },
-      { type: "page", title: "Tabs", sourcePath: "components/Tabs/Tabs.mdoc" },
+      { type: "page", title: "Tabs", sourcePath: "components/TabGroup/TabGroup.mdoc" },
     ],
   },
   {
@@ -99,8 +104,8 @@ export const sidebarItems: NavigationItem[] = [
     type: "category",
     title: "Typography",
     children: [
-      { type: "page", title: "Header", sourcePath: "components/Header/Header.mdoc" },
-      { type: "page", title: "Markdown", sourcePath: "components/Markdown/Markdown.mdoc" },
+      { type: "page", title: "Header", sourcePath: "components/Text/Header.mdoc" },
+      { type: "page", title: "Markdown", sourcePath: "components/Text/Markdown.mdoc" },
       { type: "page", title: "Text", sourcePath: "components/Text/Text.mdoc" },
     ],
   },

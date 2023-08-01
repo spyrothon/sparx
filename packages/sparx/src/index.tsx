@@ -111,8 +111,8 @@ export type {
   TabHeaderProps,
 } from "./components/TabGroup/TabGroup";
 
-export { Table } from "./components/Tables/Table";
-export type { TableProps } from "./components/Tables/Table";
+export { Table } from "./components/Table/Table";
+export type { TableProps } from "./components/Table/Table";
 
 export { Tag } from "./components/Tag/Tag";
 export type { TagProps, TagColor } from "./components/Tag/Tag";

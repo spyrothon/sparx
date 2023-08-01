@@ -1,0 +1,92 @@
+# TextInput
+
+`TextInput` is the simplest text input, great for receiving short-form text from
+a user, such as a username, password, email address, or any other single-sentence content.
+TextInput also handles numeric inputs with the `type` prop.
+
+{% showcase %}
+```
+<Stack>
+  <TextInput placeholder="Enter some text" />
+  <TextInput type="password" placeholder="Password" />
+  <TextInput type="number" defaultValue={0.0} />
+  <TextInput type="email" defaultValue="someone@example.com" />
+  <TextInput type="datetime-local" defaultValue="4155550000" />
+</Stack>
+```
+{% /showcase %}
+
+
+`TextInput` is distinguished from other content using a thin border and a darkened interior.
+
+{% callout type="warning" %}
+While `TextInput` provides a `placeholder` prop for showing some
+hint text, placeholders _should not_ use them for labeling the name of the input.
+
+Instead, use a `FormControl` with a `label` or `note` to
+provide context for the intent of the input. Placeholders are meant for showing example
+input only and should generally be avoided where not necessary.
+{% /callout %}
+
+
+Informational states about a `TextInput` can use the `color` prop,
+which adjusts the border color of the input. This works well for small spaces where no other
+information explaining the state can be added, but generally prefer `FormControl`
+to automatically format these states and provide more contextual information like an error
+message.
+
+{% showcase %}
+```
+<Stack>
+  <TextInput color="success" placeholder="Success state" />
+  <TextInput color="warning" placeholder="Warning state" />
+  <TextInput color="danger" placeholder="Danger state" />
+  <TextInput color="info" placeholder="Info state" />
+  <TextInput color="default" placeholder="Default state" />
+</Stack>
+```
+{% /showcase %}
+
+Sizes can also be adjusted to fit different contexts.
+
+{% showcase %}
+```
+<Stack>
+  <TextInput size="small" placeholder="Small input" />
+  <TextInput size="medium" placeholder="Medium input" />
+  <TextInput size="large" placeholder="Large input" />
+  <TextInput size="xlarge" placeholder="Xlarge input" />
+</Stack>
+```
+{% /showcase %}
+
+For specific use cases, there's also a `blank` variant, which removes all of the
+color accenting from the input and just shows the light highlight on the input area
+background. Especially for larger inputs, this can be useful for avoiding too much color or
+appearing overly-segmented.
+
+{% showcase %}
+```
+<TextInput color="blank" defaultValue="This has no borders" />
+```
+{% /showcase %}
+
+Blank variants should almost always be used inside of a `FormControl`, or using
+an input type that has existing formatting (like `CurrencyInput`) to help the
+user understand that the field is still editable, despite not having any other indicators.
+
+{% showcase %}
+```
+<Stack>
+  <FormControl
+    color="blank"
+    label="Blank Input Example"
+    note="Providing a label and note make it more clear that the input is editable.">
+    <CurrencyInput color="inherit" value={currency} onValueChange={setCurrency} />
+  </FormControl>
+  <FormControl color="success" label="Or a Prefix" prefix="twitch.tv/">
+    <TextInput color="blank" />
+  </FormControl>
+</Stack>
+```
+{% /showcase %}

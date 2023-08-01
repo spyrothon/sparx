@@ -1,0 +1,35 @@
+# ProgressBar
+
+`ProgressBar` is a visual indicator of some percentage value. It supports multiple bars by providing
+an array of values for the `progress` prop, and each bar can be given an independent color.
+
+{% showcase %}
+
+```
+<Stack>
+  <ProgressBar progress={[{ value: 40 }]} />
+  <ProgressBar
+    progress={[
+      { value: 30, color: "success" },
+      { value: 30, color: "warning" },
+      { value: 30, color: "danger" },
+    ]}
+  />
+</Stack>
+```
+
+{% /showcase %}
+
+The size of the bars can also be controlled with the `size` prop, picking from one of `normal` or
+`large`.
+
+{% showcase %}
+
+```
+<Stack>
+  <ProgressBar progress={[{ value: 50 }]} size="normal" />
+  <ProgressBar progress={[{ value: 70 }]} size="large" />
+</Stack>
+```
+
+{% /showcase %}
