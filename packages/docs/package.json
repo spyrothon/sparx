@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@markdoc/markdoc": "^0.3.0",
     "@spyrothon/sparx": "workspace:*",
     "@tanstack/react-table": "^8.9.3",
     "react": "^18.2.0",

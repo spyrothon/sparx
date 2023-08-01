@@ -1,0 +1,27 @@
+{
+  "name": "docs2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@markdoc/markdoc": "^0.3.0",
+    "@markdoc/next.js": "^0.2.3",
+    "@spyrothon/sparx": "workspace:*",
+    "@types/node": "^18.8.5",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "^8.23.1",
+    "eslint-config-next": "13.4.12",
+    "next": "13.4.12",
+    "raw-loader": "^4.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-jsx-parser": "^1.29.0",
+    "typescript": "5.1.6"
+  }
+}

@@ -1,3 +1,4 @@
 packages:
   - "packages/sparx"
   - "packages/docs"
+  - "packages/docs2"
