@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import {
   Accent,
   BrandLogo,
@@ -10,13 +11,13 @@ import {
   FormControl,
   SelectInput,
   Stack,
-  TabColor,
   Tabs,
   Text,
   Theme,
   ThemeContext,
 } from "@spyrothon/sparx";
-import { IconProps } from "@spyrothon/sparx/dist/icons/IconProps";
+
+import { getFlatSidebarItems, FlatNavigationItem } from "./sidebarItems";
 
 const THEME_OPTIONS = [
   { name: "Dark", value: Theme.DARK },
@@ -28,32 +29,31 @@ const ACCENT_OPTIONS = [
   { name: "Pink", value: Accent.PINK },
 ];
 
-type SidebarTab =
-  | {
-      type?: "tab";
-      name: string;
-      route: string;
-      color?: TabColor;
-      icon?: React.ComponentType<IconProps>;
-    }
-  | { type: "header"; name: string };
-
-// const SIDEBAR_TABS: SidebarTab[] = [
-//   { type: "header", name: "Guides" },
-//   { name: "Home", route: Pages.HOME },
-//   { name: "Usage", route: Pages.GUIDES_USAGE },
-//   { type: "header", name: "Components" },
-//   { name: "Common", route: Pages.COMPONENTS_COMMON },
-//   { name: "Forms", route: Pages.COMPONENTS_FORMS },
-//   { name: "Layers", route: Pages.COMPONENTS_LAYERS },
-//   { name: "Layout", route: Pages.COMPONENTS_LAYOUT },
-//   { name: "Typography", route: Pages.COMPONENTS_TYPOGRAPHY },
-// ];
-
-export default function DocsSidebar(props: { className: string }) {
+export function Sidebar(props: { className: string }) {
   const { className } = props;
-
   const { theme, accent, setTheme, setAccent } = React.useContext(ThemeContext);
+
+  const router = useRouter();
+  const segments = useSelectedLayoutSegments().map((segment) => segment.toLowerCase());
+
+  function renderSidebarItem(item: FlatNavigationItem) {
+    const isSelected = segments.every((segment, index) => segment === item.urlParts[index]);
+
+    switch (item.type) {
+      case "page":
+        return (
+          <Tabs.Tab
+            label={item.title}
+            selected={isSelected}
+            onClick={() => router.push(`/components/${item.urlParts.join("/")}`)}
+          />
+        );
+      case "category":
+        return <Tabs.Header label={item.title} />;
+      default:
+        return <></>;
+    }
+  }
 
   return (
     <Card className={className}>
@@ -82,22 +82,7 @@ export default function DocsSidebar(props: { className: string }) {
           />
         </FormControl>
         <Divider />
-        <Tabs.Group>
-          {/* {SIDEBAR_TABS.map((tab) =>
-            tab.type === "header" ? (
-              <Tabs.Header key={tab.name} label={tab.name} />
-            ) : (
-              <Tabs.Tab
-                key={tab.name}
-                label={tab.name}
-                onClick={() => navigate(tab.route)}
-                color={tab.color}
-                icon={tab.icon}
-                selected={location.pathname === tab.route}
-              />
-            ),
-          )} */}
-        </Tabs.Group>
+        <Tabs.Group>{getFlatSidebarItems().map(renderSidebarItem)}</Tabs.Group>
       </Stack>
     </Card>
   );

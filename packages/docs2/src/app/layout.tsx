@@ -1,14 +1,13 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { Accent, AppContainer, BrandLogo } from "@spyrothon/sparx";
+import { Accent, AppContainer } from "@spyrothon/sparx";
 
 import "./globals.css";
 
 import styles from "./layout.module.css";
 
-import DocsSidebar from "@/components/DocsSidebar";
+import { Sidebar } from "./sidebar";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
 
         <AppContainer className={styles.container} accent={Accent.PINK}>
-          <DocsSidebar className={styles.sidebar} />
+          <Sidebar className={styles.sidebar} />
           <div className={styles.content}>
             <div className={styles.contentWidthContainer}>
               {/* each page template should have a <main id="main"> which does not include navigation */}
