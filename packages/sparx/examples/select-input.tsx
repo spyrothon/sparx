@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { defaultSelectItemToString, SelectInput, Stack } from "../src";
+import { defaultSelectItemToString, SelectInput, Stack } from "../dist";
 
 export default function Component() {
   const OPTIONS = [

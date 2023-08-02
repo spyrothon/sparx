@@ -27,5 +27,5 @@ export function Markdown(props: MarkdownProps) {
     setContent(children);
   }, [children, setContent]);
 
-  return renderedContent;
+  return <>{renderedContent}</>;
 }

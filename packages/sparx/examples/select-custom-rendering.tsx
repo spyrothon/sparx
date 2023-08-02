@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { defaultSelectItemToString, SelectInput, Stack, Text } from "../src";
-import ExclamationOctagon from "../src/icons/ExclamationOctagon";
-import ExclamationTriangle from "../src/icons/ExclamationTriangle";
-import InfoCircle from "../src/icons/InfoCircle";
+import { defaultSelectItemToString, SelectInput, Stack, Text } from "../dist";
+import ExclamationOctagon from "../dist/icons/ExclamationOctagon";
+import ExclamationTriangle from "../dist/icons/ExclamationTriangle";
+import InfoCircle from "../dist/icons/InfoCircle";
 
 const OPTIONS = [
   {

@@ -32,9 +32,9 @@ export const ShowcaseFileTag = React.memo(({ example }: { example: string }) => 
   // use, and any extra boilerplate that isn't relevant.
   const lines = (source as string).split("\n");
   const firstLine = lines.indexOf(DEFAULT_COMPONENT_STARTING_SENTINEL);
-  const lastLine = lines.indexOf(DEFAULT_COMPONENT_ENDING_SENTINEL);
+  const lastLine = lines.lastIndexOf(DEFAULT_COMPONENT_ENDING_SENTINEL);
   const visibleSource = lines
-    .slice(firstLine + 1, lastLine - 1)
+    .slice(firstLine + 1, lastLine)
     .map((line) => line.slice(2))
     .join("\n");
 

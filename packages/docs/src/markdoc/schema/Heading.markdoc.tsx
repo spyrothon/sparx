@@ -57,8 +57,24 @@ export function Heading(props: HeadingProps) {
   const { id, level, className, children } = props;
 
   const tag = `h${level}` as const;
+  const variant = (() => {
+    switch (tag) {
+      case "h1":
+        return "header-xl/normal";
+      case "h2":
+        return "header-lg/normal";
+      case "h3":
+        return "header-md/normal";
+      case "h4":
+        return "header-sm/normal";
+      case "h5":
+      case "h6":
+      default:
+        return "header-xs/normal";
+    }
+  })();
   return (
-    <Header tag={tag} id={id} className={className}>
+    <Header tag={tag} variant={variant} id={id} className={className}>
       {children}
     </Header>
   );

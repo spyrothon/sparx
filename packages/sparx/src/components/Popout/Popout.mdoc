@@ -5,40 +5,7 @@ without taking up more space in the page flow. Unlike `Tooltip` , which is only 
 hovers the target, `Popout` is best for semi-permanent information that the user may want to
 interact with or keep visible as they continue to browse the rest of the page.
 
-{% showcase %}
-
-```
-const openerRef = React.useRef<HTMLButtonElement>(null);
-const [open, isOpen] = usePopout(
-  ({ onClose }) => (
-    <Card floating>
-      <div style={{ width: 300 }}>
-        <Stack spacing="space-lg">
-          <Header tag="h2">Popout</Header>
-          <Text>This is a Popout. They tend to be taller rather than wide.</Text>
-          <Text>And provide more information from the target.</Text>
-          <Text>
-            Close this by clicking anywhere outside of the content area, or directly with the
-            button below.
-          </Text>
-          <Button onClick={onClose}>Do Something</Button>
-        </Stack>
-      </div>
-    </Card>
-  ),
-  openerRef,
-  {
-    attach: "right",
-    align: "start",
-  },
-);
-
-<Button ref={openerRef} variant="primary" onClick={isOpen ? undefined : open}>
-  Open Popout
-</Button>
-```
-
-{% /showcase %}
+{% showcase-file example="popout" /%}
 
 `Popout` has two props for positioning: `attach` and `align`. `attach` determines which side of the
 target element the popout should appear on (e.g., `left` or `top`), while `align` adjusts how the

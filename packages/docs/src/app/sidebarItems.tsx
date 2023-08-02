@@ -32,6 +32,7 @@ export const sidebarItems: NavigationItem[] = [
   {
     type: "page",
     title: "Home",
+    sourcePath: "components/Forms.mdoc",
   },
   {
     type: "page",
