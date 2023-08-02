@@ -19,10 +19,13 @@ const DEFAULT_COMPONENT_STARTING_SENTINEL = "export default function Component()
 const DEFAULT_COMPONENT_ENDING_SENTINEL = "}";
 
 export const ShowcaseFileTag = React.memo(({ example }: { example: string }) => {
-  const [Component] = React.useState(() =>
-    React.lazy(() => import(`../../../../sparx/examples/${example}`)),
-  );
-  const source = require(`!raw-loader!../../../../sparx/examples/${example}`).default;
+  const [[Component, source]] = React.useState(() => {
+    return [
+      // For some reason, using `React.lazy(() => import())` here causes an infinite loop
+      require(`../../../../sparx/examples/${example}`).default,
+      require(`!raw-loader!../../../../sparx/examples/${example}`).default,
+    ];
+  });
 
   // Only include content inside of the default exported Component in the code
   // sample area. This lets it skip imports that wouldn't match what consumers

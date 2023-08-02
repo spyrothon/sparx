@@ -18,16 +18,5 @@ export default async function Page({ params }: { params: { componentPath: string
     items = item.children;
   }
 
-  const fallback = <MarkdocRenderer source="No documentation exists for this page yet :(" />;
-
-  if (item == null) return fallback;
-
-  try {
-    const { default: docs } = await import(
-      `!raw-loader!../../../../../sparx/src/${item.sourcePath}`
-    );
-    return <MarkdocRenderer source={docs} />;
-  } catch (e) {
-    return fallback;
-  }
+  return <MarkdocRenderer sourcePath={item?.sourcePath} />;
 }
