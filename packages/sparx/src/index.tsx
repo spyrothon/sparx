@@ -1,7 +1,9 @@
-export { AppContainer } from "./components/AppContainer/AppContainer";
+"use client";
 
 export { Anchor, setAnchorRenderer } from "./components/Anchor/Anchor";
 export type { AnchorProps, AnchorRenderer, AnchorRendererProps } from "./components/Anchor/Anchor";
+
+export { AppContainer } from "./components/AppContainer/AppContainer";
 
 export { Button } from "./components/Button/Button";
 export type {

@@ -7,40 +7,7 @@
 
 `SelectInput` is a choice-selection input that lets users choose options out of a list.
 
-{% showcase %}
-
-```
-<Stack>
-  <SelectInput
-    size="small"
-    items={[
-      { name: "Option One", value: "one" },
-      { name: "Option Two", value: "two" },
-      { name: "Option Three", value: "three" },
-    ]}
-    itemToString={defaultSelectItemToString}
-  />
-  <SelectInput
-    items={[
-      { name: "Option One", value: "one" },
-      { name: "Option Two", value: "two" },
-      { name: "Option Three", value: "three" },
-    ]}
-    itemToString={defaultSelectItemToString}
-  />
-  <SelectInput
-    size="large"
-    items={[
-      { name: "Option One", value: "one" },
-      { name: "Option Two", value: "two" },
-      { name: "Option Three", value: "three" },
-    ]}
-    itemToString={defaultSelectItemToString}
-  />
-</Stack>
-```
-
-{% /showcase %}
+{% showcase-file example="select-input" /%}
 
 `SelectInput` is good for medium to large lists of options. In certain cases with a very limited
 number of options, a `RadioGroup` may provide a better experience for the user.
@@ -50,39 +17,4 @@ default, this will change both how the item appears in the dropdown list, as wel
 row itself. To change how the item renders in the input row separately from the dropdown, use
 `renderSelectedItem`.
 
-{% showcase %}
-
-```
-<Stack>
-  <SelectInput
-    color="success"
-    items={[
-      { name: "Option One", value: "one" },
-      { name: "Option Two", value: "two" },
-      { name: "Option Three", value: "three" },
-    ]}
-    itemToString={defaultSelectItemToString}
-    renderItem={customRenderItem}
-  />
-  <SelectInput
-    color="success"
-    items={[
-      { name: "Option One", value: "one", subtext: "Description for option one", icon: InfoCircle },
-      { name: "Option Two", value: "two", subtext: "Description for option two", icon: ExclamationTriangle },
-      { name: "Option Three", value: "three", subtext: "Description for option three", icon: ExclamationOctagon },
-    ]}
-    itemToString={defaultSelectItemToString}
-    renderItem={(item) => (
-      <Stack direction="horizontal" spacing="space-md">
-        <item.icon color="var(--text-normal)" size={20} style={{ marginTop: 2, marginLeft: 2 }} />
-        <div>
-          <Text>{item.name}</Text>
-          <Text variant="text-xs/normal">{item.subtext}</Text>
-        </div>
-      </Stack>
-    )}
-  />
-</Stack>
-```
-
-{% /showcase %}
+{% showcase-file example="select-custom-rendering" /%}

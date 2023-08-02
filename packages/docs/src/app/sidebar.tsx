@@ -34,7 +34,9 @@ export function Sidebar(props: { className: string }) {
   const { theme, accent, setTheme, setAccent } = React.useContext(ThemeContext);
 
   const router = useRouter();
-  const segments = useSelectedLayoutSegments().map((segment) => segment.toLowerCase());
+  const segments = useSelectedLayoutSegments()[1]
+    .split("/")
+    .map((segment) => segment.toLowerCase());
 
   function renderSidebarItem(item: FlatNavigationItem) {
     const isSelected = segments.every((segment, index) => segment === item.urlParts[index]);

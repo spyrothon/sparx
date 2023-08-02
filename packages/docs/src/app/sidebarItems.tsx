@@ -94,7 +94,6 @@ export const sidebarItems: NavigationItem[] = [
       { type: "page", title: "Image", sourcePath: "components/Image/Image.mdoc" },
       { type: "page", title: "Hero", sourcePath: "components/Hero/Hero.mdoc" },
       { type: "page", title: "ProgressBar", sourcePath: "components/ProgressBar/ProgressBar.mdoc" },
-      { type: "page", title: "Section", sourcePath: "components/Section/Section.mdoc" },
       { type: "page", title: "Table", sourcePath: "components/Table/Table.mdoc" },
       { type: "page", title: "Tag", sourcePath: "components/Tag/Tag.mdoc" },
     ],

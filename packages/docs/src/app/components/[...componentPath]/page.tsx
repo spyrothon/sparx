@@ -5,7 +5,6 @@ import { NavigationItem, getItemSlug, sidebarItems } from "@/app/sidebarItems";
 
 export default async function Page({ params }: { params: { componentPath: string[] } }) {
   const { componentPath } = params;
-  const component = componentPath[componentPath.length - 1];
 
   let items = sidebarItems;
   let item: NavigationItem | undefined;
@@ -24,8 +23,9 @@ export default async function Page({ params }: { params: { componentPath: string
   if (item == null) return fallback;
 
   try {
-    const docs = require(`!raw-loader!../../../../../sparx/src/${item.sourcePath}?raw`).default;
-
+    const { default: docs } = await import(
+      `!raw-loader!../../../../../sparx/src/${item.sourcePath}`
+    );
     return <MarkdocRenderer source={docs} />;
   } catch (e) {
     return fallback;

@@ -5,7 +5,7 @@ import { headingNode, Heading } from "./schema/Heading.markdoc";
 import { paragraphNode, Paragraph } from "./schema/Paragraph.markdoc";
 
 import { CalloutTag } from "./tags/CalloutTag";
-import { ShowcaseTag } from "./tags/ShowcaseTag";
+import { ShowcaseTag, ShowcaseFileTag } from "./tags/ShowcaseTag";
 
 export const config: MarkdocConfig = {
   nodes: {
@@ -27,6 +27,12 @@ export const config: MarkdocConfig = {
         return new Tag(this.render, { ...attributes, content });
       },
     },
+    "showcase-file": {
+      render: "ShowcaseFileTag",
+      attributes: {
+        example: { type: String, required: true },
+      },
+    },
     callout: {
       render: "CalloutTag",
       children: ["paragraph", "tag", "list"],
@@ -37,4 +43,11 @@ export const config: MarkdocConfig = {
   },
 };
 
-export const components = { Heading, Paragraph, ShowcaseTag, CalloutTag, Document };
+export const components = {
+  Heading,
+  Paragraph,
+  ShowcaseTag,
+  ShowcaseFileTag,
+  CalloutTag,
+  Document,
+};
