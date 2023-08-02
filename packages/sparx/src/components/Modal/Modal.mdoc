@@ -1,0 +1,33 @@
+# ConfirmModal
+
+`ConfirmModal` provides a simple, consistent way of getting user confirmation for an action. All
+that's required is a `title` and an `onConfirm` action, plus optional `body` text, an `onCancel`
+action, and color control.
+
+{% showcase %}
+
+```
+function openConfirmModal() {
+  openModal(
+    (props) => (
+      <ConfirmModal
+        {...props}
+        title="Hello"
+        body="This is a confirm modal, with some body text as well. Pressing an action will log information to the console."
+        onConfirm={() => console.log("hit the confirm button")}
+        onCancel={() => console.log("hit the cancel button")}
+      />
+    ),
+    { closeOnBackdrop: false },
+  );
+}
+
+<Button variant="primary" onClick={openConfirmModal}>
+  Open Confirm Modal
+</Button>
+```
+
+{% /showcase %}
+
+To make sure that the user has to hit one of "Confirm" or "Cancel", pass the additional
+`closeOnBackdrop` option to `openModal`.

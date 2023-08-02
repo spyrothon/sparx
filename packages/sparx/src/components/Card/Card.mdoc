@@ -1,0 +1,36 @@
+# Card
+
+`Card` renders a rounded, padded box around some content, helping it stand out from surrounding
+elements.
+
+{% showcase %}
+
+```
+<Card level={2}>
+  <Text>Hello</Text>
+</Card>
+```
+
+{% /showcase %}
+
+Cards can also be nested, and will automatically take care of padding, color, and rounding to feel
+natural.
+
+{% showcase %}
+
+```
+<Card level={2}>
+  <Stack>
+    <Text>This is the outer card, with some nice content.</Text>
+    <Card level={3}>
+      <Text>As the inner card, this feels "higher up" off the page, while staying within the parent.</Text>
+    </Card>
+  </Stack>
+</Card>
+```
+
+{% /showcase %}
+
+It's easy to over-use cards for layout, but this should generally be avoided. Prefer just using
+`Stack` with various spacings to create a sense of structure, and use `Card` only when there is a
+very clear grouping of content on the page, such as a submission form or details about an item.

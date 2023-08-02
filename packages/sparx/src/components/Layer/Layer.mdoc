@@ -1,0 +1,14 @@
+# Layers
+
+Layers are a system of components and functions that allow for rendering content outside the normal
+flow of a page. The system is composed of 3 types of layers, each representing a different level of
+relevance to whatever element owns it.
+
+`Tooltip` is immediately attached to the target element, only showing when the target is being
+interacted with, and immediately disappearing afterward.
+
+`Popout` is one level higher, still attaching itself to a target element, but staying visible until
+the user performs another action to close it.
+
+And finally `Modal` is completely detached from it's source and appears as a full-screen takeover
+that must be interacted with before the rest of the page can be used again.

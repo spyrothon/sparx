@@ -1,0 +1,18 @@
+# FormSwitch
+
+`FormSwitch` is an "improved" checkbox variation that provides more room for label text and an
+additional note underneath, better matching the look of other `FormControl` elements and maintaining
+a more constant rhythm on the page.
+
+{% showcase %}
+
+```
+<FormSwitch
+  label="Enable a super secret setting"
+  checked={checked}
+  onChange={(event) => setChecked(event.target.checked)}
+  note="Do something super secret. Doesn't actually do anything, but you can pretend that it does."
+/>
+```
+
+{% /showcase %}

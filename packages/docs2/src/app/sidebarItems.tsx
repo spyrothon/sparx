@@ -71,7 +71,7 @@ export const sidebarItems: NavigationItem[] = [
         sourcePath: "components/TextInput/formatted_inputs/DurationInput.mdoc",
       },
       { type: "page", title: "TextArea", sourcePath: "components/TextArea/TextArea.mdoc" },
-      { type: "page", title: "SelectInput", sourcePath: "components/SelectInput/SelectInput.mdoc" },
+      { type: "page", title: "Select", sourcePath: "components/Select/Select.mdoc" },
       { type: "page", title: "RadioGroup", sourcePath: "components/RadioGroup/RadioGroup.mdoc" },
     ],
   },
@@ -92,7 +92,6 @@ export const sidebarItems: NavigationItem[] = [
     children: [
       { type: "page", title: "Callout", sourcePath: "components/Callout/Callout.mdoc" },
       { type: "page", title: "Image", sourcePath: "components/Image/Image.mdoc" },
-      { type: "page", title: "Hero", sourcePath: "components/Hero/Hero.mdoc" },
       { type: "page", title: "Hero", sourcePath: "components/Hero/Hero.mdoc" },
       { type: "page", title: "ProgressBar", sourcePath: "components/ProgressBar/ProgressBar.mdoc" },
       { type: "page", title: "Section", sourcePath: "components/Section/Section.mdoc" },

@@ -1,0 +1,43 @@
+# Tooltip
+
+`Tooltip` is the lowest-level layer for providing supplemental information to the
+target element. They are only visible when the user is directly interacting with the target,
+either by hovering it with a pointer or focusing it with a keyboard.
+
+{% showcase %}
+```
+<Tooltip<HTMLButtonElement> render="Some tooltip text">
+  {(tooltipProps) => (
+    <Button variant="primary" {...tooltipProps}>
+      Hover for Tooltip
+    </Button>
+  )}
+</Tooltip>
+```
+{% /showcase %}
+
+As such an ephemeral layer, `Tooltip` should only be used for immediately-useful
+information, like a name for an icon, or a quick descriptive sentence to expand on a single
+word, and should _not_ be used for any kind of interaction.
+
+The simplest method of rendering a `Tooltip` is just providing a string, but
+tooltips can render any kind of content just by providing a component or function as the
+render prop.
+
+{% showcase %}
+```
+const [customTooltipProps] = useTooltip<HTMLButtonElement>(
+  <Stack direction="horizontal" spacing="space-md" align="center">
+    <ImageQuestion size={24} />
+    <div>
+      <Text variant="header-xs/normal">This one has an icon</Text>
+      <Text variant="text-sm/secondary">And some descriptive text</Text>
+    </div>
+  </Stack>,
+);
+
+<Button variant="primary" {...customTooltipProps}>
+  Hover for Custom Tooltip
+</Button>
+```
+{% /showcase %}

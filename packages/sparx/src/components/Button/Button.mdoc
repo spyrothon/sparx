@@ -1,0 +1,80 @@
+# Button
+
+Buttons are the main way that users perform an action on a page.
+
+{% showcase %}
+
+```
+<Stack spacing="space-md" direction="horizontal">
+  <Button variant="primary">Primary</Button>
+  <Button variant="default">Default</Button>
+  <Button variant="success">Success</Button>
+  <Button variant="info">Info</Button>
+  <Button variant="warning">Warning</Button>
+  <Button variant="danger">Danger</Button>
+  <Button variant="link">Link</Button>
+</Stack>
+```
+
+{% /showcase %}
+
+When using multiple buttons on a page, consider how they draw attention and the hierarchy of actions
+that can be performed. In general, use a `primary` Button for the main action in a form, and have
+all other actions use either `default` or `link`. Depending on the context of the action, other
+variants may be more appropriate, like `danger` for destructive actions, or `success` for indicating
+agreement.
+
+The general hierarchy for Buttons in a form should be `primary` for a submit action, then `default`
+for auxiliary actions (like Learn More or View Item), then `link` for canceling actions.
+
+{% showcase %}
+
+```
+<Stack spacing="space-md" direction="horizontal">
+  <Button variant="primary">Submit</Button>
+  <Button variant="default">Learn More</Button>
+  <Button variant="link">Cancel</Button>
+</Stack>
+```
+
+{% /showcase %}
+
+## Looks
+
+`Button` provides multiple different looks to accommodate different situations. In most cases, the
+default `filled` variant should be preferred, but other looks may better suit different contexts.
+
+{% showcase %}
+
+```
+<Stack spacing="space-md" direction="horizontal">
+  <Button variant="primary">Filled</Button>
+  <Button variant="info/outline">Outline</Button>
+</Stack>
+```
+
+{% /showcase %}
+
+## Sizes
+
+`Button` provides multiple sizes as well to work in various contexts where color and look are not
+enough to differentiate, and to better match surrounding elements, like headers with large text or
+forms with many buttons within them. In most cases, the `md` variant should be preferred.
+
+{% showcase %}
+
+```
+<Stack spacing="space-md" direction="horizontal" align="end">
+  <Button variant="primary/filled/sm" icon={ExclamationOctagon}>
+    Small (sm)
+  </Button>
+  <Button variant="primary/filled/md" icon={ExclamationTriangle}>
+    Medium (md, default)
+  </Button>
+  <Button variant="primary/filled/lg" icon={InfoCircle}>
+    Large (lg)
+  </Button>
+</Stack>
+```
+
+{% /showcase %}
