@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &.open .input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.input {
+  flex: 1 1 auto;
+
+  &:focus,
+  &:focus-within {
+    outline: none;
+  }
+}
+
+.chevron {
+  flex: 0 0 auto;
+  top: 0;
+  pointer-events: none;
+}

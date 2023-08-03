@@ -13,7 +13,7 @@ interface DropdownMenuProps<T> {
   isOpen: boolean;
   maxHeight?: number;
   children: (item: T, index: number, state: DropdownItemState) => React.ReactNode;
-  renderEmptyState: () => React.ReactNode;
+  renderEmptyState?: () => React.ReactNode;
 }
 
 export function DropdownMenu<T>(props: DropdownMenuProps<T>) {
@@ -35,7 +35,9 @@ export function DropdownMenu<T>(props: DropdownMenuProps<T>) {
         [styles.dropdownOpen]: isOpen,
       })}
       style={{ "--_select-max-height": `${maxHeight}px` }}>
-      {items.length === 0 ? <li className={styles.itemContainer}>{renderEmptyState()}</li> : null}
+      {items.length === 0 && renderEmptyState != null ? (
+        <li className={styles.itemContainer}>{renderEmptyState()}</li>
+      ) : null}
 
       {items.map((item, index) => children(item, index, getItemState(item, index)))}
     </ul>

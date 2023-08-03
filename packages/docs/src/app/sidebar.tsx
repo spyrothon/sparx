@@ -6,10 +6,9 @@ import {
   Accent,
   BrandLogo,
   Card,
-  defaultSelectItemToString,
   Divider,
   FormControl,
-  SelectInput,
+  Select,
   Stack,
   Tabs,
   Text,
@@ -69,17 +68,15 @@ export function Sidebar(props: { className: string }) {
         </div>
         <Divider />
         <FormControl label="Theme" size="small">
-          <SelectInput
+          <Select
             items={THEME_OPTIONS}
-            itemToString={defaultSelectItemToString}
             selectedItem={THEME_OPTIONS.find(({ value }) => value === theme)}
             onSelect={(item) => (item != null ? setTheme(item.value) : null)}
           />
         </FormControl>
         <FormControl label="Accent Color" size="small">
-          <SelectInput
+          <Select
             items={ACCENT_OPTIONS}
-            itemToString={defaultSelectItemToString}
             selectedItem={ACCENT_OPTIONS.find(({ value }) => value === accent)}
             onSelect={(item) => (item != null ? setAccent(item.value) : null)}
           />

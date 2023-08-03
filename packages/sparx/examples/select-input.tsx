@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { defaultSelectItemToString, SelectInput, Stack } from "../dist";
+import { Select, Stack } from "../dist";
 
 export default function Component() {
   const OPTIONS = [
@@ -13,25 +13,22 @@ export default function Component() {
 
   return (
     <Stack>
-      <SelectInput
+      <Select
         size="small"
         items={OPTIONS}
         selectedItem={selectedItem}
         onSelect={(item) => (item != null ? setSelectedItem(item) : null)}
-        itemToString={defaultSelectItemToString}
       />
-      <SelectInput
+      <Select
         items={OPTIONS}
         selectedItem={selectedItem}
         onSelect={(item) => (item != null ? setSelectedItem(item) : null)}
-        itemToString={defaultSelectItemToString}
       />
-      <SelectInput
+      <Select
         size="large"
         items={OPTIONS}
         selectedItem={selectedItem}
         onSelect={(item) => (item != null ? setSelectedItem(item) : null)}
-        itemToString={defaultSelectItemToString}
       />
     </Stack>
   );

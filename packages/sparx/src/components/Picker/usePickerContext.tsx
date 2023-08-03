@@ -9,7 +9,7 @@ export interface PickerContextState<T extends any = object> {
   highlightedIndex: number;
   inputClassNames: string[];
   getMenuProps: (options?: any) => any;
-  getItemProps: (options?: any) => any;
+  getItemProps: (options: any) => any;
 }
 
 export const PickerContext = React.createContext<PickerContextState>({
