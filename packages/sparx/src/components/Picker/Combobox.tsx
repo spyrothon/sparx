@@ -51,7 +51,6 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
 
   const {
     isOpen,
-    getComboboxProps,
     getToggleButtonProps,
     getMenuProps,
     getInputProps,
@@ -89,7 +88,6 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   return (
     <PickerContextProvider value={pickerContextValue}>
       <div
-        {...getComboboxProps()}
         className={classNames(styles.container, className, ...getInputClassNames(color, size), {
           [styles.open]: isOpen,
           [styles.disabled]: disabled,
@@ -102,7 +100,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
           size={size}
           disabled={disabled}
         />
-        <DropdownChevron isOpen={isOpen} {...getToggleButtonProps()} className={styles.chevron} />
+        <DropdownChevron {...getToggleButtonProps()} className={styles.chevron} />
         <DropdownMenu
           isOpen={isOpen}
           items={items}

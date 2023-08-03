@@ -11,6 +11,7 @@ import styles from "./Clickable.module.css";
 
 type InteractiveARIARole =
   | "button"
+  | "combobox"
   | "gridcell"
   | "link"
   | "listitem"

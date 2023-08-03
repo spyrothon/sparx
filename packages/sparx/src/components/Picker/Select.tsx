@@ -31,7 +31,7 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
   const {
     items,
     selectedItem,
-    placeholder,
+    placeholder = "Select an Option",
     disabled = false,
     color = "accent",
     size = "medium",
@@ -77,11 +77,9 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
           className={classNames(inputStyles.input, styles.input)}
           placeholder={placeholder}
           {...getToggleButtonProps()}
-          color={color}
-          size={size}
           disabled={disabled}>
           {selectedItem != null ? itemToString(selectedItem) : placeholder}
-          <DropdownChevron isOpen={isOpen} {...getToggleButtonProps()} className={styles.chevron} />
+          <DropdownChevron {...getToggleButtonProps()} className={styles.chevron} />
         </Clickable>
         <DropdownMenu isOpen={isOpen} items={items}>
           {children}

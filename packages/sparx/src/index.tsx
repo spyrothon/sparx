@@ -84,6 +84,8 @@ export { DropdownItem } from "./components/Picker/components/DropdownItem";
 export type { DropdownItemProps } from "./components/Picker/components/DropdownItem";
 export { Combobox } from "./components/Picker/Combobox";
 export type { ComboboxProps } from "./components/Picker/Combobox";
+export { MultiSelect } from "./components/Picker/MultiSelect";
+export type { MultiSelectProps } from "./components/Picker/MultiSelect";
 export { Select } from "./components/Picker/Select";
 export type { SelectProps } from "./components/Picker/Select";
 export { SelectInput } from "./components/Picker/SelectInput";

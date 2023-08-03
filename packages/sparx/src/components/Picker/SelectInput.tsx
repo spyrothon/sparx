@@ -112,6 +112,7 @@ export function SelectInput<Item>(props: SelectInputProps<Item>) {
         className={classNames(styles.dropdown, ...getInputClassNames(color, size), {
           [styles.dropdownOpen]: isOpen,
         })}
+        // @ts-expect-error for some reason `ul` doesn't like this, but it's fine on `div`?
         style={{ "--_select-max-height": `${maxHeight}px` }}>
         {items.map((item, index) => (
           <li
