@@ -36,6 +36,7 @@ importers:
       '@types/react-dom': ^18.0.6
       eslint: ^8.23.1
       eslint-config-next: 13.4.12
+      fuzzysearch: ^1.0.3
       hast-to-hyperscript: ^10.0.3
       next: 13.4.12
       raw-loader: ^4.0.2
@@ -53,6 +54,7 @@ importers:
       '@types/react-dom': 18.0.6
       eslint: 8.25.0
       eslint-config-next: 13.4.12_2vn5k25ibx3impp3enrxc4wp7i
+      fuzzysearch: 1.0.3
       hast-to-hyperscript: 10.0.3
       next: 13.4.12_biqbaboplfbrettd7655fr4n2y
       raw-loader: 4.0.2_webpack@5.88.2
@@ -83,17 +85,17 @@ importers:
       vite: ^4.2.1
       zustand: ^3.7.2
     dependencies:
-      '@iconscout/react-unicons': 1.1.6_react@18.2.0
-      '@iconscout/react-unicons-solid': 0.0.3_react@18.2.0
+      '@iconscout/react-unicons': 1.1.6_react@16.14.0
+      '@iconscout/react-unicons-solid': 0.0.3_react@16.14.0
       '@internationalized/number': 3.2.0
       classnames: 2.3.2
-      downshift: 6.1.12_react@18.2.0
-      react: 18.2.0
+      downshift: 6.1.12_react@16.14.0
+      react: 16.14.0
       react-dom: 18.2.0_react@18.2.0
       react-polymorphic-types: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.0.21
-      react-remark: 2.1.0_react@18.2.0
+      react-remark: 2.1.0_react@16.14.0
       uuid: 8.3.2
-      zustand: 3.7.2_react@18.2.0
+      zustand: 3.7.2_react@16.14.0
     devDependencies:
       '@types/node': 18.8.5
       '@types/react': 18.0.21
@@ -361,20 +363,20 @@ packages:
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@iconscout/react-unicons-solid/0.0.3_react@18.2.0:
+  /@iconscout/react-unicons-solid/0.0.3_react@16.14.0:
     resolution: {integrity: sha512-oApQfBntjHLvUNbXL9jObCziPJLV0KTa1vqcYE+XD4dcB7e0/CHJgRzNOoBfPNUgZ09Af5ub4Z4cz+eYJNMydw==}
     peerDependencies:
       react: '>=15.0.0 <17.0.0'
     dependencies:
-      react: 18.2.0
+      react: 16.14.0
     dev: false
 
-  /@iconscout/react-unicons/1.1.6_react@18.2.0:
+  /@iconscout/react-unicons/1.1.6_react@16.14.0:
     resolution: {integrity: sha512-BnyVvBew7Vm1lvL8+qyqjchUbkVHlDyNAlN+r5b+0P0KrkQ66BHPBuJEJ2faT89L8qRu+TohE7dHMV+bndje3Q==}
     peerDependencies:
       react: '>=15.0.0 <17.0.0'
     dependencies:
-      react: 18.2.0
+      react: 16.14.0
     dev: false
 
   /@internationalized/number/3.2.0:
@@ -1580,7 +1582,7 @@ packages:
     dependencies:
       esutils: 2.0.3
 
-  /downshift/6.1.12_react@18.2.0:
+  /downshift/6.1.12_react@16.14.0:
     resolution: {integrity: sha512-7XB/iaSJVS4T8wGFT3WRXmSF1UlBHAA40DshZtkrIscIN+VC+Lh363skLxFTvJwtNgHxAMDGEHT4xsyQFWL+UA==}
     peerDependencies:
       react: '>=16.12.0'
@@ -1588,7 +1590,7 @@ packages:
       '@babel/runtime': 7.19.4
       compute-scroll-into-view: 1.0.17
       prop-types: 15.8.1
-      react: 18.2.0
+      react: 16.14.0
       react-is: 17.0.2
       tslib: 2.4.0
     dev: false
@@ -2194,6 +2196,10 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  /fuzzysearch/1.0.3:
+    resolution: {integrity: sha512-s+kNWQuI3mo9OALw0HJ6YGmMbLqEufCh2nX/zzV5CrICQ/y4AwPxM+6TIiF9ItFCHXFCyM/BfCCmN57NTIJuPg==}
+    dev: false
 
   /get-intrinsic/1.1.3:
     resolution: {integrity: sha512-QJVz1Tj7MS099PevUG5jvnt9tSkXN8K14dxQlikJuPt4uD9hHAHjLyLBiLR5zELelBdD9QNRAXZzsJx0WaDL9A==}
@@ -3265,19 +3271,28 @@ packages:
       '@types/react-dom': 17.0.20
     dev: false
 
-  /react-remark/2.1.0_react@18.2.0:
+  /react-remark/2.1.0_react@16.14.0:
     resolution: {integrity: sha512-7dEPxRGQ23sOdvteuRGaQAs9cEOH/BOeCN4CqsJdk3laUDIDYRCWnM6a3z92PzXHUuxIRLXQNZx7SiO0ijUcbw==}
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=16.8'
     dependencies:
-      react: 18.2.0
+      react: 16.14.0
       rehype-react: 6.2.1
       remark-parse: 9.0.0
       remark-rehype: 8.1.0
       unified: 9.2.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /react/16.14.0:
+    resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.8.1
     dev: false
 
   /react/18.2.0:
@@ -4079,7 +4094,7 @@ packages:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false
 
-  /zustand/3.7.2_react@18.2.0:
+  /zustand/3.7.2_react@16.14.0:
     resolution: {integrity: sha512-PIJDIZKtokhof+9+60cpockVOq05sJzHCriyvaLBmEJixseQ1a5Kdov6fWZfWOu5SK9c+FhH1jU0tntLxRJYMA==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -4088,7 +4103,7 @@ packages:
       react:
         optional: true
     dependencies:
-      react: 18.2.0
+      react: 16.14.0
     dev: false
 
   github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.0.21:

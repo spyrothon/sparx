@@ -79,6 +79,10 @@ export type {
 export { RadioGroup } from "./components/RadioGroup/RadioGroup";
 export type { RadioGroupProps } from "./components/RadioGroup/RadioGroup";
 
+export { DropdownItem } from "./components/Select/components/DropdownItem";
+export type { DropdownItemProps } from "./components/Select/components/DropdownItem";
+export { Combobox } from "./components/Select/Combobox";
+export type { ComboboxProps } from "./components/Select/Combobox";
 export { SelectInput, defaultSelectItemToString } from "./components/Select/SelectInput";
 export type { SelectInputProps } from "./components/Select/SelectInput";
 

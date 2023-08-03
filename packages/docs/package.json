@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.6",
     "eslint": "^8.23.1",
     "eslint-config-next": "13.4.12",
+    "fuzzysearch": "^1.0.3",
     "hast-to-hyperscript": "^10.0.3",
     "next": "13.4.12",
     "raw-loader": "^4.0.2",
