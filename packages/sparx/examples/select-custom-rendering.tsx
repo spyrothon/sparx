@@ -1,9 +1,9 @@
 import * as React from "react";
+import ExclamationOctagon from "@spyrothon/sparx-icons/dist/icons/ExclamationOctagon";
+import ExclamationTriangle from "@spyrothon/sparx-icons/dist/icons/ExclamationTriangle";
+import InfoCircle from "@spyrothon/sparx-icons/dist/icons/InfoCircle";
 
 import { defaultSelectItemToString, SelectInput, Stack, Text } from "../dist";
-import ExclamationOctagon from "../dist/icons/ExclamationOctagon";
-import ExclamationTriangle from "../dist/icons/ExclamationTriangle";
-import InfoCircle from "../dist/icons/InfoCircle";
 
 const OPTIONS = [
   {

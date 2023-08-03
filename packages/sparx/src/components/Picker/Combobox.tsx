@@ -2,53 +2,51 @@ import * as React from "react";
 import classNames from "classnames";
 import { useCombobox } from "downshift";
 
-import { Text, TextInput } from "@sparx/index";
+import { defaultSelectItemToString, TextInput } from "@sparx/index";
 
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
-import { SelectChevron } from "./components/SelectChevron";
-import { SelectDropdownMenu } from "./components/SelectDropdownMenu";
-import { ItemToString } from "./SelectTypes";
+import { DropdownChevron } from "./components/DropdownChevron";
+import { DropdownMenu } from "./components/DropdownMenu";
+import {
+  defaultEmptyState,
+  defaultRenderItem,
+  DropdownItemState,
+  ItemToString,
+} from "./PickerTypes";
 import { PickerContextProvider, PickerContextState } from "./usePickerContext";
 
-import styles from "./components/SelectComponents.module.css";
-
-function defaultEmptyState(query: string | undefined) {
-  return (
-    <Text variant="text-md/secondary">
-      <em>No results {query != null ? ` for ${query}` : null}</em>
-    </Text>
-  );
-}
+import styles from "./Combobox.module.css";
 
 export interface ComboboxProps<Item> {
   items: Item[];
   selectedItem: Item | null | undefined;
+  placeholder?: string;
   color?: InputColor;
   size?: InputSize;
   disabled?: boolean;
   maxHeight?: number;
   className?: string;
-  itemToString: ItemToString<Item>;
-  renderItem?: (item: Item, size: InputSize, itemToString: ItemToString<Item>) => React.ReactNode;
-  renderEmptyState: (query: string | undefined) => React.ReactNode;
+  itemToString?: ItemToString<Item>;
+  renderEmptyState?: (query: string | undefined) => React.ReactNode;
   onSelect: (item?: Item) => unknown;
   onSearch: (query: string | undefined) => void;
-  children: (item: Item, index: number) => React.ReactNode;
+  children?: (item: Item, index: number, state: DropdownItemState) => React.ReactNode;
 }
 
 export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   const {
     items,
     selectedItem,
+    placeholder,
     disabled = false,
     color = "accent",
     size = "medium",
     className,
-    itemToString,
+    itemToString = defaultSelectItemToString,
     renderEmptyState = defaultEmptyState,
     onSelect,
     onSearch,
-    children,
+    children = defaultRenderItem,
   } = props;
 
   const {
@@ -81,7 +79,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
       size,
       values,
       highlightedIndex,
-      inputClassNames: getInputClassNames(color, size),
+      inputClassNames: [],
       getMenuProps,
       getItemProps,
     }),
@@ -92,24 +90,25 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
     <PickerContextProvider value={pickerContextValue}>
       <div
         {...getComboboxProps()}
-        className={classNames(styles.container, className, {
+        className={classNames(styles.container, className, ...getInputClassNames(color, size), {
           [styles.open]: isOpen,
           [styles.disabled]: disabled,
         })}>
         <TextInput
           className={styles.input}
+          placeholder={placeholder}
           {...getInputProps()}
           color={color}
           size={size}
           disabled={disabled}
         />
-        <SelectChevron isOpen={isOpen} {...getToggleButtonProps()} />
-        <SelectDropdownMenu
+        <DropdownChevron isOpen={isOpen} {...getToggleButtonProps()} className={styles.chevron} />
+        <DropdownMenu
           isOpen={isOpen}
           items={items}
           renderEmptyState={() => renderEmptyState(inputValue)}>
           {children}
-        </SelectDropdownMenu>
+        </DropdownMenu>
       </div>
     </PickerContextProvider>
   );

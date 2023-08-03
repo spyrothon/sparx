@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
+import RadioBlank from "@spyrothon/sparx-icons/dist/icons/RadioBlank";
+import RadioSelected from "@spyrothon/sparx-icons/dist/icons/RadioSelected";
 
-import RadioSelected from "@sparx/icons/RadioSelected";
-import RadioUnselected from "@sparx/icons/RadioUnselected";
 import { Clickable, Text } from "@sparx/index";
 
 import { getInputClassNames, InputColor } from "../Input/Input";
@@ -24,7 +24,7 @@ function renderSwitch() {
     <div className={styles.switch}>
       <div className={styles.iconContainer}>
         <RadioSelected className={classNames(styles.icon, styles.iconChecked)} size={20} />
-        <RadioUnselected className={classNames(styles.icon, styles.iconUnchecked)} size={20} />
+        <RadioBlank className={classNames(styles.icon, styles.iconUnchecked)} size={20} />
       </div>
     </div>
   );

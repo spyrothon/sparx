@@ -2,7 +2,7 @@ import { Document } from "@/components/Document";
 
 import { Config as MarkdocConfig, Tag, nodes } from "@markdoc/markdoc";
 import { headingNode, Heading } from "./schema/Heading.markdoc";
-import { paragraphNode, Paragraph } from "./schema/Paragraph.markdoc";
+import { itemNode, paragraphNode, ListItem, Paragraph } from "./schema/Paragraph.markdoc";
 
 import { CalloutTag } from "./tags/CalloutTag";
 import { ShowcaseTag, ShowcaseFileTag } from "./tags/ShowcaseTag";
@@ -11,6 +11,7 @@ export const config: MarkdocConfig = {
   nodes: {
     heading: headingNode,
     paragraph: paragraphNode,
+    item: itemNode,
     document: {
       ...nodes.document,
       render: "Document",
@@ -49,5 +50,6 @@ export const components = {
   ShowcaseTag,
   ShowcaseFileTag,
   CalloutTag,
+  ListItem,
   Document,
 };

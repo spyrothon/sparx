@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
+import CheckboxUnchecked from "@spyrothon/sparx-icons/dist/icons/CheckboxBlank";
+import CheckboxChecked from "@spyrothon/sparx-icons/dist/icons/CheckboxChecked";
 
-import CheckboxChecked from "@sparx/icons/CheckboxChecked";
-import CheckboxUnchecked from "@sparx/icons/CheckboxUnchecked";
 import { Clickable, Text } from "@sparx/index";
 
 import { getInputClassNames, InputColor } from "../Input/Input";

@@ -1,11 +1,10 @@
 import * as React from "react";
 import classNames from "classnames";
-
-import Check from "@sparx/icons/Check";
-import Close from "@sparx/icons/Close";
-import ExclamationOctagon from "@sparx/icons/ExclamationOctagon";
-import ExclamationTriangle from "@sparx/icons/ExclamationTriangle";
-import InfoCircle from "@sparx/icons/InfoCircle";
+import Check from "@spyrothon/sparx-icons/dist/icons/Check";
+import Close from "@spyrothon/sparx-icons/dist/icons/Close";
+import ExclamationOctagon from "@spyrothon/sparx-icons/dist/icons/ExclamationOctagon";
+import ExclamationTriangle from "@spyrothon/sparx-icons/dist/icons/ExclamationTriangle";
+import InfoCircle from "@spyrothon/sparx-icons/dist/icons/InfoCircle";
 
 import { Clickable } from "../Clickable/Clickable";
 

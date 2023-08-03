@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
+import RadioBlank from "@spyrothon/sparx-icons/dist/icons/RadioBlank";
+import RadioSelected from "@spyrothon/sparx-icons/dist/icons/RadioSelected";
 
-import RadioSelected from "@sparx/icons/RadioSelected";
-import RadioUnselected from "@sparx/icons/RadioUnselected";
 import { Stack, Text } from "@sparx/index";
 
 import { Clickable } from "../Clickable/Clickable";
@@ -30,7 +30,7 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
   const [inputId] = React.useState(() => uuid.v4());
 
-  const Icon = selected ? RadioSelected : RadioUnselected;
+  const Icon = selected ? RadioSelected : RadioBlank;
   const labelNode =
     typeof label === "string" ? (
       <Text className={styles.label}>{label}</Text>
@@ -54,7 +54,7 @@ function RadioItem<T>(props: RadioItemProps<T>) {
         value={String(value)}
         style={{ display: "none" }}
       />
-      <Icon className={styles.icon} size={24} />
+      <Icon className={styles.icon} size="24" />
       {labelNode}
     </Clickable>
   );

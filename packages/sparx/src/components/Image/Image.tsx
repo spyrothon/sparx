@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
+import ImageIcon from "@spyrothon/sparx-icons/dist/icons/Image";
 
-import ImageQuestion from "@sparx/icons/ImageQuestion";
 import { Text } from "@sparx/index";
 
 import styles from "./Image.module.css";
@@ -80,7 +80,7 @@ export const Image = React.forwardRef(function Image(
       case ImageLoadState.ERROR:
         return (
           <>
-            <ImageQuestion className={styles.fallbackIcon} size={64} />
+            <ImageIcon className={styles.fallbackIcon} size={64} />
             {alt != null ? (
               <Text variant="text-sm/secondary" className={styles.fallbackAlt}>
                 {alt}

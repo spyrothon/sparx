@@ -1,0 +1,38 @@
+# Combobox
+
+{% callout type="info" %}
+`Combobox` does not currently support multiple selections nor combobox
+(options + search) functionality, but these will be added in the future.
+{% /callout %}
+
+`Combobox` is a choice-selection input that lets users choose options out of a list.
+
+{% showcase-file example="combobox" /%}
+
+`Combobox` is good for medium to large lists of options. In certain cases with a very limited number
+of options, a `RadioGroup` may provide a better experience for the user.
+
+## Rendering Items
+
+By default, items use `defaultPickerItemToString` to render the options in the dropdown list as
+plain text. For a richer display, use `DropdownItem` to compose items from multiple pieces,
+including a label, description, and an icon.
+
+{% showcase-file example="combobox-custom-rendering" /%}
+
+The render function receives two arguments, `item` and `index`, which must be passed along to
+`DropdownItem`, as well as a third argument, `state`, allowing the item to react to the current
+selection state. This includes:
+
+- `isHighlighted` - true when the user is interacting with the item, but hasn't fully selected it.
+- `isSelected` - true when the item is fully selected as the value of the input.
+
+## Display
+
+Like all inputs, Combobox supports `color` and `size` props to customize the appearance of the
+control.
+
+{% showcase-file example="combobox-variants" /%}
+
+As always, sizing should be reserved for special cases where the input needs to fit better within
+the context it resides.

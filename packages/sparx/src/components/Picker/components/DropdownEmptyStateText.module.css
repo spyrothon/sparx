@@ -1,0 +1,5 @@
+.emptyState {
+  text-align: center;
+  --_input-padding: var(--space-md);
+  padding: var(--_input-padding);
+}

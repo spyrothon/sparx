@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import { useSelect } from "downshift";
+import ChevronDown from "@spyrothon/sparx-icons/dist/icons/ChevronDown";
+import ChevronUp from "@spyrothon/sparx-icons/dist/icons/ChevronUp";
 
-import ChevronDown from "@sparx/icons/ChevronDown";
-import ChevronUp from "@sparx/icons/ChevronUp";
 import { Clickable, Text, TextVariantSize } from "@sparx/index";
 
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
@@ -48,12 +48,6 @@ function defaultRenderItem<Item>(
 }
 
 type ItemToString<T> = (item: T | null | undefined) => string;
-
-export function defaultSelectItemToString<Item extends { name: string }>(
-  item: Item | null | undefined,
-) {
-  return item?.name ?? "";
-}
 
 export interface SelectInputProps<Item> {
   items: Item[];

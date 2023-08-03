@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Combobox } from "../dist";
+import { Combobox, DropdownItem } from "../dist";
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {
@@ -15,7 +15,17 @@ export default function Component() {
       placeholder="Pick an option"
       onSearch={(query) =>
         setFilteredItems(() => PICKER_OPTIONS.filter((option) => option.name.includes(query ?? "")))
-      }
-    />
+      }>
+      {(item, index, { isHighlighted }) => (
+        <DropdownItem key={item.value} item={item} index={index}>
+          <DropdownItem.Icon>
+            <item.icon size={20} />
+          </DropdownItem.Icon>
+          <DropdownItem.Label description={item.subtext}>
+            {item.name} {isHighlighted ? " - highlighted!" : null}
+          </DropdownItem.Label>
+        </DropdownItem>
+      )}
+    </Combobox>
   );
 }

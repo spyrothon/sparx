@@ -1,15 +1,6 @@
-.container {
-  position: relative;
-  width: 100%;
-
-  &.open .input {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-}
-
 .dropdown {
   position: absolute;
+  top: 100%;
   z-index: 1;
   background-color: var(--background-primary);
   width: 100%;
@@ -22,10 +13,6 @@
   list-style-type: none;
   display: none;
 
-  &:focus {
-    outline: none;
-  }
-
   &.dropdownOpen {
     display: block;
     overflow-y: scroll;
@@ -35,7 +22,6 @@
 
 .chevronContainer {
   position: absolute;
-  top: 0;
   right: 4px;
 }
 

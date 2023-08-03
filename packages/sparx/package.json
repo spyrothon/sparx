@@ -46,6 +46,7 @@
     "@iconscout/react-unicons": "^1.1.6",
     "@iconscout/react-unicons-solid": "^0.0.3",
     "@internationalized/number": "^3.2.0",
+    "@spyrothon/sparx-icons": "workspace:*",
     "classnames": "^2.3.1",
     "downshift": "^6.1.7",
     "react-polymorphic-types": "github:GamesDoneQuick/react-polymorphic-types#bd1e8388c1d02d919dd038a5d5690ff7bb62da88",

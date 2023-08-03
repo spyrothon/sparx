@@ -9,3 +9,16 @@ export const paragraphNode: Schema<ConfigType, string> = {
 export function Paragraph({ children }: React.PropsWithChildren) {
   return <Text>{children}</Text>;
 }
+
+export const itemNode: Schema<ConfigType, string> = {
+  ...nodes.item,
+  render: "ListItem",
+};
+
+export function ListItem({ children }: React.PropsWithChildren) {
+  return (
+    <li>
+      <Text>{children}</Text>
+    </li>
+  );
+}

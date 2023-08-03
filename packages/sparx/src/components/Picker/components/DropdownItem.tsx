@@ -33,7 +33,7 @@ interface DropdownItemLabelProps extends React.PropsWithChildren {
   description?: React.ReactNode;
 }
 
-export function DropdownItemLabel(props: DropdownItemLabelProps) {
+function DropdownItemLabel(props: DropdownItemLabelProps) {
   const { description, children } = props;
   return (
     <div className={styles.itemLabel}>
@@ -43,7 +43,7 @@ export function DropdownItemLabel(props: DropdownItemLabelProps) {
   );
 }
 
-export function DropdownItemIcon(props: React.PropsWithChildren) {
+function DropdownItemIcon(props: React.PropsWithChildren) {
   return <div className={styles.itemIcon}>{props.children}</div>;
 }
 

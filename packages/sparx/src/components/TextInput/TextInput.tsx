@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 
-import styles from "./TextInput.module.css";
+import styles from "../Input/Input.module.css";
 
 export interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   type?: "text" | "number" | "password" | "email" | "date" | "time" | "datetime-local";
