@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
+import CheckboxCircleChecked from "@spyrothon/sparx-icons/dist/icons/CheckboxCircleChecked";
 import RadioBlank from "@spyrothon/sparx-icons/dist/icons/RadioBlank";
-import RadioSelected from "@spyrothon/sparx-icons/dist/icons/RadioSelected";
 
 import { Clickable, Text } from "@sparx/index";
 
@@ -23,7 +23,7 @@ function renderSwitch() {
   return (
     <div className={styles.switch}>
       <div className={styles.iconContainer}>
-        <RadioSelected className={classNames(styles.icon, styles.iconChecked)} size={20} />
+        <CheckboxCircleChecked className={classNames(styles.icon, styles.iconChecked)} size={20} />
         <RadioBlank className={classNames(styles.icon, styles.iconUnchecked)} size={20} />
       </div>
     </div>

@@ -4,25 +4,7 @@ Checkboxes are boolean inputs that a user can toggle between enabled and disable
 The `Checkbox` component is a low-level primitive that represents just a checkbox
 and an optional label together.
 
-{% showcase %}
-```
-<Checkbox
-  checked={checked}
-  label="Remember Me"
-/>
-<Checkbox
-  checked={checked2}
-  color="success"
-  label={
-    <>
-      <Text variant="header-sm/normal">Longer labels</Text>
-      <Text variant="text-xs/normal">Checkboxes can use any React Node as the label.</Text>
-    </>
-  }
-  onChange={(event) => setChecked2(event.target.checked)}
-/>
-```
-{% /showcase %}
+{% showcase-file example="checkbox" /%}
 
 
 While a `Checkbox` on it's own is perfectly functional, forms should generally
