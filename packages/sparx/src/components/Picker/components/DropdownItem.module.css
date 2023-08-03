@@ -13,7 +13,15 @@
   padding: 4px;
 }
 
+.itemCheck {
+  flex: 0 0 24px;
+  justify-self: flex-end;
+  align-self: center;
+  padding: 4px;
+}
+
 .itemLabel {
+  flex: 1 1 auto;
 }
 
 .itemHighlighted {

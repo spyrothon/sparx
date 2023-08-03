@@ -13,14 +13,15 @@ export default function Component() {
         items={PICKER_OPTIONS}
         selectedItem={selectedItem}
         onSelect={(item) => (item != null ? setSelectedItem(item) : null)}>
-        {(item, index, { isHighlighted }) => (
+        {(item, index, { isHighlighted, isSelected }) => (
           <DropdownItem key={item.value} item={item} index={index}>
             <DropdownItem.Icon>
               <item.icon size={20} />
             </DropdownItem.Icon>
             <DropdownItem.Label description={item.subtext}>
-              {item.name} {isHighlighted ? " - highlighted!" : null}
+              {item.name} {isHighlighted ? " - hi!" : null}
             </DropdownItem.Label>
+            <DropdownItem.Check isSelected={isSelected} />
           </DropdownItem>
         )}
       </Select>

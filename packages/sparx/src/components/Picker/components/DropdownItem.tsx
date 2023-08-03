@@ -1,5 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
+import CheckboxCircleChecked from "@spyrothon/sparx-icons/dist/icons/CheckboxCircleChecked";
 
 import { Text } from "@sparx/components/Text/Text";
 
@@ -47,5 +48,18 @@ function DropdownItemIcon(props: React.PropsWithChildren) {
   return <div className={styles.itemIcon}>{props.children}</div>;
 }
 
+interface DropdownItemCheckProps {
+  isSelected: boolean;
+}
+
+function DropdownItemCheck(props: DropdownItemCheckProps) {
+  return (
+    <div className={styles.itemCheck}>
+      {props.isSelected ? <CheckboxCircleChecked size={20} /> : null}
+    </div>
+  );
+}
+
 DropdownItem.Label = DropdownItemLabel;
 DropdownItem.Icon = DropdownItemIcon;
+DropdownItem.Check = DropdownItemCheck;
