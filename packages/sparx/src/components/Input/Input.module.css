@@ -19,6 +19,12 @@
   }
 }
 
+.inputText {
+  font-family: var(--font-normal);
+  font-size: var(--_input-font-size);
+  line-height: var(--_input-line-height);
+}
+
 .accent {
   --_input-color: var(--accent-primary);
   --_input-border: 2px solid var(--_input-color);

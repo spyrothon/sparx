@@ -17,13 +17,13 @@ export default function Component() {
         setFilteredItems(() => PICKER_OPTIONS.filter((option) => option.name.includes(query ?? "")))
       }>
       {(item, index, { isHighlighted }) => (
-        <DropdownItem key={item.value} item={item} index={index}>
-          <DropdownItem.Icon>
-            <item.icon size={20} />
-          </DropdownItem.Icon>
-          <DropdownItem.Label description={item.subtext}>
-            {item.name} {isHighlighted ? " - highlighted!" : null}
-          </DropdownItem.Label>
+        <DropdownItem
+          key={item.value}
+          item={item}
+          index={index}
+          icon={<item.icon size={20} />}
+          description={item.subtext}>
+          {item.name} {isHighlighted ? " - highlighted!" : null}
         </DropdownItem>
       )}
     </Combobox>

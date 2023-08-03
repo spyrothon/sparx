@@ -14,13 +14,13 @@ export default function Component() {
         selectedItem={selectedItem}
         onSelect={(item) => (item != null ? setSelectedItem(item) : null)}>
         {(item, index, { isHighlighted }) => (
-          <DropdownItem key={item.value} item={item} index={index}>
-            <DropdownItem.Icon>
-              <item.icon size={20} />
-            </DropdownItem.Icon>
-            <DropdownItem.Label description={item.subtext}>
-              {item.name} {isHighlighted ? " - highlighted!" : null}
-            </DropdownItem.Label>
+          <DropdownItem
+            key={item.value}
+            item={item}
+            index={index}
+            icon={<item.icon size={20} />}
+            description={item.subtext}>
+            {item.name} {isHighlighted ? " - highlighted!" : null}
           </DropdownItem>
         )}
       </Select>

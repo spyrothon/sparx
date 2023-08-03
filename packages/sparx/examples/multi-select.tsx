@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DropdownItem, MultiSelect, Stack } from "../dist";
+import { DropdownItem, MultiSelect, Stack, Text } from "../dist";
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {
@@ -8,20 +8,20 @@ export default function Component() {
 
   return (
     <Stack>
+      <Text>{selectedItems.length} items are currently selected</Text>
       <MultiSelect
         color="success"
         items={PICKER_OPTIONS}
         initialSelectedItems={selectedItems}
         onSelect={setSelectedItems}>
-        {(item, index, { isHighlighted, isSelected }) => (
-          <DropdownItem key={item.value} item={item} index={index}>
-            <DropdownItem.Icon>
-              <item.icon size={20} />
-            </DropdownItem.Icon>
-            <DropdownItem.Label description={item.subtext}>
-              {item.name} {isHighlighted ? " - hi!" : null}
-            </DropdownItem.Label>
-            <DropdownItem.Check isSelected={isSelected} />
+        {(item, index, { isHighlighted }) => (
+          <DropdownItem
+            key={item.value}
+            item={item}
+            index={index}
+            icon={<item.icon size={20} />}
+            description={item.subtext}>
+            {item.name} {isHighlighted ? " - hi!" : null}
           </DropdownItem>
         )}
       </MultiSelect>

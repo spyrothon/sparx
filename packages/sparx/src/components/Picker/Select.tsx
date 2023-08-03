@@ -59,11 +59,11 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
       size,
       values,
       highlightedIndex,
-      inputClassNames: [],
+      itemToString,
       getMenuProps,
       getItemProps,
     }),
-    [color, size, values, highlightedIndex, getMenuProps, getItemProps],
+    [color, size, values, highlightedIndex, itemToString, getMenuProps, getItemProps],
   );
 
   return (

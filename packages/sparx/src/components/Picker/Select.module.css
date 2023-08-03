@@ -24,3 +24,7 @@
   top: 0;
   pointer-events: none;
 }
+
+.placeholder {
+  color: var(--text-secondary);
+}

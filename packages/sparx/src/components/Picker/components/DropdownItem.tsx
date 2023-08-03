@@ -12,12 +12,16 @@ export interface DropdownItemProps<T> extends React.PropsWithChildren {
   item: T;
   index: number;
   highlight?: boolean;
+  hideCheck?: boolean;
+  icon?: React.ReactNode;
+  description?: React.ReactNode;
 }
 
-export function DropdownItem<T>(props: DropdownItemProps<T>) {
-  const { item, index, highlight = true, children } = props;
+export function DropdownItem<T extends object>(props: DropdownItemProps<T>) {
+  const { item, index, highlight = true, hideCheck = false, icon, description, children } = props;
 
-  const { getItemProps, highlightedIndex } = usePickerContext<T>();
+  const { getItemProps, highlightedIndex, values } = usePickerContext<T>();
+  const isSelected = values.has(item);
 
   return (
     <li
@@ -25,7 +29,9 @@ export function DropdownItem<T>(props: DropdownItemProps<T>) {
       className={classNames(styles.itemContainer, {
         [styles.itemHighlighted]: highlight && highlightedIndex === index,
       })}>
-      {children}
+      {icon != null ? <DropdownItemIcon>{icon}</DropdownItemIcon> : null}
+      <DropdownItemLabel description={description}>{children}</DropdownItemLabel>
+      {!hideCheck ? <DropdownItemCheck isSelected={isSelected} /> : null}
     </li>
   );
 }

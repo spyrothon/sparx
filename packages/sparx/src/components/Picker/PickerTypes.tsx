@@ -41,8 +41,8 @@ export function defaultEmptyState(query: string | undefined) {
 
 export function defaultRenderItem<Item extends object>(item: Item, index: number) {
   return (
-    <DropdownItem item={item} index={index}>
-      <DropdownItem.Label>{defaultPickerItemToString(item)}</DropdownItem.Label>
+    <DropdownItem key={index} item={item} index={index}>
+      {defaultPickerItemToString(item)}
     </DropdownItem>
   );
 }

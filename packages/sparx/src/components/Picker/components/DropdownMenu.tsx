@@ -16,10 +16,10 @@ interface DropdownMenuProps<T> {
   renderEmptyState?: () => React.ReactNode;
 }
 
-export function DropdownMenu<T>(props: DropdownMenuProps<T>) {
+export function DropdownMenu<T extends object>(props: DropdownMenuProps<T>) {
   const { items, isOpen, maxHeight = DEFAULT_MAX_HEIGHT, children, renderEmptyState } = props;
 
-  const { highlightedIndex, values, inputClassNames, getMenuProps } = usePickerContext<T>();
+  const { highlightedIndex, values, getMenuProps } = usePickerContext<T>();
 
   function getItemState(item: T, index: number): DropdownItemState {
     return {
@@ -31,7 +31,7 @@ export function DropdownMenu<T>(props: DropdownMenuProps<T>) {
   return (
     <ul
       {...getMenuProps()}
-      className={classNames(styles.dropdown, ...inputClassNames, {
+      className={classNames(styles.dropdown, {
         [styles.dropdownOpen]: isOpen,
       })}
       style={{ "--_select-max-height": `${maxHeight}px` }}>

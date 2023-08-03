@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import { useMultipleSelection, useSelect } from "downshift";
 
-import { Clickable, defaultSelectItemToString, Stack, Tag, Text } from "@sparx/index";
+import { Clickable, defaultSelectItemToString, Stack, Tag } from "@sparx/index";
 
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 import { DropdownChevron } from "./components/DropdownChevron";
@@ -57,7 +57,7 @@ export function MultiSelect<Item extends object>(props: MultiSelectProps<Item>) 
   const { isOpen, getToggleButtonProps, getMenuProps, highlightedIndex, getItemProps } = useSelect({
     items,
     selectedItem: null,
-    stateReducer: (state, actionAndChanges) => {
+    stateReducer: (_state, actionAndChanges) => {
       const { changes, type } = actionAndChanges;
       switch (type) {
         case useSelect.stateChangeTypes.ToggleButtonKeyDownEnter:
@@ -95,11 +95,11 @@ export function MultiSelect<Item extends object>(props: MultiSelectProps<Item>) 
       size,
       values: new Set(selectedItems),
       highlightedIndex,
-      inputClassNames: [],
+      itemToString,
       getMenuProps,
       getItemProps,
     }),
-    [color, size, selectedItems, highlightedIndex, getMenuProps, getItemProps],
+    [color, size, selectedItems, highlightedIndex, itemToString, getMenuProps, getItemProps],
   );
 
   return (
@@ -117,13 +117,17 @@ export function MultiSelect<Item extends object>(props: MultiSelectProps<Item>) 
           {selectedItems.length > 0 ? (
             <Stack direction="horizontal" spacing="space-sm">
               {selectedItems.map((item, index) => (
-                <Tag key={index} {...getSelectedItemProps({ selectedItem: item })}>
-                  {itemToString(item)}
-                </Tag>
+                <Clickable
+                  key={`${itemToString(item)}${index}`}
+                  {...getSelectedItemProps({ selectedItem: item })}>
+                  <Tag>{itemToString(item)}</Tag>
+                </Clickable>
               ))}
             </Stack>
           ) : (
-            <Text variant="text-md/secondary">{placeholder}</Text>
+            <div className={classNames(styles.placeholder, inputStyles.inputText)}>
+              {placeholder}
+            </div>
           )}
           <DropdownChevron
             isOpen={isOpen}

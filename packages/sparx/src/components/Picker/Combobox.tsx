@@ -78,11 +78,12 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
       size,
       values,
       highlightedIndex,
+      itemToString,
       inputClassNames: [],
       getMenuProps,
       getItemProps,
     }),
-    [color, size, values, highlightedIndex, getMenuProps, getItemProps],
+    [color, size, values, highlightedIndex, itemToString, getMenuProps, getItemProps],
   );
 
   return (
