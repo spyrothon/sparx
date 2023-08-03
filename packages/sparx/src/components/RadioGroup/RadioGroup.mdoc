@@ -4,21 +4,7 @@
 equally-prominent options. Where a `SelectInput` requires the user to interact with the component to
 see all of the available options
 
-{% showcase  %}
-
-```
-<RadioGroup
-  options={[
-    { label: "Option One", value: "one" },
-    { label: "Option Two", value: "two" },
-    { label: "Option Three", value: "three" },
-  ]}
-  value={selectedRadio}
-  onChange={(event) => setSelectedRadio(event.target.value)}
-/>
-```
-
-{% /showcase %}
+{% showcase-file example="radio-group" /%}
 
 `RadioGroup` should generally be avoided when there are more than 4 or 5 options to choose from. At
 that point, a `SelectInput` often becomes easier to comprehend and greatly reduces the footprint.
@@ -28,16 +14,4 @@ example, a language selector on it's own settings page, where each language is a
 Similarly, with only 2 options, `RadioGroup` can be a good alternative to a `Checkbox` or
 `FormSwitch` when the options aren't toggles like On/Off or Enabled/Disabled.
 
-{% showcase %}
-
-```
-<RadioGroup
-  options={[
-    { label: "Light Theme", value: Theme.LIGHT },
-    { label: "Dark Theme", value: Theme.DARK },
-  ]}
-  value={theme}
-  onChange={(event) => setTheme(event.target.value as Theme)}
-/>
-{% /showcase %}
-```
+{% showcase-file example="radio-group-theme-input" /%}
