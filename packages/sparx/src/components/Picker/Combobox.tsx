@@ -17,6 +17,8 @@ export interface ComboboxProps<Item extends object> extends PickerStyleProps {
   items: Item[];
   selectedKey: string | undefined;
   allowsCustomValue?: boolean;
+  allowsEmptyCollection?: boolean;
+  placeholder?: string;
   children: CollectionChildren<Item>;
   onSelect: (itemKey: string) => void;
 }
@@ -28,6 +30,8 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
     color,
     size,
     allowsCustomValue = false,
+    allowsEmptyCollection = false,
+    placeholder,
     className,
     children,
     onSelect,
@@ -39,6 +43,8 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
     defaultSelectedKey: selectedKey,
     selectedKey,
     allowsCustomValue,
+    allowsEmptyCollection,
+    placeholder,
     defaultFilter: contains,
     onSelectionChange(key) {
       // React.Key can be a number, but we're restricting that to only strings
@@ -73,6 +79,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
         className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
         <input
           {...inputProps}
+          placeholder={placeholder}
           ref={inputRef}
           className={classNames(inputStyles.inputText, styles.input, styles.inputPadding)}
         />

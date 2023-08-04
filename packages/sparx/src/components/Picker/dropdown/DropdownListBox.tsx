@@ -14,22 +14,25 @@ import styles from "./DropdownListBox.module.css";
 interface ListBoxProps extends AriaListBoxOptions<unknown> {
   listBoxRef?: React.RefObject<HTMLUListElement>;
   state: ListState<unknown>;
+  emptyState?: React.ReactNode;
 }
 
 export function DropdownListBox(props: ListBoxProps) {
   let ref = React.useRef<HTMLUListElement>(null);
-  let { listBoxRef = ref, state } = props;
+  let { listBoxRef = ref, state, emptyState = <EmptyState /> } = props;
   let { listBoxProps } = useListBox(props, state, listBoxRef);
+
+  const visibleItems = [...state.collection].map((item) =>
+    item.type === "section" ? (
+      <ListBoxSection key={item.key} section={item} state={state} />
+    ) : (
+      <Option key={item.key} item={item} state={state} />
+    ),
+  );
 
   return (
     <ul {...listBoxProps} ref={listBoxRef} className={styles.dropdown}>
-      {[...state.collection].map((item) =>
-        item.type === "section" ? (
-          <ListBoxSection key={item.key} section={item} state={state} />
-        ) : (
-          <Option key={item.key} item={item} state={state} />
-        ),
-      )}
+      {visibleItems.length > 0 ? visibleItems : emptyState}
     </ul>
   );
 }
@@ -93,5 +96,15 @@ function Option({ item, state }: ListBoxOptionProps) {
       {content}
       {isSelected && <CheckboxCircleChecked className={styles.optionCheck} size={20} />}
     </Stack>
+  );
+}
+
+function EmptyState() {
+  return (
+    <Text
+      className={classNames(styles.optionPlainText, styles.emptyState)}
+      variant="text-md/secondary">
+      <em>No available options</em>
+    </Text>
   );
 }

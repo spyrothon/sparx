@@ -35,3 +35,19 @@ control.
 
 As always, sizing should be reserved for special cases where the input needs to fit better within
 the context it resides.
+
+## Multiple Selection
+
+There is currently no explicit multiple selection component, neither for `Select` nor `Combobox`.
+But, it's possible to create a multiselect control by composing a list of "selected items" alongside
+a `Combobox` that displays the remaining options.
+
+{% showcase-file example="combobox-multi-select" /%}
+
+Note that the combobox has a few additional options here:
+
+- `items` is a _filtered_ list of items that have not been selected yet.
+- `selectedKey` is explicitly set to `undefined`, meaning the Combobox will never show a selected
+state in the dropdown.
+- `allowEmptyCollection` lets the Combobox render the dropdown with an empty state placeholder when
+no items match the current search.

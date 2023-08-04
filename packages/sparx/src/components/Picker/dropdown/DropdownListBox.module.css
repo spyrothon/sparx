@@ -38,3 +38,7 @@
 .itemHighlighted {
   background-color: var(--background-highlight);
 }
+
+.emptyState {
+  text-align: center;
+}
