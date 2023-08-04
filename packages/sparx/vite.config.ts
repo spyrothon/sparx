@@ -1,5 +1,6 @@
 import path from "path";
 import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 
 import react from "@vitejs/plugin-react-swc";
 
@@ -11,7 +12,7 @@ const EXTERNAL_PACKAGES = Object.keys(PACKAGE_JSON["dependencies"]).concat(
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [dts(), react()],
   css: {
     postcss: path.resolve(__dirname, "../../"),
   },

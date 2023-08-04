@@ -27,6 +27,7 @@
   left: 0;
   opacity: 0;
   padding: 8px;
+  pointer-events: none;
 
   &:focus {
     background-color: white;

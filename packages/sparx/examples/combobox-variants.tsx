@@ -1,12 +1,11 @@
 import * as React from "react";
 
-import { Combobox, Stack } from "../dist";
+import { Combobox, Item, Stack } from "../dist";
 import { InputColor, InputSize } from "../dist/components/Input/Input";
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {
-  const [selectedItem, setSelectedItem] = React.useState(PICKER_OPTIONS[0]);
-  const [filteredItems, setFilteredItems] = React.useState(PICKER_OPTIONS);
+  const [selectedKey, setSelectedKey] = React.useState(PICKER_OPTIONS[0].value);
 
   const sampleVariants: Array<{ color: InputColor; size: InputSize }> = [
     { color: "success", size: "small" },
@@ -21,16 +20,11 @@ export default function Component() {
           key={`${color}-${size}`}
           color={color}
           size={size}
-          items={filteredItems}
-          selectedItem={selectedItem}
-          onSelect={(item) => (item != null ? setSelectedItem(item) : null)}
-          placeholder="Pick an option"
-          onSearch={(query) =>
-            setFilteredItems(() =>
-              PICKER_OPTIONS.filter((option) => option.name.includes(query ?? "")),
-            )
-          }
-        />
+          items={PICKER_OPTIONS}
+          selectedKey={selectedKey}
+          onSelect={setSelectedKey}>
+          {(item) => <Item key={item.value}>{item.name}</Item>}
+        </Combobox>
       ))}
     </Stack>
   );

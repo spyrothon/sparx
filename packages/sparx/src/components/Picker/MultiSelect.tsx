@@ -119,7 +119,11 @@ export function MultiSelect<Item extends object>(props: MultiSelectProps<Item>) 
               {selectedItems.map((item, index) => (
                 <Clickable
                   key={`${itemToString(item)}${index}`}
-                  {...getSelectedItemProps({ selectedItem: item })}>
+                  {...getSelectedItemProps({ selectedItem: item })}
+                  onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+                    event.stopPropagation();
+                    removeSelectedItem(item);
+                  }}>
                   <Tag>{itemToString(item)}</Tag>
                 </Clickable>
               ))}

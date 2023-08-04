@@ -9,21 +9,24 @@ import styles from "./Dropdown.module.css";
 
 interface DropdownChevronProps extends ClickableProps {
   isOpen: boolean;
+  excludeFromTabOrder?: boolean;
+  isDisabled?: boolean;
 }
 
 export const DropdownChevron = React.forwardRef<HTMLDivElement, DropdownChevronProps>(
   function Chevron(props, ref) {
-    const { isOpen, className, ...passthroughProps } = props;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { isOpen, className, excludeFromTabOrder, isDisabled, ...passthroughProps } = props;
 
     const ChevronIcon = isOpen ? ChevronUp : ChevronDown;
 
     return (
       <Clickable
+        as={ChevronIcon}
         ref={ref}
-        className={classNames(styles.chevronContainer, className)}
-        {...passthroughProps}>
-        <ChevronIcon className={styles.chevron} />
-      </Clickable>
+        className={classNames(styles.chevron, className)}
+        {...passthroughProps}
+      />
     );
   },
 );

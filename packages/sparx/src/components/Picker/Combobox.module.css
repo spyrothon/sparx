@@ -4,14 +4,23 @@
   align-items: center;
   width: 100%;
 
-  &.open .input {
+  &.open .inputRow {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 }
 
+.inputRow {
+  display: flex;
+  width: 100%;
+}
+
 .input {
   flex: 1 1 auto;
+  padding: var(--_input-padding);
+  margin: 0;
+  border: none;
+  background: none;
 
   &:focus,
   &:focus-within {
@@ -21,4 +30,8 @@
 
 .chevron {
   flex: 0 0 auto;
+}
+
+.placeholder {
+  color: var(--text-secondary);
 }

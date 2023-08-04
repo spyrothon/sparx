@@ -1,13 +1,20 @@
-.input {
+.inputBackdrop {
   background-color: var(--background-accent);
   color: var(--interactive-normal);
   border: var(--_input-border);
   border-radius: var(--radius-normal);
-  padding: var(--_input-padding);
+  width: 100%;
+}
+
+.inputText {
   font-family: var(--font-normal);
   font-size: var(--_input-font-size);
   line-height: var(--_input-line-height);
-  width: 100%;
+}
+
+.input {
+  composes: inputBackdrop inputText;
+  padding: var(--_input-padding);
 
   &::placeholder {
     color: var(--text-secondary);
@@ -17,12 +24,6 @@
     cursor: not-allowed;
     opacity: 60%;
   }
-}
-
-.inputText {
-  font-family: var(--font-normal);
-  font-size: var(--_input-font-size);
-  line-height: var(--_input-line-height);
 }
 
 .accent {
@@ -67,21 +68,25 @@
 
 .small {
   --_input-font-size: 14px;
+  --_input-icon-size: 24px;
   --_input-line-height: 18px;
   --_input-padding: var(--space-sm) var(--space-sm);
 }
 .medium {
   --_input-font-size: 18px;
+  --_input-icon-size: 32px;
   --_input-line-height: 24px;
   --_input-padding: var(--space-sm) var(--space-md);
 }
 .large {
   --_input-font-size: 24px;
+  --_input-icon-size: 46px;
   --_input-line-height: 30px;
   --_input-padding: var(--space-md) var(--space-md);
 }
 .xlarge {
   --_input-font-size: 32px;
+  --_input-icon-size: 64px;
   --_input-line-height: 40px;
   --_input-padding: var(--space-lg) var(--space-lg);
 }

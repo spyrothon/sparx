@@ -1,8 +1,11 @@
 .dropdown {
+  --_select-max-height: 440px;
   position: absolute;
   top: 100%;
   z-index: 1;
   background-color: var(--background-primary);
+  overflow-y: scroll;
+  max-height: var(--_select-max-height);
   width: 100%;
   margin: 0;
   padding: 0;
@@ -11,17 +14,20 @@
   border-bottom-left-radius: var(--radius-normal);
   border-bottom-right-radius: var(--radius-normal);
   list-style-type: none;
-  display: none;
-
-  &.dropdownOpen {
-    display: block;
-    overflow-y: scroll;
-    max-height: var(--_select-max-height);
-  }
 }
 
-.chevron {
+.optionPlainText {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.optionCheck {
+  flex: 0 0 32px;
+  justify-self: flex-end;
+  align-self: center;
+  margin: var(--space-md);
   color: var(--text-normal);
-  height: calc(var(--_input-icon-size));
-  width: calc(var(--_input-icon-size));
+}
+
+.itemHighlighted {
+  background-color: var(--background-highlight);
 }

@@ -33,7 +33,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && pnpm gen:icons && pnpm gen:types",
+    "build": "vite build",
     "gen:icons": "tsc --project tsconfig.icons.json",
     "gen:types": "tsc --project tsconfig.generate.json",
     "prepublishOnly": "pnpm build"
@@ -46,11 +46,14 @@
     "@iconscout/react-unicons": "^1.1.6",
     "@iconscout/react-unicons-solid": "^0.0.3",
     "@internationalized/number": "^3.2.0",
+    "@react-types/shared": "^3.18.1",
     "@spyrothon/sparx-icons": "workspace:*",
     "classnames": "^2.3.1",
     "downshift": "^8.1.0",
+    "react-aria": "^3.26.0",
     "react-polymorphic-types": "github:GamesDoneQuick/react-polymorphic-types#bd1e8388c1d02d919dd038a5d5690ff7bb62da88",
     "react-remark": "^2.1.0",
+    "react-stately": "^3.24.0",
     "uuid": "^8.3.2",
     "zustand": "^3.7.2"
   },
@@ -61,6 +64,7 @@
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-react-swc": "^3.3.0",
     "typescript": "^4.6.4",
-    "vite": "^4.2.1"
+    "vite": "^4.2.1",
+    "vite-plugin-dts": "^3.4.0"
   }
 }

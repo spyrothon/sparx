@@ -22,7 +22,6 @@
 .chevron {
   flex: 0 0 auto;
   top: 0;
-  pointer-events: none;
 }
 
 .placeholder {

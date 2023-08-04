@@ -1,114 +1,94 @@
 import * as React from "react";
 import classNames from "classnames";
-import { useCombobox } from "downshift";
+import { useComboBox, useFilter } from "react-aria";
+import { useComboBoxState } from "react-stately";
 
-import { defaultSelectItemToString, TextInput } from "@sparx/index";
+import { CollectionChildren } from "@react-types/shared";
 
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
+import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./components/DropdownChevron";
-import { DropdownMenu } from "./components/DropdownMenu";
-import {
-  defaultEmptyState,
-  defaultRenderItem,
-  DropdownItemState,
-  ItemToString,
-} from "./PickerTypes";
-import { PickerContextProvider, PickerContextState } from "./usePickerContext";
+import { DropdownListBox } from "./dropdown/DropdownListBox";
 
+import inputStyles from "../Input/Input.module.css";
 import styles from "./Combobox.module.css";
 
-export interface ComboboxProps<Item> {
+export interface ComboboxProps<Item extends object> {
   items: Item[];
-  selectedItem: Item | null | undefined;
-  placeholder?: string;
+  selectedKey: string | undefined;
   color?: InputColor;
   size?: InputSize;
-  disabled?: boolean;
-  maxHeight?: number;
+  allowsCustomValue?: boolean;
   className?: string;
-  itemToString?: ItemToString<Item>;
-  renderEmptyState?: (query: string | undefined) => React.ReactNode;
-  onSelect: (item?: Item) => unknown;
-  onSearch: (query: string | undefined) => void;
-  children?: (item: Item, index: number, state: DropdownItemState) => React.ReactNode;
+  children: CollectionChildren<Item>;
+  onSelect: (itemKey: string) => void;
 }
 
 export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   const {
     items,
-    selectedItem,
-    placeholder,
-    disabled = false,
+    selectedKey,
     color = "accent",
     size = "medium",
+    allowsCustomValue = false,
     className,
-    itemToString = defaultSelectItemToString,
-    renderEmptyState = defaultEmptyState,
+    children,
     onSelect,
-    onSearch,
-    children = defaultRenderItem,
   } = props;
-
-  const {
-    isOpen,
-    getToggleButtonProps,
-    getMenuProps,
-    getInputProps,
-    highlightedIndex,
-    getItemProps,
-    inputValue,
-  } = useCombobox({
-    items,
-    selectedItem: selectedItem,
-    itemToString,
-    onInputValueChange: ({ inputValue }) => {
-      onSearch(inputValue);
+  const { contains } = useFilter({ sensitivity: "base" });
+  const state = useComboBoxState({
+    children,
+    defaultItems: items,
+    defaultSelectedKey: selectedKey,
+    selectedKey,
+    allowsCustomValue,
+    defaultFilter: contains,
+    onSelectionChange(key) {
+      // React.Key can be a number, but we're restricting that to only strings
+      // for simplicity.
+      onSelect?.(key as string);
     },
-    onSelectedItemChange: ({ selectedItem }) => onSelect(selectedItem ?? undefined),
   });
 
-  const values = React.useMemo(
-    () => (selectedItem != null ? new Set([selectedItem]) : new Set<Item>()),
-    [selectedItem],
-  );
-
-  const pickerContextValue: PickerContextState<Item> = React.useMemo(
-    () => ({
-      color,
-      size,
-      values,
-      highlightedIndex,
-      itemToString,
-      inputClassNames: [],
-      getMenuProps,
-      getItemProps,
-    }),
-    [color, size, values, highlightedIndex, itemToString, getMenuProps, getItemProps],
+  const buttonRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const listBoxRef = React.useRef<HTMLUListElement>(null);
+  const { buttonProps, inputProps, listBoxProps } = useComboBox(
+    {
+      defaultItems: items,
+      defaultSelectedKey: selectedKey,
+      selectedKey,
+      inputRef,
+      buttonRef,
+      listBoxRef,
+      popoverRef: listBoxRef,
+    },
+    state,
   );
 
   return (
-    <PickerContextProvider value={pickerContextValue}>
-      <div
-        className={classNames(styles.container, className, ...getInputClassNames(color, size), {
-          [styles.open]: isOpen,
-          [styles.disabled]: disabled,
-        })}>
-        <TextInput
-          className={styles.input}
-          placeholder={placeholder}
-          {...getInputProps()}
-          color={color}
-          size={size}
-          disabled={disabled}
+    <div
+      className={classNames(styles.container, className, ...getInputClassNames(color, size), {
+        [styles.open]: state.isOpen,
+      })}>
+      <Stack
+        direction="horizontal"
+        align="center"
+        spacing="space-md"
+        className={inputStyles.inputBackdrop}>
+        <input
+          {...inputProps}
+          ref={inputRef}
+          className={classNames(inputStyles.inputText, styles.input)}
         />
-        <DropdownChevron {...getToggleButtonProps()} className={styles.chevron} />
-        <DropdownMenu
-          isOpen={isOpen}
-          items={items}
-          renderEmptyState={() => renderEmptyState(inputValue)}>
-          {children}
-        </DropdownMenu>
-      </div>
-    </PickerContextProvider>
+        <DropdownChevron
+          {...buttonProps}
+          ref={buttonRef}
+          isOpen={state.isOpen}
+          className={styles.chevron}
+        />
+      </Stack>
+      {state.isOpen && <DropdownListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />}
+    </div>
   );
 }

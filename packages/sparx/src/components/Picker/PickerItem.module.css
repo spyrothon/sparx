@@ -1,0 +1,34 @@
+.itemContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  width: 100%;
+  margin: 0;
+  padding: var(--_input-padding);
+  color: var(--text-normal);
+}
+
+.itemIcon {
+  flex: 0 0 24px;
+  padding: 4px;
+}
+
+.itemCheck {
+  flex: 0 0 24px;
+  justify-self: flex-end;
+  align-self: center;
+  padding: 4px;
+}
+
+.itemLabel {
+  flex: 1 1 auto;
+}
+
+.itemHighlighted {
+  background-color: var(--background-highlight);
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+}
