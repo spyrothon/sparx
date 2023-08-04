@@ -5,7 +5,7 @@ import ChevronUp from "@spyrothon/sparx-icons/dist/icons/ChevronUp";
 
 import { Clickable, ClickableProps } from "@sparx/index";
 
-import styles from "./Dropdown.module.css";
+import styles from "./DropdownChevron.module.css";
 
 interface DropdownChevronProps extends ClickableProps {
   isOpen: boolean;

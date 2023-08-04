@@ -8,7 +8,7 @@ import { CollectionChildren } from "@react-types/shared";
 import { Clickable } from "../Clickable/Clickable";
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 import { Stack } from "../Stack/Stack";
-import { DropdownChevron } from "./components/DropdownChevron";
+import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
 
 import inputStyles from "../Input/Input.module.css";
@@ -16,7 +16,7 @@ import styles from "./Picker.module.css";
 
 export interface SelectProps<Item extends object> {
   items: Item[];
-  selectedKey: string | undefined;
+  selectedKey: string;
   placeholder?: string;
   name?: string;
   color?: InputColor;
@@ -41,8 +41,8 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
   const state = useSelectState({
     children,
     items,
-    defaultSelectedKey: selectedKey,
     selectedKey,
+    defaultSelectedKey: selectedKey,
     onSelectionChange(key) {
       // React.Key can be a number, but we're restricting that to only strings
       // for simplicity.

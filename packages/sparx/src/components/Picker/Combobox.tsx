@@ -7,7 +7,7 @@ import { CollectionChildren } from "@react-types/shared";
 
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 import { Stack } from "../Stack/Stack";
-import { DropdownChevron } from "./components/DropdownChevron";
+import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
 
 import inputStyles from "../Input/Input.module.css";
