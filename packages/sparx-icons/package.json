@@ -1,12 +1,17 @@
 {
   "name": "@spyrothon/sparx-icons",
-  "version": "0.1.0",
+  "description": "Icons to support the Sparx design system",
+  "version": "0.8.0",
   "type": "module",
   "types": "dist/IconProps.d.ts",
   "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "react": "^18.2.0",
