@@ -16,6 +16,13 @@
   list-style-type: none;
 }
 
+.option {
+  &:focus,
+  &:focus-within {
+    outline: none;
+  }
+}
+
 .optionPlainText {
   padding: var(--space-sm) var(--space-md);
 }

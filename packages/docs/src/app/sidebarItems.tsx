@@ -73,7 +73,6 @@ export const sidebarItems: NavigationItem[] = [
       },
       { type: "page", title: "TextArea", sourcePath: "components/TextArea/TextArea.mdoc" },
       { type: "page", title: "Combobox", sourcePath: "components/Picker/Combobox.mdoc" },
-      { type: "page", title: "MultiSelect", sourcePath: "components/Picker/MultiSelect.mdoc" },
       { type: "page", title: "Select", sourcePath: "components/Picker/Select.mdoc" },
       { type: "page", title: "RadioGroup", sourcePath: "components/RadioGroup/RadioGroup.mdoc" },
     ],

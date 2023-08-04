@@ -12,7 +12,6 @@
 
 .input {
   flex: 1 1 auto;
-  padding: var(--_input-padding);
   font-size: var(--_input-font-size);
   margin: 0;
   border: none;
@@ -22,6 +21,10 @@
   &:focus-within {
     outline: none;
   }
+}
+
+.inputPadding {
+  padding: var(--_input-padding);
 }
 
 .chevron {

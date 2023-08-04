@@ -38,6 +38,7 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
     children,
     onSelect,
   } = props;
+
   const state = useSelectState({
     children,
     items,
@@ -61,6 +62,8 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
     ref,
   );
 
+  const selectedElement = state.selectedItem != null ? state.selectedItem.rendered : placeholder;
+
   return (
     <div
       className={classNames(styles.container, className, ...getInputClassNames(color, size))}
@@ -75,8 +78,12 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
         {...triggerProps}
         ref={ref}
         className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
-        <div className={styles.input} {...valueProps}>
-          {state.selectedItem != null ? state.selectedItem.rendered : placeholder}
+        <div
+          className={classNames(styles.input, {
+            [styles.inputPadding]: typeof selectedElement === "string",
+          })}
+          {...valueProps}>
+          {selectedElement}
         </div>
         <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
       </Stack>
