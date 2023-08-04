@@ -28,6 +28,7 @@
 }
 
 .content {
+  flex: 1 0 min-content;
   padding: var(--space-md);
   color: var(--_callout-content-color);
 }
