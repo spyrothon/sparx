@@ -11,7 +11,7 @@ import { DropdownChevron } from "./components/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
 
 import inputStyles from "../Input/Input.module.css";
-import styles from "./Combobox.module.css";
+import styles from "./Picker.module.css";
 
 export interface ComboboxProps<Item extends object> {
   items: Item[];
@@ -68,14 +68,13 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
 
   return (
     <div
-      className={classNames(styles.container, className, ...getInputClassNames(color, size), {
-        [styles.open]: state.isOpen,
-      })}>
+      className={classNames(styles.container, className, ...getInputClassNames(color, size))}
+      data-open={state.isOpen}>
       <Stack
         direction="horizontal"
         align="center"
         spacing="space-md"
-        className={inputStyles.inputBackdrop}>
+        className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
         <input
           {...inputProps}
           ref={inputRef}

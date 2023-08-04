@@ -1,5 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
+import { useButton } from "react-aria";
 import type {
   PolymorphicForwardRefExoticComponent,
   PolymorphicPropsWithRef,
@@ -43,17 +44,25 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
   ) {
     const {
       as: Component = "div",
-      role = "button",
-      disabled = false,
-      tabIndex = 0,
       noCursor = false,
-      children,
+      disabled: isDisabled,
       className,
+      children,
       onClick,
       ...extraProps
     } = props;
 
     const innerRef = React.useRef<HTMLElement | null>(null);
+
+    const { buttonProps } = useButton(
+      {
+        ...extraProps,
+        disabled: isDisabled,
+        onPress: onClick,
+        elementType: Component,
+      },
+      innerRef,
+    );
 
     function setRef(element: HTMLElement | null) {
       innerRef.current = element;
@@ -65,25 +74,11 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
       }
     }
 
-    function handleKeyDown(event: React.KeyboardEvent) {
-      const element = innerRef.current;
-      if (element == null) return;
-
-      if (event.key === " " || event.key === "Enter") {
-        event.preventDefault();
-        element.click();
-      }
-    }
-
     return (
       <Component
-        {...extraProps}
+        {...buttonProps}
         ref={setRef}
-        role={role}
-        tabIndex={disabled ? -1 : tabIndex}
-        className={noCursor ? className : classNames(styles.clickableCursor, className)}
-        onClick={!disabled ? onClick : undefined}
-        onKeyDown={!disabled ? handleKeyDown : undefined}>
+        className={noCursor ? className : classNames(styles.clickableCursor, className)}>
         {children}
       </Component>
     );

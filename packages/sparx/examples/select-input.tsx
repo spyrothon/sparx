@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Select, Stack } from "../dist";
+import { Item, Select, Stack } from "../dist";
 
 export default function Component() {
   const [OPTIONS] = React.useState(() => [
@@ -9,15 +9,19 @@ export default function Component() {
     { name: "Option Three", value: "three" },
   ]);
 
-  const [selectedItem, setSelectedItem] = React.useState<typeof OPTIONS[number] | undefined>(
-    OPTIONS[0],
-  );
+  const [selectedKey, setSelectedKey] = React.useState(OPTIONS[0].value);
 
   return (
     <Stack>
-      <Select size="small" items={OPTIONS} selectedItem={selectedItem} onSelect={setSelectedItem} />
-      <Select items={OPTIONS} selectedItem={selectedItem} onSelect={setSelectedItem} />
-      <Select size="large" items={OPTIONS} selectedItem={selectedItem} onSelect={setSelectedItem} />
+      <Select size="small" items={OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
+        {(item) => <Item key={item.value}>{item.name}</Item>}
+      </Select>
+      <Select items={OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
+        {(item) => <Item key={item.value}>{item.name}</Item>}
+      </Select>
+      <Select size="large" items={OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
+        {(item) => <Item key={item.value}>{item.name}</Item>}
+      </Select>
     </Stack>
   );
 }

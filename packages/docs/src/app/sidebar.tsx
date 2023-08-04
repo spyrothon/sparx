@@ -8,6 +8,7 @@ import {
   Card,
   Divider,
   FormControl,
+  Item,
   Select,
   Stack,
   Tabs,
@@ -70,16 +71,18 @@ export function Sidebar(props: { className: string }) {
         <FormControl label="Theme" size="small">
           <Select
             items={THEME_OPTIONS}
-            selectedItem={THEME_OPTIONS.find(({ value }) => value === theme)}
-            onSelect={(item) => (item != null ? setTheme(item.value) : null)}
-          />
+            selectedKey={theme}
+            onSelect={(theme) => setTheme(theme as Theme)}>
+            {(item) => <Item key={item.value}>{item.name}</Item>}
+          </Select>
         </FormControl>
         <FormControl label="Accent Color" size="small">
           <Select
             items={ACCENT_OPTIONS}
-            selectedItem={ACCENT_OPTIONS.find(({ value }) => value === accent)}
-            onSelect={(item) => (item != null ? setAccent(item.value) : null)}
-          />
+            selectedKey={accent}
+            onSelect={(accent) => setAccent(accent as Accent)}>
+            {(item) => <Item key={item.value}>{item.name}</Item>}
+          </Select>
         </FormControl>
         <Divider />
         <Tabs.Group>{getFlatSidebarItems().map(renderSidebarItem)}</Tabs.Group>

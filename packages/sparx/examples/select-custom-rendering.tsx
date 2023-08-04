@@ -1,29 +1,24 @@
 import * as React from "react";
 
-import { DropdownItem, Select, Stack } from "../dist";
+import { Item, PickerItem, Select } from "../dist";
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {
-  const [selectedItem, setSelectedItem] = React.useState(PICKER_OPTIONS[0]);
+  const [selectedKey, setSelectedKey] = React.useState(PICKER_OPTIONS[0].value);
 
   return (
-    <Stack>
-      <Select
-        color="success"
-        items={PICKER_OPTIONS}
-        selectedItem={selectedItem}
-        onSelect={(item) => (item != null ? setSelectedItem(item) : null)}>
-        {(item, index, { isHighlighted }) => (
-          <DropdownItem
-            key={item.value}
-            item={item}
-            index={index}
-            icon={<item.icon size={20} />}
-            description={item.subtext}>
-            {item.name} {isHighlighted ? " - highlighted!" : null}
-          </DropdownItem>
-        )}
-      </Select>
-    </Stack>
+    <Select
+      color="success"
+      items={PICKER_OPTIONS}
+      selectedKey={selectedKey}
+      onSelect={setSelectedKey}>
+      {(item) => (
+        <Item key={item.value} textValue={item.name}>
+          <PickerItem icon={item.icon} description={item.subtext}>
+            {item.name}
+          </PickerItem>
+        </Item>
+      )}
+    </Select>
   );
 }

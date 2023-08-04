@@ -1,90 +1,86 @@
 import * as React from "react";
 import classNames from "classnames";
-import { useSelect } from "downshift";
+import { HiddenSelect, useSelect } from "react-aria";
+import { useSelectState } from "react-stately";
 
-import { Clickable, defaultSelectItemToString } from "@sparx/index";
+import { CollectionChildren } from "@react-types/shared";
 
+import { Clickable } from "../Clickable/Clickable";
 import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
+import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./components/DropdownChevron";
-import { DropdownMenu } from "./components/DropdownMenu";
-import { defaultRenderItem, DropdownItemState, ItemToString } from "./PickerTypes";
-import { PickerContextProvider, PickerContextState } from "./usePickerContext";
+import { DropdownListBox } from "./dropdown/DropdownListBox";
 
 import inputStyles from "../Input/Input.module.css";
-import styles from "./Select.module.css";
+import styles from "./Picker.module.css";
 
-export interface SelectProps<Item> {
+export interface SelectProps<Item extends object> {
   items: Item[];
-  selectedItem: Item | null | undefined;
+  selectedKey: string | undefined;
   placeholder?: string;
+  name?: string;
   color?: InputColor;
   size?: InputSize;
-  disabled?: boolean;
-  maxHeight?: number;
   className?: string;
-  itemToString?: ItemToString<Item>;
-  onSelect: (item?: Item) => unknown;
-  children?: (item: Item, index: number, state: DropdownItemState) => React.ReactNode;
+  children: CollectionChildren<Item>;
+  onSelect: (itemKey: string) => void;
 }
 
 export function Select<Item extends object>(props: SelectProps<Item>) {
   const {
     items,
-    selectedItem,
-    placeholder = "Select an Option",
-    disabled = false,
+    selectedKey,
+    placeholder = "Select an option",
+    name,
     color = "accent",
     size = "medium",
     className,
-    itemToString = defaultSelectItemToString,
+    children,
     onSelect,
-    children = defaultRenderItem,
   } = props;
-
-  const { isOpen, getToggleButtonProps, getMenuProps, highlightedIndex, getItemProps } = useSelect({
+  const state = useSelectState({
+    children,
     items,
-    selectedItem,
-    itemToString,
-    onSelectedItemChange: ({ selectedItem }) => onSelect(selectedItem ?? undefined),
+    defaultSelectedKey: selectedKey,
+    selectedKey,
+    onSelectionChange(key) {
+      // React.Key can be a number, but we're restricting that to only strings
+      // for simplicity.
+      onSelect?.(key as string);
+    },
   });
 
-  const values = React.useMemo(
-    () => (selectedItem != null ? new Set([selectedItem]) : new Set<Item>()),
-    [selectedItem],
-  );
-
-  const pickerContextValue: PickerContextState<Item> = React.useMemo(
-    () => ({
-      color,
-      size,
-      values,
-      highlightedIndex,
-      itemToString,
-      getMenuProps,
-      getItemProps,
-    }),
-    [color, size, values, highlightedIndex, itemToString, getMenuProps, getItemProps],
+  const ref = React.useRef<HTMLDivElement>(null);
+  const { triggerProps, valueProps, menuProps } = useSelect(
+    {
+      items,
+      defaultSelectedKey: selectedKey,
+      selectedKey,
+    },
+    state,
+    ref,
   );
 
   return (
-    <PickerContextProvider value={pickerContextValue}>
-      <div
-        className={classNames(styles.container, className, ...getInputClassNames(color, size), {
-          [styles.open]: isOpen,
-          [styles.disabled]: disabled,
-        })}>
-        <Clickable
-          className={classNames(inputStyles.input, styles.input)}
-          placeholder={placeholder}
-          {...getToggleButtonProps()}
-          disabled={disabled}>
-          {selectedItem != null ? itemToString(selectedItem) : placeholder}
-          <DropdownChevron {...getToggleButtonProps()} className={styles.chevron} />
-        </Clickable>
-        <DropdownMenu isOpen={isOpen} items={items}>
-          {children}
-        </DropdownMenu>
-      </div>
-    </PickerContextProvider>
+    <div
+      className={classNames(styles.container, className, ...getInputClassNames(color, size))}
+      data-open={state.isOpen}>
+      <HiddenSelect state={state} triggerRef={ref} name={name} />
+      <Stack
+        as={Clickable}
+        direction="horizontal"
+        align="center"
+        justify="space-between"
+        spacing="space-md"
+        {...triggerProps}
+        ref={ref}
+        className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
+        <div className={styles.input} {...valueProps}>
+          {state.selectedItem != null ? state.selectedItem.rendered : placeholder}
+        </div>
+        <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
+      </Stack>
+      {state.isOpen && <DropdownListBox {...menuProps} state={state} />}
+    </div>
   );
 }
