@@ -11,54 +11,20 @@
 }
 
 .switch {
-  background-color: var(--background-primary);
+  background-color: var(--_input-color);
   border: var(--_input-border);
   border-radius: 100000px;
-  width: 44px;
+  width: 48px;
 }
 
-.iconContainer {
+.knob {
   position: relative;
   margin: 1px;
   height: 18px;
-}
-
-.icon {
-  display: block;
-  position: absolute;
-  left: 0;
-  right: unset;
+  width: 18px;
   border-radius: 100000px;
-  height: 18px;
+  background-color: var(--background-floating);
   color: var(--_input-color);
-}
-
-.iconUnchecked {
-  opacity: 1;
-}
-
-.iconChecked {
-  opacity: 0;
-}
-
-.checked {
-  & .switch {
-    background-color: var(--_input-color);
-  }
-
-  & .icon {
-    left: unset;
-    right: 0;
-    background-color: var(--background-primary);
-  }
-
-  & .iconUnchecked {
-    opacity: 0;
-  }
-
-  & .iconChecked {
-    opacity: 1;
-  }
 }
 
 .disabled {

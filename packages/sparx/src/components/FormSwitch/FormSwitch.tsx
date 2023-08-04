@@ -1,9 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
-import CheckboxCircleChecked from "@spyrothon/sparx-icons/dist/icons/CheckboxCircleChecked";
-import RadioBlank from "@spyrothon/sparx-icons/dist/icons/RadioBlank";
+import Check from "@spyrothon/sparx-icons/dist/icons/Check";
 
+import { animated, config, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
 
 import { getInputClassNames, InputColor } from "../Input/Input";
@@ -19,14 +19,28 @@ export interface FormSwitchProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
-function renderSwitch() {
+function Switch(props: { checked: boolean }) {
+  const { checked } = props;
+
+  const { left, filter } = useSpring({
+    left: checked ? 24 : 0,
+    filter: `grayscale(${checked ? 0 : 100}%)`,
+    config: { ...config.stiff, clamp: true },
+  });
+
+  const { opacity } = useSpring({
+    opacity: checked ? 1 : 0,
+    config: config.gentle,
+  });
+
   return (
-    <div className={styles.switch}>
-      <div className={styles.iconContainer}>
-        <CheckboxCircleChecked className={classNames(styles.icon, styles.iconChecked)} size={20} />
-        <RadioBlank className={classNames(styles.icon, styles.iconUnchecked)} size={20} />
-      </div>
-    </div>
+    <animated.div className={styles.switch} style={{ filter }}>
+      <animated.div className={styles.knob} style={{ left }}>
+        <animated.div style={{ opacity }}>
+          <Check size={18} />
+        </animated.div>
+      </animated.div>
+    </animated.div>
   );
 }
 
@@ -53,7 +67,7 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(fu
         <Text variant="header-sm/normal" className={styles.label}>
           {label}
         </Text>
-        {renderSwitch()}
+        <Switch checked={checked} />
         <input
           ref={ref}
           type="checkbox"

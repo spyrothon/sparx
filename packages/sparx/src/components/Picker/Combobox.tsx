@@ -69,6 +69,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
         direction="horizontal"
         align="center"
         spacing="space-md"
+        wrap={false}
         className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
         <input
           {...inputProps}

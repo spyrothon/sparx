@@ -46,6 +46,7 @@
     "@iconscout/react-unicons": "^1.1.6",
     "@iconscout/react-unicons-solid": "^0.0.3",
     "@internationalized/number": "^3.2.0",
+    "@react-spring/web": "^9.7.3",
     "@react-types/shared": "^3.18.1",
     "@spyrothon/sparx-icons": "workspace:*",
     "classnames": "^2.3.1",

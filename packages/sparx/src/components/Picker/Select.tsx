@@ -70,6 +70,7 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
         align="center"
         justify="space-between"
         spacing="space-md"
+        wrap={false}
         {...triggerProps}
         ref={ref}
         className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
