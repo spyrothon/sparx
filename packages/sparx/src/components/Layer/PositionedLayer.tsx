@@ -148,28 +148,29 @@ function nudgeAlignment(
   }
 }
 
-export interface PositionedLayerProps {
+export interface UsePositionedLayerOptions {
   target: Element;
   attach: Attach;
   align: Align;
   offset: number;
-  children: React.ReactNode;
-  className?: string;
 }
 
-export const PositionedLayer = React.forwardRef(function PositionedLayer(
-  props: PositionedLayerProps,
-  ref: React.ForwardedRef<HTMLDivElement>,
-) {
-  const { target, attach, align, offset, children, className } = props;
+/**
+ * Return a set of CSS style properties to position an element next to the
+ * given `targetRef`.
+ */
+export function usePositionedLayer(
+  options: UsePositionedLayerOptions,
+  targetRef: React.RefObject<Element>,
+): React.CSSProperties {
+  const { target, attach, align, offset } = options;
 
-  const contentRef = React.useRef<HTMLDivElement | null>(null);
   const [positionStyle, setPositionStyle] = React.useState<React.CSSProperties>({
     position: "absolute",
   });
 
   React.useLayoutEffect(() => {
-    const content = contentRef.current;
+    const content = targetRef.current;
     if (content == null) return;
 
     const targetRect = target.getBoundingClientRect();
@@ -186,7 +187,25 @@ export const PositionedLayer = React.forwardRef(function PositionedLayer(
     setPositionStyle((state) => ({ ...state, ...nudgedStyles }));
     // Only calculate the position once. Afterward, anything can move freely
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [targetRef]);
+
+  return positionStyle;
+}
+
+export interface PositionedLayerProps
+  extends UsePositionedLayerOptions,
+    React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
+
+export const PositionedLayer = React.forwardRef(function PositionedLayer(
+  props: PositionedLayerProps,
+  ref: React.ForwardedRef<HTMLDivElement>,
+) {
+  const { children, style, ...passthroughProps } = props;
+
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
+  const positionStyle = usePositionedLayer(props, contentRef);
 
   function setRef(element: HTMLDivElement | null) {
     contentRef.current = element;
@@ -198,7 +217,7 @@ export const PositionedLayer = React.forwardRef(function PositionedLayer(
   }
 
   return (
-    <div ref={setRef} className={className} style={positionStyle}>
+    <div ref={setRef} {...passthroughProps} style={{ ...style, ...positionStyle }}>
       {children}
     </div>
   );

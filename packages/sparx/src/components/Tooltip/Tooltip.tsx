@@ -2,10 +2,11 @@ import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
 
+import { animated, SpringConfig, useTransition } from "@react-spring/web";
 import { Text } from "@sparx/index";
 
 import { createLayer, removeLayer, useLayerSubscription } from "../Layer/LayersStore";
-import { Align, Attach, PositionedLayer } from "../Layer/PositionedLayer";
+import { Align, Attach, PositionedLayerProps, usePositionedLayer } from "../Layer/PositionedLayer";
 
 import styles from "./Tooltip.module.css";
 
@@ -39,7 +40,6 @@ export function useTooltip<Target extends Element = Element>(
   const offset = options?.offset ?? 8;
   const className = options?.className;
 
-  const contentRef = React.useRef<HTMLDivElement>(null);
   const targetRef = React.useRef<Target>(null);
   const [name] = React.useState(() => uuid.v4());
   const exists = useLayerSubscription(name) != null;
@@ -56,15 +56,14 @@ export function useTooltip<Target extends Element = Element>(
     createLayer({
       name,
       render: () => (
-        <PositionedLayer
-          ref={contentRef}
+        <TooltipLayer
           target={target}
           className={classNames(styles.tooltip, className)}
           attach={attach}
           align={align}
           offset={offset}>
           {inner}
-        </PositionedLayer>
+        </TooltipLayer>
       ),
     });
   }, [exists, render, name, className, attach, align, offset]);
@@ -73,6 +72,12 @@ export function useTooltip<Target extends Element = Element>(
     if (!exists) return;
     removeLayer(name);
   }, [exists, name]);
+
+  // If the containing component unmounts, ensure that the tooltip goes away
+  // as well. Otherwise they get stuck and are unable to be removed.
+  React.useEffect(() => {
+    return () => removeLayer(name);
+  }, [name]);
 
   return [
     {
@@ -87,6 +92,36 @@ export function useTooltip<Target extends Element = Element>(
     closeTooltip,
     name,
   ];
+}
+
+const TOOLTIP_SPRING_CONFIG: SpringConfig = {
+  tension: 400,
+  friction: 10,
+  clamp: true,
+};
+
+function TooltipLayer(props: PositionedLayerProps) {
+  const { children, ...passthroughProps } = props;
+
+  const contentRef = React.useRef<HTMLDivElement | null>(null);
+  const positionStyle = usePositionedLayer(props, contentRef);
+
+  const transitions = useTransition(children, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 1 },
+    config: TOOLTIP_SPRING_CONFIG,
+  });
+
+  return transitions((style, item) => (
+    <animated.div
+      key="1"
+      ref={contentRef}
+      {...passthroughProps}
+      style={{ ...style, ...positionStyle }}>
+      {item}
+    </animated.div>
+  ));
 }
 
 export interface TooltipProps<T extends Element = Element> extends TooltipOptions {
