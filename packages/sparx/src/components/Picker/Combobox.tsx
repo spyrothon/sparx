@@ -5,21 +5,18 @@ import { useComboBoxState } from "react-stately";
 
 import { CollectionChildren } from "@react-types/shared";
 
-import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
+import { Picker, PickerStyleProps } from "./Picker";
 
 import inputStyles from "../Input/Input.module.css";
 import styles from "./Picker.module.css";
 
-export interface ComboboxProps<Item extends object> {
+export interface ComboboxProps<Item extends object> extends PickerStyleProps {
   items: Item[];
   selectedKey: string | undefined;
-  color?: InputColor;
-  size?: InputSize;
   allowsCustomValue?: boolean;
-  className?: string;
   children: CollectionChildren<Item>;
   onSelect: (itemKey: string) => void;
 }
@@ -28,8 +25,8 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   const {
     items,
     selectedKey,
-    color = "accent",
-    size = "medium",
+    color,
+    size,
     allowsCustomValue = false,
     className,
     children,
@@ -67,9 +64,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   );
 
   return (
-    <div
-      className={classNames(styles.container, className, ...getInputClassNames(color, size))}
-      data-open={state.isOpen}>
+    <Picker color={color} size={size} state={state} className={className}>
       <Stack
         direction="horizontal"
         align="center"
@@ -78,7 +73,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
         <input
           {...inputProps}
           ref={inputRef}
-          className={classNames(inputStyles.inputText, styles.input)}
+          className={classNames(inputStyles.inputText, styles.input, styles.inputPadding)}
         />
         <DropdownChevron
           {...buttonProps}
@@ -88,6 +83,6 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
         />
       </Stack>
       {state.isOpen && <DropdownListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />}
-    </div>
+    </Picker>
   );
 }

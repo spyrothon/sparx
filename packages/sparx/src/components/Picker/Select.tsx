@@ -6,22 +6,19 @@ import { useSelectState } from "react-stately";
 import { CollectionChildren } from "@react-types/shared";
 
 import { Clickable } from "../Clickable/Clickable";
-import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
+import { Picker, PickerStyleProps } from "./Picker";
 
 import inputStyles from "../Input/Input.module.css";
 import styles from "./Picker.module.css";
 
-export interface SelectProps<Item extends object> {
+export interface SelectProps<Item extends object> extends PickerStyleProps {
   items: Item[];
   selectedKey: string;
   placeholder?: string;
   name?: string;
-  color?: InputColor;
-  size?: InputSize;
-  className?: string;
   children: CollectionChildren<Item>;
   onSelect: (itemKey: string) => void;
 }
@@ -32,8 +29,8 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
     selectedKey,
     placeholder = "Select an option",
     name,
-    color = "accent",
-    size = "medium",
+    color,
+    size,
     className,
     children,
     onSelect,
@@ -65,9 +62,7 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
   const selectedElement = state.selectedItem != null ? state.selectedItem.rendered : placeholder;
 
   return (
-    <div
-      className={classNames(styles.container, className, ...getInputClassNames(color, size))}
-      data-open={state.isOpen}>
+    <Picker color={color} size={size} state={state} className={className}>
       <HiddenSelect state={state} triggerRef={ref} name={name} />
       <Stack
         as={Clickable}
@@ -88,6 +83,6 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
         <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
       </Stack>
       {state.isOpen && <DropdownListBox {...menuProps} state={state} />}
-    </div>
+    </Picker>
   );
 }
