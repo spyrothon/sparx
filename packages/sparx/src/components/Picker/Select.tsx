@@ -81,7 +81,7 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
           {...valueProps}>
           {selectedElement}
         </div>
-        <DropdownChevron isInteractive={false} isOpen={state.isOpen} className={styles.chevron} />
+        <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
       </Stack>
       {state.isOpen && <DropdownListBox {...menuProps} state={state} />}
     </Picker>

@@ -5,6 +5,7 @@ import { useComboBoxState } from "react-stately";
 
 import { CollectionChildren } from "@react-types/shared";
 
+import { Clickable } from "../Clickable/Clickable";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
@@ -83,12 +84,9 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
           ref={inputRef}
           className={classNames(inputStyles.inputText, styles.input, styles.inputPadding)}
         />
-        <DropdownChevron
-          {...buttonProps}
-          ref={buttonRef}
-          isOpen={state.isOpen}
-          className={styles.chevron}
-        />
+        <Clickable {...buttonProps} ref={buttonRef}>
+          <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
+        </Clickable>
       </Stack>
       {state.isOpen && <DropdownListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />}
     </Picker>
