@@ -2,3 +2,4 @@ packages:
   - "packages/sparx"
   - "packages/docs"
   - "packages/sparx-icons"
+  - "packages/tokens"

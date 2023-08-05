@@ -1,5 +1,5 @@
 {
-  "name": "sparx-docs",
+  "name": "@spyrothon/sparx-docs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "@markdoc/next.js": "^0.2.3",
     "@spyrothon/sparx": "workspace:*",
     "@spyrothon/sparx-icons": "workspace:*",
+    "@spyrothon/tokens": "workspace:*",
     "@types/node": "^18.8.5",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
@@ -26,6 +27,6 @@
     "react-dom": "^18.2.0",
     "react-jsx-parser": "^1.29.0",
     "refractor": "^4.8.1",
-    "typescript": "5.1.6"
+    "typescript": "5.0.2"
   }
 }

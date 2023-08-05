@@ -1,5 +1,5 @@
+@import "@spyrothon/tokens/generated/system.css";
 @import "@spyrothon/sparx/dist/style.css";
-@import "@spyrothon/sparx/dist/default.css";
 
 :focus,
 :focus-within {

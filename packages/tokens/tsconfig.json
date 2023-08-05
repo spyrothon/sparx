@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "composite": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "swc": true,
+    "esm": true
+  }
+}
