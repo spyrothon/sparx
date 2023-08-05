@@ -32,10 +32,7 @@
     }
   },
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "gen:icons": "tsc --project tsconfig.icons.json",
-    "gen:types": "tsc --project tsconfig.generate.json",
     "prepublishOnly": "pnpm gen:icons && pnpm build"
   },
   "peerDependencies": {
@@ -43,8 +40,6 @@
     "react-dom": ">= 18.0.0"
   },
   "dependencies": {
-    "@iconscout/react-unicons": "^1.1.6",
-    "@iconscout/react-unicons-solid": "^0.0.3",
     "@internationalized/number": "^3.2.0",
     "@react-spring/web": "^9.7.3",
     "@react-types/shared": "^3.18.1",
