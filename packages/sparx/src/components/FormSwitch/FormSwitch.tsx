@@ -5,6 +5,7 @@ import Check from "@spyrothon/sparx-icons/dist/icons/Check";
 
 import { animated, config, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
+import { useResolvedPropertyAtElement } from "@sparx/utils/TokenUtils";
 
 import { getInputClassNames, InputColor } from "../Input/Input";
 
@@ -19,24 +20,48 @@ export interface FormSwitchProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
-function Switch(props: { checked: boolean }) {
-  const { checked } = props;
+function Switch(props: { checked: boolean; color: InputColor }) {
+  const { checked, color } = props;
 
-  const { left, filter } = useSpring({
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const resolvedColor = useResolvedPropertyAtElement(
+    "--_input-color",
+    containerRef,
+    "transparent",
+    [color],
+  );
+  const resolvedBackground = useResolvedPropertyAtElement(
+    "--control-background",
+    containerRef,
+    "transparent",
+    [color],
+  );
+  const [{ opacity, trackColor }] = useSpring(
+    () => ({
+      trackColor: checked
+        ? resolvedColor
+        : // This ensures that `trackColor` won't be set if the background color
+        // hasn't been resolved yet, allowing the CSS class to take precendence.
+        resolvedBackground === "transparent"
+        ? undefined
+        : resolvedBackground,
+      opacity: checked ? 1 : 0,
+      config: config.gentle,
+    }),
+    [checked, resolvedColor, resolvedBackground],
+  );
+  const { left } = useSpring({
     left: checked ? 24 : 0,
-    filter: `grayscale(${checked ? 0 : 100}%)`,
     config: { ...config.stiff, clamp: true },
   });
 
-  const { opacity } = useSpring({
-    opacity: checked ? 1 : 0,
-    config: config.gentle,
-  });
-
   return (
-    <animated.div className={styles.switch} style={{ filter }}>
+    <animated.div
+      ref={containerRef}
+      className={styles.switch}
+      style={{ backgroundColor: trackColor, borderColor: trackColor }}>
       <animated.div className={styles.knob} style={{ left }}>
-        <animated.div style={{ opacity }}>
+        <animated.div style={{ opacity, color: trackColor }}>
           <Check size={18} />
         </animated.div>
       </animated.div>
@@ -54,7 +79,6 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(fu
   return (
     <div
       className={classNames(styles.container, ...getInputClassNames(color), {
-        [styles.checked]: checked,
         [styles.disabled]: disabled,
       })}>
       <Clickable
@@ -67,7 +91,7 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(fu
         <Text variant="header-sm/normal" className={styles.label}>
           {label}
         </Text>
-        <Switch checked={checked} />
+        <Switch checked={checked} color={color} />
         <input
           ref={ref}
           type="checkbox"

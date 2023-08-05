@@ -6,9 +6,18 @@
   padding: var(--space-sm) 0;
 }
 
-.icon {
-  color: var(--_input-color);
+.iconContainer {
   flex: 0 0 auto;
+  box-sizing: border-box;
+  color: var(--_input-color);
+  padding: 2px;
+  border-radius: var(--radius-normal);
+  border: 2px solid var(--_input-color);
+}
+
+.icon {
+  display: block;
+  color: var(--control-foreground);
 }
 
 .label {

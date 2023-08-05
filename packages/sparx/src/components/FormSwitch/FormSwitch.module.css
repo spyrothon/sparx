@@ -11,10 +11,10 @@
 }
 
 .switch {
-  background-color: var(--_input-color);
-  border: var(--_input-border);
+  border: 2px solid var(--control-background);
   border-radius: 100000px;
   width: 48px;
+  background-color: var(--control-background);
 }
 
 .knob {
@@ -23,8 +23,7 @@
   height: 18px;
   width: 18px;
   border-radius: 100000px;
-  background-color: var(--background-floating);
-  color: var(--_input-color);
+  background-color: var(--control-foreground);
 }
 
 .disabled {

@@ -18,7 +18,7 @@ export default function Component() {
         label={
           <>
             <Text variant="header-sm/normal">Longer labels</Text>
-            <Text variant="text-xs/normal">Checkboxes can use any React Node as the label.</Text>
+            <Text variant="text-sm/normal">Checkboxes can use any React Node as the label.</Text>
           </>
         }
         onChange={(event) => setChecked(event.target.checked)}

@@ -1,10 +1,11 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
-import CheckboxUnchecked from "@spyrothon/sparx-icons/dist/icons/CheckboxBlank";
-import CheckboxChecked from "@spyrothon/sparx-icons/dist/icons/CheckboxChecked";
+import Check from "@spyrothon/sparx-icons/dist/icons/Check";
 
+import { animated, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
+import { useResolvedPropertyAtElement } from "@sparx/utils/TokenUtils";
 
 import { getInputClassNames, InputColor } from "../Input/Input";
 
@@ -18,6 +19,13 @@ export interface CheckboxProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
+const AnimatedCheck = animated(Check);
+
+const CHECK_SPRING_CONFIG = {
+  tension: 400,
+  friction: 16,
+};
+
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
   props,
   ref,
@@ -25,7 +33,30 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(functi
   const { checked, label, color = "accent", disabled = false, onChange } = props;
   const [inputId] = React.useState(() => uuid.v4());
 
-  const Icon = checked ? CheckboxChecked : CheckboxUnchecked;
+  const containerRef = React.useRef<HTMLLabelElement>(null);
+  const resolvedColor = useResolvedPropertyAtElement(
+    "--_input-color",
+    containerRef,
+    "transparent",
+    [color],
+  );
+  const [{ opacity, transform, backgroundColor }] = useSpring(() => {
+    return {
+      backgroundColor: checked ? resolvedColor : "transparent",
+      borderWidth: checked ? 0 : 1,
+      opacity: checked ? 1 : 0,
+      transform: `scale(${checked ? 1 : 0.7})`,
+      config: (key) => ({
+        ...CHECK_SPRING_CONFIG,
+        friction:
+          key === "backgroundColor"
+            ? CHECK_SPRING_CONFIG.friction + 15
+            : CHECK_SPRING_CONFIG.friction,
+        clamp: key === "backgroundColor",
+      }),
+    };
+  }, [checked, resolvedColor]);
+
   const labelNode =
     typeof label === "string" ? (
       <Text className={styles.label}>{label}</Text>
@@ -35,6 +66,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(functi
 
   return (
     <Clickable
+      ref={containerRef}
       as="label"
       tabIndex={0}
       disabled={disabled}
@@ -52,7 +84,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(functi
         disabled={disabled}
         onChange={onChange}
       />
-      <Icon className={styles.icon} size="1.5em" />
+      <animated.div className={styles.iconContainer} style={{ backgroundColor }}>
+        <AnimatedCheck style={{ opacity, transform }} className={styles.icon} size={18} />
+      </animated.div>
       {labelNode}
     </Clickable>
   );

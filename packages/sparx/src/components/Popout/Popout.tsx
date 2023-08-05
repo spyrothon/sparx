@@ -32,7 +32,7 @@ export function Popout(props: PopoutProps) {
     // the event that _opens_ the Popout, and immediately closes it.
     setTimeout(() => document.body.addEventListener("click", handleClick), 1);
     return () => document.body.removeEventListener("click", handleClick);
-  }, []);
+  }, [close]);
 
   return (
     <PositionedLayer

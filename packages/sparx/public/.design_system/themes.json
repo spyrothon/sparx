@@ -33,6 +33,9 @@
     "border-primary": ["grey-400", "grey-400"],
     "border-subtle": ["opacity(white, 10%)", "opacity(grey-900, 10%)"],
 
+    "control-background": ["grey-400", "grey-400"],
+    "control-foreground": ["white", "white"],
+
     "interactive-normal": ["white", "grey-900"],
     "interactive-hover": ["grey-200", "grey-600"],
     "interactive-active": ["grey-300", "grey-500"],
