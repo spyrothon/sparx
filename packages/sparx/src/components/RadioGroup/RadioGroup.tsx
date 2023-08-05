@@ -1,14 +1,19 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
-import RadioBlank from "@spyrothon/sparx-icons/dist/icons/RadioBlank";
-import RadioSelected from "@spyrothon/sparx-icons/dist/icons/RadioSelected";
 
+import { animated, useSpring } from "@react-spring/web";
 import { Stack, Text } from "@sparx/index";
+import { useResolvedPropertyAtElement } from "@sparx/utils/TokenUtils";
 
 import { Clickable } from "../Clickable/Clickable";
 
 import styles from "./RadioGroup.module.css";
+
+const DOT_SPRING_CONFIG = {
+  tension: 400,
+  friction: 20,
+};
 
 interface Option<T> {
   value: T;
@@ -30,7 +35,24 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
   const [inputId] = React.useState(() => uuid.v4());
 
-  const Icon = selected ? RadioSelected : RadioBlank;
+  const containerRef = React.useRef<HTMLLabelElement>(null);
+  const resolvedColor = useResolvedPropertyAtElement("--_input-color", containerRef, "transparent");
+
+  const [{ opacity, backgroundColor, transform }] = useSpring(
+    () => ({
+      backgroundColor: selected ? resolvedColor : "transparent",
+      opacity: selected ? 1 : 0,
+      transform: `scale(${selected ? 1 : 0.7})`,
+      config: (key) => ({
+        ...DOT_SPRING_CONFIG,
+        friction:
+          key === "backgroundColor" ? DOT_SPRING_CONFIG.friction + 15 : DOT_SPRING_CONFIG.friction,
+        clamp: key === "backgroundColor",
+      }),
+    }),
+    [selected, resolvedColor],
+  );
+
   const labelNode =
     typeof label === "string" ? (
       <Text className={styles.label}>{label}</Text>
@@ -40,6 +62,7 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
   return (
     <Clickable
+      ref={containerRef}
       as="label"
       disabled={disabled}
       aria-selected={selected}
@@ -54,7 +77,9 @@ function RadioItem<T>(props: RadioItemProps<T>) {
         value={String(value)}
         style={{ display: "none" }}
       />
-      <Icon className={styles.icon} size="24" />
+      <animated.div className={styles.icon} style={{ backgroundColor }}>
+        <animated.div className={styles.dot} style={{ opacity, transform }} />
+      </animated.div>
       {labelNode}
     </Clickable>
   );

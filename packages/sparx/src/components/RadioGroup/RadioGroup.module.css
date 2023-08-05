@@ -1,18 +1,30 @@
 .radioItem {
+  --_input-color: var(--accent-primary);
   display: block;
   display: flex;
   align-items: flex-start;
   gap: var(--space-lg);
-  padding: calc(var(--space-md) * 0.75) var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   background: var(--background-accent);
   border-radius: var(--radius-normal);
 }
 
 .icon {
   display: block;
-  color: var(--accent-primary);
   flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
   margin-top: 1.5px;
+  border: 2px solid var(--_input-color);
+  border-radius: var(--radius-full);
+}
+
+.dot {
+  background-color: var(--control-foreground);
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
 }
 
 .label {
