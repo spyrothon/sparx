@@ -7,8 +7,6 @@ import { useSetRef } from "@sparx/utils/RefUtils";
 
 import styles from "./Clickable.module.css";
 
-export type { PressEvent } from "@react-types/shared";
-
 export interface ClickableProps<Tag extends React.ElementType = "div">
   extends AriaButtonProps<Tag> {
   role?: React.AriaRole;

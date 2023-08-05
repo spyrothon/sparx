@@ -2,6 +2,7 @@
 
 // Re-exporting these so that consumers don't care if they're from a separate library.
 export { Item, Section as SectionItem } from "react-stately";
+export type { PressEvent } from "@react-types/shared";
 
 export { Anchor, setAnchorRenderer } from "./components/Anchor/Anchor";
 export type { AnchorProps, AnchorRenderer, AnchorRendererProps } from "./components/Anchor/Anchor";
