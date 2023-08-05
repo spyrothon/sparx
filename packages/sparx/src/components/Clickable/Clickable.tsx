@@ -44,7 +44,7 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
     const {
       as: Component = "div",
       noCursor = false,
-      disabled: isDisabled,
+      disabled,
       className,
       children,
       onClick,
@@ -55,8 +55,7 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
 
     const { buttonProps } = useButton(
       {
-        ...extraProps,
-        disabled: isDisabled,
+        isDisabled: disabled,
         onPress: onClick,
         elementType: Component,
       },
@@ -75,6 +74,7 @@ export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, 
 
     return (
       <Component
+        {...extraProps}
         {...buttonProps}
         ref={setRef}
         className={noCursor ? className : classNames(styles.clickableCursor, className)}>
