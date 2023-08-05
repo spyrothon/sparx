@@ -3,6 +3,7 @@ import classNames from "classnames";
 import ImageIcon from "@spyrothon/sparx-icons/dist/icons/Image";
 
 import { Text } from "@sparx/index";
+import { useSetRef } from "@sparx/utils/RefUtils";
 
 import styles from "./Image.module.css";
 
@@ -38,6 +39,7 @@ export const Image = React.forwardRef(function Image(
 
   const imageRef = React.useRef<HTMLImageElement | null>(null);
   const [loadState, setLoadState] = React.useState<ImageLoadState>(ImageLoadState.INITIALIZED);
+  const setRef = useSetRef(imageRef, ref);
 
   React.useLayoutEffect(() => {
     const image = imageRef.current;
@@ -60,17 +62,6 @@ export const Image = React.forwardRef(function Image(
       image.removeEventListener("error", handleError);
     };
   }, []);
-
-  function setRef(element: HTMLImageElement | null) {
-    imageRef.current = element;
-
-    if (ref == null) return;
-    if (typeof ref === "function") {
-      ref(element);
-    } else {
-      ref.current = element;
-    }
-  }
 
   const inner = (() => {
     switch (loadState) {

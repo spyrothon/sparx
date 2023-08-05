@@ -68,8 +68,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(functi
     <Clickable
       ref={containerRef}
       as="label"
-      tabIndex={0}
-      disabled={disabled}
+      isDisabled={disabled}
       aria-checked={checked}
       className={classNames(styles.checkbox, ...getInputClassNames(color), {
         [styles.disabled]: disabled,

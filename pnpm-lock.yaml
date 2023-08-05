@@ -81,6 +81,7 @@ importers:
       '@vitejs/plugin-react-swc': ^3.3.0
       classnames: ^2.3.1
       downshift: ^8.1.0
+      filter-invalid-dom-props: ^3.0.1
       react: '>= 18.0.0'
       react-aria: ^3.26.0
       react-dom: '>= 18.0.0'
@@ -101,6 +102,7 @@ importers:
       '@spyrothon/sparx-icons': link:../sparx-icons
       classnames: 2.3.2
       downshift: 8.1.0_react@17.0.0-rc.3
+      filter-invalid-dom-props: 3.0.1
       react: 17.0.0-rc.3
       react-aria: 3.26.0_a4gjorjwe4gjj5ehw4sqoeb66y
       react-dom: 18.2.0_react@17.0.0-rc.3
@@ -4512,6 +4514,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       to-regex-range: 5.0.1
+
+  /filter-invalid-dom-props/3.0.1:
+    resolution: {integrity: sha512-+n6cgQxx6dgZxWCV94pqAO/Jq9G/QwuHw4RPM8bk2INSQLnNVwjw/ljTEtAjL0HGCvAv9dHucOq1tHQ2bMoxDA==}
+    dev: false
 
   /find-up/5.0.0:
     resolution: {integrity: sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==}

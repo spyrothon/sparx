@@ -51,6 +51,7 @@
     "@spyrothon/sparx-icons": "workspace:*",
     "classnames": "^2.3.1",
     "downshift": "^8.1.0",
+    "filter-invalid-dom-props": "^3.0.1",
     "react-aria": "^3.26.0",
     "react-polymorphic-types": "github:GamesDoneQuick/react-polymorphic-types#bd1e8388c1d02d919dd038a5d5690ff7bb62da88",
     "react-remark": "^2.1.0",

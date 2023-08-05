@@ -114,11 +114,7 @@ function TooltipLayer(props: PositionedLayerProps) {
   });
 
   return transitions((style, item) => (
-    <animated.div
-      key="1"
-      ref={contentRef}
-      {...passthroughProps}
-      style={{ ...style, ...positionStyle }}>
+    <animated.div ref={contentRef} {...passthroughProps} style={{ ...style, ...positionStyle }}>
       {item}
     </animated.div>
   ));

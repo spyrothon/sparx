@@ -1,5 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
+import filterInvalidDOMProps from "filter-invalid-dom-props";
+import { AriaButtonProps, useButton } from "react-aria";
+
+import { useSetRef } from "@sparx/utils/RefUtils";
 
 import styles from "./Button.module.css";
 
@@ -48,9 +52,10 @@ export interface ButtonIconProps {
   size: string;
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends AriaButtonProps<"button"> {
   variant?: ButtonVariant;
   icon?: (props: ButtonIconProps) => JSX.Element;
+  className?: string;
 }
 
 /**
@@ -79,11 +84,15 @@ export const Button = React.forwardRef(function Button(
   ref: React.ForwardedRef<HTMLButtonElement>,
 ) {
   const { variant = "default", icon: Icon, children, ...nativeProps } = props;
+  const innerRef = React.useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(nativeProps, innerRef);
+  const setRef = useSetRef(ref, innerRef);
 
   return (
     <button
-      {...nativeProps}
-      ref={ref}
+      {...filterInvalidDOMProps(nativeProps)}
+      {...buttonProps}
+      ref={setRef}
       className={getButtonClassNames(variant, {
         className: classNames(props.className, {
           [styles.iconOnly]: Icon != null && React.Children.count(children) === 0,

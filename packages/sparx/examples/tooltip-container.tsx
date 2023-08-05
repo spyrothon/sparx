@@ -9,7 +9,7 @@ export default function Component() {
     <Stack direction="horizontal">
       <Tooltip<HTMLButtonElement> render="Some tooltip text">
         {(tooltipProps) => (
-          <Button variant="primary" {...tooltipProps} onClick={() => setSecondButton(true)}>
+          <Button variant="primary" {...tooltipProps} onPress={() => setSecondButton(true)}>
             Hover for Tooltip
           </Button>
         )}
@@ -17,7 +17,7 @@ export default function Component() {
       {secondButton ? (
         <Tooltip<HTMLButtonElement> render="Some tooltip text">
           {(tooltipProps) => (
-            <Button variant="primary" {...tooltipProps} onClick={() => setSecondButton(false)}>
+            <Button variant="primary" {...tooltipProps} onPress={() => setSecondButton(false)}>
               Click to remove
             </Button>
           )}

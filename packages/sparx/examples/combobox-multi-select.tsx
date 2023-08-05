@@ -31,7 +31,7 @@ export default function Component() {
           </PickerItem>
           <Button
             variant="danger/filled"
-            onClick={() => removeSelectedItem(item)}
+            onPress={() => removeSelectedItem(item)}
             icon={Close}></Button>
         </Stack>
       ))}

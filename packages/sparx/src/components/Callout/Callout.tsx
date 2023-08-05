@@ -51,7 +51,7 @@ export function Callout(props: CalloutProps) {
       </div>
       <div className={styles.content}>{children}</div>
       {onClose != null ? (
-        <Clickable className={styles.dismissBar} onClick={onClose}>
+        <Clickable className={styles.dismissBar} onPress={onClose}>
           <Close className={styles.dismissIcon} />
         </Clickable>
       ) : null}

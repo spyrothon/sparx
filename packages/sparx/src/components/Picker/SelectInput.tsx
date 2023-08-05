@@ -100,7 +100,7 @@ export function SelectInput<Item>(props: SelectInputProps<Item>) {
       })}>
       <Clickable
         className={classNames(styles.input, ...getInputClassNames(color, size))}
-        disabled={disabled}
+        isDisabled={disabled}
         {...getToggleButtonProps()}>
         {selectedItem != null
           ? renderSelectedItem(selectedItem, size, itemToString)

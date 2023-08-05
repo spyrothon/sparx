@@ -1,5 +1,5 @@
 .chevron {
   color: var(--text-normal);
-  height: calc(var(--_input-icon-size));
-  width: calc(var(--_input-icon-size));
+  height: var(--_input-icon-size);
+  width: var(--_input-icon-size);
 }

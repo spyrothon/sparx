@@ -64,7 +64,7 @@ function RadioItem<T>(props: RadioItemProps<T>) {
     <Clickable
       ref={containerRef}
       as="label"
-      disabled={disabled}
+      isDisabled={disabled}
       aria-selected={selected}
       className={classNames(styles.radioItem, { [styles.disabled]: disabled })}
       htmlFor={inputId}>

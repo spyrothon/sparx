@@ -1,5 +1,4 @@
 import * as React from "react";
-import classNames from "classnames";
 import ChevronDown from "@spyrothon/sparx-icons/dist/icons/ChevronDown";
 import ChevronUp from "@spyrothon/sparx-icons/dist/icons/ChevronUp";
 
@@ -18,12 +17,9 @@ export const DropdownChevron = React.forwardRef<HTMLDivElement, DropdownChevronP
     const ChevronIcon = isOpen ? ChevronUp : ChevronDown;
 
     return (
-      <Clickable
-        as={ChevronIcon}
-        ref={ref}
-        className={classNames(styles.chevron, className)}
-        {...passthroughProps}
-      />
+      <Clickable ref={ref} className={className} {...passthroughProps}>
+        <ChevronIcon className={styles.chevron} />
+      </Clickable>
     );
   },
 );

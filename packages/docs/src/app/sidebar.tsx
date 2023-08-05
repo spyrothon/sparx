@@ -48,7 +48,7 @@ export function Sidebar(props: { className: string }) {
             key={item.title}
             label={item.title}
             selected={isSelected}
-            onClick={() => router.push(`/components/${item.urlParts.join("/")}`)}
+            onPress={() => router.push(`/components/${item.urlParts.join("/")}`)}
           />
         );
       case "category":

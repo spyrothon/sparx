@@ -18,3 +18,7 @@ emulating a click action without a mouse. Because of this, consumers should alwa
 When the user interacts with a `Clickable`, the cursor will automatically be changed to `pointer`,
 but this can be prevented by using the `noCursor` prop.
 
+Notice that the prop is named `onPress` instead of `onClick`. This is because `Clickable` inherently
+works for both mouse and keyboard events, and using `onClick` would incorrectly type the event as a
+mouse event. Refer to [react-aria's documentation about Press props](https://react-spectrum.adobe.com/blog/building-a-button-part-1.html)
+for more information.

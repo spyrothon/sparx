@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { useSetRef } from "@sparx/utils/RefUtils";
+
 export type Attach = "left" | "right" | "top" | "bottom";
 export type Align = "start" | "middle" | "end";
 
@@ -206,15 +208,7 @@ export const PositionedLayer = React.forwardRef(function PositionedLayer(
 
   const contentRef = React.useRef<HTMLDivElement | null>(null);
   const positionStyle = usePositionedLayer(props, contentRef);
-
-  function setRef(element: HTMLDivElement | null) {
-    contentRef.current = element;
-    if (typeof ref === "function") {
-      ref(element);
-    } else if (ref != null) {
-      ref.current = element;
-    }
-  }
+  const setRef = useSetRef(contentRef, ref);
 
   return (
     <div ref={setRef} {...passthroughProps} style={{ ...style, ...positionStyle }}>

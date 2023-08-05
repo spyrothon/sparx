@@ -19,7 +19,7 @@ export default function Component() {
   }
 
   return (
-    <Button variant="primary" onClick={openConfirmModal}>
+    <Button variant="primary" onPress={openConfirmModal}>
       Open Confirm Modal
     </Button>
   );

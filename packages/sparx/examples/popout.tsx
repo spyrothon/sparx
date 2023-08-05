@@ -14,7 +14,7 @@ function PopoutExample({ onClose }: { onClose: () => void }) {
             Close this by clicking anywhere outside of the content area, or directly with the button
             below.
           </Text>
-          <Button onClick={onClose}>Do Something</Button>
+          <Button onPress={onClose}>Do Something</Button>
         </Stack>
       </div>
     </Card>
@@ -33,7 +33,7 @@ export default function Component() {
   );
 
   return (
-    <Button ref={openerRef} variant="primary" onClick={isOpen ? undefined : open}>
+    <Button ref={openerRef} variant="primary" onPress={isOpen ? undefined : open}>
       Open Popout
     </Button>
   );

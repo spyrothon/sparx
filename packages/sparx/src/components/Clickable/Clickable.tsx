@@ -1,84 +1,47 @@
 import * as React from "react";
 import classNames from "classnames";
-import { useButton } from "react-aria";
-import type {
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-} from "react-polymorphic-types";
+import filterInvalidDOMProps from "filter-invalid-dom-props";
+import { AriaButtonProps, useButton } from "react-aria";
 
-import type { PolymorphicRef } from "@sparx/utils/TypeUtils";
+import { useSetRef } from "@sparx/utils/RefUtils";
 
 import styles from "./Clickable.module.css";
 
-type InteractiveARIARole =
-  | "button"
-  | "gridcell"
-  | "link"
-  | "listitem"
-  | "menuitem"
-  | "menuitemcheckbox"
-  | "menuitemradio"
-  | "option"
-  | "radio"
-  | "switch"
-  | "tab"
-  | "treeitem";
+export type { PressEvent } from "@react-types/shared";
 
-interface ClickableOwnProps {
-  role?: InteractiveARIARole;
-  disabled?: boolean;
-  tabIndex?: -1 | 0;
+export interface ClickableProps<Tag extends React.ElementType = "div">
+  extends AriaButtonProps<Tag> {
+  role?: React.AriaRole;
   noCursor?: boolean;
+  as?: Tag;
+  className?: string;
+  htmlFor?: string;
 }
 
-export type ClickableProps<Tag extends React.ElementType = "div"> = PolymorphicPropsWithRef<
-  ClickableOwnProps,
-  Tag
->;
+export const Clickable = React.forwardRef(function Clickable<Tag extends React.ElementType = "div">(
+  props: ClickableProps<Tag>,
+  ref: React.ComponentPropsWithRef<Tag>["ref"],
+) {
+  const {
+    as: Component = "div",
+    noCursor = false,
+    className,
+    children,
+    isDisabled: _isDisabled,
+    excludeFromTabOrder: _excludeFromTabOrder,
+  } = props;
 
-export const Clickable: PolymorphicForwardRefExoticComponent<ClickableOwnProps, "div"> =
-  React.forwardRef(function Clickable<Tag extends React.ElementType = "div">(
-    props: ClickableProps<Tag>,
-    ref?: PolymorphicRef<Tag>,
-  ) {
-    const {
-      as: Component = "div",
-      noCursor = false,
-      disabled,
-      className,
-      children,
-      onClick,
-      ...extraProps
-    } = props;
+  const innerRef = React.useRef<HTMLElement | null>(null);
+  const { buttonProps } = useButton({ ...props, elementType: Component }, innerRef);
+  const setRef = useSetRef(innerRef, ref);
 
-    const innerRef = React.useRef<HTMLElement | null>(null);
-
-    const { buttonProps } = useButton(
-      {
-        isDisabled: disabled,
-        onPress: onClick,
-        elementType: Component,
-      },
-      innerRef,
-    );
-
-    function setRef(element: HTMLElement | null) {
-      innerRef.current = element;
-      if (ref == null) return;
-      if (typeof ref === "function") {
-        ref(element);
-      } else {
-        ref.current = element;
-      }
-    }
-
-    return (
-      <Component
-        {...extraProps}
-        {...buttonProps}
-        ref={setRef}
-        className={noCursor ? className : classNames(styles.clickableCursor, className)}>
-        {children}
-      </Component>
-    );
-  });
+  return (
+    <Component
+      {...filterInvalidDOMProps(props)}
+      {...buttonProps}
+      ref={setRef}
+      className={noCursor ? className : classNames(styles.clickableCursor, className)}>
+      {children}
+    </Component>
+  );
+});

@@ -83,8 +83,7 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(fu
       })}>
       <Clickable
         as="label"
-        disabled={disabled}
-        tabIndex={0}
+        isDisabled={disabled}
         aria-checked={checked}
         className={styles.mainRow}
         htmlFor={inputId}>

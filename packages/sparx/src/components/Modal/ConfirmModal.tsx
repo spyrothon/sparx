@@ -44,11 +44,11 @@ export function ConfirmModal(props: ConfirmModalProps) {
       <Header tag="h2">{title}</Header>
       {body != null ? <Text>{body}</Text> : null}
       <Stack spacing="space-md" direction="reverse-horizontal">
-        <Button variant={color} onClick={handleConfirm} autoFocus>
+        <Button variant={color} onPress={handleConfirm} autoFocus>
           {confirmText}
         </Button>
         {onCancel != null ? (
-          <Button variant="link" onClick={handleCancel}>
+          <Button variant="link" onPress={handleCancel}>
             {cancelText}
           </Button>
         ) : null}
