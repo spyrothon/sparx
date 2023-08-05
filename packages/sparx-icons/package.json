@@ -2,7 +2,6 @@
   "name": "@spyrothon/sparx-icons",
   "description": "Icons to support the Sparx design system",
   "version": "0.8.1",
-  "type": "module",
   "types": "dist/IconProps.d.ts",
   "sideEffects": false,
   "files": [
