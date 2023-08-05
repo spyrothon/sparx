@@ -36,7 +36,7 @@ function Switch(props: { checked: boolean; color: InputColor }) {
     "transparent",
     [color],
   );
-  const [{ opacity, trackColor }] = useSpring(
+  const [{ opacity, transform, trackColor }] = useSpring(
     () => ({
       trackColor: checked
         ? resolvedColor
@@ -46,6 +46,7 @@ function Switch(props: { checked: boolean; color: InputColor }) {
         ? undefined
         : resolvedBackground,
       opacity: checked ? 1 : 0,
+      transform: `scale(${checked ? 1 : 0.7})`,
       config: config.gentle,
     }),
     [checked, resolvedColor, resolvedBackground],
@@ -61,7 +62,7 @@ function Switch(props: { checked: boolean; color: InputColor }) {
       className={styles.switch}
       style={{ backgroundColor: trackColor, borderColor: trackColor }}>
       <animated.div className={styles.knob} style={{ left }}>
-        <animated.div style={{ opacity, color: trackColor }}>
+        <animated.div style={{ opacity, color: trackColor, transform }}>
           <Check size={18} />
         </animated.div>
       </animated.div>
