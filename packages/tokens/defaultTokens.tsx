@@ -304,7 +304,7 @@ const fonts = makeFontPalette({
   overlock: {
     name: "Overlock",
     importUrl:
-      "https://fonts.googleapis.com/css2?Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900",
+      "https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900",
   },
 });
 
