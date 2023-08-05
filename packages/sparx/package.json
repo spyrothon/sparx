@@ -1,7 +1,7 @@
 {
   "name": "@spyrothon/sparx",
   "description": "A React-based design system for Spyrothon",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "prepublishOnly": "pnpm gen:icons && pnpm build"
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "react": ">= 18.0.0",
