@@ -11,7 +11,13 @@ export function generateColors(tokens: Tokens) {
 
   :root {
       ${colors
-        .map(({ name, value }) => `${formatName(name, "css")}: ${value.css("hsl")};`)
+        .map(
+          ({ name, value }) =>
+            `${formatName(name, "css")}: ${
+              // @ts-expect-error chroma supports forcing hsla, but the types don't match that.
+              value.css("hsla")
+            };`,
+        )
         .join("\n")}
     }`;
 }
@@ -41,7 +47,8 @@ export function generateThemeColors(tokens: Tokens) {
             const name = formatName(colorName, "css");
             const value = isTokenReference(color)
               ? formatName(color, "cssReference")
-              : color.css("hsl");
+              : // @ts-expect-error chroma supports forcing hsla, but the types don't match that.
+                color.css("hsla");
             return `${name}: ${value};`;
           })
           .join("\n")}

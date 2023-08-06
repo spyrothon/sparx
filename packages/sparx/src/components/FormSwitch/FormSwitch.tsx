@@ -70,41 +70,40 @@ function Switch(props: { checked: boolean; color: InputColor }) {
   );
 }
 
-export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(function FormSwitch(
-  props,
-  ref,
-) {
-  const { checked, disabled = false, color = "accent", label, note, onChange } = props;
-  const [inputId] = React.useState(() => uuid.v4());
+export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
+  function FormSwitch(props, ref) {
+    const { checked, disabled = false, color = "accent", label, note, onChange } = props;
+    const [inputId] = React.useState(() => uuid.v4());
 
-  return (
-    <div
-      className={classNames(styles.container, ...getInputClassNames(color), {
-        [styles.disabled]: disabled,
-      })}>
-      <Clickable
-        as="label"
-        isDisabled={disabled}
-        aria-checked={checked}
-        className={styles.mainRow}
-        htmlFor={inputId}>
-        <Text variant="header-sm/normal" className={styles.label}>
-          {label}
+    return (
+      <div
+        className={classNames(styles.container, ...getInputClassNames(color), {
+          [styles.disabled]: disabled,
+        })}>
+        <Clickable
+          as="label"
+          isDisabled={disabled}
+          aria-checked={checked}
+          className={styles.mainRow}
+          htmlFor={inputId}>
+          <Text variant="header-sm/normal" className={styles.label}>
+            {label}
+          </Text>
+          <Switch checked={checked} color={color} />
+          <input
+            ref={ref}
+            type="checkbox"
+            disabled={disabled}
+            onChange={onChange}
+            id={inputId}
+            checked={checked}
+            style={{ display: "none" }}
+          />
+        </Clickable>
+        <Text variant="text-sm/normal" className={styles.note}>
+          {note}
         </Text>
-        <Switch checked={checked} color={color} />
-        <input
-          ref={ref}
-          type="checkbox"
-          disabled={disabled}
-          onChange={onChange}
-          id={inputId}
-          checked={checked}
-          style={{ display: "none" }}
-        />
-      </Clickable>
-      <Text variant="text-sm/normal" className={styles.note}>
-        {note}
-      </Text>
-    </div>
-  );
-});
+      </div>
+    );
+  },
+);

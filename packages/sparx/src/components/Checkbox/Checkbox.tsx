@@ -26,67 +26,66 @@ const CHECK_SPRING_CONFIG = {
   friction: 16,
 };
 
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
-  props,
-  ref,
-) {
-  const { checked, label, color = "accent", disabled = false, onChange } = props;
-  const [inputId] = React.useState(() => uuid.v4());
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  function Checkbox(props, ref) {
+    const { checked, label, color = "accent", disabled = false, onChange } = props;
+    const [inputId] = React.useState(() => uuid.v4());
 
-  const containerRef = React.useRef<HTMLLabelElement>(null);
-  const resolvedColor = useResolvedPropertyAtElement(
-    "--_input-color",
-    containerRef,
-    "transparent",
-    [color],
-  );
-  const [{ opacity, transform, backgroundColor }] = useSpring(() => {
-    return {
-      backgroundColor: checked ? resolvedColor : "transparent",
-      borderWidth: checked ? 0 : 1,
-      opacity: checked ? 1 : 0,
-      transform: `scale(${checked ? 1 : 0.7})`,
-      config: (key) => ({
-        ...CHECK_SPRING_CONFIG,
-        friction:
-          key === "backgroundColor"
-            ? CHECK_SPRING_CONFIG.friction + 15
-            : CHECK_SPRING_CONFIG.friction,
-        clamp: key === "backgroundColor",
-      }),
-    };
-  }, [checked, resolvedColor]);
-
-  const labelNode =
-    typeof label === "string" ? (
-      <Text className={styles.label}>{label}</Text>
-    ) : (
-      <div className={styles.label}>{label}</div>
+    const containerRef = React.useRef<HTMLLabelElement>(null);
+    const resolvedColor = useResolvedPropertyAtElement(
+      "--_input-color",
+      containerRef,
+      "transparent",
+      [color],
     );
+    const [{ opacity, transform, backgroundColor }] = useSpring(() => {
+      return {
+        backgroundColor: checked ? resolvedColor : "transparent",
+        borderWidth: checked ? 0 : 1,
+        opacity: checked ? 1 : 0,
+        transform: `scale(${checked ? 1 : 0.7})`,
+        config: (key) => ({
+          ...CHECK_SPRING_CONFIG,
+          friction:
+            key === "backgroundColor"
+              ? CHECK_SPRING_CONFIG.friction + 15
+              : CHECK_SPRING_CONFIG.friction,
+          clamp: key === "backgroundColor",
+        }),
+      };
+    }, [checked, resolvedColor]);
 
-  return (
-    <Clickable
-      ref={containerRef}
-      as="label"
-      isDisabled={disabled}
-      aria-checked={checked}
-      className={classNames(styles.checkbox, ...getInputClassNames(color), {
-        [styles.disabled]: disabled,
-      })}
-      htmlFor={inputId}>
-      <input
-        ref={ref}
-        type="checkbox"
-        style={{ display: "none" }}
-        id={inputId}
-        checked={checked}
-        disabled={disabled}
-        onChange={onChange}
-      />
-      <animated.div className={styles.iconContainer} style={{ backgroundColor }}>
-        <AnimatedCheck style={{ opacity, transform }} className={styles.icon} size={18} />
-      </animated.div>
-      {labelNode}
-    </Clickable>
-  );
-});
+    const labelNode =
+      typeof label === "string" ? (
+        <Text className={styles.label}>{label}</Text>
+      ) : (
+        <div className={styles.label}>{label}</div>
+      );
+
+    return (
+      <Clickable
+        ref={containerRef}
+        as="label"
+        isDisabled={disabled}
+        aria-checked={checked}
+        className={classNames(styles.checkbox, ...getInputClassNames(color), {
+          [styles.disabled]: disabled,
+        })}
+        htmlFor={inputId}>
+        <input
+          ref={ref}
+          type="checkbox"
+          style={{ display: "none" }}
+          id={inputId}
+          checked={checked}
+          disabled={disabled}
+          onChange={onChange}
+        />
+        <animated.div className={styles.iconContainer} style={{ backgroundColor }}>
+          <AnimatedCheck style={{ opacity, transform }} className={styles.icon} size={18} />
+        </animated.div>
+        {labelNode}
+      </Clickable>
+    );
+  },
+);
