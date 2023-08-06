@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
+    // Needed for ts-node to read `.tsx` files
     "jsx": "react-jsx",
     "composite": true,
     "module": "CommonJS",
     "moduleResolution": "Node",
     "target": "ESNext",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "types": []
   },
+  "include": ["src"],
   "ts-node": {
     "swc": true,
     "esm": true

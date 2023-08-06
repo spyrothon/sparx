@@ -2,7 +2,7 @@ import * as chroma from "chroma-js";
 
 import { ColorToken } from "./Tokens";
 
-export interface ColorPalette<Name extends string = string> {
+export interface ColorPalette<Name extends string> {
   (color: Name): chroma.Color;
   all(): ColorToken[];
 }

@@ -1,22 +1,20 @@
-# sparx-icons
+# @spyrothon/tokens
 
-Icons are largely taken from https://remixicon.com/. Rather than importing the library and trying to
-wrap every icon component, we just copy the SVG directly (since it's available), and enable
-standardized props to control them.
+Type-safe token generation system for the Sparx design system, managing colors, fonts, and more.
 
-This also means we can add various other icons from different systems as needed (e.g., for specific
-brand logos), and have better control over the icon props (e.g., adding accessibility props, like
-`aria-hidden` by default).
+Define your design system's tokens and themes safely in typescript and generate client code for CSS
+and more.
 
-All icons have their respective copyright license referenced at the top of the file.
-
-## Usage
-
-Every icon is available as its own component, and should be imported as such to avoid importing
-additional icons unnecessarily.
+# Usage
 
 ```
-import {ChevronDown} from '@spyrothon/sparx-icons/ChevronDown';
+# Install the package
+pnpm add @spyrothon/tokens
+# Create the token definitions from a default template
+pnpm sparx-tokens
+# Run the generate script (you'll need a native typescript runner)
+pnpm esno ./design/generate.ts
 ```
 
-Eventually a common file might be introduced to support tree shaking.
+You can edit `./design/tokens.tsx` to change tokens to match whatever you need. Note that the color
+tokens defined by default are almost all required for Sparx to function and appear as intended.

@@ -4,21 +4,47 @@ A React-based Design System created for Spyrothon.
 
 # Usage
 
-Add a `.design_system` folder to your project and create a `base_tokens.json` and `themes.json` file
-to define your themes (see the example in `packages/docs/.design_system` as a reference).
-
-Then, from the root of this repository, run
-`python3 cli/generate_tokens.py <path/to/your/.design_system>`.
-
-Then in your project, import the generated `DesignSystem.css` and `sparx/dist/style.css` in order
-near the root:
-
-```typescript
-import "../.design_system/generated/DesignSystem.css";
-import "sparx/dist/style.css";
+```shell
+pnpm add @spyrothon/sparx @spyrothon/tokens
+# Create the token definitions from a default template
+pnpm sparx-tokens
+# Run the generate script (you'll need a native typescript runner like esno or tsx)
+pnpm esno ./design/generate.ts
 ```
 
-# Unfinished
+Then in your project, import the generated `system.css` and `@spyrothon/sparx/dist/style.css` in
+order near the root:
+
+```css
+// In some global CSS file
+@import "design/generated/DesignSystem.css";
+@import "@spyrothon/sparx/dist/style.css";
+```
+
+or in your JS
+
+```typescript
+import "./design/generated/system.css";
+import "@spyrothon/sparx/dist/style.css";
+```
+
+Make sure these files aren't transpiled or clobbered by something like CSS Modules
+
+If you're editing your tokens frequently, like when initially setting up the system, you'll probably
+want to add the generation as an npm script, like:
+
+```json
+// in package.json
+{
+  "scripts": {
+    "gen:tokens": "esno ./design/generate.ts"
+  }
+}
+```
+
+Then you can just run `pnpm gen:tokens` to regenerate them all.
+
+# Roadmap
 
 **Components**
 
@@ -27,8 +53,6 @@ import "sparx/dist/style.css";
 - [x] Button
   - [x] Outline look
 - [x] TextArea
-- [x] Icons
-  - [ ] Expose remainder of `react-unicons`
 - [x] DateTimeInput
   - [ ] Use a library for a better picker experience
 - [x] TextInput variations (validators)
@@ -37,7 +61,7 @@ import "sparx/dist/style.css";
   - [x] Duration
   - [x] Phone
 - [x] SelectInput
-  - [ ] Combobox
+  - [x] Combobox
   - [ ] MultiSelect
 - [x] FormControl
   - [x] Prefix
@@ -63,8 +87,3 @@ import "sparx/dist/style.css";
 - [ ] Sequenced Content
   - [ ] Stepper
   - [ ] Slides
-
-**Generic**
-
-- [x] Disabled states
-- [ ] Consistent event handlers for inputs

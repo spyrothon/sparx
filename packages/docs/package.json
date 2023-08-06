@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen:tokens": "esno ./design/generate.ts"
   },
   "dependencies": {
     "@markdoc/markdoc": "^0.3.0",
@@ -28,5 +29,8 @@
     "react-jsx-parser": "^1.29.0",
     "refractor": "^4.8.1",
     "typescript": "5.0.2"
+  },
+  "devDependencies": {
+    "esno": "^0.17.0"
   }
 }

@@ -35,11 +35,11 @@ export interface Tokens {
   radii: RadiusToken[];
 }
 
-export function makeTokens({
+export function makeTokens<T extends string>({
   colors,
   tokens,
 }: {
-  colors: ColorPalette;
+  colors: ColorPalette<T>;
   tokens: TokenGenerator;
 }): Tokens {
   return {

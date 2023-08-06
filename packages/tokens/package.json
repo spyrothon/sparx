@@ -3,22 +3,25 @@
   "description": "Token generation system to support the Sparx design system",
   "version": "0.9.1",
   "sideEffects": false,
+  "main": "dist/src/index.jsx",
+  "types": "dist/src/index.d.ts",
   "files": [
     "index.tsx",
-    "defaultTokens.tsx",
+    "default",
+    "bin",
     "src",
     "generated"
   ],
+  "bin": {
+    "sparx-tokens": "./bin/cli.mjs"
+  },
   "exports": {
-    ".": {
-      "import": "./src/index"
-    },
-    "./generated/": {
-      "import": "./generated/"
-    }
+    ".": "./dist/src/index.js",
+    "./default/*.css": "./generated/default/*.css"
   },
   "scripts": {
-    "gen:theme": "ts-node ./index.tsx",
+    "build": "tsc",
+    "gen:tokens": "tsx ./default/generate.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prepublishOnly": "pnpm gen:theme"
   },
@@ -27,11 +30,12 @@
     "endent": "^2.1.0",
     "lodash": "^4.17.21",
     "token-pipeline": "^0.1.4",
-    "ts-node": "^10.9.1"
+    "tsx": "^3.12.7"
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.0",
     "@types/lodash": "^4.14.196",
+    "@types/node": "^18.8.5",
     "typescript": "^5.0.2"
   }
 }

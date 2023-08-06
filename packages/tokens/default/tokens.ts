@@ -1,7 +1,4 @@
-import { makeColorPalette } from "./src/ColorPalette";
-import { makeFontPalette } from "./src/FontPalette";
-import { TokenGenerator } from "./src/TokenGenerator";
-import { makeTokens } from "./src/Tokens";
+import { makeColorPalette, makeFontPalette, makeTokens, TokenGenerator } from "../src";
 
 const staticColors = {
   white: "#ffffff",

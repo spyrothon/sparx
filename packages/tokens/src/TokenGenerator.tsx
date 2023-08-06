@@ -1,4 +1,4 @@
-import * as chroma from "chroma-js";
+import type chroma from "chroma-js";
 
 import { FontDefinition, FontWeightMap } from "./FontPalette";
 import { Accent, Theme } from "./Theme";

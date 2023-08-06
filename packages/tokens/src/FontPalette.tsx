@@ -2,7 +2,7 @@ export type FontWeight = "thin" | "medium" | "semibold" | "bold" | "black";
 
 export type FontWeightMap = Record<FontWeight, number>;
 
-export interface FontPalette<Name extends string = string> {
+export interface FontPalette<Name extends string> {
   (font: Name): FontDefinition;
   all(): FontDefinition[];
 }
