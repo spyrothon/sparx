@@ -22,10 +22,6 @@
         "import": "./dist/style.css",
         "require": "./dist/style.css"
       },
-      "./default.css": {
-        "import": "./dist/default.css",
-        "require": "./dist/default.css"
-      },
       "./icons/": {
         "import": "./dist/icons/"
       }
