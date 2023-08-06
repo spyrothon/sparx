@@ -1,5 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
+import filterInvalidDOMProps from "filter-invalid-dom-props";
 import * as uuid from "uuid";
 
 import { animated, SpringConfig, useTransition } from "@react-spring/web";
@@ -101,10 +102,10 @@ const TOOLTIP_SPRING_CONFIG: SpringConfig = {
 };
 
 function TooltipLayer(props: PositionedLayerProps) {
-  const { children, ...passthroughProps } = props;
+  const { children, target, attach, align, offset, ...passthroughProps } = props;
 
   const contentRef = React.useRef<HTMLDivElement | null>(null);
-  const positionStyle = usePositionedLayer(props, contentRef);
+  const positionStyle = usePositionedLayer({ target, attach, align, offset }, contentRef);
 
   const transitions = useTransition(children, {
     from: { opacity: 0 },
@@ -114,7 +115,10 @@ function TooltipLayer(props: PositionedLayerProps) {
   });
 
   return transitions((style, item) => (
-    <animated.div ref={contentRef} {...passthroughProps} style={{ ...style, ...positionStyle }}>
+    <animated.div
+      ref={contentRef}
+      {...filterInvalidDOMProps(passthroughProps)}
+      style={{ ...style, ...positionStyle }}>
       {item}
     </animated.div>
   ));
