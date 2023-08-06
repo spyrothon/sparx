@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className={styles.content}>
             <div className={styles.contentWidthContainer}>
               {/* each page template should have a <main id="main"> which does not include navigation */}
-              <div>{children}</div>
+              {children}
             </div>
           </div>
         </AppContainer>

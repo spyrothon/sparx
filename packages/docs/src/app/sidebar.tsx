@@ -35,7 +35,7 @@ export function Sidebar(props: { className: string }) {
   const { theme, accent, setTheme, setAccent } = React.useContext(ThemeContext);
 
   const router = useRouter();
-  const segments = useSelectedLayoutSegments()[1]
+  const segments = (useSelectedLayoutSegments()[1] ?? "")
     .split("/")
     .map((segment) => segment.toLowerCase());
 
