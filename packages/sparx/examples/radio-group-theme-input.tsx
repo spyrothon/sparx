@@ -1,6 +1,9 @@
 import * as React from "react";
 
-import { RadioGroup, Theme, ThemeContext } from "../dist";
+import { RadioGroup } from "../dist";
+import { getInjectedThemeContext } from "./util/Theming";
+
+const { ThemeContext } = getInjectedThemeContext();
 
 export default function Component() {
   const { theme, setTheme } = React.useContext(ThemeContext);
@@ -8,11 +11,11 @@ export default function Component() {
   return (
     <RadioGroup
       options={[
-        { label: "Light Theme", value: Theme.LIGHT },
-        { label: "Dark Theme", value: Theme.DARK },
+        { label: "Light Theme", value: "light" },
+        { label: "Dark Theme", value: "dark" },
       ]}
       value={theme}
-      onChange={(event) => setTheme(event.target.value as Theme)}
+      onChange={(event) => setTheme(event.target.value)}
     />
   );
 }

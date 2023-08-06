@@ -7,7 +7,7 @@ export type { PressEvent } from "@react-types/shared";
 export { Anchor, setAnchorRenderer } from "./components/Anchor/Anchor";
 export type { AnchorProps, AnchorRenderer, AnchorRendererProps } from "./components/Anchor/Anchor";
 
-export { AppContainer } from "./components/AppContainer/AppContainer";
+export { createAppContainer } from "./components/AppContainer/AppContainer";
 
 export { Button } from "./components/Button/Button";
 export type {
@@ -140,13 +140,8 @@ export type {
   TextVariantSize,
 } from "./components/Text/Text";
 
-export {
-  Accent,
-  Theme,
-  ThemeContext,
-  ThemeProvider,
-  useThemeClass,
-} from "./components/ThemeProvider/ThemeProvider";
+export { createThemeContext } from "./components/ThemeProvider/ThemeProvider";
+export type { CreateThemeContextReturn } from "./components/ThemeProvider/ThemeProvider";
 
 export { Tooltip, useTooltip } from "./components/Tooltip/Tooltip";
 export type {

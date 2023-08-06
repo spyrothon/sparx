@@ -1,13 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { Accent, AppContainer } from "@spyrothon/sparx";
 
 import "./globals.css";
 
 import styles from "./layout.module.css";
 
 import { Sidebar } from "./sidebar";
+import { AppContainer } from "./theming";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to main content
         </a>
 
-        <AppContainer className={styles.container} accent={Accent.PINK}>
+        <AppContainer className={styles.container} accent={"pink"}>
           <Sidebar className={styles.sidebar} />
           <div className={styles.content}>
             <div className={styles.contentWidthContainer}>

@@ -1,4 +1,9 @@
-import { makeColorPalette, makeFontPalette, makeTokens, TokenGenerator } from "@spyrothon/tokens";
+import {
+  makeColorPalette,
+  makeFontPalette,
+  makeTokens,
+  TokenGenerator,
+} from "@spyrothon/tokens/generator";
 
 const staticColors = {
   white: "#ffffff",

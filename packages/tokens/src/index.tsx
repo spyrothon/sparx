@@ -1,10 +1,7 @@
-export { makeColorPalette } from "./ColorPalette";
-export { makeFontPalette } from "./FontPalette";
-export { TokenGenerator } from "./TokenGenerator";
-export { makeTokens } from "./Tokens";
+export type ThemeTokenValue = { rawColor: string; opacity: number; rgba: string };
 
-import * as CSS from "./generators/CSS";
-
-export const generators = { CSS };
-
-export { source, formatters, mapItems, mapValues } from "token-pipeline";
+export type ThemedTokenResolver<
+  ThemeTokenName extends string,
+  Theme extends string,
+  Accent extends string,
+> = (name: ThemeTokenName, theme: Theme, accent: Accent) => ThemeTokenValue;

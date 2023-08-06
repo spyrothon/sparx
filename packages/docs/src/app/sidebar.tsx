@@ -3,7 +3,6 @@
 import * as React from "react";
 import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import {
-  Accent,
   BrandLogo,
   Card,
   Divider,
@@ -13,21 +12,23 @@ import {
   Stack,
   Tabs,
   Text,
-  Theme,
-  ThemeContext,
 } from "@spyrothon/sparx";
 
 import { getFlatSidebarItems, FlatNavigationItem } from "./sidebarItems";
+import { ThemeContext, getThemeClass } from "./theming";
+import type { Accent, Theme } from "../../design/generated/Tokens";
 
 const THEME_OPTIONS = [
-  { name: "Dark", value: Theme.DARK },
-  { name: "Light", value: Theme.LIGHT },
+  { name: "Dark", value: "dark" },
+  { name: "Light", value: "light" },
 ];
 
 const ACCENT_OPTIONS = [
-  { name: "Purple", value: Accent.PURPLE },
-  { name: "Pink", value: Accent.PINK },
+  { name: "Purple", value: "purple" },
+  { name: "Pink", value: "pink" },
 ];
+
+getThemeClass("dark", "pink");
 
 export function Sidebar(props: { className: string }) {
   const { className } = props;

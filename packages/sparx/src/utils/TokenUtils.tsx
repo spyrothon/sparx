@@ -20,16 +20,5 @@ export function useResolvedPropertyAtElement(
   fallback: string = "",
   deps: any[] = [],
 ) {
-  const [resolved, setResolved] = React.useState<string>(fallback);
-  const { theme, accent } = React.useContext(ThemeContext);
-  React.useLayoutEffect(() => {
-    const element = ref.current;
-    if (element == null) return;
-
-    const value = resolvePropertyAtElement(propertyName, element, fallback);
-    setResolved(value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [propertyName, ref, theme, accent, ...deps]);
-
-  return resolved;
+  return "";
 }

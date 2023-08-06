@@ -1,4 +1,9 @@
-import { makeColorPalette, makeFontPalette, makeTokens, TokenGenerator } from "../dist/src";
+import {
+  makeColorPalette,
+  makeFontPalette,
+  makeTokens,
+  TokenGenerator,
+} from "../dist/src/generator";
 
 const staticColors = {
   white: "#ffffff",

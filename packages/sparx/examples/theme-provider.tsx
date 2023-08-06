@@ -1,6 +1,9 @@
 import * as React from "react";
 
-import { Accent, Button, Card, Stack, Text, Theme, ThemeProvider, useThemeClass } from "../dist";
+import { Button, Card, Stack, Text } from "../dist";
+import { getInjectedThemeContext } from "./util/Theming";
+
+const { ThemeProvider, useThemeClass } = getInjectedThemeContext();
 
 export default function Component() {
   function SampleContent() {
@@ -21,10 +24,10 @@ export default function Component() {
 
   return (
     <Stack>
-      <ThemeProvider theme={Theme.DARK} accent={Accent.PINK}>
+      <ThemeProvider theme="dark" accent="pink">
         <SampleContent />
       </ThemeProvider>
-      <ThemeProvider theme={Theme.LIGHT} accent={Accent.PURPLE}>
+      <ThemeProvider theme="light" accent="purple">
         <SampleContent />
       </ThemeProvider>
     </Stack>
