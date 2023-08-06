@@ -5,7 +5,8 @@
       "@sparx": ["./src/index"],
       "@sparx/*": ["./src/*"]
     },
-    "types": []
+    "types": [],
+    "moduleResolution": "bundler"
   },
   "include": ["./src", "./@types"],
   "references": [{ "path": "./tsconfig.node.json" }]

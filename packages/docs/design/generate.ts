@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { formatters, generators, source } from "@spyrothon/tokens/generator";
+import { validateTokens } from "@spyrothon/sparx";
 import definitions from "./tokens";
 
 const TARGET_DIR = path.resolve(__dirname, "./generated");
@@ -27,6 +28,7 @@ const files = {
 const prettier = { formatter: formatters.runPrettier };
 
 source(definitions)
+  .pipe(validateTokens)
   .out(path.join(TARGET_DIR, files.CSS.COLORS), generators.CSS.generateColors, prettier)
   .out(path.join(TARGET_DIR, files.CSS.THEMES), generators.CSS.generateThemeColors, prettier)
   .out(path.join(TARGET_DIR, files.CSS.FONTS), generators.CSS.generateFonts, prettier)

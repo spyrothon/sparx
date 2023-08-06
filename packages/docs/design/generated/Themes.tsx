@@ -112,7 +112,7 @@ export type Theme = (typeof Themes)[number];
 export const Accents = ["purple", "pink"] as const;
 export type Accent = (typeof Accents)[number];
 
-export type ThemeTokenValue = { rawColor: string; opacity: number; rgba: string };
+export type ThemeTokenValue = { rawColor: string; opacity: number; rgba: string; hsla: string };
 
 export type ThemeToken = {
   [K in Theme]: ThemeTokenValue | { [A in Accent]: ThemeTokenValue };

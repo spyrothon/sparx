@@ -1,7 +1,7 @@
 export { makeColorPalette } from "./ColorPalette";
 export { makeFontPalette } from "./FontPalette";
 export { TokenGenerator } from "./TokenGenerator";
-export { makeTokens } from "./Tokens";
+export { makeTokens, Tokens } from "./Tokens";
 
 import * as CSS from "./generators/CSS";
 import * as TypeScript from "./generators/TypeScript";

@@ -35,14 +35,13 @@ export interface Tokens {
   radii: RadiusToken[];
 }
 
-export function makeTokens<T extends string>({
-  colors,
-  tokens,
-}: {
+interface MakeTokensOptions<T extends string> {
   colors: ColorPalette<T>;
   tokens: TokenGenerator;
-}): Tokens {
-  return {
+}
+
+export function makeTokens<T extends string>({ colors, tokens }: MakeTokensOptions<T>): Tokens {
+  const computedTokens = {
     colors: colors.all(),
     accents: tokens.getGeneratedAccents(),
     themes: tokens.getGeneratedThemes(),
@@ -50,4 +49,6 @@ export function makeTokens<T extends string>({
     spaces: tokens.getSpaceTokens(),
     radii: tokens.getRadiusTokens(),
   };
+
+  return computedTokens;
 }
