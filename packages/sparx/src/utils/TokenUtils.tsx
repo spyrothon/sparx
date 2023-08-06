@@ -10,7 +10,6 @@ export function resolvePropertyAtElement(
   if (window == null) return fallback;
   const style = window.getComputedStyle(element);
   const value = style.getPropertyValue(propertyName);
-  console.log(typeof value, `"${value}"`);
   return value === "" ? fallback : value;
 }
 

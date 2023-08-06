@@ -38,17 +38,11 @@ function RadioItem<T>(props: RadioItemProps<T>) {
   const containerRef = React.useRef<HTMLLabelElement>(null);
   const resolvedColor = useResolvedPropertyAtElement("--_input-color", containerRef, "transparent");
 
-  const [{ opacity, backgroundColor, transform }] = useSpring(
+  const [{ opacity, transform }] = useSpring(
     () => ({
-      backgroundColor: selected ? resolvedColor : "transparent",
       opacity: selected ? 1 : 0,
       transform: `scale(${selected ? 1 : 0.7})`,
-      config: (key) => ({
-        ...DOT_SPRING_CONFIG,
-        friction:
-          key === "backgroundColor" ? DOT_SPRING_CONFIG.friction + 15 : DOT_SPRING_CONFIG.friction,
-        clamp: key === "backgroundColor",
-      }),
+      config: DOT_SPRING_CONFIG,
     }),
     [selected, resolvedColor],
   );
@@ -77,9 +71,9 @@ function RadioItem<T>(props: RadioItemProps<T>) {
         value={String(value)}
         style={{ display: "none" }}
       />
-      <animated.div className={styles.icon} style={{ backgroundColor }}>
+      <div className={styles.icon}>
         <animated.div className={styles.dot} style={{ opacity, transform }} />
-      </animated.div>
+      </div>
       {labelNode}
     </Clickable>
   );
