@@ -5,9 +5,8 @@ import Check from "@spyrothon/sparx-icons/dist/icons/Check";
 
 import { animated, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
-import { useResolvedPropertyAtElement } from "@sparx/utils/TokenUtils";
 
-import { getInputClassNames, InputColor } from "../Input/Input";
+import { getInputClassNames, InputColor, useInputColorToken } from "../Input/Input";
 
 import styles from "./Checkbox.module.css";
 
@@ -23,7 +22,7 @@ const AnimatedCheck = animated(Check);
 
 const CHECK_SPRING_CONFIG = {
   tension: 400,
-  friction: 16,
+  friction: 20,
 };
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
@@ -32,23 +31,18 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const [inputId] = React.useState(() => uuid.v4());
 
     const containerRef = React.useRef<HTMLLabelElement>(null);
-    const resolvedColor = useResolvedPropertyAtElement(
-      "--_input-color",
-      containerRef,
-      "transparent",
-      [color],
-    );
+    const inputColor = useInputColorToken(color, "color");
+    const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
     const [{ opacity, transform, backgroundColor }] = useSpring(() => {
       return {
-        backgroundColor: checked ? resolvedColor : "transparent",
-        borderWidth: checked ? 0 : 1,
+        backgroundColor: checked ? resolvedColor : `${resolvedColor}00`,
         opacity: checked ? 1 : 0,
         transform: `scale(${checked ? 1 : 0.7})`,
         config: (key) => ({
           ...CHECK_SPRING_CONFIG,
           friction:
             key === "backgroundColor"
-              ? CHECK_SPRING_CONFIG.friction + 15
+              ? CHECK_SPRING_CONFIG.friction - 15
               : CHECK_SPRING_CONFIG.friction,
           clamp: key === "backgroundColor",
         }),

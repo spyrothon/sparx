@@ -1,4 +1,4 @@
-export type ThemeTokenValue = { rawColor: string; opacity: number; rgba: string };
+export type ThemeTokenValue = { rawColor: string; opacity: number; rgba: string; hsla: string };
 
 export type ThemedTokenResolver<
   ThemeTokenName extends string,

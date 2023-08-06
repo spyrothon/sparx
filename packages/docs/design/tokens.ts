@@ -193,6 +193,10 @@ tokens.color("text.default", { dark: colors("grey.100"), light: colors("grey.900
 tokens.color("text.accent", { dark: "accent.text", light: "accent.text" });
 tokens.color("text.link", { dark: "accent.text", light: "accent.text" });
 
+tokens.color("status.accent.primary", {
+  dark: "accent.primary",
+  light: "accent.primary",
+});
 tokens.color("status.accent.background", {
   dark: "accent.background",
   light: "accent.background",

@@ -4,9 +4,9 @@ import * as uuid from "uuid";
 
 import { animated, useSpring } from "@react-spring/web";
 import { Stack, Text } from "@sparx/index";
-import { useResolvedPropertyAtElement } from "@sparx/utils/TokenUtils";
 
 import { Clickable } from "../Clickable/Clickable";
+import { InputColor, useInputColorToken } from "../Input/Input";
 
 import styles from "./RadioGroup.module.css";
 
@@ -23,6 +23,7 @@ interface Option<T> {
 
 interface RadioItemProps<T> {
   selected: boolean;
+  color: InputColor;
   option: Option<T>;
   disabled: boolean;
   groupId: string;
@@ -30,23 +31,23 @@ interface RadioItemProps<T> {
 }
 
 function RadioItem<T>(props: RadioItemProps<T>) {
-  const { selected, option, disabled, groupId, onChange } = props;
+  const { selected, color, option, disabled, groupId, onChange } = props;
   const { value, label } = option;
 
   const [inputId] = React.useState(() => uuid.v4());
 
   const containerRef = React.useRef<HTMLLabelElement>(null);
-  const resolvedColor = useResolvedPropertyAtElement("--_input-color", containerRef, "transparent");
-
-  const [{ opacity, backgroundColor, transform }] = useSpring(
+  const inputColor = useInputColorToken(color, "color");
+  const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
+  const [{ opacity, transform, backgroundColor }] = useSpring(
     () => ({
-      backgroundColor: selected ? resolvedColor : "transparent",
+      backgroundColor: selected ? resolvedColor : `${resolvedColor}00`,
       opacity: selected ? 1 : 0,
       transform: `scale(${selected ? 1 : 0.7})`,
       config: (key) => ({
         ...DOT_SPRING_CONFIG,
         friction:
-          key === "backgroundColor" ? DOT_SPRING_CONFIG.friction + 15 : DOT_SPRING_CONFIG.friction,
+          key === "backgroundColor" ? DOT_SPRING_CONFIG.friction - 15 : DOT_SPRING_CONFIG.friction,
         clamp: key === "backgroundColor",
       }),
     }),
@@ -87,13 +88,14 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
 export interface RadioGroupProps<T> {
   value: T | undefined;
+  color?: InputColor;
   options: Option<T>[];
   disabled?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
 export function RadioGroup<T>(props: RadioGroupProps<T>) {
-  const { value, options, disabled = false, onChange } = props;
+  const { value, color = "accent", options, disabled = false, onChange } = props;
   const [groupId] = React.useState(() => uuid.v4());
 
   return (
@@ -102,6 +104,7 @@ export function RadioGroup<T>(props: RadioGroupProps<T>) {
         <RadioItem
           key={String(option.value)}
           selected={value === option.value}
+          color={color}
           option={option}
           disabled={(disabled || option.disabled) ?? false}
           groupId={groupId}

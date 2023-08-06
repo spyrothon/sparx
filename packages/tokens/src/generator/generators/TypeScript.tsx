@@ -19,6 +19,9 @@ export function generateThemes(tokens: Tokens) {
     return `{rawColor: '${color.hex("rgb")}', opacity: ${color.alpha()}, rgba: '${color.css(
       // @ts-expect-error chroma can do this but the types don't agree
       "rgba",
+    )}', hsla: '${color.css(
+      // @ts-expect-error chroma can do this but the types don't agree
+      "hsla",
     )}'}`;
   }
 

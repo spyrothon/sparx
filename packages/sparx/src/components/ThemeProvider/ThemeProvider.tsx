@@ -42,6 +42,22 @@ export interface CreateThemeContextReturn<
   useThemeClass: any;
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+let _createdThemeContext: CreateThemeContextReturn<string, string, string> | undefined = undefined;
+
+export function getCreatedThemeContext(): CreateThemeContextReturn<string, string, string> {
+  if (_createdThemeContext == null) {
+    throw "[Sparx Design System] Tried to read the current theme context, but none exists. Make sure to call `createThemeContext` in your application";
+  }
+  return _createdThemeContext;
+}
+
+export function useResolvedColorToken(token: string) {
+  const { ThemeContext, resolveThemeColorToken } = getCreatedThemeContext();
+  const { theme, accent } = React.useContext(ThemeContext);
+  return resolveThemeColorToken(token, theme, accent);
+}
+
 export function createThemeContext<
   Theme extends string,
   Accent extends string,
@@ -100,7 +116,7 @@ export function createThemeContext<
     return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
   }
 
-  return {
+  const created = {
     ThemeContext,
     ThemeProvider,
     getThemeClass,
@@ -109,4 +125,9 @@ export function createThemeContext<
     accents,
     resolveThemeColorToken,
   };
+
+  // @ts-expect-error this is a type widening that we'll just say is okay for now
+  _createdThemeContext = created;
+
+  return created;
 }

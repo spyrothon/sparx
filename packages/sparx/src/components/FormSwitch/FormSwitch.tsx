@@ -5,9 +5,9 @@ import Check from "@spyrothon/sparx-icons/dist/icons/Check";
 
 import { animated, config, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
-import { useResolvedPropertyAtElement } from "@sparx/utils/TokenUtils";
 
-import { getInputClassNames, InputColor } from "../Input/Input";
+import { getInputClassNames, InputColor, useInputColorToken } from "../Input/Input";
+import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./FormSwitch.module.css";
 
@@ -24,27 +24,14 @@ function Switch(props: { checked: boolean; color: InputColor }) {
   const { checked, color } = props;
 
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const resolvedColor = useResolvedPropertyAtElement(
-    "--_input-color",
-    containerRef,
-    "transparent",
-    [color],
-  );
-  const resolvedBackground = useResolvedPropertyAtElement(
-    "--control-background",
-    containerRef,
-    "transparent",
-    [color],
-  );
+
+  const inputColor = useInputColorToken(color, "color");
+  const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.hsla;
+  const resolvedBackground = useResolvedColorToken("CONTROL_BACKGROUND").hsla;
+
   const [{ opacity, transform, trackColor }] = useSpring(
     () => ({
-      trackColor: checked
-        ? resolvedColor
-        : // This ensures that `trackColor` won't be set if the background color
-        // hasn't been resolved yet, allowing the CSS class to take precendence.
-        resolvedBackground === "transparent"
-        ? undefined
-        : resolvedBackground,
+      trackColor: checked ? resolvedColor : resolvedBackground,
       opacity: checked ? 1 : 0,
       transform: `scale(${checked ? 1 : 0.7})`,
       config: config.gentle,
