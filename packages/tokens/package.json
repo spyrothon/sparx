@@ -6,24 +6,23 @@
   "main": "dist/src/index.jsx",
   "types": "dist/src/index.d.ts",
   "files": [
-    "index.tsx",
     "default",
     "bin",
-    "src",
-    "generated"
+    "dist",
+    "src"
   ],
   "bin": {
     "sparx-tokens": "./bin/cli.mjs"
   },
   "exports": {
     ".": "./dist/src/index.js",
-    "./default/*.css": "./generated/default/*.css"
+    "./default/*.css": "./default/generated/*.css"
   },
   "scripts": {
     "build": "tsc",
     "gen:tokens": "tsx ./default/generate.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prepublishOnly": "pnpm gen:theme"
+    "prepublishOnly": "pnpm build && pnpm gen:tokens"
   },
   "dependencies": {
     "chroma-js": "^2.4.2",
