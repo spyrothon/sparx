@@ -17,7 +17,7 @@
 
 .icon {
   display: block;
-  color: var(--interactive-normal);
+  color: var(--control-foreground);
 }
 
 .label {

@@ -21,7 +21,7 @@
 }
 
 .dot {
-  background-color: var(--interactive-normal);
+  background-color: var(--control-foreground);
   width: 12px;
   height: 12px;
   border-radius: var(--radius-full);
