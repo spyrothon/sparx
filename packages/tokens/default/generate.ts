@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-import { formatters, generators, source } from "../src";
+import { formatters, generators, source } from "../dist/src";
 import definitions from "./tokens";
 
 const TARGET_DIR = path.resolve(__dirname, "./generated");

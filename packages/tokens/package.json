@@ -20,16 +20,16 @@
   },
   "scripts": {
     "build": "tsc",
-    "gen:tokens": "tsx ./default/generate.ts",
+    "gen:tokens": "esno ./default/generate.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prepublishOnly": "pnpm build && pnpm gen:tokens"
   },
   "dependencies": {
     "chroma-js": "^2.4.2",
     "endent": "^2.1.0",
+    "esno": "^0.17.0",
     "lodash": "^4.17.21",
-    "token-pipeline": "^0.1.4",
-    "tsx": "^3.12.7"
+    "token-pipeline": "^0.1.4"
   },
   "devDependencies": {
     "@types/chroma-js": "^2.4.0",

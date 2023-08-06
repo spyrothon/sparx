@@ -160,16 +160,16 @@ importers:
       '@types/node': ^18.8.5
       chroma-js: ^2.4.2
       endent: ^2.1.0
+      esno: ^0.17.0
       lodash: ^4.17.21
       token-pipeline: ^0.1.4
-      tsx: ^3.12.7
       typescript: ^5.0.2
     dependencies:
       chroma-js: 2.4.2
       endent: 2.1.0
+      esno: 0.17.0
       lodash: 4.17.21
       token-pipeline: 0.1.4
-      tsx: 3.12.7
     devDependencies:
       '@types/chroma-js': 2.4.0
       '@types/lodash': 4.14.196
@@ -4304,7 +4304,6 @@ packages:
     hasBin: true
     dependencies:
       tsx: 3.12.7
-    dev: true
 
   /espree/9.4.0:
     resolution: {integrity: sha512-DQmnRpLj7f6TgN/NYb0MTzJXL+vJF9h3pHy4JhCIs3zwcgez8xmGg3sXHcEO97BrmO2OSvCwMdfdlyl+E9KjOw==}

@@ -11,7 +11,7 @@ const targetDir = path.resolve("./design");
 fs.mkdirSync(targetDir, { recursive: true });
 
 function copyAndReplacePackageImport(file) {
-  const content = fs.readFileSync(file).toString().replace("../src", PACKAGE_NAME);
+  const content = fs.readFileSync(file).toString().replace("../dist/src", PACKAGE_NAME);
   fs.writeFileSync(path.join(targetDir, path.basename(file)), content);
 }
 
