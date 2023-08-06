@@ -1,7 +1,7 @@
 {
   "name": "@spyrothon/tokens",
   "description": "Token generation system to support the Sparx design system",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "sideEffects": false,
   "main": "dist/src/index.jsx",
   "types": "dist/src/index.d.ts",
