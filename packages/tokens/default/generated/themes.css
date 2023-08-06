@@ -44,6 +44,7 @@
   --text-default: hsla(348, 15.15%, 93.53%, 1);
   --text-accent: var(--accent-text);
   --text-link: var(--accent-text);
+  --status-accent-primary: var(--accent-primary);
   --status-accent-background: var(--accent-background);
   --status-accent-foreground: var(--accent-foreground);
   --status-accent-hover: var(--accent-hover);
@@ -120,6 +121,7 @@
   --text-default: hsla(340, 6.12%, 9.61%, 1);
   --text-accent: var(--accent-text);
   --text-link: var(--accent-text);
+  --status-accent-primary: var(--accent-primary);
   --status-accent-background: var(--accent-background);
   --status-accent-foreground: var(--accent-foreground);
   --status-accent-hover: var(--accent-hover);

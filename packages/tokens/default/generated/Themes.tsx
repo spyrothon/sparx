@@ -753,6 +753,36 @@ export const themeTokens = {
       },
     },
   },
+  STATUS_ACCENT_PRIMARY: {
+    dark: {
+      purple: {
+        rawColor: "#cd5ef3",
+        opacity: 1,
+        rgba: "rgba(205,94,243,1)",
+        hsla: "hsla(284.7,86.13%,66.08%,1)",
+      },
+      pink: {
+        rawColor: "#e06790",
+        opacity: 1,
+        rgba: "rgba(224,103,144,1)",
+        hsla: "hsla(339.67,66.12%,64.12%,1)",
+      },
+    },
+    light: {
+      purple: {
+        rawColor: "#a343c6",
+        opacity: 1,
+        rgba: "rgba(163,67,198,1)",
+        hsla: "hsla(283.97,53.47%,51.96%,1)",
+      },
+      pink: {
+        rawColor: "#bc4972",
+        opacity: 1,
+        rgba: "rgba(188,73,114,1)",
+        hsla: "hsla(338.61,46.18%,51.18%,1)",
+      },
+    },
+  },
   STATUS_ACCENT_BACKGROUND: {
     dark: {
       purple: {
