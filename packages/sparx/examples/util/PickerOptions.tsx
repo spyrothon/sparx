@@ -23,4 +23,4 @@ export const PICKER_OPTIONS = [
   },
 ];
 
-export type PickerOption = typeof PICKER_OPTIONS[number];
+export type PickerOption = (typeof PICKER_OPTIONS)[number];

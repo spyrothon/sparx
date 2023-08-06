@@ -3,7 +3,7 @@ import * as React from "react";
 import { FormSwitch } from "../dist";
 
 export default function Component() {
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
 
   return (
     <FormSwitch

@@ -7,7 +7,6 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "bracketSameLine": true,
-  "fluid": false,
   "proseWrap": "always",
   "overrides": [
     {
