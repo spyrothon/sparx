@@ -20,4 +20,5 @@ const tokens = {
 
 export type Tokens = typeof tokens;
 
-export { tokens, type Accent, type Theme };
+export { tokens };
+export type { Accent, Theme };
