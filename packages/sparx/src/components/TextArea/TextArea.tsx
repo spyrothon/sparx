@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { getInputClassNames, InputColor } from "../Input/Input";
+import { getInputClassNames, InputState } from "../Input/Input";
 
 import styles from "./TextArea.module.css";
 
@@ -37,7 +37,7 @@ type TextAreaResizeType = keyof typeof RESIZE_CLASSES;
 export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   resize?: TextAreaResizeType;
   disabled?: boolean;
-  color?: InputColor;
+  state?: InputState;
 }
 
 export const TextArea = React.forwardRef(function TextArea(
@@ -50,7 +50,7 @@ export const TextArea = React.forwardRef(function TextArea(
     rows = 3,
     resize = "vertical",
     disabled = false,
-    color = "accent",
+    state = "accent",
     className,
     onChange,
     ...nativeProps
@@ -59,7 +59,7 @@ export const TextArea = React.forwardRef(function TextArea(
 
   return (
     <div
-      className={classNames(styles.container, ...getInputClassNames(color), {
+      className={classNames(styles.container, ...getInputClassNames(state), {
         [styles.disabled]: disabled,
       })}>
       <textarea

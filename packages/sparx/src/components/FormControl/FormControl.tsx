@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Text, TextVariantColor } from "@sparx/index";
 
-import { getInputClassNames, InputColor } from "../Input/Input";
+import { getInputClassNames, InputState } from "../Input/Input";
 import { TextVariantSize } from "../Text/Text";
 
 import styles from "./FormControl.module.css";
@@ -20,10 +20,7 @@ export interface FormControlProps {
    * Color to use for the label text above the input.
    */
   labelColor?: TextVariantColor;
-  /**
-   * Color to use across the input and it's prefix/suffix.
-   */
-  color?: InputColor;
+  state?: InputState;
   note?: React.ReactNode;
   size?: FormControlSize;
   prefix?: React.ReactNode;
@@ -36,7 +33,7 @@ export function FormControl(props: FormControlProps) {
   const {
     label,
     labelColor = "normal",
-    color = "accent",
+    state = "accent",
     note,
     size = "normal",
     prefix,
@@ -51,7 +48,7 @@ export function FormControl(props: FormControlProps) {
 
   return (
     <div
-      className={classNames(styles.control, ...getInputClassNames(color), {
+      className={classNames(styles.control, ...getInputClassNames(state), {
         [styles.disabled]: disabled,
       })}>
       {label != null ? (

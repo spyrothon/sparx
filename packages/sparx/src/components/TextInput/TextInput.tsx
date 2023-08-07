@@ -1,13 +1,13 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
+import { getInputClassNames, InputSize, InputState } from "../Input/Input";
 
 import styles from "../Input/Input.module.css";
 
 export interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   type?: "text" | "number" | "password" | "email" | "date" | "time" | "datetime-local";
-  color?: InputColor;
+  state?: InputState;
   size?: InputSize;
 }
 
@@ -17,7 +17,7 @@ export const TextInput = React.forwardRef(function TextInput(
 ) {
   const {
     type = "text",
-    color = "accent",
+    state = "accent",
     size = "medium",
     value,
     className,
@@ -32,7 +32,7 @@ export const TextInput = React.forwardRef(function TextInput(
       type={type}
       value={value}
       onChange={onChange}
-      className={classNames(styles.input, ...getInputClassNames(color, size), className)}
+      className={classNames(styles.input, ...getInputClassNames(state, size), className)}
     />
   );
 });

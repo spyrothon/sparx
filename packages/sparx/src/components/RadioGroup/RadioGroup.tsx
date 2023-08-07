@@ -6,7 +6,7 @@ import { animated, useSpring } from "@react-spring/web";
 import { Stack, Text } from "@sparx/index";
 
 import { Clickable } from "../Clickable/Clickable";
-import { InputColor, useInputColorToken } from "../Input/Input";
+import { InputState, useInputColorToken } from "../Input/Input";
 
 import styles from "./RadioGroup.module.css";
 
@@ -23,7 +23,7 @@ interface Option<T> {
 
 interface RadioItemProps<T> {
   selected: boolean;
-  color: InputColor;
+  state: InputState;
   option: Option<T>;
   disabled: boolean;
   groupId: string;
@@ -31,13 +31,13 @@ interface RadioItemProps<T> {
 }
 
 function RadioItem<T>(props: RadioItemProps<T>) {
-  const { selected, color, option, disabled, groupId, onChange } = props;
+  const { selected, state, option, disabled, groupId, onChange } = props;
   const { value, label } = option;
 
   const [inputId] = React.useState(() => uuid.v4());
 
   const containerRef = React.useRef<HTMLLabelElement>(null);
-  const inputColor = useInputColorToken(color, "color");
+  const inputColor = useInputColorToken(state, "color");
   const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
   const [{ opacity, transform, backgroundColor }] = useSpring(
     () => ({
@@ -88,14 +88,14 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
 export interface RadioGroupProps<T> {
   value: T | undefined;
-  color?: InputColor;
+  state?: InputState;
   options: Option<T>[];
   disabled?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
 export function RadioGroup<T>(props: RadioGroupProps<T>) {
-  const { value, color = "accent", options, disabled = false, onChange } = props;
+  const { value, state = "accent", options, disabled = false, onChange } = props;
   const [groupId] = React.useState(() => uuid.v4());
 
   return (
@@ -104,7 +104,7 @@ export function RadioGroup<T>(props: RadioGroupProps<T>) {
         <RadioItem
           key={String(option.value)}
           selected={value === option.value}
-          color={color}
+          state={state}
           option={option}
           disabled={(disabled || option.disabled) ?? false}
           groupId={groupId}

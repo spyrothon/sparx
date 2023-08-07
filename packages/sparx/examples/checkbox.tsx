@@ -14,7 +14,7 @@ export default function Component() {
       />
       <Checkbox
         checked={checked}
-        color="success"
+        state="success"
         label={
           <>
             <Text variant="header-sm/normal">Longer labels</Text>

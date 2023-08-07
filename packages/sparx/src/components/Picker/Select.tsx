@@ -29,14 +29,14 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
     selectedKey,
     placeholder = "Select an option",
     name,
-    color,
+    state,
     size,
     className,
     children,
     onSelect,
   } = props;
 
-  const state = useSelectState({
+  const controlState = useSelectState({
     children,
     items,
     selectedKey,
@@ -55,15 +55,16 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
       defaultSelectedKey: selectedKey,
       selectedKey,
     },
-    state,
+    controlState,
     ref,
   );
 
-  const selectedElement = state.selectedItem != null ? state.selectedItem.rendered : placeholder;
+  const selectedElement =
+    controlState.selectedItem != null ? controlState.selectedItem.rendered : placeholder;
 
   return (
-    <Picker color={color} size={size} state={state} className={className}>
-      <HiddenSelect state={state} triggerRef={ref} name={name} />
+    <Picker state={state} size={size} controlState={controlState} className={className}>
+      <HiddenSelect state={controlState} triggerRef={ref} name={name} />
       <Stack
         as={Clickable}
         direction="horizontal"
@@ -81,9 +82,9 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
           {...valueProps}>
           {selectedElement}
         </div>
-        <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
+        <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
       </Stack>
-      {state.isOpen && <DropdownListBox {...menuProps} state={state} />}
+      {controlState.isOpen && <DropdownListBox {...menuProps} state={controlState} />}
     </Picker>
   );
 }

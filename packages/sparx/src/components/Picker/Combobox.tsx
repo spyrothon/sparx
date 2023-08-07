@@ -28,7 +28,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   const {
     items,
     selectedKey,
-    color,
+    state,
     size,
     allowsCustomValue = false,
     allowsEmptyCollection = false,
@@ -38,7 +38,7 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
     onSelect,
   } = props;
   const { contains } = useFilter({ sensitivity: "base" });
-  const state = useComboBoxState({
+  const controlState = useComboBoxState({
     children,
     defaultItems: items,
     defaultSelectedKey: selectedKey,
@@ -67,11 +67,11 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
       listBoxRef,
       popoverRef: listBoxRef,
     },
-    state,
+    controlState,
   );
 
   return (
-    <Picker color={color} size={size} state={state} className={className}>
+    <Picker state={state} size={size} controlState={controlState} className={className}>
       <Stack
         direction="horizontal"
         align="center"
@@ -85,10 +85,12 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
           className={classNames(inputStyles.inputText, styles.input, styles.inputPadding)}
         />
         <Clickable {...buttonProps} ref={buttonRef}>
-          <DropdownChevron isOpen={state.isOpen} className={styles.chevron} />
+          <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
         </Clickable>
       </Stack>
-      {state.isOpen && <DropdownListBox {...listBoxProps} listBoxRef={listBoxRef} state={state} />}
+      {controlState.isOpen && (
+        <DropdownListBox {...listBoxProps} listBoxRef={listBoxRef} state={controlState} />
+      )}
     </Picker>
   );
 }

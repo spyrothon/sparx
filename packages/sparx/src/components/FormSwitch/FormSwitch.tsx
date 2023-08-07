@@ -6,7 +6,7 @@ import Check from "@spyrothon/sparx-icons/dist/icons/Check";
 import { animated, config, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
 
-import { getInputClassNames, InputColor, useInputColorToken } from "../Input/Input";
+import { getInputClassNames, InputState, useInputColorToken } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./FormSwitch.module.css";
@@ -14,18 +14,18 @@ import styles from "./FormSwitch.module.css";
 export interface FormSwitchProps {
   checked: boolean;
   disabled?: boolean;
-  color?: InputColor;
+  state?: InputState;
   label?: React.ReactNode;
   note?: React.ReactNode;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
-function Switch(props: { checked: boolean; color: InputColor }) {
-  const { checked, color } = props;
+function Switch(props: { checked: boolean; state: InputState }) {
+  const { checked, state } = props;
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
-  const inputColor = useInputColorToken(color, "color");
+  const inputColor = useInputColorToken(state, "color");
   const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.hsla;
   const resolvedBackground = useResolvedColorToken("CONTROL_BACKGROUND").hsla;
 
@@ -59,12 +59,12 @@ function Switch(props: { checked: boolean; color: InputColor }) {
 
 export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
   function FormSwitch(props, ref) {
-    const { checked, disabled = false, color = "accent", label, note, onChange } = props;
+    const { checked, disabled = false, state = "accent", label, note, onChange } = props;
     const [inputId] = React.useState(() => uuid.v4());
 
     return (
       <div
-        className={classNames(styles.container, ...getInputClassNames(color), {
+        className={classNames(styles.container, ...getInputClassNames(state), {
           [styles.disabled]: disabled,
         })}>
         <Clickable
@@ -76,7 +76,7 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
           <Text variant="header-sm/normal" className={styles.label}>
             {label}
           </Text>
-          <Switch checked={checked} color={color} />
+          <Switch checked={checked} state={state} />
           <input
             ref={ref}
             type="checkbox"

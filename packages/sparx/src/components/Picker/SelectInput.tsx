@@ -6,7 +6,7 @@ import ChevronUp from "@spyrothon/sparx-icons/dist/icons/ChevronUp";
 
 import { Clickable, Text, TextVariantSize } from "@sparx/index";
 
-import { getInputClassNames, InputColor, InputSize } from "../Input/Input";
+import { getInputClassNames, InputSize, InputState } from "../Input/Input";
 
 import styles from "./SelectInput.module.css";
 
@@ -52,7 +52,7 @@ type ItemToString<T> = (item: T | null | undefined) => string;
 export interface SelectInputProps<Item> {
   items: Item[];
   selectedItem?: Item;
-  color?: InputColor;
+  color?: InputState;
   size?: InputSize;
   disabled?: boolean;
   maxHeight?: number;

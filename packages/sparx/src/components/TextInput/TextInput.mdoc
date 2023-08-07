@@ -39,11 +39,11 @@ message.
 {% showcase %}
 ```
 <Stack>
-  <TextInput color="success" placeholder="Success state" />
-  <TextInput color="warning" placeholder="Warning state" />
-  <TextInput color="danger" placeholder="Danger state" />
-  <TextInput color="info" placeholder="Info state" />
-  <TextInput color="default" placeholder="Default state" />
+  <TextInput state="success" placeholder="Success state" />
+  <TextInput state="warning" placeholder="Warning state" />
+  <TextInput state="danger" placeholder="Danger state" />
+  <TextInput state="info" placeholder="Info state" />
+  <TextInput state="default" placeholder="Default state" />
 </Stack>
 ```
 {% /showcase %}
@@ -70,7 +70,7 @@ appearing overly-segmented.
 
 {% showcase %}
 ```
-<TextInput color="blank" defaultValue="This has no borders" />
+<TextInput state="blank" defaultValue="This has no borders" />
 ```
 {% /showcase %}
 
@@ -82,13 +82,13 @@ user understand that the field is still editable, despite not having any other i
 ```
 <Stack>
   <FormControl
-    color="blank"
+    state="blank"
     label="Blank Input Example"
     note="Providing a label and note make it more clear that the input is editable.">
-    <CurrencyInput color="inherit" value={currency} onValueChange={setCurrency} />
+    <CurrencyInput state="inherit" value={currency} onValueChange={setCurrency} />
   </FormControl>
-  <FormControl color="success" label="Or a Prefix" prefix="twitch.tv/">
-    <TextInput color="blank" />
+  <FormControl state="success" label="Or a Prefix" prefix="twitch.tv/">
+    <TextInput state="blank" />
   </FormControl>
 </Stack>
 ```
