@@ -429,16 +429,16 @@ export const themeTokens = {
   },
   BORDER_PRIMARY: {
     dark: {
-      rawColor: "#959091",
-      opacity: 1,
-      rgba: "rgba(149,144,145,1)",
-      hsla: "hsla(348,2.3%,57.45%,1)",
+      rawColor: "#ffffff",
+      opacity: 0.5,
+      rgba: "rgba(255,255,255,0.5)",
+      hsla: "hsla(0,0%,100%,0.5)",
     },
     light: {
-      rawColor: "#959091",
-      opacity: 1,
-      rgba: "rgba(149,144,145,1)",
-      hsla: "hsla(348,2.3%,57.45%,1)",
+      rawColor: "#1a1718",
+      opacity: 0.5,
+      rgba: "rgba(26,23,24,0.5)",
+      hsla: "hsla(340,6.12%,9.61%,0.5)",
     },
   },
   BORDER_SUBTLE: {

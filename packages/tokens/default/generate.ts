@@ -28,7 +28,7 @@ const prettier = { formatter: formatters.runPrettier };
 
 source(definitions)
   .out(path.join(TARGET_DIR, files.CSS.COLORS), generators.CSS.generateColors, prettier)
-  .out(path.join(TARGET_DIR, files.CSS.THEMES), generators.CSS.generateThemeColors, prettier)
+  .out(path.join(TARGET_DIR, files.CSS.THEMES), generators.CSS.generateThemes, prettier)
   .out(path.join(TARGET_DIR, files.CSS.FONTS), generators.CSS.generateFonts, prettier)
   .out(path.join(TARGET_DIR, files.CSS.SPACING), generators.CSS.generateSpacing, prettier)
   .out(path.join(TARGET_DIR, files.CSS.RADII), generators.CSS.generateRadii, prettier)

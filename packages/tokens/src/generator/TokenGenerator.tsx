@@ -9,7 +9,7 @@ function makeThemeObjects<ThemeName extends string>(
 ): Record<ThemeName, Theme> {
   return names.reduce(
     (acc, name) => {
-      acc[name] = { name, colors: {} };
+      acc[name] = { name, colors: {}, shadows: {} };
       return acc;
     },
     {} as Record<string, Theme>,
@@ -107,6 +107,16 @@ export class TokenGenerator<
    */
   radius(name: string, value: number) {
     this.#radiusTokens.push({ name, value });
+  }
+
+  /**
+   * Define a new shadow token and its value. Right now the value is a stack of
+   * CSS box shadow strings.
+   */
+  shadow(name: string, values: Record<ThemeName, string[]>) {
+    for (const theme in values) {
+      this.#themes[theme].shadows[name] = values[theme];
+    }
   }
 
   /**

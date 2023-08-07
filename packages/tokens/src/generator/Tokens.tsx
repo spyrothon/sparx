@@ -13,6 +13,10 @@ export interface ColorToken extends Token {
   value: chroma.Color;
 }
 
+export interface ShadowToken extends Token {
+  value: string[];
+}
+
 export interface SpaceToken extends Token {
   value: number;
 }

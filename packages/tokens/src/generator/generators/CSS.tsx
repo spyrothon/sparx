@@ -22,7 +22,7 @@ export function generateColors(tokens: Tokens) {
     }`;
 }
 
-export function generateThemeColors(tokens: Tokens) {
+export function generateThemes(tokens: Tokens) {
   const { themes, accents } = tokens;
   const accentStyles = accents.map(
     (accent) => `${formatName(`accent-${accent.name}`, "cssClass")} {
@@ -52,6 +52,13 @@ export function generateThemeColors(tokens: Tokens) {
             return `${name}: ${value};`;
           })
           .join("\n")}
+
+          ${Object.entries(theme.shadows)
+            .map(([shadowName, shadowStack]) => {
+              const name = formatName(`shadow-${shadowName}`, "css");
+              return `${name}: ${shadowStack.join(",")};`;
+            })
+            .join("\n")}
         }`,
   );
 
@@ -113,6 +120,7 @@ export function generateSpacing(tokens: Tokens) {
         .join("\n")}
     }`;
 }
+
 export function generateRadii(tokens: Tokens) {
   const { radii } = tokens;
 

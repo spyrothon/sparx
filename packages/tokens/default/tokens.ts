@@ -158,7 +158,10 @@ tokens.color("background.highlight", {
   light: colors("grey.900").alpha(0.1),
 });
 
-tokens.color("border.primary", { dark: colors("grey.400"), light: colors("grey.400") });
+tokens.color("border.primary", {
+  dark: colors("white").alpha(0.5),
+  light: colors("grey.900").alpha(0.5),
+});
 tokens.color("border.subtle", {
   dark: colors("white").alpha(0.3),
   light: colors("grey.900").alpha(0.3),
@@ -323,6 +326,9 @@ tokens.fontStack("monospace", {
   weights: { thin: 300, medium: 400, semibold: 600, bold: 700, black: 900 },
 });
 
+/**
+ * Spaces
+ */
 tokens.space("xxxs", 0.5);
 tokens.space("xxs", 1);
 tokens.space("xs", 2);
@@ -333,10 +339,59 @@ tokens.space("xl", 32);
 tokens.space("xxl", 48);
 tokens.space("xxxl", 6);
 
+/**
+ * Radii
+ */
 tokens.radius("flat", 0);
 tokens.radius("minimal", 1);
 tokens.radius("normal", 4);
 tokens.radius("large", 16);
 tokens.radius("full", 9999999);
+
+/**
+ * Shadows
+ */
+tokens.shadow("low", {
+  dark: [
+    "0px 0.2px 0.5px rgba(0, 0, 0, 0.077)",
+    "0px 0.5px 1.5px rgba(0, 0, 0, 0.11)",
+    "0px 1.2px 3.6px rgba(0, 0, 0, 0.143)",
+    "0px 4px 12px rgba(0, 0, 0, 0.22)",
+  ],
+  light: [
+    "0px 0.1px 0.3px rgba(0, 0, 0, 0.042)",
+    "0px 0.3px 0.8px rgba(0, 0, 0, 0.06)",
+    "0px 0.6px 1.8px rgba(0, 0, 0, 0.078)",
+    "0px 2px 6px rgba(0, 0, 0, 0.12)",
+  ],
+});
+tokens.shadow("medium", {
+  dark: [
+    "0px 0.2px 0.9px rgba(0, 0, 0, 0.115)",
+    "0px 0.5px 2.5px rgba(0, 0, 0, 0.165)",
+    "0px 1.2px 6px rgba(0, 0, 0, 0.215)",
+    "0px 4px 20px rgba(0, 0, 0, 0.33)",
+  ],
+  light: [
+    "0px 0.1px 0.5px rgba(0, 0, 0, 0.056)",
+    "0px 0.3px 1.5px rgba(0, 0, 0, 0.08)",
+    "0px 0.6px 3.6px rgba(0, 0, 0, 0.104)",
+    "0px 2px 12px rgba(0, 0, 0, 0.16)",
+  ],
+});
+tokens.shadow("high", {
+  dark: [
+    "0px 0.2px 1.4px rgba(0, 0, 0, 0.157)",
+    "0px 0.5px 4px rgba(0, 0, 0, 0.225)",
+    "0px 1.2px 9.6px rgba(0, 0, 0, 0.293)",
+    "0px 4px 32px rgba(0, 0, 0, 0.45)",
+  ],
+  light: [
+    "0px 0.2px 0.7px rgba(0, 0, 0, 0.066)",
+    "0px 0.5px 2px rgba(0, 0, 0, 0.095)",
+    "0px 1.2px 4.8px rgba(0, 0, 0, 0.124)",
+    "0px 4px 16px rgba(0, 0, 0, 0.19)",
+  ],
+});
 
 export default makeTokens({ colors, tokens });

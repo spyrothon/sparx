@@ -5,6 +5,7 @@ export type TokenReference = string & {};
 export interface Theme {
   name: string;
   colors: Record<string, chroma.Color | TokenReference>;
+  shadows: Record<string, string[]>;
 }
 
 export interface Accent {

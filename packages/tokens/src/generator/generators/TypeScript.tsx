@@ -7,11 +7,18 @@ export function generateThemes(tokens: Tokens) {
   const accentNames = accents.map((accent) => accent.name);
 
   const tokensByColor = {} as Record<string, Record<string, chroma.Color | TokenReference>>;
-  for (const { name, colors } of themes) {
+  const tokensByShadow = {} as Record<string, Record<string, string[]>>;
+  for (const { name, colors, shadows } of themes) {
     for (const colorName in colors) {
       const color = colors[colorName];
       tokensByColor[colorName] ??= {};
       tokensByColor[colorName][name] = color;
+    }
+
+    for (const shadowName in shadows) {
+      const shadow = shadows[shadowName];
+      tokensByShadow[shadowName] ??= {};
+      tokensByShadow[shadowName][name] = shadow;
     }
   }
 
@@ -104,6 +111,24 @@ export function generateThemes(tokens: Tokens) {
     if ("rawColor" in token) return token;
 
     return token[accent];
+  }
+
+  export const shadowTokens = {
+    ${Object.entries(tokensByShadow).map(
+      ([name, themeValues]) =>
+        `${formatName(name, "constant")}: {
+          ${Object.entries(themeValues)
+            .map(([themeName, shadowStack]) => {
+              const key = `"${formatName(themeName, "kebab")}"`;
+              return `${key}: [${shadowStack.map((text) => `"${text}"`).join(", ")}]`;
+            })
+            .join(",\n")}
+        }`,
+    )}
+  }
+
+  export function resolveThemeShadow(name: ThemeTokenName, theme: Theme): ThemeTokenValue {
+    return shadowTokens[name][theme];
   }
 `;
 }

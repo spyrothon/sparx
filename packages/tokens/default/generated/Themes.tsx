@@ -429,16 +429,16 @@ export const themeTokens = {
   },
   BORDER_PRIMARY: {
     dark: {
-      rawColor: "#959091",
-      opacity: 1,
-      rgba: "rgba(149,144,145,1)",
-      hsla: "hsla(348,2.3%,57.45%,1)",
+      rawColor: "#ffffff",
+      opacity: 0.5,
+      rgba: "rgba(255,255,255,0.5)",
+      hsla: "hsla(0,0%,100%,0.5)",
     },
     light: {
-      rawColor: "#959091",
-      opacity: 1,
-      rgba: "rgba(149,144,145,1)",
-      hsla: "hsla(348,2.3%,57.45%,1)",
+      rawColor: "#1a1718",
+      opacity: 0.5,
+      rgba: "rgba(26,23,24,0.5)",
+      hsla: "hsla(340,6.12%,9.61%,0.5)",
     },
   },
   BORDER_SUBTLE: {
@@ -1254,4 +1254,53 @@ export function resolveThemeColorToken(
   if ("rawColor" in token) return token;
 
   return token[accent];
+}
+
+export const shadowTokens = {
+  LOW: {
+    dark: [
+      "0px 0.2px 0.5px rgba(0, 0, 0, 0.077)",
+      "0px 0.5px 1.5px rgba(0, 0, 0, 0.11)",
+      "0px 1.2px 3.6px rgba(0, 0, 0, 0.143)",
+      "0px 4px 12px rgba(0, 0, 0, 0.22)",
+    ],
+    light: [
+      "0px 0.1px 0.3px rgba(0, 0, 0, 0.042)",
+      "0px 0.3px 0.8px rgba(0, 0, 0, 0.06)",
+      "0px 0.6px 1.8px rgba(0, 0, 0, 0.078)",
+      "0px 2px 6px rgba(0, 0, 0, 0.12)",
+    ],
+  },
+  MEDIUM: {
+    dark: [
+      "0px 0.2px 0.9px rgba(0, 0, 0, 0.115)",
+      "0px 0.5px 2.5px rgba(0, 0, 0, 0.165)",
+      "0px 1.2px 6px rgba(0, 0, 0, 0.215)",
+      "0px 4px 20px rgba(0, 0, 0, 0.33)",
+    ],
+    light: [
+      "0px 0.1px 0.5px rgba(0, 0, 0, 0.056)",
+      "0px 0.3px 1.5px rgba(0, 0, 0, 0.08)",
+      "0px 0.6px 3.6px rgba(0, 0, 0, 0.104)",
+      "0px 2px 12px rgba(0, 0, 0, 0.16)",
+    ],
+  },
+  HIGH: {
+    dark: [
+      "0px 0.2px 1.4px rgba(0, 0, 0, 0.157)",
+      "0px 0.5px 4px rgba(0, 0, 0, 0.225)",
+      "0px 1.2px 9.6px rgba(0, 0, 0, 0.293)",
+      "0px 4px 32px rgba(0, 0, 0, 0.45)",
+    ],
+    light: [
+      "0px 0.2px 0.7px rgba(0, 0, 0, 0.066)",
+      "0px 0.5px 2px rgba(0, 0, 0, 0.095)",
+      "0px 1.2px 4.8px rgba(0, 0, 0, 0.124)",
+      "0px 4px 16px rgba(0, 0, 0, 0.19)",
+    ],
+  },
+};
+
+export function resolveThemeShadow(name: ThemeTokenName, theme: Theme): ThemeTokenValue {
+  return shadowTokens[name][theme];
 }
