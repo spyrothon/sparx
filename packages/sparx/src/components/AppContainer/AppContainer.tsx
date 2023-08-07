@@ -19,13 +19,6 @@ export function createAppContainer<
 >(themeContext: CreateThemeContextReturn<Theme, Accent, ThemeTokenName>) {
   const { getThemeClass, ThemeContext, ThemeProvider, themes, accents } = themeContext;
 
-  interface AppContainerProps {
-    theme?: (typeof themes)[number];
-    accent?: (typeof accents)[number];
-    children: React.ReactNode;
-    className?: string;
-  }
-
   function AppInner(props: AppInnerProps) {
     const { children, className } = props;
     const { theme, accent } = React.useContext(ThemeContext);
@@ -38,7 +31,12 @@ export function createAppContainer<
     );
   }
 
-  return function AppContainer(props: AppContainerProps) {
+  return function AppContainer(props: {
+    theme?: (typeof themes)[number];
+    accent?: (typeof accents)[number];
+    children: React.ReactNode;
+    className?: string;
+  }) {
     const { theme, accent, children, className } = props;
     return (
       <ThemeProvider theme={theme} accent={accent}>
