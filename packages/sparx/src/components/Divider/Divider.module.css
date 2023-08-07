@@ -1,11 +1,17 @@
-.dividerHorizontal {
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-normal);
+.horizontal {
+  border-bottom: var(--_divider-border);
   width: 100%;
   align-self: stretch;
 }
 
-.dividerVertical {
-  border: 1px solid var(--border-subtle);
+.vertical {
+  border-right: var(--_divider-border);
   align-self: stretch;
+}
+
+.strong {
+  --_divider-border: 1px solid var(--border-primary);
+}
+.subtle {
+  --_divider-border: 1px solid var(--border-subtle);
 }
