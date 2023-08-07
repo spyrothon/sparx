@@ -1,40 +1,73 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { Box, BoxProps } from "../Box/Box";
+
 import styles from "./Card.module.css";
 
-const NUM_LEVELS = 3;
-const LEVEL_STYLES = {
-  1: styles.level1,
-  2: styles.level2,
-  3: styles.level3,
-};
-export type CardLevel = keyof typeof LEVEL_STYLES;
+function getBoxProps(level: number, floating: boolean): BoxProps {
+  if (floating) {
+    return {
+      background: "floating",
+      border: "none",
+      radius: "medium",
+    };
+  }
 
-export const CardLevelContext = React.createContext<CardLevel>(1 as CardLevel);
+  switch (level) {
+    case 1:
+      return {
+        background: "secondary",
+        border: "none",
+        radius: "medium",
+      };
+    case 2:
+      return {
+        background: "tertiary",
+        border: "none",
+        radius: "medium",
+      };
+    case 3:
+      return {
+        background: "floating",
+        border: "none",
+        radius: "medium",
+      };
+    default:
+      return {
+        background: "none",
+        border: "subtle",
+        radius: "medium",
+      };
+  }
+}
+
+function getCardSpacing(level: number, floating: boolean) {
+  if (!floating && level > 3) return styles["spacing-small"];
+  return styles["spacing-normal"];
+}
+
+export const CardLevelContext = React.createContext<number>(1);
 
 export interface CardProps {
-  level?: CardLevel;
+  level?: 1 | 2 | 3;
   floating?: boolean;
   children?: React.ReactNode;
   className?: string;
 }
 
 export function Card(props: CardProps) {
-  const { level, floating, children, className } = props;
+  const { level, floating = false, children, className } = props;
 
   const contextLevel = React.useContext(CardLevelContext);
-
-  const resolvedLevel = level != null ? level : contextLevel;
+  const resolvedLevel = level ?? contextLevel;
 
   return (
-    <div
-      className={classNames(styles.card, LEVEL_STYLES[resolvedLevel], className, {
-        [styles.floating]: floating,
-      })}>
-      <CardLevelContext.Provider value={((contextLevel + 1) % NUM_LEVELS) as CardLevel}>
-        {children}
-      </CardLevelContext.Provider>
-    </div>
+    <Box
+      border="none"
+      {...getBoxProps(resolvedLevel, floating)}
+      className={classNames(styles.card, className, getCardSpacing(resolvedLevel, floating))}>
+      <CardLevelContext.Provider value={resolvedLevel + 1}>{children}</CardLevelContext.Provider>
+    </Box>
   );
 }

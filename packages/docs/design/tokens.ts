@@ -140,7 +140,6 @@ tokens.accent("pink", {
  * Colors
  */
 tokens.color("background.primary", { dark: colors("grey.900"), light: colors("white") });
-tokens.color("background.primary", { dark: colors("grey.900"), light: colors("white") });
 tokens.color("background.secondary", { dark: colors("grey.800"), light: colors("grey.100") });
 tokens.color("background.tertiary", { dark: colors("grey.700"), light: colors("grey.200") });
 tokens.color("background.accent", { dark: colors("grey.700"), light: colors("grey.50") });
@@ -343,9 +342,10 @@ tokens.space("xxxl", 6);
  * Radii
  */
 tokens.radius("flat", 0);
-tokens.radius("minimal", 1);
+tokens.radius("minimal", 2);
 tokens.radius("normal", 4);
-tokens.radius("large", 16);
+tokens.radius("large", 8);
+tokens.radius("xlarge", 16);
 tokens.radius("full", 9999999);
 
 /**

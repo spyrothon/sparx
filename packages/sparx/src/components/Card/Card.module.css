@@ -1,23 +1,10 @@
 .card {
-  padding: var(--space-lg);
-  border-radius: var(--radius-normal);
+  padding: var(--_card-spacing);
 }
 
-.level1 {
-  background-color: var(--background-secondary);
+.spacing-small {
+  --_card-spacing: var(--space-md);
 }
-.level2 {
-  background-color: var(--background-tertiary);
-}
-.level3 {
-  background-color: var(--background-primary);
-}
-
-.floating {
-  background-color: var(--background-floating);
-  border: 1px solid var(--background-highlight);
-}
-
-.level1:has(.level2, .level3) {
-  border-radius: var(--radius-large);
+.spacing-normal {
+  --_card-spacing: var(--space-lg);
 }

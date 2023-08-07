@@ -22,8 +22,13 @@ natural.
 <Card level={2}>
   <Stack>
     <Text>This is the outer card, with some nice content.</Text>
-    <Card level={3}>
-      <Text>As the inner card, this feels "higher up" off the page, while staying within the parent.</Text>
+    <Card>
+      <Stack>
+        <Text>As the inner card, this feels "higher up" off the page, while staying within the parent.</Text>
+        <Card>
+          <Text>And another yet</Text>
+        </Card>
+      </Stack>
     </Card>
   </Stack>
 </Card>

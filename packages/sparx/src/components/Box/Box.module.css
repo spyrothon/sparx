@@ -1,15 +1,61 @@
 .box {
-  box-shadow: var(--_box-border);
+  background-color: var(--_box-background);
+  border: var(--_box-border);
+  border-radius: var(--_box-radius);
+  box-shadow: var(--_box-shadow);
 }
-.elevation-border {
-  border: 1px solid var(--border-subtle);
+
+.background-none {
+  --_box-background: initial;
+}
+.background-primary {
+  --_box-background: var(--background-primary);
+}
+.background-secondary {
+  --_box-background: var(--background-secondary);
+}
+.background-tertiary {
+  --_box-background: var(--background-tertiary);
+}
+.background-floating {
+  --_box-background: var(--background-floating);
+}
+
+.border-none {
+  --_box-border: none;
+}
+.border-subtle {
+  --_box-border: 1px solid var(--border-subtle);
+}
+.border-strong {
+  --_box-border: 1px solid var(--border-primary);
+}
+
+.elevation-none {
+  --_box-shadow: none;
 }
 .elevation-low {
-  --_box-border: var(--shadow-low);
+  --_box-shadow: var(--shadow-low);
 }
 .elevation-medium {
-  --_box-border: var(--shadow-medium);
+  --_box-shadow: var(--shadow-medium);
 }
 .elevation-high {
-  --_box-border: var(--shadow-high);
+  --_box-shadow: var(--shadow-high);
+}
+
+.radius-none {
+  --_box-radius: 0;
+}
+.radius-small {
+  --_box-radius: var(--radius-minimal);
+}
+.radius-medium {
+  --_box-radius: var(--radius-normal);
+}
+.radius-large {
+  --_box-radius: var(--radius-large);
+}
+.radius-xlarge {
+  --_box-radius: var(--radius-xlarge);
 }

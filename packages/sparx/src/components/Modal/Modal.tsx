@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { animated, config, useTransition } from "@react-spring/web";
+import { animated, useTransition } from "@react-spring/web";
 
 import styles from "./Modal.module.css";
 
@@ -30,7 +30,7 @@ export function Modal(props: ModalProps) {
     from: { opacity: 0, transform: `scale(0.8)` },
     enter: { opacity: 1, transform: `scale(1)` },
     leave: { opacity: 0, transform: `scale(0.8)` },
-    config: config.stiff,
+    config: { tension: 300, friction: 25 },
   });
 
   return transitions((style, _item) => (

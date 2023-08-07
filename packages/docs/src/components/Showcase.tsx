@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Stack } from "@spyrothon/sparx";
+import { Box, Stack } from "@spyrothon/sparx";
 import { toH } from "hast-to-hyperscript";
 import { refractor } from "refractor";
 import tsx from "refractor/lang/tsx";
@@ -30,7 +30,14 @@ export function Showcase(props: ShowcaseProps) {
   );
 
   return (
-    <Stack className={styles.showcase} spacing="space-none">
+    <Stack
+      as={Box}
+      className={styles.showcase}
+      spacing="space-none"
+      background="floating"
+      border="subtle"
+      radius="large"
+      elevation="low">
       <div className={styles.content}>{content}</div>
       <pre className={styles.source + ` refractor-highlight language-${language}`}>
         <code>{highlighted}</code>

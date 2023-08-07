@@ -1,8 +1,5 @@
 .showcase {
-  background-color: var(--background-floating);
-  border-radius: 8px;
   margin: var(--space-md) 0;
-  border: 1px solid var(--border-subtle);
   overflow: hidden;
   width: 100%;
 }

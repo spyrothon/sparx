@@ -343,9 +343,10 @@ tokens.space("xxxl", 6);
  * Radii
  */
 tokens.radius("flat", 0);
-tokens.radius("minimal", 1);
+tokens.radius("minimal", 2);
 tokens.radius("normal", 4);
-tokens.radius("large", 16);
+tokens.radius("large", 8);
+tokens.radius("xlarge", 16);
 tokens.radius("full", 9999999);
 
 /**
