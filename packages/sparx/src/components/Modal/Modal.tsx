@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { animated, config, useTransition } from "@react-spring/web";
+
 import styles from "./Modal.module.css";
 
 export interface ModalRenderProps {
@@ -24,11 +26,24 @@ export function Modal(props: ModalProps) {
     close();
   }
 
-  return (
-    <div className={styles.container} onClick={closeOnBackdrop ? handleContainerClick : undefined}>
-      <div ref={contentRef} className={styles.positioner}>
+  const transitions = useTransition(render, {
+    from: { opacity: 0, transform: `scale(0.8)` },
+    enter: { opacity: 1, transform: `scale(1)` },
+    leave: { opacity: 0, transform: `scale(0.8)` },
+    config: config.stiff,
+  });
+
+  return transitions((style, _item) => (
+    <animated.div
+      style={{ opacity: style.opacity }}
+      className={styles.container}
+      onClick={closeOnBackdrop ? handleContainerClick : undefined}>
+      <animated.div
+        ref={contentRef}
+        className={styles.positioner}
+        style={{ transform: style.transform }}>
         {render({ onClose: close })}
-      </div>
-    </div>
-  );
+      </animated.div>
+    </animated.div>
+  ));
 }

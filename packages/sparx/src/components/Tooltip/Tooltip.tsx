@@ -110,7 +110,7 @@ function TooltipLayer(props: PositionedLayerProps) {
   const transitions = useTransition(children, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 1 },
+    leave: { opacity: 0 },
     config: TOOLTIP_SPRING_CONFIG,
   });
 
