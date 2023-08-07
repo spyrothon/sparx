@@ -6,6 +6,16 @@ the inner input in a consistent fashion.
 
 {% showcase-file example="form-control" /%}
 
+## States
+
+Just like all other input types, `FormControl` accepts a `state` prop to colorize the input based on
+some validation state. The `error` prop also allows error text to be shown above the input relating
+to whatever state the input is in, and will be colorized to match by default.
+
+{% showcase-file example="form-control-states" /%}
+
+## Attachments
+
 `FormControl` also provides props for attaching `prefix` and `suffix` elements onto the input row,
 providing additional information for inputs that might have structure that the user is not sure if
 they should add or not, such as URL hostnames for links.

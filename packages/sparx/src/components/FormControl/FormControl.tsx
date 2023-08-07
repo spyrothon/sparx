@@ -14,6 +14,16 @@ const LABEL_SIZES: Record<string, TextVariantSize> = {
 
 export type FormControlSize = keyof typeof LABEL_SIZES;
 
+function getErrorTextVariantColor(state: InputState): TextVariantColor {
+  switch (state) {
+    case "danger":
+    case "warning":
+      return "danger";
+    default:
+      return "normal";
+  }
+}
+
 export interface FormControlProps {
   label?: React.ReactNode;
   /**
@@ -21,6 +31,10 @@ export interface FormControlProps {
    */
   labelColor?: TextVariantColor;
   state?: InputState;
+  /**
+   * Conditional error text to display above the input
+   */
+  error?: React.ReactNode;
   note?: React.ReactNode;
   size?: FormControlSize;
   prefix?: React.ReactNode;
@@ -34,6 +48,7 @@ export function FormControl(props: FormControlProps) {
     label,
     labelColor = "normal",
     state = "accent",
+    error,
     note,
     size = "normal",
     prefix,
@@ -54,6 +69,11 @@ export function FormControl(props: FormControlProps) {
       {label != null ? (
         <Text tag="label" variant={`${labelSize}/${labelColor}`} className={styles.label}>
           {label}
+        </Text>
+      ) : null}
+      {error != null ? (
+        <Text className={styles.error} variant={`text-sm/${getErrorTextVariantColor(state)}`}>
+          {error}
         </Text>
       ) : null}
       <div className={styles.inputRow}>

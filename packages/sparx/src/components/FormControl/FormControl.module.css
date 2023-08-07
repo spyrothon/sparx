@@ -3,6 +3,10 @@
   margin-bottom: var(--space-sm);
 }
 
+.error {
+  margin: var(--space-sm) 0;
+}
+
 .note {
   margin-top: var(--space-sm);
 }
@@ -34,6 +38,10 @@
     padding: var(--space-sm) var(--space-md);
     background-color: var(--_input-color);
     color: var(--_input-foreground);
+    transition:
+      background-color 0.2s ease-in,
+      color 0.2s ease-in,
+      border 0.2s ease-in;
   }
 }
 

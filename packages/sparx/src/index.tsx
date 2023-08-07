@@ -51,6 +51,9 @@ export type { HeroProps, HeroType } from "./components/Hero/Hero";
 export { Image } from "./components/Image/Image";
 export type { ImageProps, ImageLoadState } from "./components/Image/Image";
 
+export { useInputColorToken } from "./components/Input/Input";
+export type { InputSize, InputState } from "./components/Input/Input";
+
 export { Interactive } from "./components/Interactive/Interactive";
 export type { InteractiveProps } from "./components/Interactive/Interactive";
 
