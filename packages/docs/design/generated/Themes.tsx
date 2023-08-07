@@ -1301,6 +1301,10 @@ export const shadowTokens = {
   },
 };
 
-export function resolveThemeShadow(name: ThemeTokenName, theme: Theme): ThemeTokenValue {
+export type ShadowTokenName = keyof typeof shadowTokens;
+
+export type ShadowTokenValue = string[];
+
+export function resolveThemeShadowToken(name: ShadowTokenName, theme: Theme): ShadowTokenValue {
   return shadowTokens[name][theme];
 }

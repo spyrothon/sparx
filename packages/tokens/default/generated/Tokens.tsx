@@ -5,6 +5,7 @@ import {
   Accents,
   rawColors,
   resolveThemeColorToken,
+  resolveThemeShadowToken,
   Theme,
   Themes,
   themeTokens as colors,
@@ -16,8 +17,10 @@ const tokens = {
   themes: Themes,
   accents: Accents,
   resolveThemeColorToken,
+  resolveThemeShadowToken,
 } as const;
 
 export type Tokens = typeof tokens;
 
-export { tokens, type Accent, type Theme };
+export { tokens };
+export type { Accent, Theme };

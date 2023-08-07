@@ -127,7 +127,11 @@ export function generateThemes(tokens: Tokens) {
     )}
   }
 
-  export function resolveThemeShadow(name: ThemeTokenName, theme: Theme): ThemeTokenValue {
+  export type ShadowTokenName = keyof typeof shadowTokens;
+
+  export type ShadowTokenValue = string[]
+
+  export function resolveThemeShadowToken(name: ShadowTokenName, theme: Theme): ShadowTokenValue {
     return shadowTokens[name][theme];
   }
 `;
@@ -142,6 +146,7 @@ export function generateTokens() {
     Accents,
     rawColors,
     resolveThemeColorToken,
+    resolveThemeShadowToken,
     Theme,
     Themes,
     themeTokens as colors,
@@ -153,6 +158,7 @@ export function generateTokens() {
     themes: Themes,
     accents: Accents,
     resolveThemeColorToken,
+    resolveThemeShadowToken,
   } as const;
 
   export type Tokens = typeof tokens;
