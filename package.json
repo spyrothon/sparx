@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "format": "prettier --write \"packages/**\"",
-    "build-for-docs": "pnpm -r gen:tokens && pnpm -r build"
+    "build-for-docs": "pnpm -r build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.2.1",
