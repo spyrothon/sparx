@@ -11,6 +11,7 @@ function getBoxProps(level: number, floating: boolean): BoxProps {
       background: "floating",
       border: "subtle",
       radius: "medium",
+      elevation: "medium",
     };
   }
 
