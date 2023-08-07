@@ -1,11 +1,11 @@
 .dividerHorizontal {
-  border: 1px solid var(--background-accent);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-normal);
   width: 100%;
   align-self: stretch;
 }
 
 .dividerVertical {
-  border: 1px solid var(--background-accent);
+  border: 1px solid var(--border-subtle);
   align-self: stretch;
 }
