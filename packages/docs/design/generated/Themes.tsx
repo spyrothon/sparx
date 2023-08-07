@@ -483,48 +483,6 @@ export const themeTokens = {
       hsla: "hsla(0,0%,100%,1)",
     },
   },
-  INTERACTION_NORMAL: {
-    dark: {
-      rawColor: "#ffffff",
-      opacity: 1,
-      rgba: "rgba(255,255,255,1)",
-      hsla: "hsla(0,0%,100%,1)",
-    },
-    light: {
-      rawColor: "#1a1718",
-      opacity: 1,
-      rgba: "rgba(26,23,24,1)",
-      hsla: "hsla(340,6.12%,9.61%,1)",
-    },
-  },
-  INTERACTION_HOVER: {
-    dark: {
-      rawColor: "#ded6d8",
-      opacity: 1,
-      rgba: "rgba(222,214,216,1)",
-      hsla: "hsla(345,10.81%,85.49%,1)",
-    },
-    light: {
-      rawColor: "#252122",
-      opacity: 1,
-      rgba: "rgba(37,33,34,1)",
-      hsla: "hsla(345,5.71%,13.73%,1)",
-    },
-  },
-  INTERACTION_ACTIVE: {
-    dark: {
-      rawColor: "#bfb6b7",
-      opacity: 1,
-      rgba: "rgba(191,182,183,1)",
-      hsla: "hsla(353.33,6.57%,73.14%,1)",
-    },
-    light: {
-      rawColor: "#373434",
-      opacity: 1,
-      rgba: "rgba(55,52,52,1)",
-      hsla: "hsla(0,2.8%,20.98%,1)",
-    },
-  },
   INTERACTIVE_NORMAL: {
     dark: {
       rawColor: "#ffffff",
@@ -983,10 +941,10 @@ export const themeTokens = {
       hsla: "hsla(85.09,41.98%,25.69%,1)",
     },
     light: {
-      rawColor: "#5b7733",
+      rawColor: "#465d26",
       opacity: 1,
-      rgba: "rgba(91,119,51,1)",
-      hsla: "hsla(84.71,40%,33.33%,1)",
+      rgba: "rgba(70,93,38,1)",
+      hsla: "hsla(85.09,41.98%,25.69%,1)",
     },
   },
   STATUS_SUCCESS_TRANSLUCENT: {

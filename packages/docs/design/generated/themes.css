@@ -27,9 +27,6 @@
   --border-subtle: hsla(0, 0%, 100%, 0.3);
   --control-background: hsla(348, 2.3%, 57.45%, 1);
   --control-foreground: hsla(0, 0%, 100%, 1);
-  --interaction-normal: hsla(0, 0%, 100%, 1);
-  --interaction-hover: hsla(345, 10.81%, 85.49%, 1);
-  --interaction-active: hsla(353.33, 6.57%, 73.14%, 1);
   --interactive-normal: hsla(0, 0%, 100%, 1);
   --interactive-hover: hsla(345, 10.81%, 85.49%, 1);
   --interactive-active: hsla(353.33, 6.57%, 73.14%, 1);
@@ -104,9 +101,6 @@
   --border-subtle: hsla(340, 6.12%, 9.61%, 0.3);
   --control-background: hsla(348, 2.3%, 57.45%, 1);
   --control-foreground: hsla(0, 0%, 100%, 1);
-  --interaction-normal: hsla(340, 6.12%, 9.61%, 1);
-  --interaction-hover: hsla(345, 5.71%, 13.73%, 1);
-  --interaction-active: hsla(0, 2.8%, 20.98%, 1);
   --interactive-normal: hsla(340, 6.12%, 9.61%, 1);
   --interactive-hover: hsla(0, 1.27%, 30.98%, 1);
   --interactive-active: hsla(330, 0.9%, 43.53%, 1);
@@ -130,7 +124,7 @@
   --status-success-background: hsla(85.93, 35.68%, 44.51%, 1);
   --status-success-foreground: hsla(94.29, 74.47%, 90.78%, 1);
   --status-success-hover: hsla(84.71, 40%, 33.33%, 1);
-  --status-success-active: hsla(84.71, 40%, 33.33%, 1);
+  --status-success-active: hsla(85.09, 41.98%, 25.69%, 1);
   --status-success-translucent: hsla(85.09, 41.98%, 25.69%, 0.15);
   --status-warning-background: hsla(35.09, 100%, 41.57%, 1);
   --status-warning-foreground: hsla(37.78, 100%, 94.71%, 1);

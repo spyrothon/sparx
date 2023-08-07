@@ -7,6 +7,7 @@
 }
 
 .inputText {
+  color: var(--interactive-normal);
   font-family: var(--font-normal);
   font-size: var(--_input-font-size);
   line-height: var(--_input-line-height);

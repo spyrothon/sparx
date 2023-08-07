@@ -167,10 +167,6 @@ tokens.color("border.subtle", {
 tokens.color("control.background", { dark: colors("grey.400"), light: colors("grey.400") });
 tokens.color("control.foreground", { dark: colors("white"), light: colors("white") });
 
-tokens.color("interaction.normal", { dark: colors("white"), light: colors("grey.900") });
-tokens.color("interaction.hover", { dark: colors("grey.200"), light: colors("grey.800") });
-tokens.color("interaction.active", { dark: colors("grey.300"), light: colors("grey.700") });
-
 tokens.color("interactive.normal", { dark: colors("white"), light: colors("grey.900") });
 tokens.color("interactive.hover", { dark: colors("grey.200"), light: colors("grey.600") });
 tokens.color("interactive.active", { dark: colors("grey.300"), light: colors("grey.500") });
@@ -223,7 +219,7 @@ tokens.color("status.success.foreground", {
 tokens.color("status.success.hover", { dark: colors("green.500"), light: colors("green.500") });
 tokens.color("status.success.active", {
   dark: colors("green.600"),
-  light: colors("green.500"),
+  light: colors("green.600"),
 });
 tokens.color("status.success.translucent", {
   dark: colors("green.600").alpha(0.15),
