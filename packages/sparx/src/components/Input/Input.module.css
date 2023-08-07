@@ -33,6 +33,7 @@
 
 .accent {
   --_input-color: var(--accent-primary);
+  --_input-foreground: var(--status-accent-foreground);
   --_input-border: 2px solid var(--_input-color);
 }
 .default {
