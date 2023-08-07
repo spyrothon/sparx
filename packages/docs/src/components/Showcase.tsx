@@ -30,18 +30,18 @@ export function Showcase(props: ShowcaseProps) {
   );
 
   return (
-    <Stack
-      as={Box}
-      className={styles.showcase}
-      spacing="space-none"
-      background="floating"
-      border="subtle"
-      radius="large"
-      elevation="low">
-      <div className={styles.content}>{content}</div>
-      <pre className={styles.source + ` refractor-highlight language-${language}`}>
-        <code>{highlighted}</code>
-      </pre>
+    <Stack asChild spacing="space-none">
+      <Box
+        className={styles.showcase}
+        background="floating"
+        border="subtle"
+        radius="large"
+        elevation="low">
+        <div className={styles.content}>{content}</div>
+        <pre className={styles.source + ` refractor-highlight language-${language}`}>
+          <code>{highlighted}</code>
+        </pre>
+      </Box>
     </Stack>
   );
 }

@@ -84,17 +84,19 @@ function Option({ item, state }: ListBoxOptionProps) {
 
   return (
     <Stack
-      as="li"
+      asChild
       direction="horizontal"
       align="center"
       justify="space-between"
       spacing="space-md"
-      wrap={false}
-      {...optionProps}
-      ref={ref}
-      className={classNames(styles.option, { [styles.itemHighlighted]: isFocused })}>
-      {content}
-      {isSelected && <CheckboxCircleChecked className={styles.optionCheck} size={20} />}
+      wrap={false}>
+      <li
+        {...optionProps}
+        ref={ref}
+        className={classNames(styles.option, { [styles.itemHighlighted]: isFocused })}>
+        {content}
+        {isSelected && <CheckboxCircleChecked className={styles.optionCheck} size={20} />}
+      </li>
     </Stack>
   );
 }

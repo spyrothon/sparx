@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
+import type { IconProps } from "@spyrothon/sparx-icons";
 
-import type { IconProps } from "../../icons/IconProps";
 import type { ClickableProps } from "../Clickable/Clickable";
 import { Clickable } from "../Clickable/Clickable";
 

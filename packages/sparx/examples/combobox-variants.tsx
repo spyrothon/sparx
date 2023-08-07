@@ -1,7 +1,6 @@
 import * as React from "react";
 
-import { Combobox, Item, Stack } from "../dist";
-import { InputSize, InputState } from "../dist/components/Input/Input";
+import { Combobox, InputSize, InputState, Item, Stack } from "../dist";
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {

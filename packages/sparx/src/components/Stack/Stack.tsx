@@ -1,11 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
-import type {
-  PolymorphicForwardRefExoticComponent,
-  PolymorphicPropsWithRef,
-} from "react-polymorphic-types";
+import { mergeProps } from "react-aria";
 
-import type { PolymorphicRef } from "@sparx/utils/TypeUtils";
+import type { AsChildProps } from "@sparx/utils/TypeUtils";
 
 import styles from "./Stack.module.css";
 
@@ -46,51 +43,52 @@ export type Alignment = keyof typeof STACK_ALIGNMENT;
 export type Justification = keyof typeof STACK_JUSTIFICATION;
 export type StackDirection = keyof typeof DIRECTION_CLASSES;
 
-interface StackOwnProps {
+export interface StackChildProps {
+  className: string;
+}
+
+export type StackProps = {
   spacing?: Spacing;
   direction?: StackDirection;
   justify?: Justification;
   align?: Alignment;
   wrap?: boolean;
-}
+  className?: string;
+} & AsChildProps<StackChildProps>;
 
-export type StackProps<Tag extends React.ElementType = "div"> = PolymorphicPropsWithRef<
-  StackOwnProps,
-  Tag
->;
+export const Stack = React.forwardRef<HTMLDivElement, StackProps>(function Stack(props, ref) {
+  const {
+    spacing = "space-md",
+    direction = "vertical",
+    justify,
+    align,
+    wrap = true,
+    asChild,
+    className,
+    children,
+  } = props;
 
-export const Stack: PolymorphicForwardRefExoticComponent<StackOwnProps, "div"> = React.forwardRef(
-  function Stack<Tag extends React.ElementType>(props: StackProps<Tag>, ref?: PolymorphicRef<Tag>) {
-    const {
-      as: Component = "div",
-      spacing = "space-md",
-      direction = "vertical",
-      justify,
-      align,
-      wrap = true,
-      children,
-      className,
-      ...extraProps
-    } = props;
+  const stackClassName = classNames(
+    styles.stack,
+    STACK_SPACES[spacing],
+    justify != null ? STACK_JUSTIFICATION[justify] : undefined,
+    align != null ? STACK_ALIGNMENT[align] : undefined,
+    wrap === false ? styles.nowrap : undefined,
+    DIRECTION_CLASSES[direction],
+    className,
+  );
 
+  if (asChild) {
+    const child = React.Children.only(children);
+    return React.cloneElement(child, mergeProps(child.props, { className: stackClassName }));
+  } else {
     return (
-      <Component
-        ref={ref}
-        className={classNames(
-          styles.stack,
-          STACK_SPACES[spacing],
-          justify != null ? STACK_JUSTIFICATION[justify] : undefined,
-          align != null ? STACK_ALIGNMENT[align] : undefined,
-          wrap === false ? styles.nowrap : undefined,
-          DIRECTION_CLASSES[direction],
-          className,
-        )}
-        {...extraProps}>
+      <div ref={ref} className={stackClassName}>
         {children}
-      </Component>
+      </div>
     );
-  },
-);
+  }
+});
 
 export interface SpacerProps {
   size?: Spacing;

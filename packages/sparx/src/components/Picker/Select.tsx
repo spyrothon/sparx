@@ -66,23 +66,25 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
     <Picker state={state} size={size} controlState={controlState} className={className}>
       <HiddenSelect state={controlState} triggerRef={ref} name={name} />
       <Stack
-        as={Clickable}
+        asChild
         direction="horizontal"
         align="center"
         justify="space-between"
         spacing="space-md"
-        wrap={false}
-        {...triggerProps}
-        ref={ref}
-        className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
-        <div
-          className={classNames(styles.input, {
-            [styles.inputPadding]: typeof selectedElement === "string",
-          })}
-          {...valueProps}>
-          {selectedElement}
-        </div>
-        <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
+        wrap={false}>
+        <Clickable
+          {...triggerProps}
+          ref={ref}
+          className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
+          <div
+            className={classNames(styles.input, {
+              [styles.inputPadding]: typeof selectedElement === "string",
+            })}
+            {...valueProps}>
+            {selectedElement}
+          </div>
+          <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
+        </Clickable>
       </Stack>
       {controlState.isOpen && <DropdownListBox {...menuProps} state={controlState} />}
     </Picker>

@@ -159,5 +159,6 @@ export type {
 export { useHoverFocus } from "./hooks/useHoverFocus";
 
 export { formatDuration, parseDuration } from "./utils/DurationUtils";
+export type { AsChildProps } from "./utils/TypeUtils";
 
 export { validateTokens } from "./validate";

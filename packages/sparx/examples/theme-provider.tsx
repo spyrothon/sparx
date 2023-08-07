@@ -9,16 +9,13 @@ export default function Component() {
   function SampleContent() {
     const themeClass = useThemeClass();
     return (
-      <Stack
-        className={themeClass}
-        as={Card}
-        spacing="space-lg"
-        direction="horizontal"
-        align="center">
-        <Button variant="primary">Submit</Button>
-        <Text>Here's some text as well</Text>
-        <Text variant="text-md/accent">And with the accent color.</Text>
-      </Stack>
+      <Card>
+        <Stack className={themeClass} spacing="space-lg" direction="horizontal" align="center">
+          <Button variant="primary">Submit</Button>
+          <Text>Here's some text as well</Text>
+          <Text variant="text-md/accent">And with the accent color.</Text>
+        </Stack>
+      </Card>
     );
   }
 

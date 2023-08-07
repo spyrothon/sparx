@@ -40,19 +40,21 @@ export function ConfirmModal(props: ConfirmModalProps) {
   }
 
   return (
-    <Stack as={Card} spacing="space-lg" floating className={styles.container}>
-      <Header tag="h2">{title}</Header>
-      {body != null ? <Text>{body}</Text> : null}
-      <Stack spacing="space-md" direction="reverse-horizontal">
-        <Button variant={color} onPress={handleConfirm} autoFocus>
-          {confirmText}
-        </Button>
-        {onCancel != null ? (
-          <Button variant="link" onPress={handleCancel}>
-            {cancelText}
+    <Stack asChild spacing="space-lg">
+      <Card floating className={styles.container}>
+        <Header tag="h2">{title}</Header>
+        {body != null ? <Text>{body}</Text> : null}
+        <Stack spacing="space-md" direction="reverse-horizontal">
+          <Button variant={color} onPress={handleConfirm} autoFocus>
+            {confirmText}
           </Button>
-        ) : null}
-      </Stack>
+          {onCancel != null ? (
+            <Button variant="link" onPress={handleCancel}>
+              {cancelText}
+            </Button>
+          ) : null}
+        </Stack>
+      </Card>
     </Stack>
   );
 }

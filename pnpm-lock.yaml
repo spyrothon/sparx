@@ -89,7 +89,6 @@ importers:
       react: '>= 18.0.0'
       react-aria: ^3.26.0
       react-dom: '>= 18.0.0'
-      react-polymorphic-types: github:GamesDoneQuick/react-polymorphic-types#bd1e8388c1d02d919dd038a5d5690ff7bb62da88
       react-remark: ^2.1.0
       react-stately: ^3.24.0
       typescript: ^5.0.2
@@ -109,7 +108,6 @@ importers:
       react: 18.2.0
       react-aria: 3.26.0_biqbaboplfbrettd7655fr4n2y
       react-dom: 18.2.0_react@18.2.0
-      react-polymorphic-types: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.2.18
       react-remark: 2.1.0_react@18.2.0
       react-stately: 3.24.0_react@18.2.0
       uuid: 8.3.2
@@ -6773,15 +6771,4 @@ packages:
         optional: true
     dependencies:
       react: 18.2.0
-    dev: false
-
-  github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.2.18:
-    resolution: {tarball: https://codeload.github.com/GamesDoneQuick/react-polymorphic-types/tar.gz/bd1e8388c1d02d919dd038a5d5690ff7bb62da88}
-    id: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88
-    name: react-polymorphic-types
-    version: 2.0.0
-    peerDependencies:
-      '@types/react': '>=16.8.6'
-    dependencies:
-      '@types/react': 18.2.18
     dev: false
