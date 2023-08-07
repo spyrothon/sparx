@@ -4,30 +4,7 @@
 and others that provides presentational attributes like labels, notes, and exception states to wrap
 the inner input in a consistent fashion.
 
-{% showcase %}
-
-```
-<Stack spacing="space-lg">
-  <FormControl label="Username" note="Usernames may only contain letters and numbers.">
-    <TextInput placeholder="ripto" />
-  </FormControl>
-  <FormControl
-    label="Select an Option"
-    note="Selecting an option won't do anything on this page">
-    <RadioGroup
-      options={[
-        { label: "Option One", value: "one" },
-        { label: "Option Two", value: "two" },
-        { label: "Option Three", value: "three" },
-      ]}
-      value={selectedRadio}
-      onChange={(event) => setSelectedRadio(event.target.value)}
-    />
-  </FormControl>
-</Stack>
-```
-
-{% /showcase %}
+{% showcase-file example="form-control" /%}
 
 `FormControl` also provides props for attaching `prefix` and `suffix` elements onto the input row,
 providing additional information for inputs that might have structure that the user is not sure if

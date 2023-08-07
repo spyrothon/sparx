@@ -69,7 +69,7 @@ export function Sidebar(props: { className: string }) {
           </Text>
         </div>
         <Divider />
-        <FormControl label="Theme" size="small">
+        <FormControl label="Theme">
           <Select
             items={THEME_OPTIONS}
             selectedKey={theme}
@@ -77,7 +77,7 @@ export function Sidebar(props: { className: string }) {
             {(item) => <Item key={item.value}>{item.name}</Item>}
           </Select>
         </FormControl>
-        <FormControl label="Accent Color" size="small">
+        <FormControl label="Accent Color">
           <Select
             items={ACCENT_OPTIONS}
             selectedKey={accent}

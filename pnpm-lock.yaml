@@ -34,8 +34,8 @@ importers:
       '@spyrothon/sparx-icons': workspace:*
       '@spyrothon/tokens': workspace:*
       '@types/node': ^18.8.5
-      '@types/react': ^18.0.17
-      '@types/react-dom': ^18.0.6
+      '@types/react': ^18.2.18
+      '@types/react-dom': ^18.2.7
       eslint: ^8.23.1
       eslint-config-next: 13.4.12
       esno: ^0.17.0
@@ -49,14 +49,14 @@ importers:
       refractor: ^4.8.1
       typescript: 5.0.2
     dependencies:
-      '@markdoc/markdoc': 0.3.0_iapumuv4e6jcjznwuxpf4tt22e
+      '@markdoc/markdoc': 0.3.0_fzrd6ivowi4azn3madm57eamia
       '@markdoc/next.js': 0.2.3_ib6chs3gvelb2ooyp3lbc5xih4
       '@spyrothon/sparx': link:../sparx
       '@spyrothon/sparx-icons': link:../sparx-icons
       '@spyrothon/tokens': link:../tokens
       '@types/node': 18.8.5
-      '@types/react': 18.0.21
-      '@types/react-dom': 18.0.6
+      '@types/react': 18.2.18
+      '@types/react-dom': 18.2.7
       eslint: 8.25.0
       eslint-config-next: 13.4.12_kykkfgtuomzgyhxd4xxwxcydwe
       fuzzysearch: 1.0.3
@@ -973,10 +973,15 @@ packages:
     dependencies:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@jridgewell/trace-mapping': 0.3.18
+      '@jridgewell/trace-mapping': 0.3.19
 
   /@jridgewell/resolve-uri/3.1.0:
     resolution: {integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==}
+    engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@jridgewell/resolve-uri/3.1.1:
+    resolution: {integrity: sha512-dSYZh7HhCDtCKm4QakX0xFpsRDqjjtZf/kjI/v3T3Nwt5r8/qz/M19F9ySyOqU94SXBmeG9ttTul+YnR4LOxFA==}
     engines: {node: '>=6.0.0'}
 
   /@jridgewell/set-array/1.1.2:
@@ -987,11 +992,12 @@ packages:
     resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.18
+      '@jridgewell/trace-mapping': 0.3.19
     dev: false
 
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
+    dev: true
 
   /@jridgewell/sourcemap-codec/1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
@@ -1001,6 +1007,13 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+    dev: true
+
+  /@jridgewell/trace-mapping/0.3.19:
+    resolution: {integrity: sha512-kf37QtfW+Hwx/buWGMPcR60iF9ziHa6r/CZJIHbmcm4+0qrXiVdxegAH0F6yddEVQ7zdkjcGCgCzUu+BcbhQxw==}
+    dependencies:
+      '@jridgewell/resolve-uri': 3.1.1
+      '@jridgewell/sourcemap-codec': 1.4.15
 
   /@mapbox/hast-util-table-cell-style/0.2.0:
     resolution: {integrity: sha512-gqaTIGC8My3LVSnU38IwjHVKJC94HSonjvFHDk8/aSrApL8v4uWgm8zJkK7MJIIbHuNOr/+Mv2KkQKcxs6LEZA==}
@@ -1009,7 +1022,7 @@ packages:
       unist-util-visit: 1.4.1
     dev: false
 
-  /@markdoc/markdoc/0.3.0_iapumuv4e6jcjznwuxpf4tt22e:
+  /@markdoc/markdoc/0.3.0_fzrd6ivowi4azn3madm57eamia:
     resolution: {integrity: sha512-QWCF8krIIw52ulflfnoff0yG1eKl9CCGA3KAiOjHyYtHNzSEouFh8lO52nAaO3qV2Ctj1GTB8TTb2rTfvISQfA==}
     engines: {node: '>=14.7.0'}
     peerDependencies:
@@ -1021,7 +1034,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.0.21
+      '@types/react': 18.2.18
       react: 18.2.0
     optionalDependencies:
       '@types/markdown-it': 12.2.3
@@ -1034,7 +1047,7 @@ packages:
       next: '*'
       react: '*'
     dependencies:
-      '@markdoc/markdoc': 0.3.0_iapumuv4e6jcjznwuxpf4tt22e
+      '@markdoc/markdoc': 0.3.0_fzrd6ivowi4azn3madm57eamia
       js-yaml: 4.1.0
       next: 13.4.12_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
@@ -2661,12 +2674,12 @@ packages:
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
-      '@types/eslint': 8.44.1
+      '@types/eslint': 8.44.2
       '@types/estree': 1.0.1
     dev: false
 
-  /@types/eslint/8.44.1:
-    resolution: {integrity: sha512-XpNDc4Z5Tb4x+SW1MriMVeIsMoONHCkWFMkR/aPJbzEsxqHy+4Glu/BqTdPrApfDeMaXbtNh6bseNgl5KaWrSg==}
+  /@types/eslint/8.44.2:
+    resolution: {integrity: sha512-sdPRb9K6iL5XZOmBubg8yiFp5yS/JdUDQsq5e6h95km91MCYMuvp7mh1fjPEYUhvHepKpZOjnEaMBR4PxjWDzg==}
     dependencies:
       '@types/estree': 1.0.1
       '@types/json-schema': 7.0.12
@@ -2725,6 +2738,10 @@ packages:
     dev: false
     optional: true
 
+  /@types/node/18.17.3:
+    resolution: {integrity: sha512-2x8HWtFk0S99zqVQABU9wTpr8wPoaDHZUcAkoTKH+nL7kPv3WUI9cRi/Kk5Mz4xdqXSqTkKP7IWNoQQYCnDsTA==}
+    dev: false
+
   /@types/node/18.8.5:
     resolution: {integrity: sha512-Bq7G3AErwe5A/Zki5fdD3O6+0zDChhg671NfPjtIcbtzDNZTv4NPKMRFr7gtYPG7y+B8uTiNK4Ngd9T0FTar6Q==}
 
@@ -2747,17 +2764,10 @@ packages:
     dev: false
     optional: true
 
-  /@types/react-dom/18.0.6:
-    resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
-    dependencies:
-      '@types/react': 18.2.18
-    dev: false
-
   /@types/react-dom/18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
       '@types/react': 18.2.18
-    dev: true
 
   /@types/react/17.0.62:
     resolution: {integrity: sha512-eANCyz9DG8p/Vdhr0ZKST8JV12PhH2ACCDYlFw6DIO+D+ca+uP4jtEDEpVqXZrh/uZdXQGwk7whJa3ah5DtyLw==}
@@ -2767,14 +2777,6 @@ packages:
       csstype: 3.1.1
     dev: false
     optional: true
-
-  /@types/react/18.0.21:
-    resolution: {integrity: sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==}
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.1
-    dev: false
 
   /@types/react/18.2.18:
     resolution: {integrity: sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==}
@@ -5008,7 +5010,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.8.5
+      '@types/node': 18.17.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -6227,7 +6229,7 @@ packages:
       uglify-js:
         optional: true
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.18
+      '@jridgewell/trace-mapping': 0.3.19
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
