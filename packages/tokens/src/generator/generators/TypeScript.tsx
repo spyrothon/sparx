@@ -122,7 +122,7 @@ export function generateTokens() {
     themeTokens as colors,
   } from "./Themes";
 
-  let tokens = {
+  const tokens = {
     rawColors,
     colors,
     themes: Themes,
