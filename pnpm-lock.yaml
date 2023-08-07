@@ -79,8 +79,8 @@ importers:
       '@spyrothon/sparx-icons': workspace:*
       '@spyrothon/tokens': workspace:*
       '@types/node': ^18.8.5
-      '@types/react': ^18.0.17
-      '@types/react-dom': ^18.0.6
+      '@types/react': ^18.2.18
+      '@types/react-dom': ^18.2.7
       '@types/uuid': ^8.3.4
       '@vitejs/plugin-react-swc': ^3.3.0
       classnames: ^2.3.1
@@ -109,15 +109,15 @@ importers:
       react: 18.2.0
       react-aria: 3.26.0_biqbaboplfbrettd7655fr4n2y
       react-dom: 18.2.0_react@18.2.0
-      react-polymorphic-types: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.0.21
+      react-polymorphic-types: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.2.18
       react-remark: 2.1.0_react@18.2.0
       react-stately: 3.24.0_react@18.2.0
       uuid: 8.3.2
       zustand: 3.7.2_react@18.2.0
     devDependencies:
       '@types/node': 18.8.5
-      '@types/react': 18.0.21
-      '@types/react-dom': 18.0.6
+      '@types/react': 18.2.18
+      '@types/react-dom': 18.2.7
       '@types/uuid': 8.3.4
       '@vitejs/plugin-react-swc': 3.3.0_vite@4.2.1
       typescript: 5.1.6
@@ -2751,6 +2751,7 @@ packages:
     resolution: {integrity: sha512-/5OFZgfIPSwy+YuIBP/FgJnQnsxhZhjjrnxudMddeblOouIodEQ75X14Rr4wGSG/bknL+Omy9iWlLo1u/9GzAA==}
     dependencies:
       '@types/react': 18.2.18
+    dev: false
 
   /@types/react-dom/18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
@@ -2773,6 +2774,7 @@ packages:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
       csstype: 3.1.1
+    dev: false
 
   /@types/react/18.2.18:
     resolution: {integrity: sha512-da4NTSeBv/P34xoZPhtcLkmZuJ+oYaCxHmyHzwaDQo9RQPBeXV+06gEk2FpqEcsX9XrnNLvRpVh6bdavDSjtiQ==}
@@ -6771,7 +6773,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.0.21:
+  github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88_@types+react@18.2.18:
     resolution: {tarball: https://codeload.github.com/GamesDoneQuick/react-polymorphic-types/tar.gz/bd1e8388c1d02d919dd038a5d5690ff7bb62da88}
     id: github.com/GamesDoneQuick/react-polymorphic-types/bd1e8388c1d02d919dd038a5d5690ff7bb62da88
     name: react-polymorphic-types
@@ -6779,5 +6781,5 @@ packages:
     peerDependencies:
       '@types/react': '>=16.8.6'
     dependencies:
-      '@types/react': 18.0.21
+      '@types/react': 18.2.18
     dev: false

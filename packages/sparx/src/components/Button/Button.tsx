@@ -1,8 +1,9 @@
 import * as React from "react";
 import classNames from "classnames";
 import filterInvalidDOMProps from "filter-invalid-dom-props";
-import { AriaButtonProps, useButton } from "react-aria";
+import { AriaButtonProps, mergeProps, useButton, useHover } from "react-aria";
 
+import { animated, useSpring } from "@react-spring/web";
 import { useSetRef } from "@sparx/utils/RefUtils";
 
 import styles from "./Button.module.css";
@@ -85,21 +86,31 @@ export const Button = React.forwardRef(function Button(
 ) {
   const { variant = "default", icon: Icon, children, ...nativeProps } = props;
   const innerRef = React.useRef<HTMLButtonElement>(null);
-  const { buttonProps } = useButton(nativeProps, innerRef);
+  const { buttonProps, isPressed } = useButton(nativeProps, innerRef);
+  const { hoverProps, isHovered } = useHover(nativeProps);
   const setRef = useSetRef(ref, innerRef);
 
+  const [{ transform }] = useSpring(
+    () => ({
+      transform: `scale(${isPressed ? 0.98 : 1})`,
+      config: { tension: 400, friction: 20 },
+    }),
+    [isPressed, isHovered],
+  );
+
   return (
-    <button
+    <animated.button
       {...filterInvalidDOMProps(nativeProps)}
-      {...buttonProps}
+      {...mergeProps(buttonProps, hoverProps)}
       ref={setRef}
       className={getButtonClassNames(variant, {
         className: classNames(props.className, {
           [styles.iconOnly]: Icon != null && React.Children.count(children) === 0,
         }),
-      })}>
+      })}
+      style={{ transform }}>
       {children}
       {Icon != null ? <Icon className={styles.icon} size="1em" /> : null}
-    </button>
+    </animated.button>
   );
 });

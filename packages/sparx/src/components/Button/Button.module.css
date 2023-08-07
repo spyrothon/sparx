@@ -9,6 +9,7 @@
   cursor: pointer;
 
   border-radius: var(--radius-normal);
+  transition: background 0.07s ease-in;
 
   &:disabled {
     cursor: not-allowed;
