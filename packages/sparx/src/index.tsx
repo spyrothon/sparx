@@ -9,6 +9,9 @@ export type { AnchorProps, AnchorRenderer, AnchorRendererProps } from "./compone
 
 export { createAppContainer } from "./components/AppContainer/AppContainer";
 
+export { Box } from "./components/Box/Box";
+export type { BoxProps } from "./components/Box/Box";
+
 export { Button } from "./components/Button/Button";
 export type {
   ButtonProps,

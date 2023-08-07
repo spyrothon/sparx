@@ -43,6 +43,7 @@ export const sidebarItems: NavigationItem[] = [
     title: "Layout",
     children: [
       { type: "page", title: "Stack", sourcePath: "components/Stack/Stack.mdoc" },
+      { type: "page", title: "Box", sourcePath: "components/Box/Box.mdoc" },
       { type: "page", title: "Card", sourcePath: "components/Card/Card.mdoc" },
       { type: "page", title: "Divider", sourcePath: "components/Divider/Divider.mdoc" },
       { type: "page", title: "Section", sourcePath: "components/Section/Section.mdoc" },

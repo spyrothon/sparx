@@ -1,0 +1,15 @@
+.box {
+  box-shadow: var(--_box-border);
+}
+.elevation-border {
+  border: 1px solid var(--border-subtle);
+}
+.elevation-low {
+  --_box-border: var(--shadow-low);
+}
+.elevation-medium {
+  --_box-border: var(--shadow-medium);
+}
+.elevation-high {
+  --_box-border: var(--shadow-high);
+}
