@@ -15,3 +15,10 @@ If the popout is too large to fit within the viewport with the requested `attach
 it will try to automaticallyinvert and nudge the popout into a position that will fit. This can
 result in the popout not respecting the requested values, but ensures content isn't cut off when it
 could otherwise be visible.
+
+## Styling
+
+For consistency, `Popout` will always render a floating `Card` around the content you provide. If you need
+custom styling for the popout content, pass `noStyle` as an option to `openPopout`.
+
+{% showcase-file example="popout-no-style" %}

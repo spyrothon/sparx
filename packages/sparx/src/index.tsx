@@ -28,7 +28,7 @@ export { Callout } from "./components/Callout/Callout";
 export type { CalloutProps, CalloutType } from "./components/Callout/Callout";
 
 export { Card } from "./components/Card/Card";
-export type { CardProps, CardLevel } from "./components/Card/Card";
+export type { CardProps } from "./components/Card/Card";
 
 export { Checkbox } from "./components/Checkbox/Checkbox";
 export type { CheckboxProps } from "./components/Checkbox/Checkbox";

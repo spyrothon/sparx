@@ -1,8 +1,7 @@
 import * as React from "react";
 
+import { Card } from "../Card/Card";
 import { Align, Attach, PositionedLayer } from "../Layer/PositionedLayer";
-
-import styles from "./Popout.module.css";
 
 export interface PopoutRenderProps {
   onClose: () => unknown;
@@ -13,11 +12,12 @@ export interface PopoutProps {
   target: Element;
   attach?: Attach;
   align?: Align;
+  noStyle?: boolean;
   close: () => unknown;
 }
 
 export function Popout(props: PopoutProps) {
-  const { render, target, attach = "right", align = "start", close } = props;
+  const { render, target, attach = "right", align = "start", noStyle = false, close } = props;
 
   const contentRef = React.useRef<HTMLDivElement>(null);
 
@@ -34,15 +34,15 @@ export function Popout(props: PopoutProps) {
     return () => document.body.removeEventListener("click", handleClick);
   }, [close]);
 
+  let content = render({ onClose: close });
+
+  if (!noStyle) {
+    content = <Card floating>{content}</Card>;
+  }
+
   return (
-    <PositionedLayer
-      ref={contentRef}
-      target={target}
-      className={styles.popout}
-      attach={attach}
-      align={align}
-      offset={8}>
-      {render({ onClose: close })}
+    <PositionedLayer ref={contentRef} target={target} attach={attach} align={align} offset={8}>
+      {content}
     </PositionedLayer>
   );
 }

@@ -9,7 +9,7 @@ function getBoxProps(level: number, floating: boolean): BoxProps {
   if (floating) {
     return {
       background: "floating",
-      border: "none",
+      border: "subtle",
       radius: "medium",
     };
   }
@@ -64,7 +64,6 @@ export function Card(props: CardProps) {
 
   return (
     <Box
-      border="none"
       {...getBoxProps(resolvedLevel, floating)}
       className={classNames(styles.card, className, getCardSpacing(resolvedLevel, floating))}>
       <CardLevelContext.Provider value={resolvedLevel + 1}>{children}</CardLevelContext.Provider>

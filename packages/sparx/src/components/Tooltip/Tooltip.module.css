@@ -1,7 +1,4 @@
 .tooltip {
   padding: 6px 12px;
-  background-color: var(--background-floating);
   color: var(--text-normal);
-  box-shadow: var(--shadow-low);
-  border-radius: var(--radius-normal);
 }

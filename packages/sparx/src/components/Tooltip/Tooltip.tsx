@@ -4,7 +4,7 @@ import filterInvalidDOMProps from "filter-invalid-dom-props";
 import * as uuid from "uuid";
 
 import { animated, SpringConfig, useTransition } from "@react-spring/web";
-import { Text } from "@sparx/index";
+import { Box, Text } from "@sparx/index";
 
 import { createLayer, removeLayer, useLayerSubscription } from "../Layer/LayersStore";
 import { Align, Attach, PositionedLayerProps, usePositionedLayer } from "../Layer/PositionedLayer";
@@ -59,7 +59,7 @@ export function useTooltip<Target extends Element = Element>(
       render: () => (
         <TooltipLayer
           target={target}
-          className={classNames(styles.tooltip, className)}
+          className={className}
           attach={attach}
           align={align}
           offset={offset}>
@@ -102,7 +102,7 @@ const TOOLTIP_SPRING_CONFIG: SpringConfig = {
 };
 
 function TooltipLayer(props: PositionedLayerProps) {
-  const { children, target, attach, align, offset, ...passthroughProps } = props;
+  const { children, target, attach, align, offset, className, ...passthroughProps } = props;
 
   const contentRef = React.useRef<HTMLDivElement | null>(null);
   const positionStyle = usePositionedLayer({ target, attach, align, offset }, contentRef);
@@ -119,7 +119,14 @@ function TooltipLayer(props: PositionedLayerProps) {
       ref={contentRef}
       {...filterInvalidDOMProps(passthroughProps)}
       style={{ ...style, ...positionStyle }}>
-      {item}
+      <Box
+        className={classNames(styles.tooltip, className)}
+        background="floating"
+        border="none"
+        elevation="low"
+        radius="medium">
+        {item}
+      </Box>
     </animated.div>
   ));
 }
