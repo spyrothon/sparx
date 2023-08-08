@@ -71,7 +71,7 @@ export type { LayersStoreState, LayerSpec } from "./components/Layer/LayersStore
 
 export { ConfirmModal } from "./components/Modal/ConfirmModal";
 export type { ConfirmModalProps } from "./components/Modal/ConfirmModal";
-export { Modal } from "./components/Modal/Modal";
+export { ModalContainer as Modal } from "./components/Modal/Modal";
 export type { ModalProps } from "./components/Modal/Modal";
 export { openModal } from "./components/Modal/openModal";
 
@@ -157,6 +157,7 @@ export type {
 } from "./components/Tooltip/Tooltip";
 
 export { useHoverFocus } from "./hooks/useHoverFocus";
+export { useMediaQuery } from "./hooks/useMediaQuery";
 
 export { formatDuration, parseDuration } from "./utils/DurationUtils";
 export type { AsChildProps } from "./utils/TypeUtils";
