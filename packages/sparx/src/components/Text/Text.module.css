@@ -41,25 +41,25 @@
 .text-xs {
   font-size: 12px;
   font-weight: var(--font-weight-medium);
-  line-height: 1.25em;
+  line-height: 16px;
 }
 
 .text-sm {
   font-size: 14px;
   font-weight: var(--font-weight-medium);
-  line-height: 1.5em;
+  line-height: 20px;
 }
 
 .text-md {
   font-size: 18px;
   font-weight: var(--font-weight-medium);
-  line-height: 1.5em;
+  line-height: 28px;
 }
 
 .text-lg {
   font-size: 24px;
   font-weight: var(--font-weight-medium);
-  line-height: 1.5em;
+  line-height: 36px;
 }
 
 .header {
@@ -70,7 +70,7 @@
 .header-xs {
   font-size: 14px;
   font-weight: var(--font-weight-bold);
-  line-height: 1.25em;
+  line-height: 18px;
 
   &.withMargin {
     margin-bottom: var(--space-sm);
@@ -80,7 +80,7 @@
 .header-sm {
   font-size: 18px;
   font-weight: var(--font-weight-bold);
-  line-height: 1.5em;
+  line-height: 28px;
 
   &.withMargin {
     margin-bottom: var(--space-md);
@@ -90,7 +90,7 @@
 .header-md {
   font-size: 24px;
   font-weight: var(--font-weight-bold);
-  line-height: 1.25em;
+  line-height: 32px;
 
   &.withMargin {
     margin-bottom: var(--space-md);
@@ -100,7 +100,7 @@
 .header-lg {
   font-size: 32px;
   font-weight: var(--font-weight-bold);
-  line-height: 1.25em;
+  line-height: 40px;
 
   &.withMargin {
     margin-bottom: var(--space-md);
@@ -110,7 +110,7 @@
 .header-xl {
   font-size: 40px;
   font-weight: var(--font-weight-bold);
-  line-height: 1.15em;
+  line-height: 48px;
 
   &.withMargin {
     margin-bottom: var(--space-lg);
@@ -120,7 +120,7 @@
 .header-xxl {
   font-size: 48px;
   font-weight: var(--font-weight-bold);
-  line-height: 1em;
+  line-height: 48px;
 
   &.withMargin {
     margin-bottom: var(--space-lg);
