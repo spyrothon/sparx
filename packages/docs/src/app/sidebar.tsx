@@ -5,6 +5,7 @@ import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import {
   BrandLogo,
   Card,
+  Clickable,
   Divider,
   FormControl,
   Item,
@@ -62,12 +63,12 @@ export function Sidebar(props: { className: string }) {
   return (
     <Card className={className}>
       <Stack spacing="space-lg">
-        <div>
+        <Clickable onPress={() => router.push("/")}>
           <BrandLogo color="var(--text-normal)" width="100%" />
           <Text variant="text-sm/normal">
             Spyrothon's Design System for React-based web applications.
           </Text>
-        </div>
+        </Clickable>
         <Divider />
         <FormControl label="Theme">
           <Select

@@ -1,0 +1,53 @@
+# Stack
+
+`Stack` is a general layout utility for arranging elements evenly, either vertically or
+horizontally. It takes care of alignment, justification, and spacing in a consistent way, as well as
+enforcing whether content can wrap or should be forced onto one line.
+
+By default, content will flow vertically with a small amount of spacing to feel natural.
+
+{% showcase %}
+
+```
+<Stack>
+  <Button>One Element</Button>
+  <Button>Two Elements</Button>
+  <Button>Three Elements</Button>
+</Stack>
+```
+
+{% /showcase %}
+
+The `align` and `justify` allow for controlling the sizing and positioning of all elements within
+the Stack.
+
+{% showcase-file example="stack-variations" /%}
+
+Individual items can control their positioning separately using CSS properties on themselves.
+
+## Rendering `asChild`
+
+While `Stack` is a container component, it does not have any visual styling on itself (e.g., no
+borders, padding, or margins), only the children it contains. In many contexts, there's already
+another containing element being rendered, and it'd be nice to avoid adding another one
+unnecessarily, but still getting the layout styling from Stack. The `asChild` prop does exactly
+that.
+
+{% showcase-file example="stack-as-child" /%}
+
+{% callout type="info" %}
+
+TypeScript is currently unable to enforce that the child given to Stack actually accepts the
+required props. The type definitions are in place, but JSX elements erase their type information
+before it can be applied. Future versions of TypeScript may improve this.
+
+{% /callout %}
+
+### Handling refs
+
+By default, `Stack` accepts a forwarded ref that it will apply to the element it renders, a `div`.
+When using the `asChild` prop, however, `Stack` won't render any containing element itself and
+instead uses the child as the container. That means there won't be any element to supply to the ref.
+
+Because of that, it is invalid to use both `asChild` and `ref` on the same Stack element. Instead,
+just pass the ref prop to the child element directly.

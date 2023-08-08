@@ -31,11 +31,6 @@ export type FlatNavigationItem = NavigationItem & {
 export const sidebarItems: NavigationItem[] = [
   {
     type: "page",
-    title: "Home",
-    sourcePath: "components/Forms.mdoc",
-  },
-  {
-    type: "page",
     title: "Usage",
   },
   {
@@ -51,8 +46,14 @@ export const sidebarItems: NavigationItem[] = [
   },
   {
     type: "category",
-    title: "Inputs",
+    title: "Forms",
     children: [
+      {
+        type: "page",
+        title: "Forms Overview",
+        sourcePath: "components/Forms.mdoc",
+        slug: "overview",
+      },
       { type: "page", title: "FormControl", sourcePath: "components/FormControl/FormControl.mdoc" },
       { type: "page", title: "Checkbox", sourcePath: "components/Checkbox/Checkbox.mdoc" },
       { type: "page", title: "FormSwitch", sourcePath: "components/FormSwitch/FormSwitch.mdoc" },
