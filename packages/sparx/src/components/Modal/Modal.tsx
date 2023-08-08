@@ -1,8 +1,13 @@
 import * as React from "react";
+import { useInteractOutside } from "react-aria";
 
 import { animated, useTransition } from "@react-spring/web";
 
+import { Card } from "../Card/Card";
+
 import styles from "./Modal.module.css";
+
+const AnimatedModalContent = animated(Card);
 
 export interface ModalRenderProps {
   onClose: () => unknown;
@@ -14,19 +19,12 @@ export interface ModalProps {
   closeOnBackdrop?: boolean;
 }
 
-export function Modal(props: ModalProps) {
+export function ModalContainer(props: ModalProps) {
   const { render, close, closeOnBackdrop = true } = props;
   const contentRef = React.useRef<HTMLDivElement>(null);
+  useInteractOutside({ ref: contentRef, isDisabled: !closeOnBackdrop, onInteractOutside: close });
 
-  function handleContainerClick(event: React.MouseEvent<HTMLElement>) {
-    const content = contentRef.current;
-    if (content == null) return;
-    if (content.contains(event.target as HTMLElement)) return;
-
-    close();
-  }
-
-  const transitions = useTransition(render, {
+  const transitions = useTransition([0], {
     from: { opacity: 0, transform: `scale(0.8)` },
     enter: { opacity: 1, transform: `scale(1)` },
     leave: { opacity: 0, transform: `scale(0.8)` },
@@ -34,16 +32,14 @@ export function Modal(props: ModalProps) {
   });
 
   return transitions((style, _item) => (
-    <animated.div
-      style={{ opacity: style.opacity }}
-      className={styles.container}
-      onClick={closeOnBackdrop ? handleContainerClick : undefined}>
-      <animated.div
+    <animated.div style={{ opacity: style.opacity }} className={styles.container}>
+      <AnimatedModalContent
+        floating
         ref={contentRef}
-        className={styles.positioner}
+        className={styles.content}
         style={{ transform: style.transform }}>
         {render({ onClose: close })}
-      </animated.div>
+      </AnimatedModalContent>
     </animated.div>
   ));
 }

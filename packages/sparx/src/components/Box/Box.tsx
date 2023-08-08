@@ -45,7 +45,7 @@ export interface BoxProps extends React.PropsWithChildren {
   className?: string;
 }
 
-export function Box(props: BoxProps) {
+export const Box = React.forwardRef<HTMLDivElement, BoxProps>(function Box(props, ref) {
   const {
     background = "none",
     border = "subtle",
@@ -57,6 +57,7 @@ export function Box(props: BoxProps) {
 
   return (
     <div
+      ref={ref}
       className={classNames(
         styles.box,
         BACKGROUNDS[background],
@@ -68,4 +69,4 @@ export function Box(props: BoxProps) {
       {children}
     </div>
   );
-}
+});

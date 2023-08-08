@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Button, Card, Header, Stack, Text } from "@sparx/index";
+import { Button, Header, Stack, Text } from "@sparx/index";
 
 import { ButtonVariantColor } from "../Button/Button";
 import { ModalRenderProps } from "./Modal";
@@ -40,21 +40,19 @@ export function ConfirmModal(props: ConfirmModalProps) {
   }
 
   return (
-    <Stack asChild spacing="space-lg">
-      <Card floating className={styles.container}>
-        <Header tag="h2">{title}</Header>
-        {body != null ? <Text>{body}</Text> : null}
-        <Stack spacing="space-md" direction="reverse-horizontal">
-          <Button variant={color} onPress={handleConfirm} autoFocus>
-            {confirmText}
+    <Stack spacing="space-lg" className={styles.container}>
+      <Header tag="h2">{title}</Header>
+      {body != null ? <Text>{body}</Text> : null}
+      <Stack spacing="space-md" direction="reverse-horizontal">
+        <Button variant={color} onPress={handleConfirm} autoFocus>
+          {confirmText}
+        </Button>
+        {onCancel != null ? (
+          <Button variant="link" onPress={handleCancel}>
+            {cancelText}
           </Button>
-          {onCancel != null ? (
-            <Button variant="link" onPress={handleCancel}>
-              {cancelText}
-            </Button>
-          ) : null}
-        </Stack>
-      </Card>
+        ) : null}
+      </Stack>
     </Stack>
   );
 }

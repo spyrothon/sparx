@@ -57,7 +57,7 @@ export interface CardProps {
   className?: string;
 }
 
-export function Card(props: CardProps) {
+export const Card = React.forwardRef<HTMLDivElement, CardProps>(function Card(props, ref) {
   const { level, floating = false, children, className } = props;
 
   const contextLevel = React.useContext(CardLevelContext);
@@ -65,9 +65,10 @@ export function Card(props: CardProps) {
 
   return (
     <Box
+      ref={ref}
       {...getBoxProps(resolvedLevel, floating)}
       className={classNames(styles.card, className, getCardSpacing(resolvedLevel, floating))}>
       <CardLevelContext.Provider value={resolvedLevel + 1}>{children}</CardLevelContext.Provider>
     </Box>
   );
-}
+});

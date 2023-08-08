@@ -3,7 +3,7 @@ import * as uuid from "uuid";
 
 import { createLayer, removeLayer } from "@sparx/index";
 
-import { Modal, ModalProps, ModalRenderProps } from "./Modal";
+import { ModalContainer, ModalProps, ModalRenderProps } from "./Modal";
 
 export function openModal(
   render: (props: ModalRenderProps) => React.ReactNode,
@@ -14,7 +14,11 @@ export function openModal(
   createLayer({
     name,
     render: () => (
-      <Modal {...options} render={(props) => render(props)} close={() => removeLayer(name)} />
+      <ModalContainer
+        {...options}
+        render={(props) => render(props)}
+        close={() => removeLayer(name)}
+      />
     ),
   });
 
