@@ -2,10 +2,10 @@
 
 import * as React from "react";
 
+import "./globals.css";
+
 import { Sidebar } from "../components/Sidebar";
 import { AppContainer } from "./theming";
-
-import "./globals.css";
 
 import styles from "./layout.module.css";
 
