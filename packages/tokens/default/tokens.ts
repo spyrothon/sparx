@@ -192,25 +192,6 @@ tokens.color("text.default", { dark: colors("grey.100"), light: colors("grey.900
 tokens.color("text.accent", { dark: "accent.text", light: "accent.text" });
 tokens.color("text.link", { dark: "accent.text", light: "accent.text" });
 
-tokens.color("status.accent.primary", {
-  dark: "accent.primary",
-  light: "accent.primary",
-});
-tokens.color("status.accent.background", {
-  dark: "accent.background",
-  light: "accent.background",
-});
-tokens.color("status.accent.foreground", {
-  dark: "accent.foreground",
-  light: "accent.foreground",
-});
-tokens.color("status.accent.hover", { dark: "accent.hover", light: "accent.hover" });
-tokens.color("status.accent.active", { dark: "accent.active", light: "accent.active" });
-tokens.color("status.accent.translucent", {
-  dark: "accent.translucent",
-  light: "accent.translucent",
-});
-
 tokens.color("status.success.background", {
   dark: colors("green.400"),
   light: colors("green.400"),

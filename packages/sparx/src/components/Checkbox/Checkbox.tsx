@@ -7,6 +7,7 @@ import { animated, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
 
 import { getInputClassNames, InputState, useInputColorToken } from "../Input/Input";
+import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./Checkbox.module.css";
 
@@ -27,17 +28,18 @@ const CHECK_SPRING_CONFIG = {
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(props, ref) {
-    const { checked, label, state = "accent", disabled = false, onChange } = props;
+    const { checked, label, state = "default", disabled = false, onChange } = props;
     const [inputId] = React.useState(() => uuid.v4());
 
     const containerRef = React.useRef<HTMLLabelElement>(null);
     const inputColor = useInputColorToken(state, "color");
+    const defaultBackgroundColor = useResolvedColorToken("BACKGROUND_ACCENT").rgba;
     const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
     const [{ opacity, transform, backgroundColor }] = useSpring(() => {
       return {
-        backgroundColor: checked ? resolvedColor : `${resolvedColor}00`,
+        backgroundColor: checked ? resolvedColor : defaultBackgroundColor,
         opacity: checked ? 1 : 0,
-        transform: `scale(${checked ? 1 : 0.7})`,
+        transform: `scale(${checked ? 1 : 1.5})`,
         config: (key) => ({
           ...CHECK_SPRING_CONFIG,
           friction:
@@ -47,7 +49,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           clamp: key === "backgroundColor",
         }),
       };
-    }, [checked, resolvedColor]);
+    }, [checked, defaultBackgroundColor, resolvedColor]);
 
     const labelNode =
       typeof label === "string" ? (

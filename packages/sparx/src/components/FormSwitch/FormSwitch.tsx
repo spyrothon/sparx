@@ -59,7 +59,7 @@ function Switch(props: { checked: boolean; state: InputState }) {
 
 export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
   function FormSwitch(props, ref) {
-    const { checked, disabled = false, state = "accent", label, note, onChange } = props;
+    const { checked, disabled = false, state = "default", label, note, onChange } = props;
     const [inputId] = React.useState(() => uuid.v4());
 
     return (

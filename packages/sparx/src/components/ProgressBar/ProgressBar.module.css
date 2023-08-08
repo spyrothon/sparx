@@ -20,7 +20,7 @@
 }
 
 .color-accent {
-  background-color: var(--status-accent-background);
+  background-color: var(--accent-background);
 }
 .color-success {
   background-color: var(--status-success-background);

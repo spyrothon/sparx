@@ -3,7 +3,7 @@ import * as React from "react";
 import { FormControl, InputState, TextInput } from "../dist";
 
 export default function Component() {
-  const [state, setState] = React.useState<InputState>("accent");
+  const [state, setState] = React.useState<InputState>("default");
   const [error, setError] = React.useState<string | undefined>(undefined);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -18,7 +18,7 @@ export default function Component() {
       setState("warning");
       setError("Getting close to the maximum length!");
     } else {
-      setState("accent");
+      setState("default");
       setError(undefined);
     }
   }

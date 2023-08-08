@@ -47,7 +47,7 @@ export function FormControl(props: FormControlProps) {
   const {
     label,
     labelColor = "normal",
-    state = "accent",
+    state = "default",
     error,
     note,
     size = "normal",

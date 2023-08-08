@@ -7,6 +7,7 @@ import { Stack, Text } from "@sparx/index";
 
 import { Clickable } from "../Clickable/Clickable";
 import { InputState, useInputColorToken } from "../Input/Input";
+import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./RadioGroup.module.css";
 
@@ -38,12 +39,13 @@ function RadioItem<T>(props: RadioItemProps<T>) {
 
   const containerRef = React.useRef<HTMLLabelElement>(null);
   const inputColor = useInputColorToken(state, "color");
+  const defaultBackgroundColor = useResolvedColorToken("BACKGROUND_ACCENT").rgba;
   const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
   const [{ opacity, transform, backgroundColor }] = useSpring(
     () => ({
-      backgroundColor: selected ? resolvedColor : `${resolvedColor}00`,
+      backgroundColor: selected ? resolvedColor : defaultBackgroundColor,
       opacity: selected ? 1 : 0,
-      transform: `scale(${selected ? 1 : 0.7})`,
+      transform: `scale(${selected ? 1 : 1.5})`,
       config: (key) => ({
         ...DOT_SPRING_CONFIG,
         friction:
@@ -51,7 +53,7 @@ function RadioItem<T>(props: RadioItemProps<T>) {
         clamp: key === "backgroundColor",
       }),
     }),
-    [selected, resolvedColor],
+    [selected, defaultBackgroundColor, resolvedColor],
   );
 
   const labelNode =
@@ -95,7 +97,7 @@ export interface RadioGroupProps<T> {
 }
 
 export function RadioGroup<T>(props: RadioGroupProps<T>) {
-  const { value, state = "accent", options, disabled = false, onChange } = props;
+  const { value, state = "default", options, disabled = false, onChange } = props;
   const [groupId] = React.useState(() => uuid.v4());
 
   return (

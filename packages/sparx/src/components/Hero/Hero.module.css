@@ -4,8 +4,8 @@
 }
 
 .primary {
-  background-color: var(--status-accent-background);
-  color: var(--status-accent-foreground);
+  background-color: var(--accent-background);
+  color: var(--accent-foreground);
 }
 .success {
   background-color: var(--status-success-background);

@@ -58,10 +58,10 @@
 }
 .color-accent {
   --_tab-background: transparent;
-  --_tab-background-hover: var(--status-accent-translucent);
-  --_tab-background-active: var(--status-accent-active);
-  --_tab-background-selected: var(--status-accent-background);
-  --_tab-color-selected: var(--status-accent-foreground);
+  --_tab-background-hover: var(--accent-translucent);
+  --_tab-background-active: var(--accent-active);
+  --_tab-background-selected: var(--accent-background);
+  --_tab-color-selected: var(--accent-foreground);
   --_tab-color: var(--text-accent);
 }
 .color-success {

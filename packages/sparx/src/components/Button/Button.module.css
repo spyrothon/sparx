@@ -72,11 +72,11 @@
 }
 
 .primary {
-  --_button-background: var(--status-accent-background);
-  --_button-text: var(--status-accent-foreground);
-  --_button-background-hover: var(--status-accent-hover);
-  --_button-background-active: var(--status-accent-active);
-  --_button-background-translucent: var(--status-accent-translucent);
+  --_button-background: var(--accent-background);
+  --_button-text: var(--accent-foreground);
+  --_button-background-hover: var(--accent-hover);
+  --_button-background-active: var(--accent-active);
+  --_button-background-translucent: var(--accent-translucent);
 }
 .default {
   --_button-background: var(--status-default-background);

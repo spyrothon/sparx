@@ -50,7 +50,7 @@ export const TextArea = React.forwardRef(function TextArea(
     rows = 3,
     resize = "vertical",
     disabled = false,
-    state = "accent",
+    state = "default",
     className,
     onChange,
     ...nativeProps

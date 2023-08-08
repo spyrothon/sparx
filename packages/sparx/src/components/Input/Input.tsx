@@ -3,7 +3,6 @@ import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 import styles from "./Input.module.css";
 
 export const STATE_VARIANTS = {
-  accent: styles.accent,
   default: styles.default,
   success: styles.success,
   warning: styles.warning,
@@ -36,13 +35,9 @@ export function getInputClassNames(
 type InputColorToken = "color" | "foreground";
 
 const INPUT_COLOR_TOKEN_MAP = {
-  accent: {
-    color: "STATUS_ACCENT_PRIMARY",
-    foreground: "STATUS_ACCENT_FOREGROUND",
-  },
   default: {
-    color: "STATUS_DEFAULT_BACKGROUND",
-    foreground: "STATUS_DEFAULT_FOREGROUND",
+    color: "ACCENT_PRIMARY",
+    foreground: "ACCENT_FOREGROUND",
   },
   success: {
     color: "STATUS_SUCCESS_BACKGROUND",
@@ -71,6 +66,7 @@ const INPUT_COLOR_TOKEN_MAP = {
 };
 
 export function useInputColorToken(color: InputState, token: InputColorToken) {
+  console.log(color, token);
   const tokenName = INPUT_COLOR_TOKEN_MAP[color][token];
   const resolvedToken = useResolvedColorToken(tokenName);
 

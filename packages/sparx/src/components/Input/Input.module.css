@@ -31,14 +31,9 @@
   }
 }
 
-.accent {
-  --_input-color: var(--accent-primary);
-  --_input-foreground: var(--status-accent-foreground);
-  --_input-border: 2px solid var(--_input-color);
-}
 .default {
-  --_input-color: var(--status-default-background);
-  --_input-foreground: var(--status-default-foreground);
+  --_input-color: var(--accent-primary);
+  --_input-foreground: var(--accent-foreground);
   --_input-border: 2px solid var(--_input-color);
 }
 .success {

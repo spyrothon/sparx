@@ -17,7 +17,7 @@ export const TextInput = React.forwardRef(function TextInput(
 ) {
   const {
     type = "text",
-    state = "accent",
+    state = "default",
     size = "medium",
     value,
     className,

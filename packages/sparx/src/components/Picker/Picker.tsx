@@ -18,7 +18,7 @@ interface PickerProps<Item extends object> extends PickerStyleProps {
 }
 
 export function Picker<Item extends object>(props: PickerProps<Item>) {
-  const { state = "accent", size = "medium", controlState, className, children } = props;
+  const { state = "default", size = "medium", controlState, className, children } = props;
 
   const handleBlur = React.useCallback(
     (event: React.FocusEvent) => {

@@ -30,20 +30,20 @@ input only and should generally be avoided where not necessary.
 
 ## States
 
-Informational states about a `TextInput` can use the `color` prop,
-which adjusts the border color of the input. This works well for small spaces where no other
-information explaining the state can be added, but generally prefer `FormControl`
-to automatically format these states and provide more contextual information like an error
-message.
+Informational states about a `TextInput` can use the `state` prop, which adjusts
+the color of the input to match a semantic meaning. On its own, this works well for
+small spaces where no other information explaining the state can be added, but
+generally prefer `FormControl` to automatically format these states and provide
+more contextual information like a textual error message.
 
 {% showcase %}
 ```
 <Stack>
+  <TextInput state="default" placeholder="Default state" />
   <TextInput state="success" placeholder="Success state" />
   <TextInput state="warning" placeholder="Warning state" />
   <TextInput state="danger" placeholder="Danger state" />
   <TextInput state="info" placeholder="Info state" />
-  <TextInput state="default" placeholder="Default state" />
 </Stack>
 ```
 {% /showcase %}
@@ -63,7 +63,7 @@ Sizes can also be adjusted to fit different contexts.
 
 ## Blank
 
-For specific use cases, there's also a `blank` variant, which removes all of the
+For specific use cases, there's also a `blank` state, which removes all of the
 color accenting from the input and just shows the light highlight on the input area
 background. Especially for larger inputs, this can be useful for avoiding too much color or
 appearing overly-segmented.

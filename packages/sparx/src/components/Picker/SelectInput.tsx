@@ -73,7 +73,7 @@ export function SelectInput<Item>(props: SelectInputProps<Item>) {
     items,
     selectedItem,
     disabled = false,
-    color = "accent",
+    color = "default",
     size = "medium",
     maxHeight = DEFAULT_MAX_HEIGHT,
     className,
