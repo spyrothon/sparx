@@ -1,4 +1,4 @@
 .container {
-  min-width: 440px;
+  width: 100%;
   max-width: 520px;
 }
