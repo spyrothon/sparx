@@ -28,6 +28,7 @@ export default defineConfig({
       // this is a modern package, meant to be bundled.
       formats: ["es"],
     },
+    sourcemap: true,
     rollupOptions: {
       external: EXTERNAL_PACKAGES.map((pkg) => new RegExp(`^${pkg}`)),
       output: {

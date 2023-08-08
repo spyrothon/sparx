@@ -36,10 +36,10 @@ importers:
       '@types/node': ^18.8.5
       '@types/react': ^18.2.18
       '@types/react-dom': ^18.2.7
+      classnames: ^2.3.1
       eslint: ^8.23.1
       eslint-config-next: 13.4.12
       esno: ^0.17.0
-      fuzzysearch: ^1.0.3
       hast-to-hyperscript: ^10.0.3
       next: 13.4.12
       raw-loader: ^4.0.2
@@ -57,9 +57,9 @@ importers:
       '@types/node': 18.8.5
       '@types/react': 18.2.18
       '@types/react-dom': 18.2.7
+      classnames: 2.3.2
       eslint: 8.25.0
       eslint-config-next: 13.4.12_kykkfgtuomzgyhxd4xxwxcydwe
-      fuzzysearch: 1.0.3
       hast-to-hyperscript: 10.0.3
       next: 13.4.12_biqbaboplfbrettd7655fr4n2y
       raw-loader: 4.0.2_webpack@5.88.2
@@ -4501,10 +4501,6 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
-
-  /fuzzysearch/1.0.3:
-    resolution: {integrity: sha512-s+kNWQuI3mo9OALw0HJ6YGmMbLqEufCh2nX/zzV5CrICQ/y4AwPxM+6TIiF9ItFCHXFCyM/BfCCmN57NTIJuPg==}
-    dev: false
 
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}

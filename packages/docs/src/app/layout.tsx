@@ -2,12 +2,12 @@
 
 import * as React from "react";
 
+import { Sidebar } from "../components/Sidebar";
+import { AppContainer } from "./theming";
+
 import "./globals.css";
 
 import styles from "./layout.module.css";
-
-import { Sidebar } from "./sidebar";
-import { AppContainer } from "./theming";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,12 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
 
         <AppContainer className={styles.container} accent={"pink"}>
-          <Sidebar className={styles.sidebar} />
+          <Sidebar className={styles.navigation} />
           <div className={styles.content}>
-            <div className={styles.contentWidthContainer}>
-              {/* each page template should have a <main id="main"> which does not include navigation */}
+            <main id="main" className={styles.contentWidthContainer}>
               {children}
-            </div>
+            </main>
           </div>
         </AppContainer>
       </body>
