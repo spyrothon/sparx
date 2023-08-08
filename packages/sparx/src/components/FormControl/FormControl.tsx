@@ -26,10 +26,6 @@ function getErrorTextVariantColor(state: InputState): TextVariantColor {
 
 export interface FormControlProps {
   label?: React.ReactNode;
-  /**
-   * Color to use for the label text above the input.
-   */
-  labelColor?: TextVariantColor;
   state?: InputState;
   /**
    * Conditional error text to display above the input
@@ -46,7 +42,6 @@ export interface FormControlProps {
 export function FormControl(props: FormControlProps) {
   const {
     label,
-    labelColor = "normal",
     state = "default",
     error,
     note,
@@ -67,13 +62,8 @@ export function FormControl(props: FormControlProps) {
         [styles.disabled]: disabled,
       })}>
       {label != null ? (
-        <Text tag="label" variant={`${labelSize}/${labelColor}`} className={styles.label}>
+        <Text tag="label" className={styles.label} variant={`${labelSize}/normal`}>
           {label}
-        </Text>
-      ) : null}
-      {error != null ? (
-        <Text className={styles.error} variant={`text-sm/${getErrorTextVariantColor(state)}`}>
-          {error}
         </Text>
       ) : null}
       <div className={styles.inputRow}>
@@ -81,11 +71,10 @@ export function FormControl(props: FormControlProps) {
         {children}
         {suffix != null ? <SuffixNode className={styles.suffix}>{suffix}</SuffixNode> : null}
       </div>
-      {note != null ? (
-        <Text className={styles.note} variant={`text-sm/${labelColor}`}>
-          {note}
-        </Text>
+      {error != null ? (
+        <Text variant={`header-xs/${getErrorTextVariantColor(state)}`}>{error}</Text>
       ) : null}
+      {note != null ? <Text variant="text-sm/secondary">{note}</Text> : null}
     </div>
   );
 }

@@ -66,7 +66,6 @@ const INPUT_COLOR_TOKEN_MAP = {
 };
 
 export function useInputColorToken(color: InputState, token: InputColorToken) {
-  console.log(color, token);
   const tokenName = INPUT_COLOR_TOKEN_MAP[color][token];
   const resolvedToken = useResolvedColorToken(tokenName);
 

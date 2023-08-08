@@ -4,10 +4,7 @@
   border: var(--_input-border);
   border-radius: var(--radius-normal);
   width: 100%;
-  transition:
-    color 0.2s ease-in,
-    background-color 0.2s ease-in,
-    border 0.2s ease-in;
+  transition: border 0.2s ease-in;
 }
 
 .inputText {

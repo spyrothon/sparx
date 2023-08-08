@@ -3,16 +3,9 @@
   margin-bottom: var(--space-sm);
 }
 
-.error {
-  margin: var(--space-sm) 0;
-}
-
-.note {
-  margin-top: var(--space-sm);
-}
-
 .inputRow {
   display: flex;
+  margin-bottom: var(--space-sm);
 
   /* Gross */
   && > * {
