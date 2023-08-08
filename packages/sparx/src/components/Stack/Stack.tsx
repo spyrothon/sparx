@@ -47,14 +47,26 @@ export interface StackChildProps {
   className: string;
 }
 
-export type StackProps = {
+/**
+ * Props that apply to the Stack itself, regardless of how it's rendered.
+ */
+interface StackOwnProps {
   spacing?: Spacing;
   direction?: StackDirection;
   justify?: Justification;
   align?: Alignment;
   wrap?: boolean;
   className?: string;
-} & AsChildProps<StackChildProps>;
+}
+
+/**
+ * Props that are allowed when Stack is not rendered with `asChild`
+ */
+interface StackDistinctProps
+  extends Pick<React.HTMLAttributes<HTMLDivElement>, "style" | "children"> {}
+
+export type StackProps = StackOwnProps &
+  (AsChildProps<StackChildProps> | ({ asChild: never } & StackDistinctProps));
 
 export const Stack = React.forwardRef<HTMLDivElement, StackProps>(function Stack(props, ref) {
   const {
@@ -66,6 +78,7 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>(function Stack
     asChild,
     className,
     children,
+    ...extraProps
   } = props;
 
   const stackClassName = classNames(
@@ -80,10 +93,13 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>(function Stack
 
   if (asChild) {
     const child = React.Children.only(children);
-    return React.cloneElement(child, mergeProps(child.props, { className: stackClassName }));
+    return React.cloneElement(
+      child,
+      mergeProps(child.props, { className: stackClassName, ...extraProps }),
+    );
   } else {
     return (
-      <div ref={ref} className={stackClassName}>
+      <div ref={ref} className={stackClassName} {...extraProps}>
         {children}
       </div>
     );
