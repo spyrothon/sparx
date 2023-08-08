@@ -5,6 +5,16 @@ needs some action to be taken before the user can continue interacting with the 
 Modals provide a way to "half navigate" a user to provide a large amount of content without having
 to leave the page.
 
+The only way to open a modal is with the `openModal` function, which accepts a component or a render
+function to display as the modal content. The element is provided a set of props to control the
+modal, most importantly an `onClose` function that can be called at any time to manually close the
+modal, such as when the user clicks a confirm or cancel button, or the modal is no longer needed.
+
+## Styling
+
+Opening a modal will always render a translucent backdrop over the whole viewport, but the modal
+content has no styling by default.
+
 ## ConfirmModal
 
 `ConfirmModal` provides a simple, consistently-styled way of getting user confirmation for an
