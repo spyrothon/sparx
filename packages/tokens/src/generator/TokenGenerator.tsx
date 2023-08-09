@@ -1,8 +1,6 @@
-import type chroma from "chroma-js";
-
 import { FontDefinition, FontWeightMap } from "./FontPalette";
 import { Accent, Theme } from "./Theme";
-import { FontStackToken, RadiusToken, SpaceToken } from "./Tokens";
+import { ColorToken, FontStackToken, RadiusToken, SpaceToken } from "./Tokens";
 
 function makeThemeObjects<ThemeName extends string>(
   names: readonly string[],
@@ -72,7 +70,7 @@ export class TokenGenerator<
    * @param name Name of the token, using `dot.specifier.syntax`.
    * @param values Map of the value the token will take for each theme.
    */
-  color(name: string, values: Record<ThemeName, chroma.Color | AccentReference>) {
+  color(name: string, values: Record<ThemeName, ColorToken | AccentReference>) {
     for (const theme in values) {
       this.#themes[theme].colors[name] = values[theme];
     }
@@ -84,7 +82,7 @@ export class TokenGenerator<
    * @param name Name of the accent. This should just be a simple name with no specifiers or nesting.
    * @param values Map of the values that each accent token will take in each theme.
    */
-  accent(name: string, values: Record<AccentToken, Record<ThemeName, chroma.Color>>) {
+  accent(name: string, values: Record<AccentToken, Record<ThemeName, ColorToken>>) {
     this.accentNames.push(name);
     for (const definition in values) {
       this.color(`accent.${definition}.${name}`, values[definition]);

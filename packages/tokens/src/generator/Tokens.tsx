@@ -9,9 +9,7 @@ export interface Token {
   name: string;
 }
 
-export interface ColorToken extends Token {
-  value: chroma.Color;
-}
+export type ColorToken = chroma.Color & { tokenName?: string };
 
 export interface ShadowToken extends Token {
   value: string[];

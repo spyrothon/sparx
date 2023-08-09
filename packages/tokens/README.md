@@ -16,5 +16,8 @@ pnpm sparx-tokens
 pnpm esno ./design/generate.ts
 ```
 
-You can edit `./design/tokens.tsx` to change tokens to match whatever you need. Note that the color
+You can edit `./design/tokens.ts` to change tokens to match whatever you need. Note that the color
 tokens defined by default are almost all required for Sparx to function and appear as intended.
+
+Sparx also provides a `validateTokens` function that you can add to your `generate.ts` to validate
+that all of the required tokens for Sparx are present in your token definitions.

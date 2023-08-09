@@ -17,7 +17,7 @@ order near the root:
 
 ```css
 // In some global CSS file
-@import "design/generated/DesignSystem.css";
+@import "./design/generated/system.css";
 @import "@spyrothon/sparx/dist/style.css";
 ```
 
@@ -83,7 +83,7 @@ Then you can just run `pnpm gen:tokens` to regenerate them all.
 - [ ] List
 - [ ] NavBar
   - [ ] Dropdown
-- [ ] Box (like Card, but just an outline)
+- [x] Box (like Card, but just an outline)
 - [ ] Sequenced Content
   - [ ] Stepper
   - [ ] Slides

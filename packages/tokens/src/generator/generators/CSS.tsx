@@ -12,10 +12,10 @@ export function generateColors(tokens: Tokens) {
   :root {
       ${colors
         .map(
-          ({ name, value }) =>
-            `${formatName(name, "css")}: ${
+          (token) =>
+            `${formatName(token.tokenName, "css")}: ${
               // @ts-expect-error chroma supports forcing hsla, but the types don't match that.
-              value.css("hsla")
+              token.css("hsla")
             };`,
         )
         .join("\n")}
