@@ -1,6 +1,3 @@
-@import "@spyrothon/sparx/dist/style.css";
-@import "../../design/generated/system.css";
-
 :focus,
 :focus-within {
   outline: none;

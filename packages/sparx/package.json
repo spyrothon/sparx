@@ -7,22 +7,17 @@
   "files": [
     "dist",
     "src",
-    "examples",
-    "public"
+    "examples"
   ],
   "sideEffects": [
     "*.css"
   ],
-  "publishConfig": {
-    "exports": {
-      ".": {
-        "import": "./dist/index.js"
-      },
-      "./style.css": {
-        "import": "./dist/style.css",
-        "require": "./dist/style.css"
-      }
-    }
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
     "build": "vite build",

@@ -12,23 +12,16 @@ pnpm sparx-tokens
 pnpm esno ./design/generate.ts
 ```
 
-Then in your project, import the generated `system.css` and `@spyrothon/sparx/dist/style.css` in
-order near the root:
-
-```css
-// In some global CSS file
-@import "./design/generated/system.css";
-@import "@spyrothon/sparx/dist/style.css";
-```
-
-or in your JS
+Then in your project, import the generated `system.css` and `@spyrothon/sparx/style.css` in order
+near the root of your app:
 
 ```typescript
 import "./design/generated/system.css";
-import "@spyrothon/sparx/dist/style.css";
+import "@spyrothon/sparx/style.css";
 ```
 
-Make sure these files aren't transpiled or clobbered by something like CSS Modules
+Note that these have to be imported through JS in order to be resolved properly. But make sure these
+files aren't transpiled or clobbered by something like CSS Module transpilation.
 
 If you're editing your tokens frequently, like when initially setting up the system, you'll probably
 want to add the generation as an npm script, like:

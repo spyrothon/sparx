@@ -2,6 +2,9 @@
 
 import * as React from "react";
 
+import "../../design/generated/system.css";
+import "@spyrothon/sparx/style.css";
+
 import "./globals.css";
 
 import { Sidebar } from "../components/Sidebar";
