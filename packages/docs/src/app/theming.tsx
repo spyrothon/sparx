@@ -1,6 +1,6 @@
 import { CreateThemeContextReturn, createAppContainer, createThemeContext } from "@spyrothon/sparx";
 import { tokens } from "../../design/generated/Tokens";
-import { setThemeContext } from "@spyrothon/sparx/examples/util/Theming";
+import { setThemeContext } from "../../../sparx/examples/util/Theming";
 
 tokens.resolveThemeColorToken("ACCENT_ACTIVE_PINK", "dark", "purple");
 
