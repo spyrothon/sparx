@@ -12,7 +12,13 @@ const EXTERNAL_PACKAGES = Object.keys(PACKAGE_JSON["dependencies"]).concat(
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [dts(), react()],
+  plugins: [
+    dts({
+      staticImport: true,
+      compilerOptions: { declarationMap: true },
+    }),
+    react(),
+  ],
   css: {
     postcss: path.resolve(__dirname, "../../"),
   },
@@ -28,7 +34,6 @@ export default defineConfig({
       // this is a modern package, meant to be bundled.
       formats: ["es"],
     },
-    sourcemap: true,
     rollupOptions: {
       external: EXTERNAL_PACKAGES.map((pkg) => new RegExp(`^${pkg}`)),
       output: {

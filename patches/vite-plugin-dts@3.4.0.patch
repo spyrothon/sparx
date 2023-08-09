@@ -1,0 +1,26 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index 539047c65d21b2092ef27c7924aff7ad452bfbcf..fdfa307b49b780307f3181ab6b88e28b238e9b9e 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -679,7 +679,7 @@ ${kolorist.cyan(
+       } else {
+         const sourceFile = program.getSourceFile(id);
+         if (sourceFile) {
+-          for (const outputFile of service.getEmitOutput(sourceFile.fileName, true, true).outputFiles) {
++          for (const outputFile of service.getEmitOutput(sourceFile.fileName, true).outputFiles) {
+             outputFiles.set(
+               resolve(publicRoot, node_path.relative(outDir, ensureAbsolute(outputFile.name, outDir))),
+               outputFile.text
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 051641d3e880d925c2d8ddbae9db8839012cb359..e5c900697b7eb63e0650a12497e296701ff5f274 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -679,7 +679,7 @@ ${cyan(
+       } else {
+         const sourceFile = program.getSourceFile(id);
+         if (sourceFile) {
+-          for (const outputFile of service.getEmitOutput(sourceFile.fileName, true, true).outputFiles) {
++          for (const outputFile of service.getEmitOutput(sourceFile.fileName, true).outputFiles) {
+             outputFiles.set(
+               resolve(publicRoot, relative(outDir, ensureAbsolute(outputFile.name, outDir))),
+               outputFile.text

@@ -1,5 +1,10 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  vite-plugin-dts@3.4.0:
+    hash: v3n6zt7xpz3o24xufdwa2jqojy
+    path: patches/vite-plugin-dts@3.4.0.patch
+
 importers:
 
   .:
@@ -120,7 +125,7 @@ importers:
       '@vitejs/plugin-react-swc': 3.3.0_vite@4.2.1
       typescript: 5.1.6
       vite: 4.2.1_@types+node@18.8.5
-      vite-plugin-dts: 3.4.0_vmapphyydzrhzu657f27lvkepq
+      vite-plugin-dts: 3.4.0_v3n6zt7xpz3o24xufdwa2jqojy_vmapphyydzrhzu657f27lvkepq
 
   packages/sparx-icons:
     specifiers:
@@ -6517,7 +6522,7 @@ packages:
       vfile-message: 2.0.4
     dev: false
 
-  /vite-plugin-dts/3.4.0_vmapphyydzrhzu657f27lvkepq:
+  /vite-plugin-dts/3.4.0_v3n6zt7xpz3o24xufdwa2jqojy_vmapphyydzrhzu657f27lvkepq:
     resolution: {integrity: sha512-B5UbhiF83hPlJpdri3k2FlseO2qIQfY95XJib7z1s8NTQKgPK+KgeuOQf8FR1hnE/pSU+RA3ra2T18HvymPDyA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -6540,6 +6545,7 @@ packages:
       - rollup
       - supports-color
     dev: true
+    patched: true
 
   /vite/4.2.1_@types+node@18.8.5:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}

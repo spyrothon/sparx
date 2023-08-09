@@ -23,5 +23,10 @@
     "postcss-nesting": "^10.2.0",
     "prettier": "^3.0.1",
     "typescript": "^5.0.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "vite-plugin-dts@3.4.0": "patches/vite-plugin-dts@3.4.0.patch"
+    }
   }
 }
