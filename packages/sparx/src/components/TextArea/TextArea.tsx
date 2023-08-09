@@ -1,6 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 
+import { useSetRef } from "@sparx/utils/RefUtils";
+
 import { getInputClassNames, InputState } from "../Input/Input";
 
 import styles from "./TextArea.module.css";
@@ -55,7 +57,32 @@ export const TextArea = React.forwardRef(function TextArea(
     onChange,
     ...nativeProps
   } = props;
-  const length = value?.toString().length;
+  const areaRef = React.useRef<HTMLTextAreaElement>(null);
+  const [length, setLength] = React.useState(
+    () => areaRef.current?.value.length ?? value?.toString().length ?? 0,
+  );
+
+  React.useEffect(() => {
+    // For controlled inputs, just use the value's serialized length.
+    if (value != null) {
+      setLength(value.toString().length);
+      return;
+    }
+
+    // Otherwise, for uncontrolled inputs, set up a direct event handler to
+    // measure the length on change.
+    const area = areaRef.current;
+    if (area == null) return;
+
+    function measureLength(this: HTMLTextAreaElement) {
+      setLength(this.value.length);
+    }
+
+    area.addEventListener("input", measureLength);
+    return () => area.removeEventListener("input", measureLength);
+  }, [value]);
+
+  const setRef = useSetRef(areaRef, ref);
 
   return (
     <div
@@ -63,7 +90,7 @@ export const TextArea = React.forwardRef(function TextArea(
         [styles.disabled]: disabled,
       })}>
       <textarea
-        ref={ref}
+        ref={setRef}
         disabled={disabled}
         {...nativeProps}
         value={value}

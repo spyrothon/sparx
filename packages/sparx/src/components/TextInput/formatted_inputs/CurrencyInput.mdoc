@@ -8,13 +8,4 @@ the given locale.
 Users type the number as they would on an ATM, where inputting more numbers adds them to the right
 hand side of the value. Typing in a value of $5 would be done as `5`, `0`, `0`.
 
-{% showcase %}
-
-```
-<Stack spacing="space-md">
-  <CurrencyInput value={currency.value} onValueChange={currency.onChange} />
-  <Text>Currency value is {currency.value}</Text>
-</Stack>
-```
-
-{% /showcase %}
+{% showcase-file example="text-input-currency" /%}
