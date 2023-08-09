@@ -6,19 +6,17 @@ import {
   Box,
   BrandLogo,
   Button,
-  Card,
   Clickable,
   Divider,
   Stack,
   Tabs,
   openModal,
 } from "@spyrothon/sparx";
-import Bars from "@spyrothon/sparx-icons/dist/icons/Bars";
+import { Bars } from "@spyrothon/sparx-icons/icons/Bars";
 
 import { getFlatSidebarItems, FlatNavigationItem } from "../app/sidebarItems";
 import { ThemeSelector } from "./ThemeSelector";
 
-import styles from "./MobileSidebar.module.css";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 
 function MobileNavigation(props: {

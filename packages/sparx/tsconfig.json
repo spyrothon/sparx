@@ -9,5 +9,5 @@
     "moduleResolution": "bundler"
   },
   "include": ["./src", "./@types"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.examples.json" }]
 }

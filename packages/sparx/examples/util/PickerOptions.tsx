@@ -1,6 +1,6 @@
-import Check from "@spyrothon/sparx-icons/dist/icons/Check";
-import ExclamationOctagon from "@spyrothon/sparx-icons/dist/icons/ExclamationOctagon";
-import ExclamationTriangle from "@spyrothon/sparx-icons/dist/icons/ExclamationTriangle";
+import { Check } from "@spyrothon/sparx-icons/icons/Check";
+import { ExclamationOctagon } from "@spyrothon/sparx-icons/icons/ExclamationOctagon";
+import { ExclamationTriangle } from "@spyrothon/sparx-icons/icons/ExclamationTriangle";
 
 export const PICKER_OPTIONS = [
   {

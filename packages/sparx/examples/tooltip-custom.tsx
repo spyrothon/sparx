@@ -1,5 +1,5 @@
 import * as React from "react";
-import Image from "@spyrothon/sparx-icons/dist/icons/Image";
+import { Image } from "@spyrothon/sparx-icons/icons/Image";
 
 import { Button, Stack, Text, useTooltip } from "../dist";
 

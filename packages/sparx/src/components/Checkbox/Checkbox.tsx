@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as uuid from "uuid";
-import Check from "@spyrothon/sparx-icons/dist/icons/Check";
+import { Check } from "@spyrothon/sparx-icons/icons/Check";
 
 import { animated, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";

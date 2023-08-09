@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "types": [],
+    "noEmit": false,
+    "moduleResolution": "bundler"
+  },
+  "include": ["./examples"]
+}

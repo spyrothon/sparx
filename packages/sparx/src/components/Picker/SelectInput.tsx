@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
 import { useSelect } from "downshift";
-import ChevronDown from "@spyrothon/sparx-icons/dist/icons/ChevronDown";
-import ChevronUp from "@spyrothon/sparx-icons/dist/icons/ChevronUp";
+import { ChevronDown } from "@spyrothon/sparx-icons/icons/ChevronDown";
+import { ChevronUp } from "@spyrothon/sparx-icons/icons/ChevronUp";
 
 import { Clickable, Text, TextVariantSize } from "@sparx/index";
 

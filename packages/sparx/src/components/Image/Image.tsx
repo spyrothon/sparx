@@ -1,6 +1,6 @@
 import * as React from "react";
 import classNames from "classnames";
-import ImageIcon from "@spyrothon/sparx-icons/dist/icons/Image";
+import { Image as ImageIcon } from "@spyrothon/sparx-icons/icons/Image";
 
 import { Text } from "@sparx/index";
 import { useSetRef } from "@sparx/utils/RefUtils";

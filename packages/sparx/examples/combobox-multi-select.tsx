@@ -1,5 +1,5 @@
 import * as React from "react";
-import Close from "@spyrothon/sparx-icons/dist/icons/Close";
+import { Close } from "@spyrothon/sparx-icons/icons/Close";
 
 import { Button, Combobox, Item, PickerItem, Spacer, Stack } from "../dist";
 import { PICKER_OPTIONS, PickerOption } from "./util/PickerOptions";

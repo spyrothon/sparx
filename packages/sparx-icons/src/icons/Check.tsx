@@ -6,7 +6,7 @@ import * as React from "react";
 
 import { IconProps, addDefaultIconProps } from "../IconProps";
 
-export default function Check({ size = 24, color = "currentColor", ...props }: IconProps) {
+export function Check({ size = 24, color = "currentColor", ...props }: IconProps) {
   return (
     <svg
       {...addDefaultIconProps(props)}

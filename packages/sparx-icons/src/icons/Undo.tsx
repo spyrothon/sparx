@@ -6,7 +6,7 @@ import * as React from "react";
 
 import { IconProps, addDefaultIconProps } from "../IconProps";
 
-export default function Undo({ size = 24, color = "currentColor", ...props }: IconProps) {
+export function Undo({ size = 24, color = "currentColor", ...props }: IconProps) {
   return (
     <svg
       {...addDefaultIconProps(props)}

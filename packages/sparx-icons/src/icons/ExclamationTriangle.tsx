@@ -6,11 +6,7 @@ import * as React from "react";
 
 import { IconProps, addDefaultIconProps } from "../IconProps";
 
-export default function ExclamationTriangle({
-  size = 24,
-  color = "currentColor",
-  ...props
-}: IconProps) {
+export function ExclamationTriangle({ size = 24, color = "currentColor", ...props }: IconProps) {
   return (
     <svg
       {...addDefaultIconProps(props)}

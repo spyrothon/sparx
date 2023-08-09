@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
-import ChevronDown from "@spyrothon/sparx-icons/dist/icons/ChevronDown";
-import ChevronUp from "@spyrothon/sparx-icons/dist/icons/ChevronUp";
+import { ChevronDown } from "@spyrothon/sparx-icons/icons/ChevronDown";
+import { ChevronUp } from "@spyrothon/sparx-icons/icons/ChevronUp";
 
 import styles from "./DropdownChevron.module.css";
 

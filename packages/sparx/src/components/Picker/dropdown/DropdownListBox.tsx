@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import { AriaListBoxOptions, useListBox, useListBoxSection, useOption } from "react-aria";
 import type { ListState } from "react-stately";
-import CheckboxCircleChecked from "@spyrothon/sparx-icons/dist/icons/CheckboxCircleChecked";
+import { CheckboxCircleChecked } from "@spyrothon/sparx-icons/icons/CheckboxCircleChecked";
 
 import type { Node } from "@react-types/shared";
 
