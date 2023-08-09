@@ -17,7 +17,8 @@
   "exports": {
     ".": "./dist/src/index.js",
     "./generator": "./dist/src/generator/index.js",
-    "./default/*.css": "./default/generated/*.css"
+    "./default/*.css": "./default/generated/*.css",
+    "./default/*": "./default/generated/*"
   },
   "scripts": {
     "build": "tsc",
