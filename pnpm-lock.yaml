@@ -53,6 +53,7 @@ importers:
       react-jsx-parser: ^1.29.0
       refractor: ^4.8.1
       typescript: 5.0.2
+      zustand: ^3.7.2
     dependencies:
       '@markdoc/markdoc': 0.3.0_fzrd6ivowi4azn3madm57eamia
       '@markdoc/next.js': 0.2.3_ib6chs3gvelb2ooyp3lbc5xih4
@@ -73,6 +74,7 @@ importers:
       react-jsx-parser: 1.29.0_biqbaboplfbrettd7655fr4n2y
       refractor: 4.8.1
       typescript: 5.0.2
+      zustand: 3.7.2_react@18.2.0
     devDependencies:
       esno: 0.17.0
 
