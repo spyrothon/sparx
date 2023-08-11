@@ -95,8 +95,6 @@ export { Select } from "./components/Picker/Select";
 export type { SelectProps } from "./components/Picker/Select";
 export { Combobox } from "./components/Picker/Combobox";
 export type { ComboboxProps } from "./components/Picker/Combobox";
-export { SelectInput } from "./components/Picker/SelectInput";
-export type { SelectInputProps } from "./components/Picker/SelectInput";
 
 export { TextArea } from "./components/TextArea/TextArea";
 export type { TextAreaProps } from "./components/TextArea/TextArea";
