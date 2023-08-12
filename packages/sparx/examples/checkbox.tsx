@@ -1,27 +1,21 @@
 import * as React from "react";
 
-import { Checkbox, Stack, Text } from "../dist";
+import { Checkbox, Stack } from "../dist";
 
 export default function Component() {
   const [checked, setChecked] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
 
   return (
     <Stack>
+      <Checkbox checked={checked} onChange={setChecked} label="Remember Me" />
+      <Checkbox label="Uncontrolled" />
       <Checkbox
-        checked={checked}
-        onChange={(event) => setChecked(event.target.checked)}
-        label="Remember Me"
-      />
-      <Checkbox
-        checked={checked}
-        state="success"
-        label={
-          <>
-            <Text variant="header-sm/normal">Longer labels</Text>
-            <Text variant="text-sm/normal">Checkboxes can use any React Node as the label.</Text>
-          </>
-        }
-        onChange={(event) => setChecked(event.target.checked)}
+        checked={checked2}
+        onChange={setChecked2}
+        status="success"
+        label="Longer labels"
+        description="Add a description with a single prop"
       />
     </Stack>
   );

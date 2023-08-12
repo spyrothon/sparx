@@ -19,6 +19,7 @@ export default function Component() {
           key={`${status}-${size}`}
           status={status}
           size={size}
+          label={size}
           items={PICKER_OPTIONS}
           selectedKey={selectedKey}
           onSelect={setSelectedKey}>

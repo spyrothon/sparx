@@ -1,37 +1,31 @@
 import * as React from "react";
 import classNames from "classnames";
-import * as uuid from "uuid";
+import { AriaSwitchProps, usePress, useSwitch } from "react-aria";
+import { useToggleState } from "react-stately";
 import { Check } from "@spyrothon/sparx-icons/icons/Check";
 
 import { animated, config, useSpring } from "@react-spring/web";
-import { Clickable, Text } from "@sparx/index";
+import { Text } from "@sparx/index";
+import { useSetRef } from "@sparx/utils/RefUtils";
 
+import { ControlInputProps } from "../FormControl/Control";
 import { getInputClassNames, InputStatus, useInputColorToken } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./FormSwitch.module.css";
 
-export interface FormSwitchProps {
-  checked: boolean;
-  disabled?: boolean;
-  state?: InputStatus;
-  label?: React.ReactNode;
-  note?: React.ReactNode;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
-}
-
-function Switch(props: { checked: boolean; pressed: boolean; state: InputStatus }) {
-  const { checked, pressed, state } = props;
+function Switch(props: { isSelected: boolean; isPressed: boolean; status: InputStatus }) {
+  const { isSelected, isPressed, status } = props;
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
-  const inputColor = useInputColorToken(state, "color");
+  const inputColor = useInputColorToken(status, "color");
   const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.hsla;
   const resolvedBackground = useResolvedColorToken("CONTROL_BACKGROUND").hsla;
 
   const { progress, pressProgress } = useSpring({
-    progress: checked ? (pressed ? 0.7 : 1) : pressed ? 0.3 : 0,
-    pressProgress: pressed ? 1 : 0,
+    progress: isSelected ? (isPressed ? 0.7 : 1) : isPressed ? 0.3 : 0,
+    pressProgress: isPressed ? 1 : 0,
     config: config.stiff,
   });
 
@@ -62,42 +56,43 @@ function Switch(props: { checked: boolean; pressed: boolean; state: InputStatus 
   );
 }
 
+export interface FormSwitchProps extends Omit<AriaSwitchProps, "isSelected">, ControlInputProps {
+  checked: boolean;
+}
+
 export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
   function FormSwitch(props, ref) {
-    const { checked, disabled = false, state = "default", label, note, onChange } = props;
-    const [inputId] = React.useState(() => uuid.v4());
-    const [isPressed, setIsPressed] = React.useState(false);
+    const {
+      checked,
+      label,
+      description,
+      errorMessage,
+      status = "default",
+      size = "medium",
+    } = props;
+    const innerRef = React.useRef<HTMLInputElement>(null);
+    const setRef = useSetRef(innerRef, ref);
+
+    const transformedProps = {
+      ...props,
+      isSelected: checked,
+      children: label,
+    };
+    const state = useToggleState(transformedProps);
+    const { inputProps } = useSwitch(props, state, innerRef);
+    const { pressProps, isPressed } = usePress({});
 
     return (
-      <div
-        className={classNames(styles.container, ...getInputClassNames(state), {
-          [styles.disabled]: disabled,
-        })}>
-        <input
-          ref={ref}
-          type="checkbox"
-          disabled={disabled}
-          onChange={onChange}
-          id={inputId}
-          checked={checked}
-          style={{ display: "none" }}
-        />
-        <Clickable
-          as="label"
-          onPressStart={() => setIsPressed(true)}
-          onPressEnd={() => setIsPressed(false)}
-          isDisabled={disabled}
-          aria-pressed={checked}
-          className={styles.mainRow}
-          htmlFor={inputId}>
+      <div className={classNames(styles.container, ...getInputClassNames(status, size))}>
+        <label className={styles.mainRow} {...pressProps}>
+          <input ref={setRef} {...inputProps} style={{ display: "none" }} />
           <Text variant="header-sm/normal" className={styles.label}>
             {label}
           </Text>
-          <Switch checked={checked} pressed={isPressed} state={state} />
-        </Clickable>
-        <Text variant="text-sm/normal" className={styles.note}>
-          {note}
-        </Text>
+          <Switch isSelected={state.isSelected} isPressed={isPressed} status={status} />
+        </label>
+        {description != null ? <Text variant="text-sm/secondary">{description}</Text> : null}
+        {errorMessage != null ? <Text variant="header-xs/danger">{errorMessage}</Text> : null}
       </div>
     );
   },

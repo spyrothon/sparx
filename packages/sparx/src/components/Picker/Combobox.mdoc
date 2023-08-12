@@ -1,7 +1,9 @@
 # Combobox
 
 {% callout type="info" %}
+
 `Combobox` does not currently support multiple selections but these will be added in the future.
+
 {% /callout %}
 
 `Combobox` is a choice-selection input that lets users choose options out of a list.
@@ -13,18 +15,17 @@ of options, a `RadioGroup` may provide a better experience for the user.
 
 ## Rendering Items
 
-By default, items use `defaultPickerItemToString` to render the options in the dropdown list as
-plain text. For a richer display, use `DropdownItem` to compose items from multiple pieces,
+For a richer display in the option list, use `PickerItem` to compose items from multiple pieces,
 including a label, description, and an icon.
 
 {% showcase-file example="combobox-custom-rendering" /%}
 
-The render function receives two arguments, `item` and `index`, which must be passed along to
-`DropdownItem`, as well as a third argument, `state`, allowing the item to react to the current
-selection state. This includes:
+`PickerItem` provides a consistent structure for items that can be reused across all different kinds
+of Pickers, but there is no restriction on the content. For custom situations, render any React node
+within the `Item` child.
 
-- `isHighlighted` - true when the user is interacting with the item, but hasn't fully selected it.
-- `isSelected` - true when the item is fully selected as the value of the input.
+Note that if the content of an `Item` is _anything other_ than a String value, then `textValue`
+becomes a required prop on the `Item`, so that Combobox can render the value into the text input.
 
 ## Display
 
@@ -48,6 +49,6 @@ Note that the combobox has a few additional options here:
 
 - `items` is a _filtered_ list of items that have not been selected yet.
 - `selectedKey` is explicitly set to `undefined`, meaning the Combobox will never show a selected
-state in the dropdown.
+  state in the dropdown.
 - `allowEmptyCollection` lets the Combobox render the dropdown with an empty state placeholder when
-no items match the current search.
+  no items match the current search.

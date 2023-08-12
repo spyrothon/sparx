@@ -1,10 +1,11 @@
 # TextInput
 
-`TextInput` is the simplest text input, great for receiving short-form text from
-a user, such as a username, password, email address, or any other single-sentence content.
-TextInput also handles numeric inputs with the `type` prop.
+`TextInput` is the simplest text input, great for receiving short-form text from a user, such as a
+username, password, email address, or any other single-sentence content. TextInput also handles
+numeric inputs with the `type` prop.
 
 {% showcase %}
+
 ```
 <Stack>
   <TextInput placeholder="Enter some text" />
@@ -14,29 +15,27 @@ TextInput also handles numeric inputs with the `type` prop.
   <TextInput type="datetime-local" defaultValue="4155550000" />
 </Stack>
 ```
-{% /showcase %}
 
+{% /showcase %}
 
 `TextInput` is distinguished from other content using a thin border and a darkened interior.
 
-{% callout type="warning" %}
-While `TextInput` provides a `placeholder` prop for showing some
-hint text, placeholders _should not_ use them for labeling the name of the input.
+{% callout type="warning" %} While `TextInput` provides a `placeholder` prop for showing some hint
+text, placeholders _should not_ use them for labeling the name of the input.
 
-Instead, use a `FormControl` with a `label` or `note` to
-provide context for the intent of the input. Placeholders are meant for showing example
-input only and should generally be avoided where not necessary.
-{% /callout %}
+Instead, use a `FormControl` with a `label` or `note` to provide context for the intent of the
+input. Placeholders are meant for showing example input only and should generally be avoided where
+not necessary. {% /callout %}
 
 ## States
 
-Informational states about a `TextInput` can use the `state` prop, which adjusts
-the color of the input to match a semantic meaning. On its own, this works well for
-small spaces where no other information explaining the state can be added, but
-generally prefer `FormControl` to automatically format these states and provide
-more contextual information like a textual error message.
+Informational states about a `TextInput` can use the `state` prop, which adjusts the color of the
+input to match a semantic meaning. On its own, this works well for small spaces where no other
+information explaining the state can be added, but generally prefer `FormControl` to automatically
+format these states and provide more contextual information like a textual error message.
 
 {% showcase %}
+
 ```
 <Stack>
   <TextInput state="default" placeholder="Default state" />
@@ -46,11 +45,13 @@ more contextual information like a textual error message.
   <TextInput state="info" placeholder="Info state" />
 </Stack>
 ```
+
 {% /showcase %}
 
 Sizes can also be adjusted to fit different contexts.
 
 {% showcase %}
+
 ```
 <Stack>
   <TextInput size="small" placeholder="Small input" />
@@ -59,26 +60,29 @@ Sizes can also be adjusted to fit different contexts.
   <TextInput size="xlarge" placeholder="Xlarge input" />
 </Stack>
 ```
+
 {% /showcase %}
 
 ## Blank
 
-For specific use cases, there's also a `blank` state, which removes all of the
-color accenting from the input and just shows the light highlight on the input area
-background. Especially for larger inputs, this can be useful for avoiding too much color or
-appearing overly-segmented.
+For specific use cases, there's also a `blank` state, which removes all of the color accenting from
+the input and just shows the light highlight on the input area background. Especially for larger
+inputs, this can be useful for avoiding too much color or appearing overly-segmented.
 
 {% showcase %}
+
 ```
 <TextInput state="blank" defaultValue="This has no borders" />
 ```
+
 {% /showcase %}
 
-Blank variants should almost always be used inside of a `FormControl`, or using
-an input type that has existing formatting (like `CurrencyInput`) to help the
-user understand that the field is still editable, despite not having any other indicators.
+Blank variants should almost always be used inside of a `FormControl`, or using an input type that
+has existing formatting (like `CurrencyInput`) to help the user understand that the field is still
+editable, despite not having any other indicators.
 
 {% showcase %}
+
 ```
 <Stack>
   <FormControl
@@ -92,4 +96,5 @@ user understand that the field is still editable, despite not having any other i
   </FormControl>
 </Stack>
 ```
+
 {% /showcase %}

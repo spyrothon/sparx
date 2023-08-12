@@ -1,22 +1,19 @@
 # Select
 
-{% callout type="info" %}
-`SelectInput` does not currently support multiple selections nor combobox
-(options + search) functionality, but these will be added in the future.
-{% /callout %}
+`Select` is a choice-selection input that lets users choose options out of a list.
 
-`SelectInput` is a choice-selection input that lets users choose options out of a list.
+{% showcase-file example="select" /%}
 
-{% showcase-file example="select-input" /%}
+`Select` is good for medium sized option lists. In certain cases with a very limited number of
+options, a `RadioGroup` may provide a better experience for the user.
 
-`SelectInput` is good for medium to large lists of options. In certain cases with a very limited
-number of options, a `RadioGroup` may provide a better experience for the user.
+## Rendering Items
 
-## Rendering
-
-Items can choose how they get rendered in the dropdown list using the `renderItem` prop. By
-default, this will change both how the item appears in the dropdown list, as well as in the input
-row itself. To change how the item renders in the input row separately from the dropdown, use
-`renderSelectedItem`.
+For a richer display in the option list, use `PickerItem` to compose items from multiple pieces,
+including a label, description, and an icon.
 
 {% showcase-file example="select-custom-rendering" /%}
+
+`PickerItem` provides a consistent structure for items that can be reused across all different kinds
+of Pickers, but there is no restriction on the content. For custom situations, render any React node
+within the `Item` child.

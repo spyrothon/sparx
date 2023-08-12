@@ -13,6 +13,11 @@ export default function Component() {
         onChange={setValue}
         description={`Duration is ${value} seconds`}
       />
+      <DurationInput
+        name="estimate"
+        label="Uncontrolled Estimate"
+        description="Duration is uncontrolled."
+      />
     </Stack>
   );
 }

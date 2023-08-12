@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Combobox, Item, PickerItem, Stack } from "../dist";
+import { Combobox, Item, Stack } from "../dist";
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {
@@ -8,21 +8,12 @@ export default function Component() {
 
   return (
     <Stack>
-      <Combobox items={PICKER_OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
-        {(item) => (
-          <Item key={item.value} textValue={item.name}>
-            <PickerItem icon={item.icon} description={item.subtext}>
-              {item.name}
-            </PickerItem>
-          </Item>
-        )}
-      </Combobox>
-      <Combobox items={PICKER_OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
-        {(item) => (
-          <Item key={item.value} textValue={item.name}>
-            {item.name}
-          </Item>
-        )}
+      <Combobox
+        label="Combobox Selection"
+        items={PICKER_OPTIONS}
+        selectedKey={selectedKey}
+        onSelect={setSelectedKey}>
+        {(item) => <Item key={item.value}>{item.name}</Item>}
       </Combobox>
     </Stack>
   );

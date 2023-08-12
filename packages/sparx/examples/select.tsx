@@ -13,13 +13,28 @@ export default function Component() {
 
   return (
     <Stack>
-      <Select size="small" items={OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
+      <Select
+        label="Small"
+        size="small"
+        items={OPTIONS}
+        selectedKey={selectedKey}
+        onSelect={setSelectedKey}>
         {(item) => <Item key={item.value}>{item.name}</Item>}
       </Select>
-      <Select items={OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
+      <Select
+        label="Medium"
+        description="Medium is the default input size."
+        items={OPTIONS}
+        selectedKey={selectedKey}
+        onSelect={setSelectedKey}>
         {(item) => <Item key={item.value}>{item.name}</Item>}
       </Select>
-      <Select size="large" items={OPTIONS} selectedKey={selectedKey} onSelect={setSelectedKey}>
+      <Select
+        label="Large"
+        size="large"
+        items={OPTIONS}
+        selectedKey={selectedKey}
+        onSelect={setSelectedKey}>
         {(item) => <Item key={item.value}>{item.name}</Item>}
       </Select>
     </Stack>

@@ -7,6 +7,7 @@
   gap: var(--space-md);
   align-items: flex-start;
   justify-content: space-between;
+  cursor: pointer;
   margin-bottom: var(--space-sm);
 }
 

@@ -1,8 +1,10 @@
 # Clickable
 
 {% callout type="danger" %}
-`Clickable` is not appropriate for actions that link users to other
-pages on the web, whether internal or external. For links, use `Anchor` instead.
+
+`Clickable` is not appropriate for actions that link users to other pages on the web, whether
+internal or external. For links, use `Anchor` instead.
+
 {% /callout %}
 
 `Clickable` is a generic mechanism for making arbitrary content on a page interactive. While
@@ -20,5 +22,6 @@ but this can be prevented by using the `noCursor` prop.
 
 Notice that the prop is named `onPress` instead of `onClick`. This is because `Clickable` inherently
 works for both mouse and keyboard events, and using `onClick` would incorrectly type the event as a
-mouse event. Refer to [react-aria's documentation about Press props](https://react-spectrum.adobe.com/blog/building-a-button-part-1.html)
+mouse event. Refer to
+[react-aria's documentation about Press props](https://react-spectrum.adobe.com/blog/building-a-button-part-1.html)
 for more information.

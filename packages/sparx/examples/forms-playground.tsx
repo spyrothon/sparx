@@ -86,8 +86,8 @@ export default function Component() {
       <FormSwitch
         label="Enable a super secret setting"
         checked={switchChecked}
-        onChange={(event) => setSwitchChecked(event.target.checked)}
-        note="Do something super secret. Doesn't actually do anything, but you can pretend that it does."
+        onChange={setSwitchChecked}
+        description="Do something super secret. Doesn't actually do anything, but you can pretend that it does."
       />
       <Divider />
       <RadioGroup

@@ -43,9 +43,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       isSelected: checked,
       children: label,
     };
-
     const state = useToggleState(transformedProps);
-    const { inputProps } = useCheckbox(transformedProps, state, innerRef);
+    const { inputProps, isSelected } = useCheckbox(transformedProps, state, innerRef);
 
     const containerRef = React.useRef<HTMLLabelElement>(null);
     const inputColor = useInputColorToken(status, "color");
@@ -53,9 +52,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
     const [{ opacity, transform, backgroundColor }] = useSpring(() => {
       return {
-        backgroundColor: checked ? resolvedColor : defaultBackgroundColor,
-        opacity: checked ? 1 : 0,
-        transform: `scale(${checked ? 1 : 1.5})`,
+        backgroundColor: isSelected ? resolvedColor : defaultBackgroundColor,
+        opacity: isSelected ? 1 : 0,
+        transform: `scale(${isSelected ? 1 : 1.5})`,
         config: (key) => ({
           ...CHECK_SPRING_CONFIG,
           friction:
@@ -65,7 +64,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           clamp: key === "backgroundColor",
         }),
       };
-    }, [checked, defaultBackgroundColor, resolvedColor]);
+    }, [isSelected, defaultBackgroundColor, resolvedColor]);
 
     const labelNode =
       typeof label === "string" ? (

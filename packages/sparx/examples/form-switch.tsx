@@ -9,8 +9,8 @@ export default function Component() {
     <FormSwitch
       label="Enable a super secret setting"
       checked={checked}
-      onChange={(event) => setChecked(event.target.checked)}
-      note="Do something super secret. Doesn't actually do anything, but you can pretend that it does."
+      onChange={setChecked}
+      description="Do something super secret. Doesn't actually do anything, but you can pretend that it does."
     />
   );
 }
