@@ -39,6 +39,12 @@ export type { ClickableProps } from "./components/Clickable/Clickable";
 export { Divider } from "./components/Divider/Divider";
 export type { DividerProps } from "./components/Divider/Divider";
 
+export { Control } from "./components/FormControl/Control";
+export type {
+  ControlProps,
+  ControlNestedElementProps,
+  ControlInputProps,
+} from "./components/FormControl/Control";
 export { FormControl } from "./components/FormControl/FormControl";
 export type { FormControlProps, FormControlSize } from "./components/FormControl/FormControl";
 
