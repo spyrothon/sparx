@@ -39,14 +39,12 @@ export type { ClickableProps } from "./components/Clickable/Clickable";
 export { Divider } from "./components/Divider/Divider";
 export type { DividerProps } from "./components/Divider/Divider";
 
-export { Control } from "./components/FormControl/Control";
+export { Control } from "./components/Control/Control";
 export type {
   ControlProps,
   ControlNestedElementProps,
   ControlInputProps,
-} from "./components/FormControl/Control";
-export { FormControl } from "./components/FormControl/FormControl";
-export type { FormControlProps, FormControlSize } from "./components/FormControl/FormControl";
+} from "./components/Control/Control";
 
 export { FormSwitch } from "./components/FormSwitch/FormSwitch";
 export type { FormSwitchProps } from "./components/FormSwitch/FormSwitch";
@@ -58,7 +56,7 @@ export { Image } from "./components/Image/Image";
 export type { ImageProps, ImageLoadState } from "./components/Image/Image";
 
 export { useInputColorToken } from "./components/Input/Input";
-export type { InputSize, InputStatus as InputState } from "./components/Input/Input";
+export type { InputSize, InputStatus } from "./components/Input/Input";
 
 export { Interactive } from "./components/Interactive/Interactive";
 export type { InteractiveProps } from "./components/Interactive/Interactive";

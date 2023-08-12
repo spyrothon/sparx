@@ -18,31 +18,37 @@ numeric inputs with the `type` prop.
 
 {% /showcase %}
 
-`TextInput` is distinguished from other content using a thin border and a darkened interior.
+`TextInput` is distinguished from other content using a thin border and a highlighted interior.
 
-{% callout type="warning" %} While `TextInput` provides a `placeholder` prop for showing some hint
-text, placeholders _should not_ use them for labeling the name of the input.
+{% callout type="warning" %}
 
-Instead, use a `FormControl` with a `label` or `note` to provide context for the intent of the
-input. Placeholders are meant for showing example input only and should generally be avoided where
-not necessary. {% /callout %}
+While `TextInput` provides a `placeholder` prop for showing some hint text, placeholders _should
+not_ use them for labeling the name of the input.
 
-## States
+Instead, use the `label` and `description` props to provide context for the intent of the input.
+Placeholders are meant for showing example input only and should generally be avoided where not
+necessary.
 
-Informational states about a `TextInput` can use the `state` prop, which adjusts the color of the
-input to match a semantic meaning. On its own, this works well for small spaces where no other
-information explaining the state can be added, but generally prefer `FormControl` to automatically
-format these states and provide more contextual information like a textual error message.
+{% /callout %}
+
+## Status
+
+Informational states about a `TextInput` can use the `status` prop, which adjusts the color of the
+input to match a semantic meaning. On its own, this works well for indicating that the input needs
+some special attention, but does not convey any reason for why. For that, use the `errorMessage`
+prop to provide a short explanation of how the user can address the status of the input.
 
 {% showcase %}
 
 ```
 <Stack>
-  <TextInput state="default" placeholder="Default state" />
-  <TextInput state="success" placeholder="Success state" />
-  <TextInput state="warning" placeholder="Warning state" />
-  <TextInput state="danger" placeholder="Danger state" />
-  <TextInput state="info" placeholder="Info state" />
+  <TextInput status="default" placeholder="Default state" />
+  <TextInput status="success" placeholder="Success state" />
+  <TextInput status="warning" placeholder="Warning state" />
+  <TextInput status="danger" placeholder="Danger state" />
+  <TextInput status="info" placeholder="Info state" />
+  <Spacer />
+  <TextInput label="Username" status="danger" errorMessage="Cannot be blank"  />
 </Stack>
 ```
 
@@ -72,29 +78,7 @@ inputs, this can be useful for avoiding too much color or appearing overly-segme
 {% showcase %}
 
 ```
-<TextInput state="blank" defaultValue="This has no borders" />
-```
-
-{% /showcase %}
-
-Blank variants should almost always be used inside of a `FormControl`, or using an input type that
-has existing formatting (like `CurrencyInput`) to help the user understand that the field is still
-editable, despite not having any other indicators.
-
-{% showcase %}
-
-```
-<Stack>
-  <FormControl
-    state="blank"
-    label="Blank Input Example"
-    note="Providing a label and note make it more clear that the input is editable.">
-    <CurrencyInput state="inherit" value={currency} onValueChange={setCurrency} />
-  </FormControl>
-  <FormControl state="success" label="Or a Prefix" prefix="twitch.tv/">
-    <TextInput state="blank" />
-  </FormControl>
-</Stack>
+<TextInput status="blank" defaultValue="This has no borders" />
 ```
 
 {% /showcase %}

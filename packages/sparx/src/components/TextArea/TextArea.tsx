@@ -4,7 +4,7 @@ import { AriaTextFieldProps, useTextField } from "react-aria";
 
 import { useSetRef } from "@sparx/utils/RefUtils";
 
-import { Control, ControlInputProps } from "../FormControl/Control";
+import { Control, ControlInputProps } from "../Control/Control";
 
 import styles from "./TextArea.module.css";
 

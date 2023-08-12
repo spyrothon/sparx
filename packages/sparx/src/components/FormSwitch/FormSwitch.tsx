@@ -8,7 +8,7 @@ import { animated, config, useSpring } from "@react-spring/web";
 import { Text } from "@sparx/index";
 import { useSetRef } from "@sparx/utils/RefUtils";
 
-import { ControlInputProps } from "../FormControl/Control";
+import { ControlInputProps } from "../Control/Control";
 import { getInputClassNames, InputStatus, useInputColorToken } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 

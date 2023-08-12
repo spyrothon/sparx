@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormControl, Item, Select } from "@spyrothon/sparx";
+import { Item, Select } from "@spyrothon/sparx";
 
 import { ThemeContext } from "../app/theming";
 import { Accent, Theme } from "../../design/generated/Tokens";

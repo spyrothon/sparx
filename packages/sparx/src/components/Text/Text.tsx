@@ -55,7 +55,6 @@ export function Text<TagT extends TextTag = "div">(props: TextProps<TagT>) {
     lineClamp,
     children,
     className,
-    id,
     ...nativeProps
   } = props;
   const [size, color] = getVariantPieces(variant);
@@ -64,7 +63,6 @@ export function Text<TagT extends TextTag = "div">(props: TextProps<TagT>) {
     // @ts-expect-error it's complaining about `label` not matching `div`, which is bad, but fine.
     <Tag
       {...nativeProps}
-      id={id}
       className={classNames(styles.text, SIZE_VARIANTS[size], COLOR_VARIANTS[color], className, {
         [styles.lineClamp]: lineClamp === 1,
       })}>

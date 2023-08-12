@@ -54,7 +54,7 @@ export const sidebarItems: NavigationItem[] = [
         sourcePath: "components/Forms.mdoc",
         slug: "overview",
       },
-      { type: "page", title: "FormControl", sourcePath: "components/FormControl/FormControl.mdoc" },
+      { type: "page", title: "Control", sourcePath: "components/Control/Control.mdoc" },
       { type: "page", title: "Checkbox", sourcePath: "components/Checkbox/Checkbox.mdoc" },
       { type: "page", title: "FormSwitch", sourcePath: "components/FormSwitch/FormSwitch.mdoc" },
       { type: "page", title: "TextInput", sourcePath: "components/TextInput/TextInput.mdoc" },

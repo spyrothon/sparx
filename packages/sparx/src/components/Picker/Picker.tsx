@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import type { ComboBoxState, SelectState } from "react-stately";
 
-import { Control, ControlInputProps, ControlNestedElementProps } from "../FormControl/Control";
+import { Control, ControlInputProps, ControlNestedElementProps } from "../Control/Control";
 
 import styles from "./Picker.module.css";
 

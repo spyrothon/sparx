@@ -3,11 +3,12 @@ import { AriaRadioGroupProps, AriaRadioProps, useRadio, useRadioGroup } from "re
 import { RadioGroupState, useRadioGroupState } from "react-stately";
 
 import { animated, useSpring } from "@react-spring/web";
-import { InputState, Stack, Text } from "@sparx/index";
 
 import { Clickable } from "../Clickable/Clickable";
-import { Control, ControlInputProps } from "../FormControl/Control";
+import { Control, ControlInputProps } from "../Control/Control";
 import { InputStatus, useInputColorToken } from "../Input/Input";
+import { Stack } from "../Stack/Stack";
+import { Text } from "../Text/Text";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./RadioGroup.module.css";
@@ -19,7 +20,7 @@ const DOT_SPRING_CONFIG = {
 
 interface RadioGroupContextState {
   state: RadioGroupState | undefined;
-  status: InputState;
+  status: InputStatus;
 }
 
 const RadioGroupContext = React.createContext<RadioGroupContextState>({

@@ -7,7 +7,7 @@ import {
   Divider,
   DurationInput,
   FormSwitch,
-  InputState,
+  InputStatus,
   Item,
   PickerItem,
   RadioGroup,
@@ -20,7 +20,7 @@ import {
 import { PICKER_OPTIONS } from "./util/PickerOptions";
 
 export default function Component() {
-  const [status, setStatus] = React.useState<InputState>("default");
+  const [status, setStatus] = React.useState<InputStatus>("default");
   const [error, setError] = React.useState<string | undefined>(undefined);
   const [switchChecked, setSwitchChecked] = React.useState(true);
   const [checkboxChecked, setCheckboxChecked] = React.useState(false);

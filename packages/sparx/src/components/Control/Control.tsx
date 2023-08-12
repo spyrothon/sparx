@@ -6,7 +6,7 @@ import { Text } from "@sparx/index";
 
 import { getInputClassNames, InputSize, InputStatus } from "../Input/Input";
 
-import styles from "./FormControl.module.css";
+import styles from "./Control.module.css";
 
 export interface ControlConditionProps {
   isDisabled?: boolean;

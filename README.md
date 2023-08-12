@@ -56,9 +56,9 @@ Then you can just run `pnpm gen:tokens` to regenerate them all.
 - [x] SelectInput
   - [x] Combobox
   - [ ] MultiSelect
-- [x] FormControl
-  - [x] Prefix
-  - [x] Suffix
+- [x] Control
+  - [ ] Prefix
+  - [ ] Suffix
   - [x] Size options
   - [x] Validations
 - [x] Callout

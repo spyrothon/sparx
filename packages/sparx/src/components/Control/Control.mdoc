@@ -1,0 +1,44 @@
+# Control
+
+`Control` is the fundamental block of forms, managing the display of inputs, their labels,
+descriptions, error states, attachments, and more. All inputs in the design system implicitly use
+the `Control` interface to provide consistent structure and functionality across the board.
+
+{% showcase %}
+
+```
+<TextInput
+  label="Username"
+  description="Usernames may only contain letters and numbers."
+/>
+```
+
+{% /showcase %}
+
+## Status
+
+Informational states about a `Control` can use the `status` prop, which adjusts the color of the
+input to match a semantic meaning. On its own, this works well for indicating that the input needs
+some special attention, but does not convey any reason for why. For that, use the `errorMessage`
+prop to provide a short explanation of how the user can address the status of the input.
+
+{% showcase-file example="control-status" /%}
+
+## Attachments
+
+`Control` also provides props for attaching `prefix` and `suffix` elements onto the input row,
+providing additional information for inputs that might have structure that the user is not sure if
+they should add or not, such as URL hostnames for links.
+
+{% showcase %}
+
+```
+<TextInput label="Twitch URL" prefix="twitch.tv/" />
+```
+
+{% /showcase %}
+
+## Custom Inputs
+
+For standard inputs, `Control` never needs to be rendered, as the inputs take care of passing props
+automatically. Custom inputs can use `Control` directly, however, to get a matching presentation.
