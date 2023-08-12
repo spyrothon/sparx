@@ -37,16 +37,18 @@ function getVariantPieces(variant: TextVariant): [TextVariantSize, TextVariantCo
   return [size as TextVariantSize, color as TextVariantColor];
 }
 
-export interface TextProps {
-  tag?: "div" | "span" | "label" | "p";
+type TextTag = "div" | "span" | "label" | "p";
+
+export type TextProps<Tag extends TextTag> = React.ComponentPropsWithoutRef<Tag> & {
+  tag?: Tag;
   variant?: TextVariant;
   lineClamp?: 1;
   className?: string;
   id?: string;
   children: React.ReactNode;
-}
+};
 
-export function Text(props: TextProps) {
+export function Text<TagT extends TextTag = "div">(props: TextProps<TagT>) {
   const {
     tag: Tag = "div",
     variant = "text-md/normal",
@@ -54,11 +56,14 @@ export function Text(props: TextProps) {
     children,
     className,
     id,
+    ...nativeProps
   } = props;
   const [size, color] = getVariantPieces(variant);
 
   return (
+    // @ts-expect-error it's complaining about `label` not matching `div`, which is bad, but fine.
     <Tag
+      {...nativeProps}
       id={id}
       className={classNames(styles.text, SIZE_VARIANTS[size], COLOR_VARIANTS[color], className, {
         [styles.lineClamp]: lineClamp === 1,

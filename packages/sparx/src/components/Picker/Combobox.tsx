@@ -1,26 +1,24 @@
 import * as React from "react";
 import classNames from "classnames";
-import { useComboBox, useFilter } from "react-aria";
+import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
-
-import { CollectionChildren } from "@react-types/shared";
 
 import { Clickable } from "../Clickable/Clickable";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
-import { Picker, PickerStyleProps } from "./Picker";
+import { Picker, PickerPublicProps } from "./Picker";
 
 import inputStyles from "../Input/Input.module.css";
 import styles from "./Picker.module.css";
 
-export interface ComboboxProps<Item extends object> extends PickerStyleProps {
-  items: Item[];
-  selectedKey: string | undefined;
-  allowsCustomValue?: boolean;
+export interface ComboboxProps<Item extends object>
+  extends PickerPublicProps,
+    Omit<AriaComboBoxProps<Item>, "onSelectionChange"> {
+  // For some reason this isn't present on `AriaComboboxProps`, but is allowed
+  // in `useComboBoxState`.
   allowsEmptyCollection?: boolean;
-  placeholder?: string;
-  children: CollectionChildren<Item>;
+  inputClassName?: string;
   onSelect: (itemKey: string) => void;
 }
 
@@ -28,24 +26,23 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   const {
     items,
     selectedKey,
-    state,
-    size,
-    allowsCustomValue = false,
     allowsEmptyCollection = false,
     placeholder,
-    className,
-    children,
+    inputClassName,
     onSelect,
   } = props;
   const { contains } = useFilter({ sensitivity: "base" });
   const controlState = useComboBoxState({
-    children,
+    ...props,
+    // We intentionally swap items and defaultItems so that the filters works
+    // automatically. If this becomes a more controlled component in the future
+    // then this should be undone or implemented differently so the consumer
+    // can control the filtering.
+    items: undefined,
     defaultItems: items,
-    defaultSelectedKey: selectedKey,
+    defaultSelectedKey: selectedKey ?? undefined,
     selectedKey,
-    allowsCustomValue,
     allowsEmptyCollection,
-    placeholder,
     defaultFilter: contains,
     onSelectionChange(key) {
       // React.Key can be a number, but we're restricting that to only strings
@@ -57,27 +54,39 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
   const buttonRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
   const listBoxRef = React.useRef<HTMLUListElement>(null);
-  const { buttonProps, inputProps, listBoxProps } = useComboBox(
-    {
-      defaultItems: items,
-      defaultSelectedKey: selectedKey,
-      selectedKey,
-      inputRef,
-      buttonRef,
-      listBoxRef,
-      popoverRef: listBoxRef,
-    },
-    controlState,
-  );
+  const { buttonProps, inputProps, listBoxProps, labelProps, descriptionProps, errorMessageProps } =
+    useComboBox(
+      {
+        ...props,
+        items: undefined,
+        defaultItems: items,
+        defaultSelectedKey: selectedKey ?? undefined,
+        selectedKey,
+        inputRef,
+        buttonRef,
+        listBoxRef,
+        popoverRef: listBoxRef,
+        // @ts-expect-error onSelect isn't defined in these props, but it's a
+        // valid DOM prop so it gets passed through, which causes selection to
+        // be fired incorrectly
+        onSelect: undefined,
+      },
+      controlState,
+    );
 
   return (
-    <Picker state={state} size={size} controlState={controlState} className={className}>
+    <Picker
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}
+      controlState={controlState}>
       <Stack
         direction="horizontal"
         align="center"
         spacing="space-md"
         wrap={false}
-        className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
+        className={classNames(inputStyles.inputBackdrop, styles.inputRow, inputClassName)}>
         <input
           {...inputProps}
           placeholder={placeholder}

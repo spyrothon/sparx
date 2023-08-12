@@ -1,38 +1,36 @@
 import * as React from "react";
 import classNames from "classnames";
+import { AriaTextFieldProps, useTextField } from "react-aria";
 
-import { getInputClassNames, InputSize, InputState } from "../Input/Input";
+import { useSetRef } from "@sparx/utils/RefUtils";
+
+import { Control, ControlInputProps } from "../FormControl/Control";
 
 import styles from "../Input/Input.module.css";
 
-export interface TextInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
-  type?: "text" | "number" | "password" | "email" | "date" | "time" | "datetime-local";
-  state?: InputState;
-  size?: InputSize;
+export interface TextInputProps extends AriaTextFieldProps, ControlInputProps {
+  inputClassName?: string;
 }
 
 export const TextInput = React.forwardRef(function TextInput(
   props: TextInputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const {
-    type = "text",
-    state = "default",
-    size = "medium",
-    value,
-    className,
-    onChange,
-    ...nativeProps
-  } = props;
+  const { inputClassName } = props;
+  const innerRef = React.useRef<HTMLInputElement>(null);
+  const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
+    props,
+    innerRef,
+  );
+  const setRef = useSetRef(innerRef, ref);
 
   return (
-    <input
-      {...nativeProps}
-      ref={ref}
-      type={type}
-      value={value}
-      onChange={onChange}
-      className={classNames(styles.input, ...getInputClassNames(state, size), className)}
-    />
+    <Control
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}>
+      <input {...inputProps} ref={setRef} className={classNames(styles.input, inputClassName)} />
+    </Control>
   );
 });

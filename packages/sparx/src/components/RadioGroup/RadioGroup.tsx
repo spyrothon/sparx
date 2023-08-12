@@ -1,12 +1,13 @@
 import * as React from "react";
-import classNames from "classnames";
-import * as uuid from "uuid";
+import { AriaRadioGroupProps, AriaRadioProps, useRadio, useRadioGroup } from "react-aria";
+import { RadioGroupState, useRadioGroupState } from "react-stately";
 
 import { animated, useSpring } from "@react-spring/web";
-import { Stack, Text } from "@sparx/index";
+import { InputState, Stack, Text } from "@sparx/index";
 
 import { Clickable } from "../Clickable/Clickable";
-import { InputState, useInputColorToken } from "../Input/Input";
+import { Control, ControlInputProps } from "../FormControl/Control";
+import { InputStatus, useInputColorToken } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./RadioGroup.module.css";
@@ -16,36 +17,35 @@ const DOT_SPRING_CONFIG = {
   friction: 20,
 };
 
-interface Option<T> {
-  value: T;
-  label: string | React.ReactNode;
-  disabled?: boolean;
+interface RadioGroupContextState {
+  state: RadioGroupState | undefined;
+  status: InputState;
 }
 
-interface RadioItemProps<T> {
-  selected: boolean;
-  state: InputState;
-  option: Option<T>;
-  disabled: boolean;
-  groupId: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
+const RadioGroupContext = React.createContext<RadioGroupContextState>({
+  state: undefined,
+  status: "default",
+});
+
+export interface RadioItemProps extends AriaRadioProps {
+  status?: InputStatus;
 }
 
-function RadioItem<T>(props: RadioItemProps<T>) {
-  const { selected, state, option, disabled, groupId, onChange } = props;
-  const { value, label } = option;
+export function RadioItem(props: RadioItemProps) {
+  const context = React.useContext(RadioGroupContext)!;
+  const { status = context.status, children } = props;
 
-  const [inputId] = React.useState(() => uuid.v4());
+  const ref = React.useRef<HTMLInputElement>(null);
+  const { inputProps, isSelected } = useRadio(props, context.state!, ref);
 
-  const containerRef = React.useRef<HTMLLabelElement>(null);
-  const inputColor = useInputColorToken(state, "color");
+  const inputColor = useInputColorToken(status, "color");
   const defaultBackgroundColor = useResolvedColorToken("BACKGROUND_ACCENT").rgba;
   const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
   const [{ opacity, transform, backgroundColor }] = useSpring(
     () => ({
-      backgroundColor: selected ? resolvedColor : defaultBackgroundColor,
-      opacity: selected ? 1 : 0,
-      transform: `scale(${selected ? 1 : 1.5})`,
+      backgroundColor: isSelected ? resolvedColor : defaultBackgroundColor,
+      opacity: isSelected ? 1 : 0,
+      transform: `scale(${isSelected ? 1 : 1.5})`,
       config: (key) => ({
         ...DOT_SPRING_CONFIG,
         friction:
@@ -53,33 +53,19 @@ function RadioItem<T>(props: RadioItemProps<T>) {
         clamp: key === "backgroundColor",
       }),
     }),
-    [selected, defaultBackgroundColor, resolvedColor],
+    [isSelected, defaultBackgroundColor, resolvedColor],
   );
 
   const labelNode =
-    typeof label === "string" ? (
-      <Text className={styles.label}>{label}</Text>
+    typeof children === "string" ? (
+      <Text className={styles.label}>{children}</Text>
     ) : (
-      <div className={styles.label}>{label}</div>
+      <div className={styles.label}>{children}</div>
     );
 
   return (
-    <Clickable
-      ref={containerRef}
-      as="label"
-      isDisabled={disabled}
-      aria-selected={selected}
-      className={classNames(styles.radioItem, { [styles.disabled]: disabled })}
-      htmlFor={inputId}>
-      <input
-        type="radio"
-        name={groupId}
-        disabled={disabled}
-        onChange={onChange}
-        id={inputId}
-        value={String(value)}
-        style={{ display: "none" }}
-      />
+    <Clickable as="label" className={styles.radioItem}>
+      <input {...inputProps} style={{ display: "none" }} />
       <animated.div className={styles.icon} style={{ backgroundColor }}>
         <animated.div className={styles.dot} style={{ opacity, transform }} />
       </animated.div>
@@ -88,31 +74,33 @@ function RadioItem<T>(props: RadioItemProps<T>) {
   );
 }
 
-export interface RadioGroupProps<T> {
-  value: T | undefined;
-  state?: InputState;
-  options: Option<T>[];
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
+export interface RadioGroupProps extends AriaRadioGroupProps, ControlInputProps {
+  status?: InputStatus;
+  children: React.ReactElement<RadioItemProps> | React.ReactElement<RadioItemProps>[];
 }
 
-export function RadioGroup<T>(props: RadioGroupProps<T>) {
-  const { value, state = "default", options, disabled = false, onChange } = props;
-  const [groupId] = React.useState(() => uuid.v4());
+export function RadioGroup(props: RadioGroupProps) {
+  const { status = "default", children } = props;
+
+  const state = useRadioGroupState(props);
+  const { radioGroupProps, labelProps, descriptionProps, errorMessageProps } = useRadioGroup(
+    props,
+    state,
+  );
+
+  const context = React.useMemo(() => ({ state, status }), [state, status]);
 
   return (
-    <Stack spacing="space-md">
-      {options.map((option) => (
-        <RadioItem
-          key={String(option.value)}
-          selected={value === option.value}
-          state={state}
-          option={option}
-          disabled={(disabled || option.disabled) ?? false}
-          groupId={groupId}
-          onChange={onChange}
-        />
-      ))}
-    </Stack>
+    <Control
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}>
+      <RadioGroupContext.Provider value={context}>
+        <Stack {...radioGroupProps} spacing="space-md">
+          {children}
+        </Stack>
+      </RadioGroupContext.Provider>
+    </Control>
   );
 }

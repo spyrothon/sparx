@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { Text, TextVariantColor } from "@sparx/index";
 
-import { getInputClassNames, InputState } from "../Input/Input";
+import { getInputClassNames, InputStatus } from "../Input/Input";
 import { TextVariantSize } from "../Text/Text";
 
 import styles from "./FormControl.module.css";
@@ -14,7 +14,7 @@ const LABEL_SIZES: Record<string, TextVariantSize> = {
 
 export type FormControlSize = keyof typeof LABEL_SIZES;
 
-function getErrorTextVariantColor(state: InputState): TextVariantColor {
+function getErrorTextVariantColor(state: InputStatus): TextVariantColor {
   switch (state) {
     case "danger":
     case "warning":
@@ -26,7 +26,7 @@ function getErrorTextVariantColor(state: InputState): TextVariantColor {
 
 export interface FormControlProps {
   label?: React.ReactNode;
-  state?: InputState;
+  state?: InputStatus;
   /**
    * Conditional error text to display above the input
    */

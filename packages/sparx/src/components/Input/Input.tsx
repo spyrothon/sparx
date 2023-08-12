@@ -2,7 +2,7 @@ import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./Input.module.css";
 
-export const STATE_VARIANTS = {
+export const STATUS_VARIANTS = {
   default: styles.default,
   success: styles.success,
   warning: styles.warning,
@@ -12,7 +12,7 @@ export const STATE_VARIANTS = {
   inherit: styles.inherit,
 };
 
-export type InputState = keyof typeof STATE_VARIANTS;
+export type InputStatus = keyof typeof STATUS_VARIANTS;
 
 export const SIZE_VARIANTS = {
   small: styles.small,
@@ -24,11 +24,10 @@ export const SIZE_VARIANTS = {
 export type InputSize = keyof typeof SIZE_VARIANTS;
 
 export function getInputClassNames(
-  color: keyof typeof STATE_VARIANTS,
-  size?: keyof typeof SIZE_VARIANTS,
+  color: keyof typeof STATUS_VARIANTS,
+  size: keyof typeof SIZE_VARIANTS = "medium",
 ): string[] {
-  const classes = [STATE_VARIANTS[color]];
-  if (size != null) classes.push(SIZE_VARIANTS[size]);
+  const classes = [STATUS_VARIANTS[color], SIZE_VARIANTS[size]];
   return classes;
 }
 
@@ -65,7 +64,7 @@ const INPUT_COLOR_TOKEN_MAP = {
   },
 };
 
-export function useInputColorToken(color: InputState, token: InputColorToken) {
+export function useInputColorToken(color: InputStatus, token: InputColorToken) {
   const tokenName = INPUT_COLOR_TOKEN_MAP[color][token];
   const resolvedToken = useResolvedColorToken(tokenName);
 

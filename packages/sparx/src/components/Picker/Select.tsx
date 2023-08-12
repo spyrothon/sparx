@@ -1,46 +1,30 @@
 import * as React from "react";
 import classNames from "classnames";
-import { HiddenSelect, useSelect } from "react-aria";
+import { AriaSelectProps, HiddenSelect, useSelect } from "react-aria";
 import { useSelectState } from "react-stately";
-
-import { CollectionChildren } from "@react-types/shared";
 
 import { Clickable } from "../Clickable/Clickable";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
 import { DropdownListBox } from "./dropdown/DropdownListBox";
-import { Picker, PickerStyleProps } from "./Picker";
+import { Picker, PickerPublicProps } from "./Picker";
 
 import inputStyles from "../Input/Input.module.css";
 import styles from "./Picker.module.css";
 
-export interface SelectProps<Item extends object> extends PickerStyleProps {
-  items: Item[];
-  selectedKey: string;
-  placeholder?: string;
-  name?: string;
-  children: CollectionChildren<Item>;
+export interface SelectProps<Item extends object>
+  extends PickerPublicProps,
+    Omit<AriaSelectProps<Item>, "onSelectionChange"> {
+  inputClassName?: string;
   onSelect: (itemKey: string) => void;
 }
 
 export function Select<Item extends object>(props: SelectProps<Item>) {
-  const {
-    items,
-    selectedKey,
-    placeholder = "Select an option",
-    name,
-    state,
-    size,
-    className,
-    children,
-    onSelect,
-  } = props;
+  const { selectedKey, placeholder = "Select an option", name, inputClassName, onSelect } = props;
 
   const controlState = useSelectState({
-    children,
-    items,
-    selectedKey,
-    defaultSelectedKey: selectedKey,
+    ...props,
+    defaultSelectedKey: selectedKey ?? undefined,
     onSelectionChange(key) {
       // React.Key can be a number, but we're restricting that to only strings
       // for simplicity.
@@ -49,21 +33,26 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
   });
 
   const ref = React.useRef<HTMLDivElement>(null);
-  const { triggerProps, valueProps, menuProps } = useSelect(
-    {
-      items,
-      defaultSelectedKey: selectedKey,
-      selectedKey,
-    },
-    controlState,
-    ref,
-  );
+  const { triggerProps, valueProps, menuProps, labelProps, descriptionProps, errorMessageProps } =
+    useSelect(
+      {
+        ...props,
+        defaultSelectedKey: selectedKey ?? undefined,
+      },
+      controlState,
+      ref,
+    );
 
   const selectedElement =
     controlState.selectedItem != null ? controlState.selectedItem.rendered : placeholder;
 
   return (
-    <Picker state={state} size={size} controlState={controlState} className={className}>
+    <Picker
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}
+      controlState={controlState}>
       <HiddenSelect state={controlState} triggerRef={ref} name={name} />
       <Stack
         asChild
@@ -75,7 +64,7 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
         <Clickable
           {...triggerProps}
           ref={ref}
-          className={classNames(inputStyles.inputBackdrop, styles.inputRow)}>
+          className={classNames(inputStyles.inputBackdrop, styles.inputRow, inputClassName)}>
           <div
             className={classNames(styles.input, {
               [styles.inputPadding]: typeof selectedElement === "string",

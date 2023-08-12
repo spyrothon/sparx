@@ -4,6 +4,7 @@
   align-items: flex-start;
   gap: var(--space-md);
   padding: var(--space-sm) 0;
+  cursor: pointer;
 }
 
 .iconContainer {

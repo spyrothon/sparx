@@ -1,22 +1,21 @@
 import * as React from "react";
 import classNames from "classnames";
-import * as uuid from "uuid";
+import { AriaCheckboxProps, useCheckbox } from "react-aria";
+import { useToggleState } from "react-stately";
 import { Check } from "@spyrothon/sparx-icons/icons/Check";
 
 import { animated, useSpring } from "@react-spring/web";
-import { Clickable, Text } from "@sparx/index";
+import { Text } from "@sparx/index";
+import { useSetRef } from "@sparx/utils/RefUtils";
 
-import { getInputClassNames, InputState, useInputColorToken } from "../Input/Input";
+import { ControlInputProps } from "../FormControl/Control";
+import { getInputClassNames, useInputColorToken } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./Checkbox.module.css";
 
-export interface CheckboxProps {
-  checked: boolean;
-  label?: string | React.ReactNode;
-  state?: InputState;
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
+export interface CheckboxProps extends Omit<AriaCheckboxProps, "isSelected">, ControlInputProps {
+  checked?: boolean;
 }
 
 const AnimatedCheck = animated(Check);
@@ -28,11 +27,28 @@ const CHECK_SPRING_CONFIG = {
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(props, ref) {
-    const { checked, label, state = "default", disabled = false, onChange } = props;
-    const [inputId] = React.useState(() => uuid.v4());
+    const {
+      checked,
+      label,
+      description,
+      errorMessage,
+      status = "default",
+      size = "medium",
+    } = props;
+    const innerRef = React.useRef<HTMLInputElement>(null);
+    const setRef = useSetRef(innerRef, ref);
+
+    const transformedProps = {
+      ...props,
+      isSelected: checked,
+      children: label,
+    };
+
+    const state = useToggleState(transformedProps);
+    const { inputProps } = useCheckbox(transformedProps, state, innerRef);
 
     const containerRef = React.useRef<HTMLLabelElement>(null);
-    const inputColor = useInputColorToken(state, "color");
+    const inputColor = useInputColorToken(status, "color");
     const defaultBackgroundColor = useResolvedColorToken("BACKGROUND_ACCENT").rgba;
     const resolvedColor = inputColor === "transparent" ? inputColor : inputColor.rawColor;
     const [{ opacity, transform, backgroundColor }] = useSpring(() => {
@@ -59,29 +75,19 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       );
 
     return (
-      <Clickable
+      <label
         ref={containerRef}
-        as="label"
-        isDisabled={disabled}
-        aria-checked={checked}
-        className={classNames(styles.checkbox, ...getInputClassNames(state), {
-          [styles.disabled]: disabled,
-        })}
-        htmlFor={inputId}>
-        <input
-          ref={ref}
-          type="checkbox"
-          style={{ display: "none" }}
-          id={inputId}
-          checked={checked}
-          disabled={disabled}
-          onChange={onChange}
-        />
+        className={classNames(styles.checkbox, ...getInputClassNames(status, size))}>
+        <input ref={setRef} {...inputProps} style={{ display: "none" }} />
         <animated.div className={styles.iconContainer} style={{ backgroundColor }}>
           <AnimatedCheck style={{ opacity, transform }} className={styles.icon} size={18} />
         </animated.div>
-        {labelNode}
-      </Clickable>
+        <div className={styles.label}>
+          {labelNode}
+          {description != null ? <Text variant="text-sm/secondary">{description}</Text> : null}
+          {errorMessage != null ? <Text variant="header-xs/danger">{errorMessage}</Text> : null}
+        </div>
+      </label>
     );
   },
 );

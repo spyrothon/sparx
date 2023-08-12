@@ -1,13 +1,19 @@
 import * as React from "react";
 
-import { CurrencyInput, Stack, Text } from "../dist";
+import { CurrencyInput, Stack } from "../dist";
 
 export default function Component() {
   const [value, setValue] = React.useState(1505);
+
   return (
     <Stack spacing="space-md">
-      <CurrencyInput value={value} onValueChange={setValue} />
-      <Text>Currency value is {value}</Text>
+      <CurrencyInput
+        label="Amount"
+        value={value}
+        onChange={setValue}
+        description={`Currency value is ${value}`}
+      />
+      <CurrencyInput name="amount" description={`Currency value is uncontrolled`} />
     </Stack>
   );
 }

@@ -6,7 +6,7 @@ import { Check } from "@spyrothon/sparx-icons/icons/Check";
 import { animated, config, useSpring } from "@react-spring/web";
 import { Clickable, Text } from "@sparx/index";
 
-import { getInputClassNames, InputState, useInputColorToken } from "../Input/Input";
+import { getInputClassNames, InputStatus, useInputColorToken } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./FormSwitch.module.css";
@@ -14,13 +14,13 @@ import styles from "./FormSwitch.module.css";
 export interface FormSwitchProps {
   checked: boolean;
   disabled?: boolean;
-  state?: InputState;
+  state?: InputStatus;
   label?: React.ReactNode;
   note?: React.ReactNode;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => unknown;
 }
 
-function Switch(props: { checked: boolean; pressed: boolean; state: InputState }) {
+function Switch(props: { checked: boolean; pressed: boolean; state: InputStatus }) {
   const { checked, pressed, state } = props;
 
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -73,27 +73,27 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
         className={classNames(styles.container, ...getInputClassNames(state), {
           [styles.disabled]: disabled,
         })}>
+        <input
+          ref={ref}
+          type="checkbox"
+          disabled={disabled}
+          onChange={onChange}
+          id={inputId}
+          checked={checked}
+          style={{ display: "none" }}
+        />
         <Clickable
           as="label"
           onPressStart={() => setIsPressed(true)}
           onPressEnd={() => setIsPressed(false)}
           isDisabled={disabled}
-          aria-checked={checked}
+          aria-pressed={checked}
           className={styles.mainRow}
           htmlFor={inputId}>
           <Text variant="header-sm/normal" className={styles.label}>
             {label}
           </Text>
           <Switch checked={checked} pressed={isPressed} state={state} />
-          <input
-            ref={ref}
-            type="checkbox"
-            disabled={disabled}
-            onChange={onChange}
-            id={inputId}
-            checked={checked}
-            style={{ display: "none" }}
-          />
         </Clickable>
         <Text variant="text-sm/normal" className={styles.note}>
           {note}

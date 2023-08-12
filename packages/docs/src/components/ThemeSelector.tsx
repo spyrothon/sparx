@@ -18,22 +18,20 @@ export function ThemeSelector() {
   const { theme, accent, setTheme, setAccent } = React.useContext(ThemeContext);
   return (
     <>
-      <FormControl label="Theme">
-        <Select
-          items={THEME_OPTIONS}
-          selectedKey={theme}
-          onSelect={(theme) => setTheme(theme as Theme)}>
-          {(item) => <Item key={item.value}>{item.name}</Item>}
-        </Select>
-      </FormControl>
-      <FormControl label="Accent Color">
-        <Select
-          items={ACCENT_OPTIONS}
-          selectedKey={accent}
-          onSelect={(accent) => setAccent(accent as Accent)}>
-          {(item) => <Item key={item.value}>{item.name}</Item>}
-        </Select>
-      </FormControl>
+      <Select
+        label="Theme"
+        items={THEME_OPTIONS}
+        selectedKey={theme}
+        onSelect={(theme) => setTheme(theme as Theme)}>
+        {(item) => <Item key={item.value}>{item.name}</Item>}
+      </Select>
+      <Select
+        label="Accent Color"
+        items={ACCENT_OPTIONS}
+        selectedKey={accent}
+        onSelect={(accent) => setAccent(accent as Accent)}>
+        {(item) => <Item key={item.value}>{item.name}</Item>}
+      </Select>
     </>
   );
 }

@@ -2,23 +2,23 @@ import * as React from "react";
 import classNames from "classnames";
 import type { ComboBoxState, SelectState } from "react-stately";
 
-import { getInputClassNames, InputSize, InputState } from "../Input/Input";
+import { Control, ControlInputProps, ControlNestedElementProps } from "../FormControl/Control";
 
 import styles from "./Picker.module.css";
 
-export interface PickerStyleProps {
-  state?: InputState;
-  size?: InputSize;
-  className?: string;
-}
-
-interface PickerProps<Item extends object> extends PickerStyleProps {
+export interface PickerManagedProps<Item extends object> extends ControlNestedElementProps {
   controlState: SelectState<Item> | ComboBoxState<Item>;
   children: React.ReactNode;
 }
 
+export interface PickerPublicProps extends ControlInputProps {}
+
+export interface PickerProps<Item extends object>
+  extends PickerPublicProps,
+    PickerManagedProps<Item> {}
+
 export function Picker<Item extends object>(props: PickerProps<Item>) {
-  const { state = "default", size = "medium", controlState, className, children } = props;
+  const { controlState, className, children } = props;
 
   const handleBlur = React.useCallback(
     (event: React.FocusEvent) => {
@@ -31,11 +31,13 @@ export function Picker<Item extends object>(props: PickerProps<Item>) {
   );
 
   return (
-    <div
-      className={classNames(styles.container, className, ...getInputClassNames(state, size))}
-      onBlur={handleBlur}
-      data-open={controlState.isOpen}>
-      {children}
-    </div>
+    <Control {...props}>
+      <div
+        className={classNames(styles.container, className)}
+        onBlur={handleBlur}
+        data-open={controlState.isOpen}>
+        {children}
+      </div>
+    </Control>
   );
 }

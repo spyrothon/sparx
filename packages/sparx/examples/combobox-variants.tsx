@@ -6,18 +6,18 @@ import { PICKER_OPTIONS } from "./util/PickerOptions";
 export default function Component() {
   const [selectedKey, setSelectedKey] = React.useState(PICKER_OPTIONS[0].value);
 
-  const sampleVariants: Array<{ state: InputState; size: InputSize }> = [
-    { state: "success", size: "small" },
-    { state: "danger", size: "large" },
-    { state: "info", size: "xlarge" },
+  const sampleVariants: Array<{ status: InputState; size: InputSize }> = [
+    { status: "success", size: "small" },
+    { status: "danger", size: "large" },
+    { status: "info", size: "xlarge" },
   ];
 
   return (
     <Stack>
-      {sampleVariants.map(({ state, size }) => (
+      {sampleVariants.map(({ status, size }) => (
         <Combobox
-          key={`${state}-${size}`}
-          state={state}
+          key={`${status}-${size}`}
+          status={status}
           size={size}
           items={PICKER_OPTIONS}
           selectedKey={selectedKey}

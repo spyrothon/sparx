@@ -30,7 +30,7 @@ export default function Component() {
       prefix="@"
       label="Username"
       note="Usernames may only contain letters and numbers.">
-      <TextInput state={state} placeholder="ripto" onChange={handleChange} />
+      <TextInput placeholder="ripto" onChange={handleChange} />
     </FormControl>
   );
 }

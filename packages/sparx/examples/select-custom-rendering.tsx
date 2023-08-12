@@ -8,7 +8,7 @@ export default function Component() {
 
   return (
     <Select
-      state="success"
+      status="success"
       items={PICKER_OPTIONS}
       selectedKey={selectedKey}
       onSelect={setSelectedKey}>

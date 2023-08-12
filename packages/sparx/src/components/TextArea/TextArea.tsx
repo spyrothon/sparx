@@ -1,9 +1,10 @@
 import * as React from "react";
 import classNames from "classnames";
+import { AriaTextFieldProps, useTextField } from "react-aria";
 
 import { useSetRef } from "@sparx/utils/RefUtils";
 
-import { getInputClassNames, InputState } from "../Input/Input";
+import { Control, ControlInputProps } from "../FormControl/Control";
 
 import styles from "./TextArea.module.css";
 
@@ -36,28 +37,24 @@ const RESIZE_CLASSES = {
 
 type TextAreaResizeType = keyof typeof RESIZE_CLASSES;
 
-export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps extends AriaTextFieldProps, ControlInputProps {
+  rows?: number;
   resize?: TextAreaResizeType;
-  disabled?: boolean;
-  state?: InputState;
+  inputClassName?: string;
 }
 
 export const TextArea = React.forwardRef(function TextArea(
   props: TextAreaProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const {
-    value,
-    maxLength,
-    rows = 3,
-    resize = "vertical",
-    disabled = false,
-    state = "default",
-    className,
-    onChange,
-    ...nativeProps
-  } = props;
+  const { value, maxLength, rows = 3, resize = "vertical", inputClassName } = props;
   const areaRef = React.useRef<HTMLTextAreaElement>(null);
+  const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
+    { ...props, inputElementType: "textarea" },
+    areaRef,
+  );
+  const setRef = useSetRef(areaRef, ref);
+
   const [length, setLength] = React.useState(
     () => areaRef.current?.value.length ?? value?.toString().length ?? 0,
   );
@@ -82,23 +79,20 @@ export const TextArea = React.forwardRef(function TextArea(
     return () => area.removeEventListener("input", measureLength);
   }, [value]);
 
-  const setRef = useSetRef(areaRef, ref);
-
   return (
-    <div
-      className={classNames(styles.container, ...getInputClassNames(state), {
-        [styles.disabled]: disabled,
-      })}>
-      <textarea
-        ref={setRef}
-        disabled={disabled}
-        {...nativeProps}
-        value={value}
-        maxLength={maxLength}
-        rows={rows}
-        onChange={onChange}
-        className={classNames(styles.input, className, RESIZE_CLASSES[resize])}></textarea>
-      {renderMaxLengthIndicator(length, maxLength)}
-    </div>
+    <Control
+      {...props}
+      labelProps={labelProps}
+      descriptionProps={descriptionProps}
+      errorMessageProps={errorMessageProps}>
+      <div className={styles.container}>
+        <textarea
+          ref={setRef}
+          rows={rows}
+          {...inputProps}
+          className={classNames(styles.input, inputClassName, RESIZE_CLASSES[resize])}></textarea>
+        {renderMaxLengthIndicator(length, maxLength)}
+      </div>
+    </Control>
   );
 });
