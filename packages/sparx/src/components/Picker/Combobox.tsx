@@ -4,12 +4,11 @@ import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 
 import { Clickable } from "../Clickable/Clickable";
+import { InputWithAttachments, useInputStyleClasses } from "../Input/Input";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
-import { DropdownListBox } from "./dropdown/DropdownListBox";
 import { Picker, PickerPublicProps } from "./Picker";
 
-import inputStyles from "../Input/Input.module.css";
 import styles from "./Picker.module.css";
 
 export interface ComboboxProps<Item extends object>
@@ -31,6 +30,8 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
     inputClassName,
     onSelect,
   } = props;
+  const inputStyles = useInputStyleClasses(props);
+
   const { contains } = useFilter({ sensitivity: "base" });
   const controlState = useComboBoxState({
     ...props,
@@ -80,26 +81,27 @@ export function Combobox<Item extends object>(props: ComboboxProps<Item>) {
       labelProps={labelProps}
       descriptionProps={descriptionProps}
       errorMessageProps={errorMessageProps}
-      controlState={controlState}>
-      <Stack
-        direction="horizontal"
-        align="center"
-        spacing="space-md"
-        wrap={false}
-        className={classNames(inputStyles.inputBackdrop, styles.inputRow, inputClassName)}>
-        <input
-          {...inputProps}
-          placeholder={placeholder}
-          ref={inputRef}
-          className={classNames(inputStyles.inputText, styles.input, styles.inputPadding)}
-        />
-        <Clickable {...buttonProps} ref={buttonRef}>
-          <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
-        </Clickable>
-      </Stack>
-      {controlState.isOpen && (
-        <DropdownListBox {...listBoxProps} listBoxRef={listBoxRef} state={controlState} />
-      )}
+      controlState={controlState}
+      listBoxProps={listBoxProps}
+      listBoxRef={listBoxRef}>
+      <InputWithAttachments {...props}>
+        <Stack
+          direction="horizontal"
+          align="center"
+          spacing="space-md"
+          wrap={false}
+          className={classNames(styles.inputRow, inputClassName)}>
+          <input
+            {...inputProps}
+            className={classNames(styles.input, inputStyles.inputPadding)}
+            placeholder={placeholder}
+            ref={inputRef}
+          />
+          <Clickable {...buttonProps} ref={buttonRef}>
+            <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
+          </Clickable>
+        </Stack>
+      </InputWithAttachments>
     </Picker>
   );
 }

@@ -4,12 +4,11 @@ import { AriaSelectProps, HiddenSelect, useSelect } from "react-aria";
 import { useSelectState } from "react-stately";
 
 import { Clickable } from "../Clickable/Clickable";
+import { InputWithAttachments, useInputStyleClasses } from "../Input/Input";
 import { Stack } from "../Stack/Stack";
 import { DropdownChevron } from "./dropdown/DropdownChevron";
-import { DropdownListBox } from "./dropdown/DropdownListBox";
 import { Picker, PickerPublicProps } from "./Picker";
 
-import inputStyles from "../Input/Input.module.css";
 import styles from "./Picker.module.css";
 
 export interface SelectProps<Item extends object>
@@ -21,6 +20,7 @@ export interface SelectProps<Item extends object>
 
 export function Select<Item extends object>(props: SelectProps<Item>) {
   const { selectedKey, placeholder = "Select an option", name, inputClassName, onSelect } = props;
+  const inputStyles = useInputStyleClasses(props);
 
   const controlState = useSelectState({
     ...props,
@@ -52,30 +52,32 @@ export function Select<Item extends object>(props: SelectProps<Item>) {
       labelProps={labelProps}
       descriptionProps={descriptionProps}
       errorMessageProps={errorMessageProps}
+      listBoxProps={menuProps}
       controlState={controlState}>
       <HiddenSelect state={controlState} triggerRef={ref} name={name} />
-      <Stack
-        asChild
-        direction="horizontal"
-        align="center"
-        justify="space-between"
-        spacing="space-md"
-        wrap={false}>
-        <Clickable
-          {...triggerProps}
-          ref={ref}
-          className={classNames(inputStyles.inputBackdrop, styles.inputRow, inputClassName)}>
-          <div
-            className={classNames(styles.input, {
-              [styles.inputPadding]: typeof selectedElement === "string",
-            })}
-            {...valueProps}>
-            {selectedElement}
-          </div>
-          <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
-        </Clickable>
-      </Stack>
-      {controlState.isOpen && <DropdownListBox {...menuProps} state={controlState} />}
+      <InputWithAttachments {...props}>
+        <Stack
+          asChild
+          direction="horizontal"
+          align="center"
+          justify="space-between"
+          spacing="space-md"
+          wrap={false}>
+          <Clickable
+            ref={ref}
+            {...triggerProps}
+            className={classNames(styles.inputRow, inputClassName)}>
+            <div
+              {...valueProps}
+              className={classNames(styles.input, {
+                [inputStyles.inputPadding]: typeof selectedElement === "string",
+              })}>
+              {selectedElement}
+            </div>
+            <DropdownChevron isOpen={controlState.isOpen} className={styles.chevron} />
+          </Clickable>
+        </Stack>
+      </InputWithAttachments>
     </Picker>
   );
 }

@@ -1,3 +1,6 @@
+import * as React from "react";
+import classNames from "classnames";
+
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./Input.module.css";
@@ -29,6 +32,31 @@ export function getInputClassNames(
 ): string[] {
   const classes = [STATUS_VARIANTS[color], SIZE_VARIANTS[size]];
   return classes;
+}
+
+interface UseInputStylePropsOptions {
+  status?: InputStatus;
+  size?: InputSize;
+  inputClassName?: string;
+}
+
+export function useInputStyleClasses(options: UseInputStylePropsOptions) {
+  const { status = "default", size = "medium", inputClassName } = options;
+
+  return {
+    /** Classes to fully style an input. */
+    input: classNames(styles.input, ...getInputClassNames(status, size), inputClassName),
+    /** Only contextual classes to provide input styling within the container. */
+    inputContainer: classNames(...getInputClassNames(status, size), inputClassName),
+    /** Base input classes to match the colors and typography of all other inputs. */
+    inputBase: styles.inputBase,
+    /** Classes to render the border of an input. */
+    inputBorder: styles.inputBorder,
+    /** Classes to render the spacing around the input content. */
+    inputPadding: styles.inputPadding,
+    /** Classes to reset default styles as needed for all of the other classes. */
+    inputReset: styles.inputReset,
+  };
 }
 
 type InputColorToken = "color" | "foreground";
@@ -69,4 +97,33 @@ export function useInputColorToken(color: InputStatus, token: InputColorToken) {
   const resolvedToken = useResolvedColorToken(tokenName);
 
   return tokenName === "transparent" ? tokenName : resolvedToken;
+}
+
+function renderAttachment(node?: React.ReactNode) {
+  if (node == null) return null;
+  if (node === "") return null;
+
+  return <div className={styles.attachment}>{node}</div>;
+}
+
+export interface InputAttachmentProps {
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
+}
+
+export interface InputWithAttachmentProps extends InputAttachmentProps {
+  children: React.ReactElement;
+  asChild?: boolean;
+}
+
+export function InputWithAttachments(props: InputWithAttachmentProps) {
+  const { prefix, suffix, children } = props;
+
+  return (
+    <div className={classNames(styles.inputAttachmentRow, styles.inputBase, styles.inputBorder)}>
+      {renderAttachment(prefix)}
+      {children}
+      {renderAttachment(suffix)}
+    </div>
+  );
 }

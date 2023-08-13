@@ -27,6 +27,7 @@ export default function Component() {
       status={status}
       errorMessage={error}
       label="Username"
+      prefix="@"
       description="Type a long username to see the state change"
       placeholder="ripto"
       onChange={handleChange}></TextInput>

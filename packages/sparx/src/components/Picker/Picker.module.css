@@ -1,8 +1,6 @@
 .container {
   position: relative;
-  display: flex;
   align-items: center;
-  width: 100%;
 
   &[data-open="true"] .inputRow {
     border-bottom-left-radius: 0;
@@ -10,9 +8,13 @@
   }
 }
 
+.inputRow {
+  width: 100%;
+}
+
 .input {
   flex: 1 1 auto;
-  font-size: var(--_input-font-size);
+  width: 100%;
   margin: 0;
   border: none;
   background: none;
@@ -21,10 +23,6 @@
   &:focus-within {
     outline: none;
   }
-}
-
-.inputPadding {
-  padding: var(--_input-padding);
 }
 
 .chevron {

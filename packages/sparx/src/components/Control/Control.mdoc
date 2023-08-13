@@ -9,6 +9,7 @@ the `Control` interface to provide consistent structure and functionality across
 ```
 <TextInput
   label="Username"
+  placeholder="ripto"
   description="Usernames may only contain letters and numbers."
 />
 ```
@@ -33,10 +34,21 @@ they should add or not, such as URL hostnames for links.
 {% showcase %}
 
 ```
-<TextInput label="Twitch URL" prefix="twitch.tv/" />
+<Stack>
+  <TextInput label="Twitch URL" prefix="twitch.tv/" />
+  <TextInput
+    label="Subdomain"
+    placeholder="sparx"
+    suffix=".spyrothon.org"
+    status="success" />
+  <Select label="Twitch URL" prefix="twitch.tv/" />
+</Stack>
 ```
 
 {% /showcase %}
+
+Attachments should only be used when another dedicated input type does not exist. For example,
+currency fields should use `CurrencyInput` rather than adding a custom attachment.
 
 ## Custom Inputs
 

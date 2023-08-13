@@ -1,22 +1,20 @@
-.inputBackdrop {
-  background-color: var(--background-accent);
-  color: var(--interactive-normal);
-  border: var(--_input-border);
-  border-radius: var(--radius-normal);
+.inputReset {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  padding: 0;
+  margin: 0;
   width: 100%;
-  transition: border 0.2s ease-in;
 }
 
-.inputText {
+.inputBase {
+  width: 100%;
+  background-color: var(--background-accent);
   color: var(--interactive-normal);
   font-family: var(--font-normal);
   font-size: var(--_input-font-size);
   line-height: var(--_input-line-height);
-}
-
-.input {
-  composes: inputBackdrop inputText;
-  padding: var(--_input-padding);
 
   &::placeholder {
     color: var(--text-secondary);
@@ -28,35 +26,64 @@
   }
 }
 
+.inputBorder {
+  border: 2px solid var(--_input-color);
+  border-radius: var(--_input-radius);
+  transition: border-color 0.2s ease-in;
+
+  [data-open="true"] & {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.inputPadding {
+  padding: var(--_input-padding);
+}
+
+.input {
+  composes: inputBase inputBorder inputPadding;
+}
+
+.inputAttachmentRow {
+  display: flex;
+}
+
+.attachment {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  background-color: var(--_input-color);
+  color: var(--_input-foreground);
+  padding: var(--_input-padding);
+  transition:
+    background-color 0.2s ease-in,
+    color 0.2s ease-in;
+}
+
 .default {
   --_input-color: var(--accent-primary);
   --_input-foreground: var(--accent-foreground);
-  --_input-border: 2px solid var(--_input-color);
 }
 .success {
   --_input-color: var(--status-success-background);
   --_input-foreground: var(--status-success-foreground);
-  --_input-border: 2px solid var(--_input-color);
 }
 .warning {
   --_input-color: var(--status-warning-background);
   --_input-foreground: var(--status-warning-foreground);
-  --_input-border: 2px solid var(--_input-color);
 }
 .danger {
   --_input-color: var(--status-danger-background);
   --_input-foreground: var(--status-danger-foreground);
-  --_input-border: 2px solid var(--_input-color);
 }
 .info {
   --_input-color: var(--status-info-background);
   --_input-foreground: var(--status-info-foreground);
-  --_input-border: 2px solid var(--_input-color);
 }
 .blank {
   --_input-color: transparent;
   --_input-foreground: var(--interactive-normal);
-  --_input-border: 2px solid var(--_input-color);
 }
 /* Inheriting specifically does _not_ set variables, as that
  * overrides them instead of allowing the element to inherit
@@ -69,22 +96,26 @@
   --_input-icon-size: 24px;
   --_input-line-height: 18px;
   --_input-padding: var(--space-sm) var(--space-sm);
+  --_input-radius: var(--radius-normal);
 }
 .medium {
   --_input-font-size: 18px;
   --_input-icon-size: 32px;
   --_input-line-height: 24px;
   --_input-padding: var(--space-sm) var(--space-md);
+  --_input-radius: var(--radius-normal);
 }
 .large {
   --_input-font-size: 24px;
   --_input-icon-size: 46px;
   --_input-line-height: 30px;
   --_input-padding: var(--space-md) var(--space-md);
+  --_input-radius: var(--radius-large);
 }
 .xlarge {
   --_input-font-size: 32px;
   --_input-icon-size: 64px;
   --_input-line-height: 40px;
   --_input-padding: var(--space-lg) var(--space-lg);
+  --_input-radius: var(--radius-large);
 }

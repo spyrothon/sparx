@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { DOMAttributes } from "@react-types/shared";
-import { Text } from "@sparx/index";
+import { Stack, Text } from "@sparx/index";
 
 import { getInputClassNames, InputSize, InputStatus } from "../Input/Input";
 
@@ -56,7 +56,8 @@ export function Control(props: ControlProps) {
   } = props;
 
   return (
-    <div
+    <Stack
+      spacing="space-sm"
       className={classNames(styles.control, ...getInputClassNames(status, size), className)}
       data-disabled={isDisabled ? true : undefined}
       data-required={isRequired ? true : undefined}>
@@ -65,7 +66,7 @@ export function Control(props: ControlProps) {
           {label}
         </Text>
       ) : null}
-      <div className={styles.inputRow}>{children}</div>
+      {children}
       {description != null ? (
         <Text variant="text-sm/secondary" {...descriptionProps}>
           {description}
@@ -76,6 +77,6 @@ export function Control(props: ControlProps) {
           {errorMessage}
         </Text>
       ) : null}
-    </div>
+    </Stack>
   );
 }

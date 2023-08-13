@@ -5,6 +5,7 @@ import { AriaTextFieldProps, useTextField } from "react-aria";
 import { useSetRef } from "@sparx/utils/RefUtils";
 
 import { Control, ControlInputProps } from "../Control/Control";
+import { useInputStyleClasses } from "../Input/Input";
 
 import styles from "./TextArea.module.css";
 
@@ -47,7 +48,9 @@ export const TextArea = React.forwardRef(function TextArea(
   props: TextAreaProps,
   ref: React.ForwardedRef<HTMLTextAreaElement>,
 ) {
-  const { value, maxLength, rows = 3, resize = "vertical", inputClassName } = props;
+  const { value, maxLength, rows = 3, resize = "vertical" } = props;
+  const inputStyles = useInputStyleClasses(props);
+
   const areaRef = React.useRef<HTMLTextAreaElement>(null);
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField(
     { ...props, inputElementType: "textarea" },
@@ -90,7 +93,11 @@ export const TextArea = React.forwardRef(function TextArea(
           ref={setRef}
           rows={rows}
           {...inputProps}
-          className={classNames(styles.input, inputClassName, RESIZE_CLASSES[resize])}></textarea>
+          className={classNames(
+            inputStyles.inputReset,
+            inputStyles.input,
+            RESIZE_CLASSES[resize],
+          )}></textarea>
         {renderMaxLengthIndicator(length, maxLength)}
       </div>
     </Control>
