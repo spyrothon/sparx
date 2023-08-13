@@ -9,7 +9,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  border: var(--_input-border);
+  border: 2px solid var(--_input-color);
   border-top: none;
   border-bottom-left-radius: var(--radius-normal);
   border-bottom-right-radius: var(--radius-normal);
