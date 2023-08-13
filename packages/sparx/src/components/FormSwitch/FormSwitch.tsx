@@ -1,5 +1,4 @@
 import * as React from "react";
-import classNames from "classnames";
 import { AriaSwitchProps, usePress, useSwitch } from "react-aria";
 import { useToggleState } from "react-stately";
 import { Check } from "@spyrothon/sparx-icons/icons/Check";
@@ -9,7 +8,7 @@ import { Text } from "@sparx/index";
 import { useSetRef } from "@sparx/utils/RefUtils";
 
 import { ControlInputProps } from "../Control/Control";
-import { getInputClassNames, InputStatus, useInputColorToken } from "../Input/Input";
+import { InputStatus, useInputColorToken, useInputStyleClasses } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./FormSwitch.module.css";
@@ -62,16 +61,10 @@ export interface FormSwitchProps extends Omit<AriaSwitchProps, "isSelected">, Co
 
 export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
   function FormSwitch(props, ref) {
-    const {
-      checked,
-      label,
-      description,
-      errorMessage,
-      status = "default",
-      size = "medium",
-    } = props;
+    const { checked, label, description, errorMessage, status = "default" } = props;
     const innerRef = React.useRef<HTMLInputElement>(null);
     const setRef = useSetRef(innerRef, ref);
+    const inputStyles = useInputStyleClasses(props);
 
     const transformedProps = {
       ...props,
@@ -83,7 +76,7 @@ export const FormSwitch = React.forwardRef<HTMLInputElement, FormSwitchProps>(
     const { pressProps, isPressed } = usePress({});
 
     return (
-      <div className={classNames(styles.container, ...getInputClassNames(status, size))}>
+      <div className={inputStyles.inputContainer}>
         <label className={styles.mainRow} {...pressProps}>
           <input ref={setRef} {...inputProps} style={{ display: "none" }} />
           <Text variant="header-sm/normal" className={styles.label}>

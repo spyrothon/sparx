@@ -9,7 +9,7 @@ import { Text } from "@sparx/index";
 import { useSetRef } from "@sparx/utils/RefUtils";
 
 import { ControlInputProps } from "../Control/Control";
-import { getInputClassNames, useInputColorToken } from "../Input/Input";
+import { useInputColorToken, useInputStyleClasses } from "../Input/Input";
 import { useResolvedColorToken } from "../ThemeProvider/ThemeProvider";
 
 import styles from "./Checkbox.module.css";
@@ -27,16 +27,10 @@ const CHECK_SPRING_CONFIG = {
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   function Checkbox(props, ref) {
-    const {
-      checked,
-      label,
-      description,
-      errorMessage,
-      status = "default",
-      size = "medium",
-    } = props;
+    const { checked, label, description, errorMessage, status = "default" } = props;
     const innerRef = React.useRef<HTMLInputElement>(null);
     const setRef = useSetRef(innerRef, ref);
+    const inputStyles = useInputStyleClasses(props);
 
     const transformedProps = {
       ...props,
@@ -74,9 +68,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       );
 
     return (
-      <label
-        ref={containerRef}
-        className={classNames(styles.checkbox, ...getInputClassNames(status, size))}>
+      <label ref={containerRef} className={classNames(styles.checkbox, inputStyles.inputContainer)}>
         <input ref={setRef} {...inputProps} style={{ display: "none" }} />
         <animated.div className={styles.iconContainer} style={{ backgroundColor }}>
           <AnimatedCheck style={{ opacity, transform }} className={styles.icon} size={18} />
