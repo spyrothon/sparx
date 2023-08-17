@@ -87,7 +87,7 @@ export const sidebarItems: NavigationItem[] = [
       { type: "page", title: "Button", sourcePath: "components/Button/Button.mdoc" },
       { type: "page", title: "Clickable", sourcePath: "components/Clickable/Clickable.mdoc" },
       { type: "page", title: "Interactive", sourcePath: "components/Interactive/Interactive.mdoc" },
-      { type: "page", title: "Tabs", sourcePath: "components/TabGroup/TabGroup.mdoc" },
+      { type: "page", title: "Tabs", sourcePath: "components/Tabs/Tabs.mdoc" },
     ],
   },
   {

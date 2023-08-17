@@ -3,7 +3,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import { useRouter, useSelectedLayoutSegments } from "next/navigation";
-import { BrandLogo, Card, Clickable, Divider, Stack, Tabs, Text } from "@spyrothon/sparx";
+import { BrandLogo, Card, Clickable, Divider, Stack, TabGroup, Text } from "@spyrothon/sparx";
 
 import { getFlatSidebarItems, FlatNavigationItem } from "../app/sidebarItems";
 import { MobileSidebar } from "./MobileSidebar";
@@ -25,7 +25,7 @@ export function Sidebar(props: { className: string }) {
     switch (item.type) {
       case "page":
         return (
-          <Tabs.Tab
+          <TabGroup.Tab
             key={item.title}
             label={item.title}
             selected={isSelected}
@@ -33,7 +33,7 @@ export function Sidebar(props: { className: string }) {
           />
         );
       case "category":
-        return <Tabs.Header key={item.title} label={item.title} />;
+        return <TabGroup.Header key={item.title} label={item.title} />;
       default:
         return null;
     }
@@ -55,7 +55,7 @@ export function Sidebar(props: { className: string }) {
             <ThemeSelector />
           </Stack>
           <Divider />
-          <Tabs.Group>{getFlatSidebarItems().map(renderSidebarItem)}</Tabs.Group>
+          <TabGroup.Group>{getFlatSidebarItems().map(renderSidebarItem)}</TabGroup.Group>
         </Stack>
       </Card>
     </>

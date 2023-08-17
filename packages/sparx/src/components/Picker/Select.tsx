@@ -15,7 +15,7 @@ export interface SelectProps<Item extends object>
   extends PickerPublicProps,
     Omit<AriaSelectProps<Item>, "onSelectionChange"> {
   inputClassName?: string;
-  onSelect: (itemKey: string) => void;
+  onSelect?: (itemKey: string) => void;
 }
 
 export function Select<Item extends object>(props: SelectProps<Item>) {

@@ -1,0 +1,34 @@
+# Tabs
+
+Tabs provide a way of flipping between content selectively to help reduce the amount of information
+on display at any given time, or to help reduce the space needed to show various types of content
+where the user is likely only interested in one piece at a time.
+
+Tabs consist of a list of tab titles and a panel area that displays the content of the
+currently-selected tab. Tabs are _not_ suitable for top-level navigation between pages, but _are_
+useful for navigation _within_ a page.
+
+{% showcase-file example="tabs" /%}
+
+The example above shows an uncontrolled version of Tabs, where the initially-selected tab is given
+by `defaultSelectedKey`, but afterward the selection state is managed internally.
+
+To use a controlled state, pass in `selectedKey` instead, and use `onSelect(key)` to listen for
+state changes.
+
+{% showcase-file example="tabs-controlled" /%}
+
+## Disabled States
+
+The entire Tab list can be disabled using the `isDisabled` prop on the list itself. Alternatively,
+individual tabs can be disabled using the `disabledKeys` prop.
+
+{% showcase-file example="tabs-disabled" /%}
+
+## Styling
+
+The Tab panel area has no spacing applied to it, meaning the content is allowed to bleed fully to
+the edge of the panel area. This is useful for creating dynamic backdrops within a tab, or filling
+the area with an image.
+
+{% showcase-file example="tabs-box" /%}

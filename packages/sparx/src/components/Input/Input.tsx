@@ -92,8 +92,8 @@ const INPUT_COLOR_TOKEN_MAP = {
   },
 };
 
-export function useInputColorToken(color: InputStatus, token: InputColorToken) {
-  const tokenName = INPUT_COLOR_TOKEN_MAP[color][token];
+export function useInputColorToken(status: InputStatus, token: InputColorToken) {
+  const tokenName = INPUT_COLOR_TOKEN_MAP[status][token];
   const resolvedToken = useResolvedColorToken(tokenName);
 
   return tokenName === "transparent" ? tokenName : resolvedToken;

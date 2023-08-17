@@ -18,7 +18,7 @@ export interface ComboboxProps<Item extends object>
   // in `useComboBoxState`.
   allowsEmptyCollection?: boolean;
   inputClassName?: string;
-  onSelect: (itemKey: string) => void;
+  onSelect?: (itemKey: string) => void;
 }
 
 export function Combobox<Item extends object>(props: ComboboxProps<Item>) {

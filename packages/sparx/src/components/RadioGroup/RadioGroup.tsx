@@ -33,7 +33,7 @@ export interface RadioItemProps extends AriaRadioProps {
 }
 
 export function RadioItem(props: RadioItemProps) {
-  const context = React.useContext(RadioGroupContext)!;
+  const context = React.useContext(RadioGroupContext);
   const { status = context.status, children } = props;
 
   const ref = React.useRef<HTMLInputElement>(null);

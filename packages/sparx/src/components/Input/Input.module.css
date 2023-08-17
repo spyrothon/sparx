@@ -1,5 +1,6 @@
 .inputReset {
   background-color: transparent;
+  color: inherit;
   border: none;
   outline: none;
   display: block;

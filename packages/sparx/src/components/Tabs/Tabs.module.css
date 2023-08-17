@@ -1,0 +1,26 @@
+.tabList {
+  position: relative;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: var(--space-md);
+}
+
+.indicator {
+  position: absolute;
+  background-color: var(--accent-background);
+  border-radius: var(--radius-normal);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.tab {
+  background-color: transparent;
+  border-radius: var(--radius-normal);
+  padding: var(--space-md) var(--space-lg);
+  text-align: center;
+  cursor: pointer;
+  z-index: 1;
+
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+}

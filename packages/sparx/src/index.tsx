@@ -121,7 +121,7 @@ export type {
   Spacing,
 } from "./components/Stack/Stack";
 
-export { Tabs } from "./components/TabGroup/TabGroup";
+export { Tabs as TabGroup } from "./components/TabGroup/TabGroup";
 export type {
   TabGroupProps,
   TabColor,
@@ -131,6 +131,9 @@ export type {
 
 export { Table } from "./components/Table/Table";
 export type { TableProps } from "./components/Table/Table";
+
+export { Tabs } from "./components/Tabs/Tabs";
+export type { TabsProps } from "./components/Tabs/Tabs";
 
 export { Tag } from "./components/Tag/Tag";
 export type { TagProps, TagColor } from "./components/Tag/Tag";
