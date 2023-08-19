@@ -18,6 +18,7 @@
   margin: 0;
   border: none;
   background: none;
+  color: var(--interactive-normal);
 
   &:focus,
   &:focus-within {
