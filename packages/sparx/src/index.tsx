@@ -110,8 +110,6 @@ export type { CurrencyInputProps } from "./components/TextInput/formatted_inputs
 export { DurationInput } from "./components/TextInput/formatted_inputs/DurationInput";
 export type { DurationInputProps } from "./components/TextInput/formatted_inputs/DurationInput";
 
-export { Section } from "./components/Section/Section";
-
 export { Stack, Spacer } from "./components/Stack/Stack";
 export type {
   Alignment,
