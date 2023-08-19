@@ -42,7 +42,6 @@ export const sidebarItems: NavigationItem[] = [
       { type: "page", title: "Box", sourcePath: "components/Box/Box.mdoc" },
       { type: "page", title: "Card", sourcePath: "components/Card/Card.mdoc" },
       { type: "page", title: "Divider", sourcePath: "components/Divider/Divider.mdoc" },
-      { type: "page", title: "Section", sourcePath: "components/Section/Section.mdoc" },
     ],
   },
   {
