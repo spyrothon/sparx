@@ -15,8 +15,6 @@ importers:
       eslint-plugin-react: ^7.31.8
       eslint-plugin-react-hooks: ^4.6.0
       eslint-plugin-simple-import-sort: ^8.0.0
-      postcss-import: ^15.0.0
-      postcss-nesting: ^10.2.0
       prettier: ^3.0.1
       typescript: ^5.0.2
     devDependencies:
@@ -26,8 +24,6 @@ importers:
       eslint-plugin-react: 7.31.10_eslint@8.46.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.46.0
       eslint-plugin-simple-import-sort: 8.0.0_eslint@8.46.0
-      postcss-import: 15.0.0_postcss@8.4.27
-      postcss-nesting: 10.2.0_postcss@8.4.27
       prettier: 3.0.1
       typescript: 5.1.6
 
@@ -93,6 +89,8 @@ importers:
       classnames: ^2.3.1
       downshift: ^8.1.0
       filter-invalid-dom-props: ^3.0.1
+      postcss-import: ^15.1.0
+      postcss-nesting: ^12.0.1
       react: '>= 18.0.0'
       react-aria: ^3.26.0
       react-dom: '>= 18.0.0'
@@ -125,6 +123,8 @@ importers:
       '@types/react-dom': 18.2.7
       '@types/uuid': 8.3.4
       '@vitejs/plugin-react-swc': 3.3.0_vite@4.2.1
+      postcss-import: 15.1.0_postcss@8.4.27
+      postcss-nesting: 12.0.1_postcss@8.4.27
       typescript: 5.1.6
       vite: 4.2.1_@types+node@18.8.5
       vite-plugin-dts: 3.4.0_v3n6zt7xpz3o24xufdwa2jqojy_vmapphyydzrhzu657f27lvkepq
@@ -421,15 +421,13 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@csstools/selector-specificity/2.0.2_ck54npjphd4lohbrrcz2b4da7y:
-    resolution: {integrity: sha512-IkpVW/ehM1hWKln4fCA3NzJU8KwD+kIOvPZA4cqxoJHtE21CCzjyp+Kxbu0i5I4tBNOlXPL9mjwnWlL0VEG4Fg==}
-    engines: {node: ^12 || ^14 || >=16}
+  /@csstools/selector-specificity/3.0.0_c3vcbepomgmxc74cgtawpgpkyi:
+    resolution: {integrity: sha512-hBI9tfBtuPIi885ZsZ32IMEU/5nlZH/KOVYJCOh7gyMxaVLGmLedYqFN6Ui1LXkI8JlC8IsuC0rF0btcRZKd5g==}
+    engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      postcss: ^8.2
-      postcss-selector-parser: ^6.0.10
+      postcss-selector-parser: ^6.0.13
     dependencies:
-      postcss: 8.4.27
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.13
     dev: true
 
   /@esbuild-kit/cjs-loader/2.4.2:
@@ -3966,7 +3964,7 @@ packages:
     resolution: {integrity: sha512-gozW2blMLJCeFpBwugLTGyvVjNoeo1knonXAcatC6bjPBZitotxdWf7Gimr25N4c0AAOo4eOUfaG82IJPDpqCA==}
     dependencies:
       debug: 3.2.7
-      is-core-module: 2.12.0
+      is-core-module: 2.12.1
       resolve: 1.22.3
     transitivePeerDependencies:
       - supports-color
@@ -3986,7 +3984,7 @@ packages:
       eslint-plugin-import: 2.28.0_oq4narc7zypm3gbudlruxofxuq
       get-tsconfig: 4.6.2
       globby: 13.2.2
-      is-core-module: 2.12.0
+      is-core-module: 2.12.1
       is-glob: 4.0.3
       synckit: 0.8.5
     transitivePeerDependencies:
@@ -4855,17 +4853,6 @@ packages:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
 
-  /is-core-module/2.10.0:
-    resolution: {integrity: sha512-Erxj2n/LDAZ7H8WNJXd9tw38GYM3dv8rk8Zcs+jJuxYTW7sozH+SS8NtrSjVL1/vpLvWi1hxy96IzjJ3EHTJJg==}
-    dependencies:
-      has: 1.0.3
-
-  /is-core-module/2.12.0:
-    resolution: {integrity: sha512-RECHCBCd/viahWmwj6enj19sKbHfJrddi/6cBDsNTKbNq0f7VeaUkBo60BqzvPqo/W54ChS62Z5qyun7cfOMqQ==}
-    dependencies:
-      has: 1.0.3
-    dev: false
-
   /is-core-module/2.12.1:
     resolution: {integrity: sha512-Q4ZuBAe2FUsKtyQJoQHlvP8OvBERxO3jEmy1I7hcRXcJBGGHFh/aJBswbXuS9sgrDH2QUO8ilkwNPHvHMd8clg==}
     dependencies:
@@ -5556,8 +5543,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /postcss-import/15.0.0_postcss@8.4.27:
-    resolution: {integrity: sha512-Y20shPQ07RitgBGv2zvkEAu9bqvrD77C9axhj/aA1BQj4czape2MdClCExvB27EwYEJdGgKZBpKanb0t1rK2Kg==}
+  /postcss-import/15.1.0_postcss@8.4.27:
+    resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       postcss: ^8.0.0
@@ -5565,22 +5552,22 @@ packages:
       postcss: 8.4.27
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
-      resolve: 1.22.1
+      resolve: 1.22.3
     dev: true
 
-  /postcss-nesting/10.2.0_postcss@8.4.27:
-    resolution: {integrity: sha512-EwMkYchxiDiKUhlJGzWsD9b2zvq/r2SSubcRrgP+jujMXFzqvANLt16lJANC+5uZ6hjI7lpRmI6O8JIl+8l1KA==}
-    engines: {node: ^12 || ^14 || >=16}
+  /postcss-nesting/12.0.1_postcss@8.4.27:
+    resolution: {integrity: sha512-6LCqCWP9pqwXw/njMvNK0hGY44Fxc4B2EsGbn6xDcxbNRzP8GYoxT7yabVVMLrX3quqOJ9hg2jYMsnkedOf8pA==}
+    engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
-      postcss: ^8.2
+      postcss: ^8.4
     dependencies:
-      '@csstools/selector-specificity': 2.0.2_ck54npjphd4lohbrrcz2b4da7y
+      '@csstools/selector-specificity': 3.0.0_c3vcbepomgmxc74cgtawpgpkyi
       postcss: 8.4.27
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.13
     dev: true
 
-  /postcss-selector-parser/6.0.10:
-    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
+  /postcss-selector-parser/6.0.13:
+    resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
     engines: {node: '>=4'}
     dependencies:
       cssesc: 3.0.0
@@ -5890,15 +5877,6 @@ packages:
       path-parse: 1.0.7
     dev: true
 
-  /resolve/1.22.1:
-    resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
-    hasBin: true
-    dependencies:
-      is-core-module: 2.10.0
-      path-parse: 1.0.7
-      supports-preserve-symlinks-flag: 1.0.0
-    dev: true
-
   /resolve/1.22.3:
     resolution: {integrity: sha512-P8ur/gp/AmbEzjr729bZnLjXK5Z+4P0zhIJgBgzqRih7hL7BOukHGtSTA3ACMY467GRFz3duQsi0bDZdR7DKdw==}
     hasBin: true
@@ -5911,7 +5889,7 @@ packages:
     resolution: {integrity: sha512-iMDbmAWtfU+MHpxt/I5iWI7cY6YVEZUQ3MBgPQ++XD1PELuJHIl82xBmObyP2KyQmkNB2dsqF7seoQQiAn5yDQ==}
     hasBin: true
     dependencies:
-      is-core-module: 2.10.0
+      is-core-module: 2.12.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
