@@ -6,6 +6,23 @@
   display: block;
 }
 
+.sidebarItem {
+  border-radius: var(--radius-normal);
+  padding: var(--space-sm) var(--space-md);
+
+  &:hover {
+    background-color: var(--background-mod-subtle);
+  }
+
+  &[aria-pressed="true"] {
+    background-color: var(--background-highlight);
+  }
+}
+
+.header {
+  margin-top: var(--space-lg);
+}
+
 @media (max-width: 760px) {
   .desktop {
     display: none;

@@ -3,7 +3,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import { useRouter, useSelectedLayoutSegments } from "next/navigation";
-import { BrandLogo, Card, Clickable, Divider, Stack, TabGroup, Text } from "@spyrothon/sparx";
+import { BrandLogo, Card, Clickable, Divider, Header, Stack, Text } from "@spyrothon/sparx";
 
 import { getFlatSidebarItems, FlatNavigationItem } from "../app/sidebarItems";
 import { MobileSidebar } from "./MobileSidebar";
@@ -25,15 +25,20 @@ export function Sidebar(props: { className: string }) {
     switch (item.type) {
       case "page":
         return (
-          <TabGroup.Tab
+          <Clickable
             key={item.title}
-            label={item.title}
-            selected={isSelected}
-            onPress={() => router.push(`/components/${item.urlParts.join("/")}`)}
-          />
+            className={styles.sidebarItem}
+            aria-pressed={isSelected}
+            onPress={() => router.push(`/components/${item.urlParts.join("/")}`)}>
+            <Text>{item.title}</Text>
+          </Clickable>
         );
       case "category":
-        return <TabGroup.Header key={item.title} label={item.title} />;
+        return (
+          <Header key={item.title} tag="h3" variant="header-sm/normal" className={styles.header}>
+            {item.title}
+          </Header>
+        );
       default:
         return null;
     }
@@ -55,7 +60,7 @@ export function Sidebar(props: { className: string }) {
             <ThemeSelector />
           </Stack>
           <Divider />
-          <TabGroup.Group>{getFlatSidebarItems().map(renderSidebarItem)}</TabGroup.Group>
+          <Stack spacing="space-xs">{getFlatSidebarItems().map(renderSidebarItem)}</Stack>
         </Stack>
       </Card>
     </>
