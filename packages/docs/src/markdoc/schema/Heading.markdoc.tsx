@@ -3,6 +3,8 @@ import { ConfigType, RenderableTreeNode, Schema, Tag, nodes } from "@markdoc/mar
 
 import { Header } from "@spyrothon/sparx";
 
+import styles from "./Heading.module.css";
+
 function generateID(children: RenderableTreeNode[], attributes: any): string {
   if (attributes.id && typeof attributes.id === "string") {
     return attributes.id;
@@ -31,7 +33,6 @@ export function isTag(thing: any): thing is Tag {
 interface HeadingProps {
   id: string;
   level: 1 | 2 | 3 | 4 | 5 | 6;
-  className: string;
   children: React.ReactNode;
 }
 
@@ -54,7 +55,7 @@ export const headingNode: Schema<ConfigType, string> = {
 };
 
 export function Heading(props: HeadingProps) {
-  const { id, level, className, children } = props;
+  const { id, level, children } = props;
 
   const tag = `h${level}` as const;
   const variant = (() => {
@@ -74,7 +75,7 @@ export function Heading(props: HeadingProps) {
     }
   })();
   return (
-    <Header tag={tag} variant={variant} id={id} className={className}>
+    <Header className={styles.header} tag={tag} variant={variant} id={id}>
       {children}
     </Header>
   );

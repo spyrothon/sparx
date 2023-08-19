@@ -1,0 +1,77 @@
+# Usage
+
+Sparx is a comprehensive design system built with React and TypeScript. It also utilizes CSS Modules
+for styling, and has supporting libraries to provide additional functionality. Any React project
+built on the web is able to use Sparx as its design system.
+
+This documentation will use `pnpm` as the package manager of choice, but any Node package manager
+should work identically.
+
+## Installation
+
+Using Sparx requires two packages to start with, the main system `@spyrothon/sparx`, and the design
+token manager `@spyrothon/tokens`.
+
+```shell
+pnpm add @spyrothon/sparx @spyrothon/tokens
+```
+
+Next, generate the tokens that Sparx needs to function with the `@spyrothon/tokens` package:
+
+```shell
+pnpm sparx-tokens
+```
+
+This will create a folder called `design` in your project, containing a `tokens.ts` file with a
+complete set of default token definitions, as well as a `generate.ts` script file used to generate
+usable tokens for both Sparx and external apps to use. The tokens can be freely changed and added
+to, so long as the base set of tokens exist. To ensure that all of the necessary tokens are present,
+the generate script includes a validation step checking for all of the tokens that Sparx uses
+internally.
+
+Generating the tokens requires a typescript-capable runtime beyond just Node. Many packages exist to
+do this, including `ts-node`, `tsx`, `esno`, and more. This documentation will use `esno`, meaning
+the tokens can be generated with:
+
+```shell
+pnpm esno ./design/generate.ts
+```
+
+This script will create another new folder `design/generated`, containing all of the compiled files.
+Any changes to the tokens file will require running the generator script again. For convenience,
+consider adding a script in `package.json` to invoke this generator with something like
+`pnpm gen:tokens`.
+
+## Integration
+
+Now that all of the artifacts are in place, it can be integrated into your application.
+
+Somewhere near the root of your project, like an `App.tsx` or similar, add an import for the
+generated CSS system, as well as the Sparx stylesheet.
+
+```tsx
+import "./design/generated/system.css";
+import "@spyrothon/sparx/style.css";
+```
+
+Note that the order is important. Also note that these are _not_ CSS modules. They are pre-compiled
+files and should not be processed by a CSS preprocessor, otherwise the names may be clobbered and no
+longer match what Sparx components expect.
+
+Finally, create a theme provider from your tokens and render it around your application so that
+Sparx can pick up all of the styles it needs.
+
+```tsx
+import { Accent, Theme, tokens } from "./design/generated/Tokens";
+import { createThemeContext } from "@spyrothon/sparx";
+
+const { ThemeProvider } = createThemeContext(tokens);
+
+function App() {
+  <ThemeProvider theme="dark" accent="pink">
+    <YourAppComponent>
+  </ThemeProvider>
+}
+```
+
+Now, anywhere in your application, you can freely import and use Sparx components.

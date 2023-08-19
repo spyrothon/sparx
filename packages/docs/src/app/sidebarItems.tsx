@@ -32,6 +32,7 @@ export const sidebarItems: NavigationItem[] = [
   {
     type: "page",
     title: "Usage",
+    sourcePath: "docs/Usage.mdoc",
   },
   {
     type: "category",

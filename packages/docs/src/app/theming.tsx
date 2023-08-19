@@ -1,10 +1,8 @@
-import * as React from "react";
 import { CreateThemeContextReturn, createAppContainer, createThemeContext } from "@spyrothon/sparx";
 import { Accent, Theme, tokens } from "../../design/generated/Tokens";
 import { setThemeContext } from "../../../sparx/examples/util/Theming";
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { noSSR } from "next/dynamic";
 
 const themeContext = createThemeContext(tokens);
 const AppContainer = createAppContainer(themeContext);

@@ -1,0 +1,5 @@
+.box {
+  margin: var(--space-md) 0;
+  overflow: hidden;
+  width: 100%;
+}

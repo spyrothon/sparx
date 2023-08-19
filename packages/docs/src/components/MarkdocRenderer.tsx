@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import Markdoc from "@markdoc/markdoc";
-import path from "path";
 
 import { config, components } from "@/markdoc/config";
 
