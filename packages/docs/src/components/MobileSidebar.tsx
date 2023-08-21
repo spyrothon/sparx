@@ -8,8 +8,9 @@ import {
   Button,
   Clickable,
   Divider,
+  Header,
   Stack,
-  Tabs,
+  Text,
   openModal,
 } from "@spyrothon/sparx";
 import { Bars } from "@spyrothon/sparx-icons/icons/Bars";
@@ -18,6 +19,8 @@ import { getFlatSidebarItems, FlatNavigationItem } from "../app/sidebarItems";
 import { ThemeSelector } from "./ThemeSelector";
 
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+
+import styles from "./Sidebar.module.css";
 
 function MobileNavigation(props: {
   onClose: () => unknown;
@@ -32,18 +35,20 @@ function MobileNavigation(props: {
     switch (item.type) {
       case "page":
         return (
-          <Tabs.Tab
+          <Clickable
             key={item.title}
-            label={item.title}
-            selected={isSelected}
-            onPress={() => {
-              router.push(`/components/${item.urlParts.join("/")}`);
-              onClose();
-            }}
-          />
+            className={styles.sidebarItem}
+            aria-pressed={isSelected}
+            onPress={() => router.push(`/components/${item.urlParts.join("/")}`)}>
+            <Text>{item.title}</Text>
+          </Clickable>
         );
       case "category":
-        return <Tabs.Header key={item.title} label={item.title} />;
+        return (
+          <Header key={item.title} tag="h3" variant="header-sm/normal" className={styles.header}>
+            {item.title}
+          </Header>
+        );
       default:
         return null;
     }
@@ -55,7 +60,7 @@ function MobileNavigation(props: {
         <ThemeSelector />
       </Stack>
       <Divider />
-      <Tabs.Group>{getFlatSidebarItems().map(renderSidebarItem)}</Tabs.Group>
+      <Stack spacing="space-xs">{getFlatSidebarItems().map(renderSidebarItem)}</Stack>
     </Stack>
   );
 }
